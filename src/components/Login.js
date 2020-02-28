@@ -15,7 +15,7 @@ export const Login = () => {
   //useHistory this to route to "StartPage" when login succeeded.
   const history = useHistory();
 
-  const url = "https://localhost8080/sessions";
+  const url = "http://localhost:8080/sessions"
 
   const handleSignin = event => {
     event.preventDefault();
@@ -37,7 +37,7 @@ export const Login = () => {
       .then(({ accessToken }) => {
         if (accessToken) {
           window.localStorage.setItem("accessToken", accessToken);
-          history.push(`/welcome`);
+          history.push(`/secrets`);
         }
       })
       .catch(err => {

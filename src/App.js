@@ -23,7 +23,7 @@ export const App = () => {
         <main>
           <Switch>
             <Route exact path="/" component={Login} />
-            <Route exact path="/welcome" component={Welcome} />
+            <Route exact path="/secrets" component={Welcome} />
             <Route exact path="/register" component={Registration} />
           </Switch>
         </main>

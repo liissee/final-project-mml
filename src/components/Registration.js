@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Heading, FieldContainer, Form, Label, Input, Button } from "./Styling";
 
-const url = "https://localhost8080/users";
+const url = "http://localhost:8080/users";
 
 export const Registration = () => {
   const [name, setName] = useState("");
