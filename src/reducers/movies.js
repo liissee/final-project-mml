@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 // Define initial state, what should be included?
-// const initialState = {
-// ...
-// }
+const initialState = {
+
+}
 
 // Discuss which reducers and actions that should be included
 export const movies = createSlice({

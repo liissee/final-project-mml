@@ -17,11 +17,11 @@ export const App = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <main> 
-        <Switch>
+        <main>
+          <Switch>
 
-  
-        </Switch>
+
+          </Switch>
         </main>
       </BrowserRouter>
     </Provider>
