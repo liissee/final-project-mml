@@ -46,7 +46,7 @@ export const Welcome = props => {
           onClick={() => window.localStorage.removeItem("accessToken")}
           type="button"
         >
-          <Link className="link-text" to={`/`}>
+          <Link className="link-text" to={`/login`}>
             {errorMessage ? "Sign in" : "Log out"}
           </Link>
         </Button>

@@ -35,7 +35,7 @@ export const Registration = () => {
   };
 
   const reDirect = () => {
-    history.push(`/`);
+    history.push(`/login`);
   };
 
   return (
