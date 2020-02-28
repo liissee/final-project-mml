@@ -1,74 +1,111 @@
-import React, { useState } from 'react'
-// import { useDispatch } from 'react-redux'
-// import { movies } from 'reducers/movies'
-// Import what we need to use
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { Heading, FieldContainer, Form, Label, Input, Button } from "./Styling";
 
-// Create a function that POSTs user-info to our API 
-// Create a form for login
+const url = "https://localhost8080/users";
+
 export const Registration = () => {
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  // const dispatch = useDispatch()
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [registred, setRegistred] = useState(false);
+  const [failure, setFailure] = useState(false);
+  const history = useHistory();
 
-  const handleRegister = event => {
-    event.preventDefault()
-    fetch("http://localhost8080/users", {
-      method: "Post", 
-      body: JSON.stringify({name, email, password}),
+  const handleSubmit = event => {
+    event.preventDefault();
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify({ name, email, password }),
       headers: { "Content-Type": "application/json" }
     })
+      //Här händer en callback funktion
       .then(res => {
-        res.json().then(json => setMessage(json.message))
+        // console.log(res.json())
+        if (res.status !== 201) {
+          return (
+            res.json().then(json => console.log(json.message)), setFailure(true)
+          );
+        } else {
+          setRegistred(true);
+          setTimeout(reDirect, 2000);
+        }
       })
-      .then(() => {
-        setName("")
-        setEmail("")
-        setPassword("")
-      })
-      .catch(err => console.log(err))
-  }
+      .catch(err => console.log("Error:", err));
+  };
+
+  const reDirect = () => {
+    history.push(`/`);
+  };
 
   return (
-    <div className="form-container">
-      <form>
-        <div className="form-title">Register</div>
+    <FieldContainer>
+      {!registred && (
+        <FieldContainer>
+          <Form onSubmit={handleSubmit}>
+            {!failure && <Heading>Create new user</Heading>}
+            {failure && (
+              <Heading>
+                User not created. Try using another name or email!
+              </Heading>
+            )}
 
-        <div className="form-text">Username</div>
-        <input
-          type="text"
-          onChange={event => setName(event.target.value)}
-          value={name}
-          placeholder="Username"
-        />
-
-        <div className="form-text">Email</div>
-        <input
-          type="text"
-          onChange={event => setEmail(event.target.value)}
-          value={email}
-          placeholder="Email"
-        />
-
-        <div className="form-text">Password</div>
-        <input
-          type="text"
-          onChange={event => setPassword(event.target.value)}
-          value={password}
-          placeholder="Password"
-        />
-        
-        <br></br>
-
-        <button
-          className="btn-submit"
-          type="submit"
-          onClick={handleRegister}
-        >
-          Register
-        </button>
-      </form>
-        {message}
-    </div>
-  )
-}
+            <Label>
+              Name {name.length < 2 && name.length !== 0 && " is too short"}
+              {name.length > 20 && " is too long"}
+              <Input
+                type="text"
+                required
+                value={name}
+                onChange={event => setName(event.target.value)}
+              ></Input>
+            </Label>
+            <Label>
+              Email
+              <Input
+                lowercase
+                type="text"
+                required
+                value={email}
+                onChange={event => setEmail(event.target.value.toLowerCase())}
+              ></Input>
+            </Label>
+            <Label>
+              Password{" "}
+              {password.length < 5 && password.length !== 0 && " is too short"}
+              <Input
+                type="password"
+                required
+                value={password}
+                onChange={event => setPassword(event.target.value)}
+              ></Input>
+            </Label>
+            <Button
+              type="submit"
+              disabled={
+                name.length > 1 &&
+                  name.length < 21 &&
+                  password.length > 4 &&
+                  email
+                  ? false
+                  : true
+              }
+              onClick={handleSubmit}
+            >
+              SIGN UP
+            </Button>
+            <Button type="button" onClick={reDirect}>
+              Already a member?
+            </Button>
+          </Form>
+        </FieldContainer>
+      )}
+      {registred && (
+        <FieldContainer>
+          <Heading>User created!</Heading>
+          <Heading>Continuing to login...</Heading>
+        </FieldContainer>
+      )}
+    </FieldContainer>
+  );
+};
