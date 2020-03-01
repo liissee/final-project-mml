@@ -37,7 +37,7 @@ export const Login = () => {
       .then(({ accessToken }) => {
         if (accessToken) {
           window.localStorage.setItem("accessToken", accessToken);
-          history.push(`/secrets`);
+          history.push(`/welcome`);
         }
       })
       .catch(err => {

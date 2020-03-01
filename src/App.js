@@ -8,8 +8,7 @@ import { Registration } from 'components/Registration'
 import "@blueprintjs/core/lib/css/blueprint.css";
 import { Searchbar } from 'components/Searchbar'
 import { MoviesList } from 'components/MoviesList'
-
-// import { Welcome } from 'components/Welcome'
+import { Welcome } from 'components/Welcome'
 // Import the components that we want to render
 
 
@@ -31,9 +30,9 @@ export const App = () => {
         </Route>
         <main>
           <Switch>
-            {/* <Route exact path="/login" component={Login} />
-            <Route exact path="/secrets" component={Welcome} />
-            <Route exact path="/register" component={Registration} /> */}
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/welcome" component={Welcome} />
+            <Route exact path="/register" component={Registration} />
           </Switch>
         </main>
       </BrowserRouter>

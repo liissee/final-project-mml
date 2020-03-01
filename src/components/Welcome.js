@@ -3,15 +3,19 @@ import { Link } from "react-router-dom";
 import { Button, Heading, Wrapper } from "./Styling";
 
 const url = "http://localhost:8080/secrets";
+const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 
+// userId = 5e5938a8ce751dfff42ce512
 
 export const Welcome = props => {
   const [message, setMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [movies, setMovies] = ([])
+  const [movies, setMovies] = useState([])
   const [movieList, setMovieList] = useState("top_rated")
   // use movie_url below in fetch, entering an api_key - set as env.variable?
+
   // const movie_url = https://api.themoviedb.org/3/movie/${movieList}?api_key=<enter key>&language=en-US&page=1
+
   const [rating, setRating] = useState("")
   //Getting the accessToken from the browser's localStorage
   //and sending it as the header "Authorization"
@@ -21,24 +25,24 @@ export const Welcome = props => {
   // function that will be invoced when the user rates a movie, i.e. 
   // when the user clicks on a rating button
   // this value should be sent to our own API with PUT or POST somehow
-  // we should disucss what code to add in body: JSON - we should send the score to our API
+  // we should discuss what code to add in body: JSON - we should send the score to our API
   const handleRating = (score) => {
     setRating(score)
-    fetch(`http://localhost:8080/users/${userId}`), {
+    fetch(`http://localhost:8080/users/${userId}`, {
       method: "PUT",
       body: JSON,
       headers: { "Content-Type": "application/json", "Authorization": accessToken }
-    }
+    })
   }
 
   // function that will be invoced when the user clicks on "Re watch", "Watched" etc.
-  // we should disucss what code to add in body: JSON - we should send the status to our API
+  // we should discuss what code to add in body: JSON - we should send the status to our API
   const handleWatchStatus = () => {
-    fetch(`http://localhost:8080/users/${userId}`), {
+    fetch(`http://localhost:8080/users/${userId}`, {
       method: "PUT",
       body: JSON,
       headers: { "Content-Type": "application/json", "Authorization": accessToken }
-    }
+    })
   }
 
 
@@ -65,7 +69,7 @@ export const Welcome = props => {
   // In our Welcome-page we want to render a list of top rated movies from the external API
   // that the logged-in user can rate
   useEffect(() => {
-    fetch(`movie_url`)
+    fetch(`https://api.themoviedb.org/3/movie/${movieList}?api_key=${API_KEY}&language=en-US&page=1`)
       .then(res => res.json())
       .then(json => {
         setMovies(json.results)
@@ -78,6 +82,7 @@ export const Welcome = props => {
   // However, for the second time the user logs in the array might not be empty anymore
   // First we should get the code below to work for a first-time logged-in user but
   // if we get that to work a next step would be to keep track of the info. we have in our own API for that user
+
   return (
     <Wrapper>
       {message && (
@@ -86,6 +91,7 @@ export const Welcome = props => {
           <Heading>{message}</Heading>
           <p>To get started, here's a list of popular movies you can rate to get started</p>
           <section className="movies-list">
+
             {movies.map((movie) => (
               <div
                 className="movie-row"

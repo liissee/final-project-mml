@@ -5,16 +5,16 @@ import { useSelector } from "react-redux";
 
 export const MoviesList = (props) => {
 
-
   const movieList = useSelector(state => state.movies.movies)
 
   console.log(movieList)
   // Fetch data from API with a GET request
   // Render a list of movies depending on what the user has written in Searchbar
 
+  //How to fetch more results, show page 2 etc..? 
   return (
     <div className="top-movie-list">
-      {/* <section className="movie-list">
+      <section className="movie-list">
         {movieList.map((movie) => (
           <Link key={movie.id} to={`/movies/${movie.id}`}>
             <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.id} />
@@ -24,7 +24,7 @@ export const MoviesList = (props) => {
             </div>
           </Link>
         ))}
-      </section> */}
+      </section>
     </div>
   )
 }
