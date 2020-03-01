@@ -20,27 +20,27 @@ export const Welcome = props => {
   //Getting the accessToken from the browser's localStorage
   //and sending it as the header "Authorization"
   const accessToken = window.localStorage.getItem("accessToken");
-  const userId = window.localStorage.getItem("id")
+  const userId = window.localStorage.getItem("userId")
 
   // function that will be invoced when the user rates a movie, i.e. 
   // when the user clicks on a rating button
   // this value should be sent to our own API with PUT or POST somehow
   // we should discuss what code to add in body: JSON - we should send the score to our API
-  const handleRating = (score) => {
+  const handleRating = (score, movieId) => {
     setRating(score)
-    fetch(`http://localhost:8080/users/${userId}`, {
+    fetch(`http://localhost:8080/users/5e5938a8ce751dfff42ce512`, {
       method: "PUT",
-      body: JSON,
+      body: JSON.stringify({ score, movieId }),
       headers: { "Content-Type": "application/json", "Authorization": accessToken }
     })
   }
 
-  // function that will be invoced when the user clicks on "Re watch", "Watched" etc.
-  // we should discuss what code to add in body: JSON - we should send the status to our API
-  const handleWatchStatus = () => {
-    fetch(`http://localhost:8080/users/${userId}`, {
+  // // function that will be invoced when the user clicks on "Re watch", "Watched" etc.
+  // // we should discuss what code to add in body: JSON - we should send the status to our API
+  const handleWatchStatus = (status, movieId) => {
+    fetch(`http://localhost:8080/users/5e5938a8ce751dfff42ce512`, {
       method: "PUT",
-      body: JSON,
+      body: JSON.stringify({ status, movieId }),
       headers: { "Content-Type": "application/json", "Authorization": accessToken }
     })
   }
@@ -78,7 +78,7 @@ export const Welcome = props => {
 
   // Below we should keep track of whether the movies have been rated by the user or not
   // For the first time a user logs in no movies have been rated, i.e. we will have for example
-  // an empty array in our own API for our Users, moviesWatched=[]
+  // an empty array in our own API for our Use  rs, moviesWatched=[]
   // However, for the second time the user logs in the array might not be empty anymore
   // First we should get the code below to work for a first-time logged-in user but
   // if we get that to work a next step would be to keep track of the info. we have in our own API for that user
@@ -100,15 +100,15 @@ export const Welcome = props => {
                 <Link to={`movies/${movie.id}`}>
                   <h2 className="movie-title">{movie.title}</h2>
                 </Link>
-                <button onClick={handleRating(1)}>1</button>
-                <button onClick={handleRating(2)}>2</button>
-                <button onClick={handleRating(3)}>3</button>
-                <button onClick={handleRating(4)}>4</button>
-                <button onClick={handleRating(5)}>5</button>
-                <button onClick={handleWatchStatus("Rewatch")}>Rewatch</button>
-                <button onClick={handleWatchStatus("Watch")}>Watch</button>
-                <button onClick={handleWatchStatus("Not again")}>Not again</button>
-                <button onClick={handleWatchStatus("No thanks")}>No thanks</button>
+                <button onClick={(e) => handleRating(1, movie.id)}>1</button>
+                <button onClick={(e) => handleRating(2, movie.id)}>2</button>
+                <button onClick={(e) => handleRating(3, movie.id)}>3</button>
+                <button onClick={(e) => handleRating(4, movie.id)}>4</button>
+                <button onClick={(e) => handleRating(5, movie.id)}> 5 </button>
+                <button onClick={(e) => handleWatchStatus(true, movie.id)}> Rewatch </button>
+                <button onClick={(e) => handleWatchStatus(true, movie.id)}> Watch </button>
+                <button onClick={(e) => handleWatchStatus(true, movie.id)}> Not again</button>
+                <button onClick={(e) => handleWatchStatus(true, movie.id)}> No thanks</button>
               </div>
             ))}
           </section>
@@ -125,6 +125,6 @@ export const Welcome = props => {
           </Link>
         </Button>
       </div>
-    </Wrapper>
+    </Wrapper >
   );
 };

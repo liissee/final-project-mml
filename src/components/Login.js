@@ -34,9 +34,12 @@ export const Login = () => {
           return res.json();
         }
       })
-      .then(({ accessToken }) => {
-        if (accessToken) {
+
+      .then(({ accessToken, userId }) => {
+        if (accessToken && userId) {
           window.localStorage.setItem("accessToken", accessToken);
+          window.localStorage.setItem("userId", userId);
+
           history.push(`/welcome`);
         }
       })
