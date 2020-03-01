@@ -4,6 +4,7 @@ import { Button, Heading, Wrapper } from "./Styling";
 
 const url = "http://localhost:8080/secrets";
 
+
 export const Welcome = props => {
   const [message, setMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -40,7 +41,7 @@ export const Welcome = props => {
     }
   }
 
-  
+
   useEffect(() => {
     setErrorMessage("");
     fetch(url, {
@@ -85,8 +86,8 @@ export const Welcome = props => {
           <Heading>{message}</Heading>
           <p>To get started, here's a list of popular movies you can rate to get started</p>
           <section className="movies-list">
-            {movies.map((movie) =>(
-              <div 
+            {movies.map((movie) => (
+              <div
                 className="movie-row"
                 key={movie.id}
               >

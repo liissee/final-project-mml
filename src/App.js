@@ -7,6 +7,7 @@ import { Login } from 'components/Login'
 import { Registration } from 'components/Registration'
 import "@blueprintjs/core/lib/css/blueprint.css";
 import { Searchbar } from 'components/Searchbar'
+import { MoviesList } from 'components/MoviesList'
 
 // import { Welcome } from 'components/Welcome'
 // Import the components that we want to render
@@ -23,8 +24,11 @@ const store = configureStore({ reducer })
 export const App = () => {
   return (
     <Provider store={store}>
-      <BrowserRouter>            <Searchbar />
-
+      <BrowserRouter>
+        <Searchbar />
+        <Route path="/" exact>
+          <MoviesList />
+        </Route>
         <main>
           <Switch>
             {/* <Route exact path="/login" component={Login} />
