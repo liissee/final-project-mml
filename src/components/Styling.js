@@ -20,6 +20,15 @@ export const Form = styled.form`
   background: #ededed;
   border-radius: 8px;
   `
+export const FormSearch = styled(Form)`
+ margin: 60px auto;
+  display: block;
+  padding: 20px 30px 30px 30px;
+  max-width: 480px;
+  background: none;
+  border-radius: 8px;
+  `
+
 export const FieldContainer = styled.div`
   position: relative;
   display: block;
@@ -112,4 +121,6 @@ export const Link = styled.link`
     background: lighten(#33cc77,10%);
     cursor: pointer;
   }
+  `
+export const SearchContainer = styled.div`
   `

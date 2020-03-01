@@ -1,9 +1,56 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { SearchContainer, FormSearch } from "./Styling";
+import { Icon, InputGroup } from "@blueprintjs/core";
+
 // Import what we need to use
 
-// export const Searchbar = () => {
-// const [searchTerm, useSearchTerm] = useState("")
+const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 
-// //TESTING
-//   fetch: const url = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&language=en-US&query=${searchTerm}&page=1&include_adult=false`
-// }
+
+export const Searchbar = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [results, setResults] = useState([]);
+
+
+  useEffect(() => {
+    fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${searchTerm}&page=1&include_adult=false`)
+      .then((res) => res.json())
+      .then((json) => {
+        setResults(json.results)
+        console.log("result:", results)
+      })
+  }, [searchTerm])
+
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    if (searchTerm.length > 0) {
+      setSearchTerm("");
+      //("") set to empty searchfield
+    }
+  };
+
+  return (
+    <SearchContainer>
+      <FormSearch onSubmit={handleSubmit}>
+        <InputGroup
+          value={searchTerm}
+          onChange={event => setSearchTerm(event.target.value)}
+          disabled={false}
+          large={true}
+          placeholder="Search movie"
+          rightElement={<Icon icon="icon-arrow" />}
+          leftIcon={<Icon icon="search" />}
+          small={false}
+          type="search"
+        />
+      </FormSearch>
+
+      {/* <ul>
+        {results.map(item => (     ///Why is this mapping not working?
+          <li>{item.title}</li>
+        ))}
+      </ul> */}
+    </SearchContainer>
+  );
+}

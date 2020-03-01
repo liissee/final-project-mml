@@ -5,8 +5,12 @@ import { movies } from 'reducers/movies'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Login } from 'components/Login'
 import { Registration } from 'components/Registration'
-import { Welcome } from 'components/Welcome'
+import "@blueprintjs/core/lib/css/blueprint.css";
+import { Searchbar } from 'components/Searchbar'
+
+// import { Welcome } from 'components/Welcome'
 // Import the components that we want to render
+
 
 const reducer = combineReducers({
   movies: movies.reducer
@@ -19,21 +23,16 @@ const store = configureStore({ reducer })
 export const App = () => {
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter>            <Searchbar />
+
         <main>
           <Switch>
-            <Route exact path="/login" component={Login} />
+            {/* <Route exact path="/login" component={Login} />
             <Route exact path="/secrets" component={Welcome} />
-            <Route exact path="/register" component={Registration} />
+            <Route exact path="/register" component={Registration} /> */}
           </Switch>
         </main>
       </BrowserRouter>
     </Provider>
   )
 }
-
-// Delete this?
-// This was initially within return()
-// <div>
-//   Find me in src/app.js!
-// </div>
