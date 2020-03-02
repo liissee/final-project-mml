@@ -11,7 +11,30 @@ export const Wrapper = styled.div`
   &.link-text {
     text-decoration: none;
   }
-  `
+`
+export const MainStartContainer = styled.div`
+  background: #FFFFE0; 
+  height: 100%;
+  width: 100%;
+`
+export const HeaderStartContainer = styled.div`
+  background: #8B0000;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 20%;
+  padding-left: 2vw;
+  padding-top: 1vh;
+  width: 100%;
+`
+export const StartButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-left: 2vw;
+  margin-top: 40px;
+  width: 30%;
+`
+
 export const Form = styled.form`
   margin: 60px auto;
   display: block;
@@ -19,9 +42,9 @@ export const Form = styled.form`
   max-width: 480px;
   background: #ededed;
   border-radius: 8px;
-  `
+`
 export const FormSearch = styled(Form)`
- margin: 60px auto;
+  margin: 60px auto;
   display: block;
   padding: 20px 30px 30px 30px;
   max-width: 480px;
@@ -84,13 +107,17 @@ export const Heading = styled.h1`
   margin: 10px 0;
   text-align: center;  
 `
+
+export const HeadingStart = styled(Heading)`
+  color: white;
+  margin-top: 60px;
+`
 export const Label = styled.label`
   line-height: 1px;
   color: #666;
   font-size: 13px;
   padding: 10px;  
 `
-
 
 export const Button = styled.button`
   display: block;
@@ -110,7 +137,14 @@ export const Button = styled.button`
     background: lighten(#33cc77,10%);
     cursor: pointer;
   }
-  `
+`
+export const ButtonStart = styled(Button)`
+  border: 1px solid;
+  margin-left: 5%;
+  height: 54px;
+  width: 100%;
+  background: #B22222;
+`
 export const Link = styled.link`
   font-size: 16px;
   font-weight: bold;

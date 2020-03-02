@@ -3,6 +3,7 @@ import { Provider } from 'react-redux'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { movies } from 'reducers/movies'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { StartPage } from 'components/StartPage'
 import { Login } from 'components/Login'
 import { Registration } from 'components/Registration'
 import "@blueprintjs/core/lib/css/blueprint.css";
@@ -24,8 +25,8 @@ export const App = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <Searchbar />
         <Route path="/" exact>
+          <StartPage/>
           <MoviesList />
         </Route>
         <main>
@@ -39,3 +40,13 @@ export const App = () => {
     </Provider>
   )
 }
+
+// <BrowserRouter>
+// <Searchbar />
+// <main>
+//   <Switch>
+//     <Route exact path="/login" component={Login} />
+//     <Route exact path="/welcome" component={Welcome} />
+//     <Route exact path="/register" component={Registration} />
+//   </Switch>
+// </main>
