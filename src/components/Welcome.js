@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Button, Heading, Wrapper } from "./Styling";
+import { Button, Heading, Wrapper, RatingButtonContainer,
+  WelcomeMovieRow } from "./Styling";
 
 const url = "http://localhost:8080/secrets";
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
@@ -12,11 +13,8 @@ export const Welcome = props => {
   const [errorMessage, setErrorMessage] = useState("");
   const [movies, setMovies] = useState([])
   const [movieList, setMovieList] = useState("top_rated")
-  // use movie_url below in fetch, entering an api_key - set as env.variable?
-
-  // const movie_url = https://api.themoviedb.org/3/movie/${movieList}?api_key=<enter key>&language=en-US&page=1
-
   const [rating, setRating] = useState("")
+
   //Getting the accessToken from the browser's localStorage
   //and sending it as the header "Authorization"
   const accessToken = window.localStorage.getItem("accessToken");
@@ -25,22 +23,21 @@ export const Welcome = props => {
   // function that will be invoced when the user rates a movie, i.e. 
   // when the user clicks on a rating button
   // this value should be sent to our own API with PUT or POST somehow
-  // we should discuss what code to add in body: JSON - we should send the score to our API
-  const handleRating = (score, movieId) => {
+  const handleRating = (movieId, movieTitle, score) => {
     setRating(score)
     fetch(`http://localhost:8080/users/5e5938a8ce751dfff42ce512`, {
       method: "PUT",
-      body: JSON.stringify({ score, movieId }),
+      body: JSON.stringify({ movieId, movieTitle, score }),
       headers: { "Content-Type": "application/json", "Authorization": accessToken }
     })
   }
 
-  // // function that will be invoced when the user clicks on "Re watch", "Watched" etc.
-  // // we should discuss what code to add in body: JSON - we should send the status to our API
-  const handleWatchStatus = (status, movieId) => {
+  // function that will be invoced when the user clicks on "Re watch", "Watched" etc.
+  // we should discuss what code to add in body: JSON - we should send the status to our API
+  const handleWatchStatus = (movieId, movieTitle, status) => {
     fetch(`http://localhost:8080/users/5e5938a8ce751dfff42ce512`, {
       method: "PUT",
-      body: JSON.stringify({ status, movieId }),
+      body: JSON.stringify({ movieId, movieTitle, status }),
       headers: { "Content-Type": "application/json", "Authorization": accessToken }
     })
   }
@@ -93,23 +90,24 @@ export const Welcome = props => {
           <section className="movies-list">
 
             {movies.map((movie) => (
-              <div
-                className="movie-row"
+              <WelcomeMovieRow
                 key={movie.id}
               >
                 <Link to={`movies/${movie.id}`}>
                   <h2 className="movie-title">{movie.title}</h2>
                 </Link>
-                <button onClick={(e) => handleRating(1, movie.id)}>1</button>
-                <button onClick={(e) => handleRating(2, movie.id)}>2</button>
-                <button onClick={(e) => handleRating(3, movie.id)}>3</button>
-                <button onClick={(e) => handleRating(4, movie.id)}>4</button>
-                <button onClick={(e) => handleRating(5, movie.id)}> 5 </button>
-                <button onClick={(e) => handleWatchStatus(true, movie.id)}> Rewatch </button>
-                <button onClick={(e) => handleWatchStatus(true, movie.id)}> Watch </button>
-                <button onClick={(e) => handleWatchStatus(true, movie.id)}> Not again</button>
-                <button onClick={(e) => handleWatchStatus(true, movie.id)}> No thanks</button>
-              </div>
+                <RatingButtonContainer>
+                  <button onClick={(e) => handleRating(movie.id, movie.title, 1)}> 1 </button>
+                  <button onClick={(e) => handleRating(movie.id, movie.title, 2)}> 2 </button>
+                  <button onClick={(e) => handleRating(movie.id, movie.title, 3)}> 3 </button>
+                  <button onClick={(e) => handleRating(movie.id, movie.title, 4)}> 4 </button>
+                  <button onClick={(e) => handleRating(movie.id, movie.title, 5)}> 5 </button>
+                  <button onClick={(e) => handleWatchStatus(movie.id, movie.title, "Rewatch")}> Rewatch </button>
+                  <button onClick={(e) => handleWatchStatus(movie.id, movie.title, "Watch")}> Watch </button>
+                  <button onClick={(e) => handleWatchStatus(movie.id, movie.title, "Not again")}> Not again</button>
+                  <button onClick={(e) => handleWatchStatus(movie.id, movie.title, "No thanks")}> No thanks</button>
+                </RatingButtonContainer>
+              </WelcomeMovieRow>
             ))}
           </section>
         </Wrapper>

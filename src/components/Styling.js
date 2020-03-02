@@ -27,6 +27,12 @@ export const HeaderStartContainer = styled.div`
   padding-top: 1vh;
   width: 100%;
 `
+export const WelcomeMovieRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`
+
 export const StartButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -34,7 +40,11 @@ export const StartButtonContainer = styled.div`
   margin-top: 40px;
   width: 30%;
 `
-
+export const RatingButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-left: 1vw;
+`
 export const Form = styled.form`
   margin: 60px auto;
   display: block;
