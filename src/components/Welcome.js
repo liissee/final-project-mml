@@ -30,7 +30,7 @@ export const Welcome = props => {
   const handleRating = (movieId, movieTitle, score) => {
     setRating(score)
     fetch(`http://localhost:8080/users/${id}`, {
-      method: "PUT",
+      method: "POST",
       body: JSON.stringify({ movieId, movieTitle, score }),
       headers: { "Content-Type": "application/json", "Authorization": accessToken }
     })
@@ -40,7 +40,7 @@ export const Welcome = props => {
   // we should discuss what code to add in body: JSON - we should send the status to our API
   const handleWatchStatus = (movieId, movieTitle, status) => {
     fetch(`http://localhost:8080/users/${id}`, {
-      method: "PUT",
+      method: "POST",
       body: JSON.stringify({ movieId, movieTitle, status }),
       headers: { "Content-Type": "application/json", "Authorization": accessToken }
     })
