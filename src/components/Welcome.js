@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+// import { useSelector } from 'react-redux'
 import { Link } from "react-router-dom";
+// import { movies } from "../reducers/movies"
 import {
   Button, Heading, Wrapper, RatingButtonContainer,
   WelcomeMovieRow
@@ -14,20 +16,20 @@ export const Welcome = props => {
   const [message, setMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [movies, setMovies] = useState([])
-  const [searchResult, setsearchResult] = useState("top_rated")
+  // const category = useSelector((state) => state.movies.chosenCategory)
   const [rating, setRating] = useState("")
 
   //Getting the accessToken from the browser's localStorage
   //and sending it as the header "Authorization"
   const accessToken = window.localStorage.getItem("accessToken");
-  const userId = window.localStorage.getItem("userId")
+  const userId = window.localStorage.getItem("id")
 
   // function that will be invoced when the user rates a movie, i.e. 
   // when the user clicks on a rating button
   // this value should be sent to our own API with PUT or POST somehow
   const handleRating = (movieId, movieTitle, score) => {
     setRating(score)
-    fetch(`http://localhost:8080/users/5e5938a8ce751dfff42ce512`, {
+    fetch(`http://localhost:8080/users/${id}`, {
       method: "PUT",
       body: JSON.stringify({ movieId, movieTitle, score }),
       headers: { "Content-Type": "application/json", "Authorization": accessToken }
@@ -37,7 +39,7 @@ export const Welcome = props => {
   // function that will be invoced when the user clicks on "Re watch", "Watched" etc.
   // we should discuss what code to add in body: JSON - we should send the status to our API
   const handleWatchStatus = (movieId, movieTitle, status) => {
-    fetch(`http://localhost:8080/users/5e5938a8ce751dfff42ce512`, {
+    fetch(`http://localhost:8080/users/${id}`, {
       method: "PUT",
       body: JSON.stringify({ movieId, movieTitle, status }),
       headers: { "Content-Type": "application/json", "Authorization": accessToken }
@@ -69,11 +71,11 @@ export const Welcome = props => {
   // In our Welcome-page we want to render a list of top rated movies from the external API
   // that the logged-in user can rate
   useEffect(() => {
-    fetch(`https://api.themoviedb.org/3/movie/${searchResult}?api_key=${API_KEY}&language=en-US&page=1`)
+    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US`)
       .then(res => res.json())
       .then(json => {
         setMovies(json.results)
-      }, [searchResult])
+      }, [])
   })
 
   // Below we should keep track of whether the movies have been rated by the user or not
