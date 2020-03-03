@@ -168,3 +168,9 @@ export const Link = styled.link`
   `
 export const SearchContainer = styled.div`
   `
+
+//MoviesList
+export const ListImage = styled.img`
+  height:100px;
+  width: auto;
+  `

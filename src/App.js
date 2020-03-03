@@ -10,6 +10,7 @@ import "@blueprintjs/core/lib/css/blueprint.css";
 // import { Searchbar } from 'components/Searchbar'
 import { MoviesList } from 'components/MoviesList'
 import { Welcome } from 'components/Welcome'
+import { MovieDetail } from 'components/MovieDetail'
 // Import the components that we want to render
 
 
@@ -34,6 +35,7 @@ export const App = () => {
             <Route exact path="/login" component={Login} />
             <Route exact path="/welcome" component={Welcome} />
             <Route exact path="/register" component={Registration} />
+            <Route exact path="/movies/:id" component={MovieDetail} />
           </Switch>
         </main>
       </BrowserRouter>
