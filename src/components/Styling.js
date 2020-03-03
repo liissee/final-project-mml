@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 
 export const Wrapper = styled.div`
@@ -20,12 +20,8 @@ export const MainStartContainer = styled.div`
 export const HeaderStartContainer = styled.div`
   background: #8B0000;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  height: 20%;
-  padding-left: 2vw;
-  padding-top: 1vh;
-  width: 100%;
+  justify-content: center;
+  flex-direction: column;
 `
 export const WelcomeMovieRow = styled.div`
   display: flex;
@@ -54,7 +50,7 @@ export const Form = styled.form`
   border-radius: 8px;
 `
 export const FormSearch = styled(Form)`
-  margin: 60px auto;
+  margin: 10px auto;
   display: block;
   padding: 20px 30px 30px 30px;
   max-width: 480px;
@@ -169,8 +165,25 @@ export const Link = styled.link`
 export const SearchContainer = styled.div`
   `
 
-//MoviesList
-export const ListImage = styled.img`
-  height:100px;
-  width: auto;
-  `
+
+
+// export const MovieWrapper = styled.div`
+//   display:flex;
+//   flex-wrap: wrap;
+//   justify-content: space-evenly;
+// `
+// export const MovieList = styled.a`
+//   width: 25%;
+//   position: relative;
+//   text-decoration: none;
+//   color: #fff;
+//   box-shadow: 3px 3px 20px rgba(0, 0, 0, .5);
+
+//   &:hover {
+
+//   }
+// `
+// export const MovieListHover = styled.a`
+
+// `
+

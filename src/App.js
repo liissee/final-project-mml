@@ -3,13 +3,13 @@ import { Provider } from 'react-redux'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { movies } from 'reducers/movies'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import { StartPage } from 'components/StartPage'
+// import { StartPage } from 'components/StartPage'
 import { Login } from 'components/Login'
 import { Registration } from 'components/Registration'
 import "@blueprintjs/core/lib/css/blueprint.css";
-// import { Searchbar } from 'components/Searchbar'
 import { MoviesList } from 'components/MoviesList'
 import { Welcome } from 'components/Welcome'
+import { Navbar } from 'components/Navbar'
 import { MovieDetail } from 'components/MovieDetail'
 // Import the components that we want to render
 
@@ -27,7 +27,8 @@ export const App = () => {
     <Provider store={store}>
       <BrowserRouter>
         <Route path="/" exact>
-          <StartPage />
+          <Navbar />
+          {/* <StartPage /> */}
           <MoviesList />
         </Route>
         <main>

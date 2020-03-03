@@ -2,8 +2,12 @@ import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux";
 import { DropDownList } from "components/DropDownList"
-import { ListImage } from "./Styling";
+import { MovieList, MovieWrapper, MovieListHover } from "./Styling";
 import { movies } from "../reducers/movies"
+import { not_found } from "assets/not_found.jpeg"
+import "components/movielist.css"
+
+// import not_found from "./assets/not_found"
 // Import what we need to use
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
@@ -54,15 +58,14 @@ export const MoviesList = (props) => {
   return (
     <div className="top-movie-list">
       <DropDownList />
-
       <section className="movie-list">
         {movieResults.map((movie) => (
           <Link key={movie.id} to={`/movies/${movie.id}`}>
             {movie.poster_path && (
-              <ListImage src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.id} />
+              <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.id} />
             )}
             {!movie.poster_path && (
-              <p>Lägg in placeholder</p>
+              <img src={not_found} />
             )}
             <div className="hover-details">
               <h1>{movie.original_title}</h1>
@@ -74,3 +77,29 @@ export const MoviesList = (props) => {
     </div>
   )
 }
+
+//   return (
+//     <div className="top-movie-list">
+//       <DropDownList />
+//       <MovieWrapper>
+//         {movieResults.map((movie) => (
+//           <MovieList>
+//             <Link key={movie.id} to={`/movies/${movie.id}`}>
+//               {movie.poster_path && (
+//                 <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.id} />
+//               )}
+//               {!movie.poster_path && (
+//                 <p>Movie poster not found</p>
+//                 // <img src={not_found} />
+//               )}
+//               <MovieListHover>
+//                 <h1>{movie.original_title}</h1>
+//                 <p>Released {movie.release_date}</p>
+//               </MovieListHover>
+//             </Link>
+//           </MovieList>
+//         ))}
+//       </MovieWrapper>
+//     </div>
+//   )
+// }
