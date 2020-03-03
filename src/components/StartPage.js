@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 // import { Login } from './Login'
 // import { Registration } from './Registration'
 import { Link } from "react-router-dom"
@@ -24,7 +24,7 @@ export const StartPage = () => {
   return (
     <MainStartContainer>
       <HeaderStartContainer>
-        <HeadingStart>🍿 Movie Selector 🍿</HeadingStart>
+        <HeadingStart><span role="img" aria-label="popcorn">🍿</span> Movie Selector <span role="img" aria-label="popcorn">🍿</span></HeadingStart>
         <Searchbar />
         <StartButtonContainer>
           <Link to="/register">

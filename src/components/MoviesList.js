@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { ListImage } from "./Styling";
 // Import what we need to use
 
