@@ -10,7 +10,7 @@ import {
 const url = "http://localhost:8080/secrets";
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 
-// userId = 5e5938a8ce751dfff42ce512
+// const userId = "5e5938a8ce751dfff42ce512"
 
 export const Welcome = props => {
   const [message, setMessage] = useState("");
@@ -22,31 +22,31 @@ export const Welcome = props => {
   //Getting the accessToken from the browser's localStorage
   //and sending it as the header "Authorization"
   const accessToken = window.localStorage.getItem("accessToken");
-  const userId = window.localStorage.getItem("id")
+  const userId = window.localStorage.getItem("userId")
 
   // function that will be invoced when the user rates a movie, i.e. 
   // when the user clicks on a rating button
   // this value should be sent to our own API with PUT or POST somehow
-  const handleRating = (movieId, movieTitle, score) => {
+  const handleRating = (userId, movieId, movieTitle, score) => {
     setRating(score)
-    fetch(`http://localhost:8080/users/${id}`, {
+    fetch(`http://localhost:8080/users/${userId}`, {
       method: "POST",
-      body: JSON.stringify({ movieId, movieTitle, score }),
+      body: JSON.stringify({ userId, movieId, movieTitle, score }),
       headers: { "Content-Type": "application/json", "Authorization": accessToken }
     })
   }
 
   // function that will be invoced when the user clicks on "Re watch", "Watched" etc.
   // we should discuss what code to add in body: JSON - we should send the status to our API
-  const handleWatchStatus = (movieId, movieTitle, status) => {
-    fetch(`http://localhost:8080/users/${id}`, {
-      method: "POST",
-      body: JSON.stringify({ movieId, movieTitle, status }),
+  const handleWatchStatus = (userId, movieId, movieTitle, status) => {
+    fetch(`http://localhost:8080/users/${userId}`, {
+      method: "PUT",
+      body: JSON.stringify({ userId, movieId, movieTitle, status }),
       headers: { "Content-Type": "application/json", "Authorization": accessToken }
     })
   }
 
-  console.log("hej")
+  console.log("hej igen") /// WHY 3 TIMES? and why when click on rating buttons
 
   useEffect(() => {
     setErrorMessage("");
@@ -75,8 +75,8 @@ export const Welcome = props => {
       .then(res => res.json())
       .then(json => {
         setMovies(json.results)
-      }, [])
-  })
+      })
+  }, [])
 
   // Below we should keep track of whether the movies have been rated by the user or not
   // For the first time a user logs in no movies have been rated, i.e. we will have for example
@@ -102,15 +102,15 @@ export const Welcome = props => {
                   <h2 className="movie-title">{movie.title}</h2>
                 </Link>
                 <RatingButtonContainer>
-                  <button onClick={(e) => handleRating(movie.id, movie.title, 1)}> 1 </button>
-                  <button onClick={(e) => handleRating(movie.id, movie.title, 2)}> 2 </button>
-                  <button onClick={(e) => handleRating(movie.id, movie.title, 3)}> 3 </button>
-                  <button onClick={(e) => handleRating(movie.id, movie.title, 4)}> 4 </button>
-                  <button onClick={(e) => handleRating(movie.id, movie.title, 5)}> 5 </button>
-                  <button onClick={(e) => handleWatchStatus(movie.id, movie.title, "Rewatch")}> Rewatch </button>
-                  <button onClick={(e) => handleWatchStatus(movie.id, movie.title, "Watch")}> Watch </button>
-                  <button onClick={(e) => handleWatchStatus(movie.id, movie.title, "Not again")}> Not again</button>
-                  <button onClick={(e) => handleWatchStatus(movie.id, movie.title, "No thanks")}> No thanks</button>
+                  <button onClick={(e) => handleRating(userId, movie.id, movie.title, 1)}> 1 </button>
+                  <button onClick={(e) => handleRating(userId, movie.id, movie.title, 2)}> 2 </button>
+                  <button onClick={(e) => handleRating(userId, movie.id, movie.title, 3)}> 3 </button>
+                  <button onClick={(e) => handleRating(userId, movie.id, movie.title, 4)}> 4 </button>
+                  <button onClick={(e) => handleRating(userId, movie.id, movie.title, 5)}> 5 </button>
+                  <button onClick={(e) => handleWatchStatus(userId, movie.id, movie.title, "Rewatch")}> Rewatch </button>
+                  <button onClick={(e) => handleWatchStatus(userId, movie.id, movie.title, "Watch")}> Watch </button>
+                  <button onClick={(e) => handleWatchStatus(userId, movie.id, movie.title, "Not again")}> Not again</button>
+                  <button onClick={(e) => handleWatchStatus(userId, movie.id, movie.title, "No thanks")}> No thanks</button>
                 </RatingButtonContainer>
               </WelcomeMovieRow>
             ))}
