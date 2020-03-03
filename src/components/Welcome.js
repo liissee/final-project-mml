@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Button, Heading, Wrapper, RatingButtonContainer,
-  WelcomeMovieRow } from "./Styling";
+import {
+  Button, Heading, Wrapper, RatingButtonContainer,
+  WelcomeMovieRow
+} from "./Styling";
 
 const url = "http://localhost:8080/secrets";
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
@@ -12,7 +14,7 @@ export const Welcome = props => {
   const [message, setMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [movies, setMovies] = useState([])
-  const [movieList, setMovieList] = useState("top_rated")
+  const [searchResult, setsearchResult] = useState("top_rated")
   const [rating, setRating] = useState("")
 
   //Getting the accessToken from the browser's localStorage
@@ -66,11 +68,11 @@ export const Welcome = props => {
   // In our Welcome-page we want to render a list of top rated movies from the external API
   // that the logged-in user can rate
   useEffect(() => {
-    fetch(`https://api.themoviedb.org/3/movie/${movieList}?api_key=${API_KEY}&language=en-US&page=1`)
+    fetch(`https://api.themoviedb.org/3/movie/${searchResult}?api_key=${API_KEY}&language=en-US&page=1`)
       .then(res => res.json())
       .then(json => {
         setMovies(json.results)
-      }, [movieList])
+      }, [searchResult])
   })
 
   // Below we should keep track of whether the movies have been rated by the user or not
