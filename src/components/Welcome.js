@@ -44,6 +44,7 @@ export const Welcome = props => {
     })
   }
 
+  console.log("hej")
 
   useEffect(() => {
     setErrorMessage("");

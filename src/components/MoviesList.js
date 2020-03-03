@@ -11,7 +11,7 @@ const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 export const MoviesList = (props) => {
   const [movies, setMovies] = useState([])
   const category = useSelector((state) => state.movies.chosenCategory)
-  // const [error, setError] = useState("")
+  const [error, setError] = useState(false)
   // const [loading, setLoading] = useState(true)
 
 
@@ -58,7 +58,12 @@ export const MoviesList = (props) => {
       <section className="movie-list">
         {movieResults.map((movie) => (
           <Link key={movie.id} to={`/movies/${movie.id}`}>
-            <ListImage src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.id} />
+            {movie.poster_path && (
+              <ListImage src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.id} />
+            )}
+            {!movie.poster_path && (
+              <p>Lägg in placeholder</p>
+            )}
             <div className="hover-details">
               <h1>{movie.original_title}</h1>
               <p>Released {movie.release_date}</p>

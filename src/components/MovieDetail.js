@@ -46,10 +46,15 @@ export const MovieDetail = () => {
       key={id}
       className="background-container"
     >
-      <img
-        className="movie-detail-image"
-        src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.title}
-      />
+      {!movie.poster_path && (
+        <p>Lägg in placeholder</p>
+      )}
+      {movie.poster_path && (
+        <img
+          className="movie-detail-image"
+          src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.title}
+        />
+      )}
 
       <h1 className="movie-detail-title">{movie.title}</h1>
       <h3 className="movie-detail-rating">{movie.vote_average}</h3>
