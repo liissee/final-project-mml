@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import {
-  Button, Heading, Wrapper, RatingButtonContainer
+  Button, Heading, MovieBackground, WrapMovie, WrapMovieInfo, MovieTitle, 
+  MovieRating, MovieDetailGenres, Genre, MovieOverview, MovieInfo, MovieImdb, 
+  RatingButtonContainer
 } from "./Styling";
-// import { Navbar } from './Navbar'
+import { Navbar } from './Navbar'
 // Import what we need to use
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
@@ -43,40 +45,49 @@ export const MovieDetail = () => {
     )
   }
 
+
   // Maybe also add genres and actors below
   return (
-    <div
+    <MovieBackground
       key={id}
       className="background-container"
     >
+    <Navbar />
       {!movie.poster_path && (
         <p>Lägg in placeholder</p>
       )}
-      {movie.poster_path && (
-        <img
-          className="movie-detail-image"
-          src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.title}
-        />
-      )}
-
-      <h1 className="movie-detail-title">{movie.title}</h1>
-      <h3 className="movie-detail-rating">{movie.vote_average}</h3>
-      <h4 className="movie-detail-overview">{movie.overview}</h4>
-
-      <a
-        className="imdb-link"
-        href={`https://www.imdb.com/title/${movie.imdb_id}`}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        IMDb page
-      </a>
-
+      
+      <WrapMovie>
+        {movie.poster_path && (
+          <img
+            src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} alt={movie.title}
+          />
+        )}
+        <WrapMovieInfo>
+          <MovieTitle>{movie.title}</MovieTitle>
+          <MovieDetailGenres>
+            {movie.genres.map((genre) => (
+              <Genre key={genre.name}>{genre.name}</Genre>
+            ))}
+          </MovieDetailGenres>
+          <MovieOverview>{movie.overview}</MovieOverview>
+          <MovieInfo>⏲ {movie.runtime} min</MovieInfo>
+          <a
+            className="imdb-link"
+            href={`https://www.imdb.com/title/${movie.imdb_id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <MovieImdb>IMDb</MovieImdb>
+          </a>
+        </WrapMovieInfo>
+        <MovieRating>⭐️ {movie.vote_average/2} / 5</MovieRating>
+      </WrapMovie>
       <section className="similar-movies">
         <Link to={`/similar/${movie.id}`} style={{ textDecoration: 'none', color: 'white' }}>
           Show similar movies
         </Link>
       </section>
-    </div>
+    </MovieBackground>
   )
 }
