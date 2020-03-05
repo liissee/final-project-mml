@@ -11,6 +11,7 @@ import { MoviesList } from 'components/MoviesList'
 import { Welcome } from 'components/Welcome'
 import { Navbar } from 'components/Navbar'
 import { MovieDetail } from 'components/MovieDetail'
+import { UserPage } from 'components/UserPage'
 // Import the components that we want to render
 
 
@@ -37,6 +38,7 @@ export const App = () => {
             <Route exact path="/welcome" component={Welcome} />
             <Route exact path="/register" component={Registration} />
             <Route exact path="/movies/:id" component={MovieDetail} />
+            <Route exact path="/users/:id/movies" component={UserPage} />
           </Switch>
         </main>
       </BrowserRouter>
