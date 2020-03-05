@@ -12,6 +12,52 @@ export const Wrapper = styled.div`
     text-decoration: none;
   }
 `
+export const MovieBackground = styled.div`
+  background: white;
+`
+export const WrapMovie = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-left: 2vw;
+  margin-right: 2vw;
+  margin-top: 2vw;
+`
+export const WrapMovieInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 2vw;
+  width: 50%;
+`
+export const MovieTitle = styled.h1`
+  margin-top: 0;
+`
+export const MovieRating = styled(MovieTitle)`
+
+`
+export const MovieDetailGenres = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 3vh;
+`
+export const Genre = styled.div`
+  background: #B22222;
+  color: white;
+  margin-right: 1vw;
+  padding: 4px;
+`
+export const MovieOverview = styled.div`
+  font-size: 16px;
+  margin-bottom: 2vh;
+`
+export const MovieInfo = styled.h3`
+  margin-top: 1.5vh;
+  margin-bottom: 2vh;
+`
+export const MovieImdb = styled(MovieInfo)`
+  background: #FFD700;
+  color: black;
+  width: 3.5vw;
+`
 export const MainStartContainer = styled.div`
   background: #FFFFE0; 
   height: 100%;
