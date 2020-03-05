@@ -28,21 +28,21 @@ export const Welcome = props => {
   // function that will be invoced when the user rates a movie, i.e. 
   // when the user clicks on a rating button
   // this value should be sent to our own API with PUT or POST somehow
-  const handleRating = (userId, movieId, movieTitle, rating) => {
+  const handleRating = (movieId, movieTitle, rating) => {
     setRate(rating)
     fetch(`http://localhost:8080/users/${userId}`, {
-      method: "POST",
-      body: JSON.stringify({ userId, movieId, movieTitle, rating }),
+      method: "PUT",
+      body: JSON.stringify({ movieId, movieTitle, rating }),
       headers: { "Content-Type": "application/json", "Authorization": accessToken }
     })
   }
 
   // function that will be invoced when the user clicks on "Re watch", "Watched" etc.
   // we should discuss what code to add in body: JSON - we should send the status to our API
-  const handleWatchStatus = (userId, movieId, movieTitle, watchStatus) => {
+  const handleWatchStatus = (movieId, movieTitle, watchStatus) => {
     fetch(`http://localhost:8080/users/${userId}`, {
-      method: "POST",
-      body: JSON.stringify({ userId, movieId, movieTitle, watchStatus }),
+      method: "PUT",
+      body: JSON.stringify({ movieId, movieTitle, watchStatus }),
       headers: { "Content-Type": "application/json", "Authorization": accessToken }
     })
   }
@@ -103,15 +103,15 @@ export const Welcome = props => {
                   <h2 className="movie-title">{movie.title}</h2>
                 </Link>
                 <RatingButtonContainer>
-                  <button onClick={(e) => handleRating(userId, movie.id, movie.title, 1)}> 1 </button>
-                  <button onClick={(e) => handleRating(userId, movie.id, movie.title, 2)}> 2 </button>
-                  <button onClick={(e) => handleRating(userId, movie.id, movie.title, 3)}> 3 </button>
-                  <button onClick={(e) => handleRating(userId, movie.id, movie.title, 4)}> 4 </button>
-                  <button onClick={(e) => handleRating(userId, movie.id, movie.title, 5)}> 5 </button>
-                  <button onClick={(e) => handleWatchStatus(userId, movie.id, movie.title, "rewatch")}> Rewatch </button>
-                  <button onClick={(e) => handleWatchStatus(userId, movie.id, movie.title, "watch")}> Watch </button>
-                  <button onClick={(e) => handleWatchStatus(userId, movie.id, movie.title, "notAgain")}> Not again</button>
-                  <button onClick={(e) => handleWatchStatus(userId, movie.id, movie.title, "no")}> No thanks</button>
+                  <button onClick={(e) => handleRating(movie.id, movie.title, 1)}> 1 </button>
+                  <button onClick={(e) => handleRating(movie.id, movie.title, 2)}> 2 </button>
+                  <button onClick={(e) => handleRating(movie.id, movie.title, 3)}> 3 </button>
+                  <button onClick={(e) => handleRating(movie.id, movie.title, 4)}> 4 </button>
+                  <button onClick={(e) => handleRating(movie.id, movie.title, 5)}> 5 </button>
+                  <button onClick={(e) => handleWatchStatus(movie.id, movie.title, "rewatch")}> Rewatch </button>
+                  <button onClick={(e) => handleWatchStatus(movie.id, movie.title, "watch")}> Watch </button>
+                  <button onClick={(e) => handleWatchStatus(movie.id, movie.title, "notAgain")}> Not again</button>
+                  <button onClick={(e) => handleWatchStatus(movie.id, movie.title, "no")}> No thanks</button>
                 </RatingButtonContainer>
               </WelcomeMovieRow>
             ))}
