@@ -3,9 +3,10 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // import { movies } from "../reducers/movies"
 import {
-  Button, Heading, Wrapper, RatingButtonContainer,
+  Button, ButtonRating, Heading, Wrapper, RatingButtonContainer,
   WelcomeMovieRow
 } from "./Styling";
+import { Navbar } from './Navbar'
 
 const url = "http://localhost:8080/secrets";
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
@@ -87,6 +88,8 @@ export const Welcome = props => {
   // if we get that to work a next step would be to keep track of the info. we have in our own API for that user
 
   return (
+    <div>
+    <Navbar />
     <Wrapper>
       {message && (
         <Wrapper>
@@ -103,11 +106,11 @@ export const Welcome = props => {
                   <h2 className="movie-title">{movie.title}</h2>
                 </Link>
                 <RatingButtonContainer>
-                  <button onClick={(e) => handleRating(movie.id, movie.title, 1)}> 1 </button>
-                  <button onClick={(e) => handleRating(movie.id, movie.title, 2)}> 2 </button>
-                  <button onClick={(e) => handleRating(movie.id, movie.title, 3)}> 3 </button>
-                  <button onClick={(e) => handleRating(movie.id, movie.title, 4)}> 4 </button>
-                  <button onClick={(e) => handleRating(movie.id, movie.title, 5)}> 5 </button>
+                  <ButtonRating onClick={(e) => handleRating(movie.id, movie.title, 1)}> 1 </ButtonRating>
+                  <ButtonRating onClick={(e) => handleRating(movie.id, movie.title, 2)}> 2 </ButtonRating>
+                  <ButtonRating onClick={(e) => handleRating(movie.id, movie.title, 3)}> 3 </ButtonRating>
+                  <ButtonRating onClick={(e) => handleRating(movie.id, movie.title, 4)}> 4 </ButtonRating>
+                  <ButtonRating onClick={(e) => handleRating(movie.id, movie.title, 5)}> 5 </ButtonRating>
                   <button onClick={(e) => handleWatchStatus(movie.id, movie.title, "rewatch")}> Rewatch </button>
                   <button onClick={(e) => handleWatchStatus(movie.id, movie.title, "watch")}> Watch </button>
                   <button onClick={(e) => handleWatchStatus(movie.id, movie.title, "notAgain")}> Not again</button>
@@ -130,5 +133,6 @@ export const Welcome = props => {
         </Button>
       </div>
     </Wrapper >
+    </div>
   );
 };

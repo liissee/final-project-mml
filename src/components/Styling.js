@@ -12,6 +12,12 @@ export const Wrapper = styled.div`
     text-decoration: none;
   }
 `
+// export const WrapperWelcome = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   flex-wrap: wrap;
+//   padding: 20px 30px 30px 30px;
+// `
 export const MovieBackground = styled.div`
   background: white;
 `
@@ -87,6 +93,25 @@ export const RatingButtonContainer = styled.div`
   flex-direction: row;
   margin-left: 1vw;
 `
+export const ButtonRating = styled.button`
+ display:inline-block;
+ padding:0.3em 1.2em;
+ margin:0 0.3em 0.3em 0;
+ border-radius:2em;
+ box-sizing: border-box;
+ text-decoration:none;
+ font-family:'Roboto',sans-serif;
+ font-weight:300;
+ color:#FFFFFF;
+ background-color:#B22222;
+ text-align:center;
+ transition: all 0.2s;
+&:hover {
+  background: #CD5C5C;
+  cursor: pointer;
+}
+`
+
 export const Form = styled.form`
   margin: 60px auto;
   display: block;
