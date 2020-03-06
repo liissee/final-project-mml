@@ -12,12 +12,17 @@ export const Wrapper = styled.div`
     text-decoration: none;
   }
 `
-// export const WrapperWelcome = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   flex-wrap: wrap;
-//   padding: 20px 30px 30px 30px;
-// `
+export const WrapperWelcome = styled(Wrapper)`
+  border: 1px solid gray;
+  box-shadow: 5px 10px;
+  background: #F5F5F5;
+  max-width: 800px;
+`
+export const WrapperWelcomeBox = styled(Wrapper)`
+  background: #F5F5F5;
+  margin-top: 0;
+  max-width: 800px;
+`
 export const MovieBackground = styled.div`
   background: white;
 `
@@ -35,7 +40,9 @@ export const WrapMovieInfo = styled.div`
   width: 50%;
 `
 export const MovieTitle = styled.h1`
+  color: black;
   margin-top: 0;
+  text-decoration: none;
 `
 export const MovieRating = styled(MovieTitle)`
 
@@ -91,27 +98,36 @@ export const StartButtonContainer = styled.div`
 export const RatingButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
+  margin-bottom: 4vh;
   margin-left: 1vw;
 `
 export const ButtonRating = styled.button`
- display:inline-block;
+  background-color:#B22222;
+  border-radius:2em;
+  box-sizing: border-box;
+  color:#FFFFFF;
+  display:inline-block;
+  font-family:'Roboto',sans-serif;
+  font-weight:300;
+  margin:0 0.3em 0.3em 0;
+  padding:0.3em 1.2em;
+  text-align:center;
+  text-decoration:none;
+  transition: all 0.2s;
+  &:hover, &:active {
+    background: #CD5C5C;
+    cursor: pointer;
+  }
+`
+export const ButtonWatch = styled(ButtonRating)`
  padding:0.3em 1.2em;
- margin:0 0.3em 0.3em 0;
- border-radius:2em;
- box-sizing: border-box;
- text-decoration:none;
- font-family:'Roboto',sans-serif;
- font-weight:300;
- color:#FFFFFF;
- background-color:#B22222;
- text-align:center;
- transition: all 0.2s;
-&:hover {
-  background: #CD5C5C;
-  cursor: pointer;
+ margin:0 0.2em 0.2em 0;
+ border-radius:1em;
+ background-color: #CD5C5C;
+ &:hover, &:active {
+   background: #B22222;
 }
 `
-
 export const Form = styled.form`
   margin: 60px auto;
   display: block;

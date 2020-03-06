@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // import { movies } from "../reducers/movies"
 import {
-  Button, ButtonRating, Heading, Wrapper, RatingButtonContainer,
-  WelcomeMovieRow
+  Button, ButtonRating, ButtonWatch, Heading, Wrapper, WrapperWelcome,
+  WrapperWelcomeBox, RatingButtonContainer, WelcomeMovieRow, MovieTitle,
 } from "./Styling";
 import { Navbar } from './Navbar'
 
@@ -90,9 +90,9 @@ export const Welcome = props => {
   return (
     <div>
     <Navbar />
-    <Wrapper>
+    <WrapperWelcome>
       {message && (
-        <Wrapper>
+        <WrapperWelcomeBox>
           <Heading>You're logged in!</Heading>
           <Heading>{message}</Heading>
           <p>To get started, here's a list of popular movies you can rate to get started</p>
@@ -103,7 +103,7 @@ export const Welcome = props => {
                 key={movie.id}
               >
                 <Link to={`movies/${movie.id}`}>
-                  <h2 className="movie-title">{movie.title}</h2>
+                  <MovieTitle>{movie.title}</MovieTitle>
                 </Link>
                 <RatingButtonContainer>
                   <ButtonRating onClick={(e) => handleRating(movie.id, movie.title, 1)}> 1 </ButtonRating>
@@ -111,15 +111,15 @@ export const Welcome = props => {
                   <ButtonRating onClick={(e) => handleRating(movie.id, movie.title, 3)}> 3 </ButtonRating>
                   <ButtonRating onClick={(e) => handleRating(movie.id, movie.title, 4)}> 4 </ButtonRating>
                   <ButtonRating onClick={(e) => handleRating(movie.id, movie.title, 5)}> 5 </ButtonRating>
-                  <button onClick={(e) => handleWatchStatus(movie.id, movie.title, "rewatch")}> Rewatch </button>
-                  <button onClick={(e) => handleWatchStatus(movie.id, movie.title, "watch")}> Watch </button>
-                  <button onClick={(e) => handleWatchStatus(movie.id, movie.title, "notAgain")}> Not again</button>
-                  <button onClick={(e) => handleWatchStatus(movie.id, movie.title, "no")}> No thanks</button>
+                  <ButtonWatch onClick={(e) => handleWatchStatus(movie.id, movie.title, "rewatch")}> Rewatch </ButtonWatch>
+                  <ButtonWatch onClick={(e) => handleWatchStatus(movie.id, movie.title, "watch")}> Watch </ButtonWatch>
+                  <ButtonWatch onClick={(e) => handleWatchStatus(movie.id, movie.title, "notAgain")}> Not again</ButtonWatch>
+                  <ButtonWatch onClick={(e) => handleWatchStatus(movie.id, movie.title, "no")}> No thanks</ButtonWatch>
                 </RatingButtonContainer>
               </WelcomeMovieRow>
             ))}
           </section>
-        </Wrapper>
+        </WrapperWelcomeBox>
       )}
       <div>
         {errorMessage && <div>{errorMessage}</div>}
@@ -132,7 +132,7 @@ export const Welcome = props => {
           </Link>
         </Button>
       </div>
-    </Wrapper >
+    </WrapperWelcome >
     </div>
   );
 };
