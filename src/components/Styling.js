@@ -1,150 +1,6 @@
 import styled from 'styled-components/macro'
 
 
-export const Wrapper = styled.div`
-  margin: 60px auto;
-  display: block;
-  padding: 20px 30px 30px 30px;
-  max-width: 480px;
-  background: #ededed;
-  border-radius: 8px;
-  &.link-text {
-    text-decoration: none;
-  }
-`
-export const WrapperWelcome = styled(Wrapper)`
-  border: 1px solid gray;
-  box-shadow: 5px 10px;
-  background: #F5F5F5;
-  max-width: 800px;
-`
-export const WrapperWelcomeBox = styled(Wrapper)`
-  background: #F5F5F5;
-  margin-top: 0;
-  max-width: 800px;
-`
-export const MovieBackground = styled.div`
-  background: white;
-`
-export const WrapMovie = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-left: 2vw;
-  margin-right: 2vw;
-  margin-top: 2vw;
-`
-export const WrapMovieInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-left: 2vw;
-  width: 50%;
-`
-export const MovieTitle = styled.h1`
-  color: black;
-  margin-top: 0;
-  text-decoration: none;
-`
-export const MovieRating = styled(MovieTitle)`
-
-`
-export const MovieDetailGenres = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 3vh;
-`
-export const Genre = styled.div`
-  background: #B22222;
-  color: white;
-  margin-right: 1vw;
-  padding: 4px;
-`
-export const MovieOverview = styled.div`
-  font-size: 16px;
-  margin-bottom: 2vh;
-`
-export const MovieInfo = styled.h3`
-  margin-top: 1.5vh;
-  margin-bottom: 2vh;
-`
-export const MovieImdb = styled(MovieInfo)`
-  background: #FFD700;
-  color: black;
-  width: 3.5vw;
-`
-export const MainStartContainer = styled.div`
-  background: #FFFFE0; 
-  height: 100%;
-  width: 100%;
-`
-export const HeaderStartContainer = styled.div`
-  background: #8B0000;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-`
-export const WelcomeMovieRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-`
-
-export const StartButtonContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-left: 2vw;
-  margin-top: 40px;
-  width: 30%;
-`
-export const RatingButtonContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 4vh;
-  margin-left: 1vw;
-`
-export const ButtonRating = styled.button`
-  background-color:#B22222;
-  border-radius:2em;
-  box-sizing: border-box;
-  color:#FFFFFF;
-  display:inline-block;
-  font-family:'Roboto',sans-serif;
-  font-weight:300;
-  margin:0 0.3em 0.3em 0;
-  padding:0.3em 1.2em;
-  text-align:center;
-  text-decoration:none;
-  transition: all 0.2s;
-  &:hover, &:active {
-    background: #CD5C5C;
-    cursor: pointer;
-  }
-`
-export const ButtonWatch = styled(ButtonRating)`
- padding:0.3em 1.2em;
- margin:0 0.2em 0.2em 0;
- border-radius:1em;
- background-color: #CD5C5C;
- &:hover, &:active {
-   background: #B22222;
-}
-`
-export const Form = styled.form`
-  margin: 60px auto;
-  display: block;
-  padding: 20px 30px 30px 30px;
-  max-width: 480px;
-  background: #ededed;
-  border-radius: 8px;
-`
-export const FormSearch = styled(Form)`
-  margin: 10px auto;
-  display: block;
-  padding: 20px 30px 30px 30px;
-  max-width: 480px;
-  background: none;
-  border-radius: 8px;
-  `
-
 export const FieldContainer = styled.div`
   position: relative;
   display: block;
@@ -166,7 +22,21 @@ export const FieldContainer = styled.div`
     line-height: 62px;
   }
 `
-
+export const Form = styled.form`
+  margin: 60px auto;
+  display: block;
+  padding: 20px 30px 30px 30px;
+  max-width: 480px;
+  background: #ededed;
+  border-radius: 8px;
+`
+export const Heading = styled.h1`
+  font-size: 36px;
+  line-height: 1.5;
+  font-weight: bold;
+  margin: 10px 0;
+  text-align: center;  
+`
 export const Input = styled.input`
   /* position: absolute;
   top: 0;
@@ -193,14 +63,164 @@ export const Input = styled.input`
     border-bottom: 2px solid black;
   }
 `
-export const Heading = styled.h1`
-  font-size: 36px;
-  line-height: 1.5;
-  font-weight: bold;
-  margin: 10px 0;
-  text-align: center;  
+export const Wrapper = styled.div`
+  margin: 60px auto;
+  display: block;
+  padding: 20px 30px 30px 30px;
+  max-width: 480px;
+  background: #ededed;
+  border-radius: 8px;
+  &.link-text {
+    text-decoration: none;
+  }
 `
 
+// Searchbar 
+export const FormSearch = styled(Form)`
+  margin: 10px auto;
+  display: block;
+  padding: 20px 30px 30px 30px;
+  max-width: 480px;
+  background: none;
+  border-radius: 8px;
+  `
+// Welcome component
+export const ButtonRating = styled.button`
+  background-color:#B22222;
+  border-radius:2em;
+  box-sizing: border-box;
+  color:#FFFFFF;
+  display:inline-block;
+  font-family:'Roboto',sans-serif;
+  font-weight:300;
+  margin:0 0.3em 0.3em 0;
+  padding:0.3em 1.2em;
+  text-align:center;
+  text-decoration:none;
+  transition: all 0.2s;
+  &:hover, &:active {
+    background: #CD5C5C;
+    cursor: pointer;
+  }
+`
+export const ButtonWatch = styled(ButtonRating)`
+ padding:0.3em 1.2em;
+ margin:0 0.2em 0.2em 0;
+ border-radius:1em;
+ background-color: #FFA500;
+ &:hover, &:active {
+   background: #FF6347;
+}
+`
+export const RatingButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 4vh;
+  margin-left: 0;
+`
+export const WrapperWelcome = styled(Wrapper)`
+  border: 1px solid gray;
+  box-shadow: 5px 10px;
+  background: #F5F5F5;
+  max-width: 800px;
+`
+export const WrapperWelcomeBox = styled(Wrapper)`
+  background: #F5F5F5;
+  margin-top: 0;
+  max-width: 800px;
+`
+export const WelcomeMovieRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`
+
+// Movie detail component
+export const Genre = styled.div`
+  background: #B22222;
+  color: white;
+  margin-right: 1vw;
+  padding: 4px;
+`
+export const MovieBackground = styled.div`
+  background: white;
+`
+export const MovieDetailGenres = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 3vh;
+`
+export const MovieDetailRow = styled(WelcomeMovieRow)`
+  margin-top: 1vh;
+` 
+export const MovieTitle = styled.h1`
+  color: black;
+  margin-top: 0;
+  text-decoration: none;
+`
+export const MovieRating = styled(MovieTitle)`
+`
+export const MovieOverview = styled.div`
+  font-size: 16px;
+  margin-bottom: 2vh;
+`
+export const MovieInfo = styled.h3`
+  margin-top: 1.5vh;
+  margin-bottom: 2vh;
+`
+export const MovieImdb = styled(MovieInfo)`
+  background: #FFD700;
+  color: black;
+  margin-left: 1vw;
+  width: 3.5vw;
+`
+export const RatingButtonContainerDetail = styled(RatingButtonContainer)`
+  margin-left: 18.5vw;
+`
+export const ShowSimilar = styled(MovieInfo)`
+  color: black;
+  margin-left: 18.5vw;
+  text-decoration: none;
+`
+export const WrapMovie = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-left: 2vw;
+  margin-right: 2vw;
+  margin-top: 2vw;
+`
+export const WrapMovieInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 2vw;
+  width: 50%;
+`
+export const YourRating = styled.h3`
+  margin-bottom: 2vh;
+  margin-left: 18.5vw;
+  margin-top: 0;
+`
+
+
+// Navbar
+export const HeaderStartContainer = styled.div`
+  background: #8B0000;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+`
+export const MainStartContainer = styled.div`
+  background: #FFFFE0; 
+  height: 100%;
+  width: 100%;
+`
+export const StartButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-left: 2vw;
+  margin-top: 40px;
+  width: 30%;
+`
 export const HeadingStart = styled(Heading)`
   color: white;
   margin-top: 60px;
@@ -248,10 +268,26 @@ export const Link = styled.link`
     background: lighten(#33cc77,10%);
     cursor: pointer;
   }
-  `
+`
 export const SearchContainer = styled.div`
-  `
-
+`
+// UserPage
+export const MovieRatedRow = styled(WelcomeMovieRow)`
+  margin-bottom: 2vh;
+`
+export const MovieTitleRated = styled.div`
+  color: black;
+  font-size: 18px;
+  text-decoration: none;
+`
+export const RatingStars = styled.div`
+  margin-left: auto;
+`
+export const UserNames = styled.div`
+  font-size: 18px;
+  margin-bottom: 2vh;
+  margin-top: 6vh;
+` 
 
 
 // export const MovieWrapper = styled.div`

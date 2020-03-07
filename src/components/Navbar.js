@@ -5,10 +5,9 @@ import React from 'react'
 import { Searchbar } from './Searchbar'
 import { Hamburger } from 'components/Hamburger'
 import {
-  ButtonStart, HeadingStart, HeaderStartContainer, MainStartContainer,
-  StartButtonContainer
+  HeadingStart, HeaderStartContainer, MainStartContainer
 } from "./Styling";
-// Import what we need to use
+
 
 // Define <Route path=""></Route> and include links
 export const Navbar = () => {

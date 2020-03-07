@@ -12,7 +12,6 @@ import { Welcome } from 'components/Welcome'
 import { Navbar } from 'components/Navbar'
 import { MovieDetail } from 'components/MovieDetail'
 import { UserPage } from 'components/UserPage'
-// Import the components that we want to render
 
 
 const reducer = combineReducers({
@@ -21,8 +20,7 @@ const reducer = combineReducers({
 
 const store = configureStore({ reducer })
 
-// Define <Route path="some path">some component</Route> within <Switch></Switch>
-// Also write the name of the imported components we want to render
+
 export const App = () => {
   return (
     <Provider store={store}>

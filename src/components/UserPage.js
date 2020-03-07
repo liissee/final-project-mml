@@ -1,12 +1,27 @@
 import React, { useState, useEffect } from 'react'
-import { Wrapper, WelcomeMovieRow, Heading } from "./Styling"
+import { Wrapper, MovieRatedRow, Heading,
+  MovieTitleRated, RatingStars, UserNames } from "./Styling"
 import { Link } from 'react-router-dom'
-// Import what we need to use
 
 // Fetch data with a GET request to our MongoDB database for an individual user 
 export const UserPage = () => {
-  const [movies, setMovies] = useState([])
+  const [moviesRated, setMoviesRated] = useState([])
+  const [userList, setUserList] = useState([])
   const userId = window.localStorage.getItem("userId")
+
+  const ratingStars = (rating) => {
+    if (rating === 5) {
+      return "⭐️⭐️⭐️⭐️⭐️"
+    } else if (rating === 4) {
+      return "⭐️⭐️⭐️⭐️"
+    } else if (rating === 3) {
+      return "⭐️⭐️⭐️"
+    } else if (rating === 2) {
+      return "⭐️⭐️"
+    } else {
+      return "⭐️"
+    }
+  }
 
   // We need to create an app.get-route in the backend for ratedMovies
   // Also we should think about how to fetch data from another user, randomly
@@ -15,7 +30,16 @@ export const UserPage = () => {
     fetch(`http://localhost:8080/users/${userId}/movies`)
       .then(res => res.json())
       .then(json => {
-        setMovies(json)
+        setMoviesRated(json)
+        console.log(json)
+      })
+  }, [])
+
+  useEffect(() => {
+    fetch(`http://localhost:8080/users/${userId}/otherusers`)
+      .then(res => res.json())
+      .then(json => {
+        setUserList(json)
         console.log(json)
       })
   }, [])
@@ -23,19 +47,25 @@ export const UserPage = () => {
   return (
     <Wrapper>
       <Heading>Welcome!</Heading>
-      <p>Here is a list of the movies that you have rated</p>
-      <section className="movies-list">
-
-        {movies.map((movie) => (
-          <WelcomeMovieRow
-            key={movie.date}
+      <p>Movies that you have rated</p>
+      <section>
+        {moviesRated.map((movie) => (
+          <MovieRatedRow
+            key={movie.movieId}
           >
             <Link to={`movies/${movie.movieId}`}>
-              <h2 className="movie-title">{movie.movieTitle}</h2>
-              <p>Rating: {movie.score}</p>
-              <p>Status:{movie.status}</p>
+              <MovieTitleRated>{movie.movieTitle}</MovieTitleRated>
             </Link>
-          </WelcomeMovieRow>
+            <RatingStars>{ratingStars(movie.rating)}</RatingStars>
+          </MovieRatedRow>
+        ))}
+        <UserNames>Other users</UserNames>
+        {userList.map((user) => (
+          <div
+            key={user._id}
+          >
+            <div>{user.name}</div>
+          </div>
         ))}
       </section>
     </Wrapper >

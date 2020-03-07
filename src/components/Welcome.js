@@ -3,10 +3,12 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // import { movies } from "../reducers/movies"
 import {
-  Button, ButtonRating, ButtonWatch, Heading, Wrapper, WrapperWelcome,
-  WrapperWelcomeBox, RatingButtonContainer, WelcomeMovieRow, MovieTitle,
+  Button, ButtonRating, ButtonWatch, Heading, MovieTitle, 
+  RatingButtonContainer, WelcomeMovieRow, WrapperWelcome,
+  WrapperWelcomeBox 
 } from "./Styling";
 import { Navbar } from './Navbar'
+import { UserPage } from './UserPage'
 
 const url = "http://localhost:8080/secrets";
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
@@ -23,7 +25,7 @@ export const Welcome = props => {
 
   //Getting the accessToken from the browser's localStorage
   //and sending it as the header "Authorization"
-  const accessToken = window.localStorage.getItem("accessToken");
+  const accessToken = window.localStorage.getItem("accessToken")
   const userId = window.localStorage.getItem("userId")
 
   // function that will be invoced when the user rates a movie, i.e. 
@@ -119,6 +121,7 @@ export const Welcome = props => {
                 </WelcomeMovieRow>
               ))}
             </section>
+            <UserPage />
           </WrapperWelcomeBox>
         )}
         <div>

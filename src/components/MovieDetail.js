@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import {
-  Button, Heading, MovieBackground, WrapMovie, WrapMovieInfo, MovieTitle, 
-  MovieRating, MovieDetailGenres, Genre, MovieOverview, MovieInfo, MovieImdb, 
-  RatingButtonContainer
+  ButtonRating, ButtonWatch, Genre, MovieBackground,  
+  MovieDetailGenres, MovieDetailRow, MovieImdb, MovieInfo, 
+  MovieRating, MovieTitle, MovieOverview, RatingButtonContainerDetail, 
+  ShowSimilar, WrapMovie, WrapMovieInfo, YourRating
 } from "./Styling";
 import { Navbar } from './Navbar'
 // Import what we need to use
@@ -17,6 +18,10 @@ export const MovieDetail = () => {
   const [movie, setMovie] = useState([])
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(true)
+  const [rate, setRate] = useState("")
+
+  const accessToken = window.localStorage.getItem("accessToken");
+  const userId = window.localStorage.getItem("userId")
 
   useEffect(() => {
     setLoading(true)
@@ -45,12 +50,28 @@ export const MovieDetail = () => {
     )
   }
 
+  const handleRating = (userId, movieId, movieTitle, rating) => {
+    setRate(rating)
+    fetch(`http://localhost:8080/users/${userId}`, {
+      method: "PUT",
+      body: JSON.stringify({ userId, movieId, movieTitle, rating }),
+      headers: { "Content-Type": "application/json", "Authorization": accessToken }
+    })
+  }
+
+  const handleWatchStatus = (userId, movieId, movieTitle, watchStatus) => {
+    fetch(`http://localhost:8080/users/${userId}`, {
+      method: "PUT",
+      body: JSON.stringify({ userId, movieId, movieTitle, watchStatus }),
+      headers: { "Content-Type": "application/json", "Authorization": accessToken }
+    })
+  }
+
 
   // Maybe also add genres and actors below
   return (
     <MovieBackground
       key={id}
-      className="background-container"
     >
     <Navbar />
       {!movie.poster_path && (
@@ -71,21 +92,34 @@ export const MovieDetail = () => {
             ))}
           </MovieDetailGenres>
           <MovieOverview>{movie.overview}</MovieOverview>
-          <MovieInfo>⏲ {movie.runtime} min</MovieInfo>
-          <a
-            className="imdb-link"
-            href={`https://www.imdb.com/title/${movie.imdb_id}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <MovieDetailRow>
+            <MovieInfo>⏲ {movie.runtime} min</MovieInfo>
+            <a
+              href={`https://www.imdb.com/title/${movie.imdb_id}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
             <MovieImdb>IMDb</MovieImdb>
-          </a>
+            </a>
+          </MovieDetailRow>
         </WrapMovieInfo>
         <MovieRating>⭐️ {movie.vote_average/2} / 5</MovieRating>
       </WrapMovie>
+      <YourRating>Rate this movie</YourRating>
+      <RatingButtonContainerDetail>
+        <ButtonRating onClick={(e) => handleRating(userId, movie.id, movie.title, 1)}> 1 </ButtonRating>
+        <ButtonRating onClick={(e) => handleRating(userId, movie.id, movie.title, 2)}> 2 </ButtonRating>
+        <ButtonRating onClick={(e) => handleRating(userId, movie.id, movie.title, 3)}> 3 </ButtonRating>
+        <ButtonRating onClick={(e) => handleRating(userId, movie.id, movie.title, 4)}> 4 </ButtonRating>
+        <ButtonRating onClick={(e) => handleRating(userId, movie.id, movie.title, 5)}> 5 </ButtonRating>
+        <ButtonWatch onClick={(e) => handleWatchStatus(userId, movie.id, movie.title, "rewatch")}> Rewatch </ButtonWatch>
+        <ButtonWatch onClick={(e) => handleWatchStatus(userId, movie.id, movie.title, "watch")}> Watch </ButtonWatch>
+        <ButtonWatch onClick={(e) => handleWatchStatus(userId, movie.id, movie.title, "notAgain")}> Not again</ButtonWatch>
+        <ButtonWatch onClick={(e) => handleWatchStatus(userId, movie.id, movie.title, "no")}> No thanks</ButtonWatch>
+      </RatingButtonContainerDetail>
       <section className="similar-movies">
-        <Link to={`/similar/${movie.id}`} style={{ textDecoration: 'none', color: 'white' }}>
-          Show similar movies
+        <Link to={`/similar/${movie.id}`} >
+          <ShowSimilar>Show similar movies</ShowSimilar>
         </Link>
       </section>
     </MovieBackground>
