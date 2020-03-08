@@ -12,6 +12,7 @@ import { Welcome } from 'components/Welcome'
 import { Navbar } from 'components/Navbar'
 import { MovieDetail } from 'components/MovieDetail'
 import { UserPage } from 'components/UserPage'
+import { OtherUser } from 'components/OtherUser'
 
 
 const reducer = combineReducers({
@@ -37,6 +38,8 @@ export const App = () => {
             <Route exact path="/register" component={Registration} />
             <Route exact path="/movies/:id" component={MovieDetail} />
             <Route exact path="/users/:id/movies" component={UserPage} />
+            <Route exact path="/users/:userId" component={OtherUser} />
+
           </Switch>
         </main>
       </BrowserRouter>

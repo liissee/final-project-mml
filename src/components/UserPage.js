@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import { Wrapper, MovieRatedRow, Heading,
-  MovieTitleRated, RatingStars, UserNames } from "./Styling"
+import {
+  Wrapper, MovieRatedRow, Heading,
+  MovieTitleRated, RatingStars, UserNames
+} from "./Styling"
 import { Link } from 'react-router-dom'
 
 // Fetch data with a GET request to our MongoDB database for an individual user 
 export const UserPage = () => {
   const [moviesRated, setMoviesRated] = useState([])
   const [userList, setUserList] = useState([])
+
   const userId = window.localStorage.getItem("userId")
+
 
   const ratingStars = (rating) => {
     if (rating === 5) {
@@ -26,6 +30,7 @@ export const UserPage = () => {
   // We need to create an app.get-route in the backend for ratedMovies
   // Also we should think about how to fetch data from another user, randomly
   // choosing an id in our database
+
   useEffect(() => {
     fetch(`http://localhost:8080/users/${userId}/movies`)
       .then(res => res.json())
@@ -36,11 +41,10 @@ export const UserPage = () => {
   }, [])
 
   useEffect(() => {
-    fetch(`http://localhost:8080/users/${userId}/otherusers`)
+    fetch(`http://localhost:8080/users/${userId}/allUsers`)
       .then(res => res.json())
       .then(json => {
         setUserList(json)
-        console.log(json)
       })
   }, [])
 
@@ -64,7 +68,9 @@ export const UserPage = () => {
           <div
             key={user._id}
           >
-            <div>{user.name}</div>
+            <Link to={`users/${user._id}`}>
+              <div>{user.name}</div>
+            </Link>
           </div>
         ))}
       </section>

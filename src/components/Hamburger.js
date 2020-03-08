@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from "styled-components"
 import { Link } from "react-router-dom"
 
@@ -43,22 +43,6 @@ const StyledMenu = styled.nav`
   }
 `
 
-//   < StartButtonContainer >
-//   <Link to="/register">
-//     <ButtonStart
-//     // onClick={showRegister}
-//     >
-//       Register
-//           </ButtonStart>
-//   </Link>
-//   <Link to="/login">
-//     <ButtonStart
-//     // onClick={showLogin}
-//     >
-//       Log-in
-//           </ButtonStart>
-//   </Link>
-// </StartButtonContainer >
 
 const Menu = ({ open }) => {
   return (
@@ -79,10 +63,6 @@ const Menu = ({ open }) => {
         <span role="img" aria-label="about us">💁🏻‍♂️</span>
         About us
       </a>
-      <a href="/">
-        <span role="img" aria-label="contact">📩</span>
-        Contact
-        </a>
     </StyledMenu>
   )
 }
@@ -144,7 +124,7 @@ const Burger = ({ open, setOpen }) => {
 
 
 export const Hamburger = () => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const node = React.useRef();
   return (
     <div>

@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // import { movies } from "../reducers/movies"
 import {
-  Button, ButtonRating, ButtonWatch, Heading, MovieTitle, 
+  Button, ButtonRating, ButtonWatch, Heading, MovieTitle,
   RatingButtonContainer, WelcomeMovieRow, WrapperWelcome,
-  WrapperWelcomeBox 
+  WrapperWelcomeBox
 } from "./Styling";
 import { Navbar } from './Navbar'
 import { UserPage } from './UserPage'

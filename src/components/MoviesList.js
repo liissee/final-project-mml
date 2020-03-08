@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { DropDownList } from "components/DropDownList"
-import { MovieList, MovieWrapper, MovieListHover } from "./Styling";
-import { movies } from "../reducers/movies"
+import { MovieList, MovieWrapper, MovieListHover, Button } from "./Styling";
+import { movies } from "reducers/movies"
+import { searchResult } from "reducers/movies";
 import { not_found } from "assets/not_found.jpeg"
 import "components/movielist.css"
 
@@ -14,38 +15,38 @@ const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 
 export const MoviesList = (props) => {
   const [movies, setMovies] = useState([])
-  const category = useSelector((state) => state.movies.chosenCategory)
   const [error, setError] = useState(false)
-  // const [loading, setLoading] = useState(true)
-
+  const [loading, setLoading] = useState(true)
+  const dispatch = useDispatch();
+  const category = useSelector(state => state.movies.chosenCategory)
+  const searchResult = useSelector(state => state.movies.movies)
 
 
   useEffect(() => {
-    // setLoading(true)
+    setLoading(true)
+    setError(false)
     fetch(`https://api.themoviedb.org/3/movie/${category}?api_key=${API_KEY}&language=en-US`)
       .then((res) => res.json())
       .then((json) => {
         setMovies(json.results)
-        console.log(json.results)
       })
-    // setLoading(false)
+    setLoading(false)
   }, [category])
 
-  // if (loading) {
-  //   return (
-  //     <div className="loading-message">Movie page is loading...</div>
-  //   )
-  // }
+  if (loading) {
+    return (
+      <div className="loading-message">Movie page is loading...</div>
+    )
+  }
 
-  // if(!movies) {
-  //   return(
-  //     <div>{error}</div>
-  //   )
-  // }
+  if (!movies) {
+    return (
+      <div>{error}</div>
+    )
+  }
 
 
 
-  const searchResult = useSelector(state => state.movies.movies)
   let movieResults = movies
   if (searchResult.length > 0) {
     movieResults = searchResult
@@ -74,9 +75,16 @@ export const MoviesList = (props) => {
           </Link>
         ))}
       </section>
+      {/* <Button type="button"
+        onClick={() => {
+          dispatch(movies.actions.setPageNumber())
+        }}>
+        Load more
+      </Button> */}
     </div>
   )
 }
+
 
 //   return (
 //     <div className="top-movie-list">
