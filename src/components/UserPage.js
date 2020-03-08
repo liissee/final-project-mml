@@ -53,16 +53,19 @@ export const UserPage = () => {
       <Heading>Welcome!</Heading>
       <p>Movies that you have rated</p>
       <section>
-        {moviesRated.map((movie) => (
-          <MovieRatedRow
-            key={movie.movieId}
-          >
-            <Link to={`movies/${movie.movieId}`}>
-              <MovieTitleRated>{movie.movieTitle}</MovieTitleRated>
-            </Link>
-            <RatingStars>{ratingStars(movie.rating)}</RatingStars>
-          </MovieRatedRow>
-        ))}
+        {moviesRated[0] && (
+          moviesRated.map((movie) => (
+            <MovieRatedRow
+              key={movie.movieId}
+            >
+              <Link to={`movies/${movie.movieId}`}>
+                <MovieTitleRated>{movie.movieTitle}</MovieTitleRated>
+              </Link>
+              <RatingStars>{ratingStars(movie.rating)}</RatingStars>
+            </MovieRatedRow>
+          ))
+
+        )}
         <UserNames>Other users</UserNames>
         {userList.map((user) => (
           <div
