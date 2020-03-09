@@ -11,16 +11,8 @@ export const UserPage = () => {
   const [userList, setUserList] = useState([])
   // const { userId } = useParams()
   const userId = window.localStorage.getItem("userId")
-  // let userId = 
 
-  //   const isUser = window.localStorage.getItem("userId") === userId
-
-  // if (isUser){
-  //   userId = window.localStorage.getItem("userId")
-  // } else{
-  //   userId = useParams()
-  // }
-
+  //How to change user based on ID in the URL?? 
 
   const ratingStars = (rating) => {
     if (rating === 5) {

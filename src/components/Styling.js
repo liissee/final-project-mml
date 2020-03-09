@@ -224,6 +224,16 @@ export const StartButtonContainer = styled.div`
 export const HeadingStart = styled(Heading)`
   color: white;
   margin-top: 60px;
+  a {
+    font-size: 2rem;
+    text-transform: uppercase;
+    padding: 2rem 0;
+    font-weight: bold;
+    letter-spacing: 0.5rem;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s linear;
+  }
 `
 export const Label = styled.label`
   line-height: 1px;
