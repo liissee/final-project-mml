@@ -71,9 +71,9 @@ export const Welcome = props => {
           <WrapperWelcomeBox>
             <Heading>You're logged in!</Heading>
             <p>To get started, here's a list of popular movies you can rate to get started</p>
-            <section className="movies-list">
+            {/* <section className="movies-list"> */}
 
-              {movies.map((movie) => (
+            {/* {movies.map((movie) => (
                 <WelcomeMovieRow
                   key={movie.id}
                 >
@@ -83,7 +83,7 @@ export const Welcome = props => {
                   <Rating movieId={movie.id} movieTitle={movie.title} />
                 </WelcomeMovieRow>
               ))}
-            </section>
+            </section> */}
             <UserPage />
           </WrapperWelcomeBox>
         )}

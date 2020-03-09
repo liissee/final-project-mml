@@ -21,14 +21,6 @@ export const UserPage = () => {
   //   userId = useParams()
   // }
 
-  //   const selectedTeamId = thisColumn.selectedId;
-  //   //team.id === seletedTeamId, true if they match
-  //   const isTeamSelected = team.id === selectedTeamId;
-  //   team.isSelected = isTeamSelected;
-  //   // console.log("---------------------------");
-  //   // console.log("this index", props.columnIndex);
-  //   // console.log("selectedId", thisColumn.selectedId);
-  //   // console.log("is this team selected?", isTeamSelected);
 
   const ratingStars = (rating) => {
     if (rating === 5) {

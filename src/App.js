@@ -2,6 +2,7 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { movies } from 'reducers/movies'
+import { users } from 'reducers/users'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 // import { StartPage } from 'components/StartPage'
 import { Login } from 'components/Login'
@@ -15,7 +16,8 @@ import { UserPage } from 'components/UserPage'
 import { OtherUser } from 'components/OtherUser'
 
 const reducer = combineReducers({
-  movies: movies.reducer
+  movies: movies.reducer,
+  users: users.reducer
 })
 
 const store = configureStore({ reducer })
@@ -38,7 +40,6 @@ export const App = () => {
             <Route exact path="/movies/:id" component={MovieDetail} />
             <Route exact path="/users/:id/movies" component={UserPage} />
             <Route exact path="/users/:userId" component={OtherUser} />
-
           </Switch>
         </main>
       </BrowserRouter>

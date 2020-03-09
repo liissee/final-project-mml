@@ -114,7 +114,7 @@ export const ButtonWatch = styled(ButtonRating)`
 `
 export const RatingButtonContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-bottom: 4vh;
   margin-left: 0;
 `

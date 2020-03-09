@@ -33,16 +33,35 @@ export const Rating = ({ movieId, movieTitle }) => {
     })
   }
 
+  //  const ratingStars = (rating) => {
+  //     if (rating === 5) {
+  //       return "⭐️⭐️⭐️⭐️⭐️"
+  //     } else if (rating === 4) {
+  //       return "⭐️⭐️⭐️⭐️"
+  //     } else if (rating === 3) {
+  //       return "⭐️⭐️⭐️"
+  //     } else if (rating === 2) {
+  //       return "⭐️⭐️"
+  //     } else if (rating === 1) {
+  //       return "⭐️"
+  //     } else {
+  //       return ""
+  //     }
+  //   }
+
   return (
     <RatingButtonContainer>
-      <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, 1)}> 1 </ButtonRating>
-      <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, 2)}> 2 </ButtonRating>
-      <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, 3)}> 3 </ButtonRating>
-      <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, 4)}> 4 </ButtonRating>
-      <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, 5)}> 5 </ButtonRating>
-      <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieId, movieTitle, "watch")}> Watch </ButtonWatch>
-      <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieId, movieTitle, "no")}> No thanks</ButtonWatch>
+      <div>
+        <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, 1)}> 1 </ButtonRating>
+        <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, 2)}> 2 </ButtonRating>
+        <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, 3)}> 3 </ButtonRating>
+        <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, 4)}> 4 </ButtonRating>
+        <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, 5)}> 5 </ButtonRating>
+      </div>
+      <div>
+        <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieId, movieTitle, "watch")}> Watch </ButtonWatch>
+        <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieId, movieTitle, "no")}> No thanks</ButtonWatch>
+      </div>
     </RatingButtonContainer>
-
   )
 }

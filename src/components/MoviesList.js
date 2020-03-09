@@ -7,6 +7,7 @@ import { Swipe } from "./Swipe"
 import { searchResult } from "reducers/movies";
 import { not_found } from "assets/not_found.jpeg"
 import "components/movielist.css"
+import { Rating } from "./Rating"
 
 // import not_found from "./assets/not_found"
 // Import what we need to use
@@ -21,6 +22,7 @@ export const MoviesList = (props) => {
   const category = useSelector(state => state.movies.chosenCategory)
   const searchResult = useSelector(state => state.movies.movies)
 
+  const accessToken = window.localStorage.getItem("accessToken")
 
   useEffect(() => {
     setLoading(true)
@@ -58,7 +60,7 @@ export const MoviesList = (props) => {
   //How to fetch more results, show page 2 etc..? 
   return (
     <div className="top-movie-list">
-      <AppContainer>
+      {/* <AppContainer>
         <Swipe> {movieResults.map((movie) => (
           <Item>
             <Link key={movie.id} to={`/movies/${movie.id}`}>
@@ -75,11 +77,12 @@ export const MoviesList = (props) => {
             </Link>
           </Item>
         ))}</Swipe>
-      </AppContainer>
+      </AppContainer> */}
+
       <DropDownList />
       <section className="movie-list">
         {movieResults.map((movie) => (
-          <Link key={movie.id} to={`/movies/${movie.id}`}>
+          <div className="movie-wrapper">
             {movie.poster_path && (
               <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.id} />
             )}
@@ -87,11 +90,15 @@ export const MoviesList = (props) => {
               <img src={not_found} />
             )}
             <div className="hover-details">
-              <h1>{movie.original_title}</h1>
+              <Link key={movie.id} to={`/movies/${movie.id}`}>
+                <h1>{movie.original_title}</h1>
+              </Link>
               <p>Released {movie.release_date}</p>
+              <Rating movieId={movie.id} movieTitle={movie.title} />
             </div>
-          </Link>
+          </div>
         ))}
+
       </section>
       {/* <Button type="button"
         onClick={() => {
@@ -99,12 +106,12 @@ export const MoviesList = (props) => {
         }}>
         Load more
       </Button> */}
-    </div>
+    </div >
   )
 }
 
 
-//   return (
+    //   return (
 //     <div className="top-movie-list">
 //       <DropDownList />
 //       <MovieWrapper>
