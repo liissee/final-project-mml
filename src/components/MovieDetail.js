@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import {
-  ButtonRating, ButtonWatch, Genre, MovieBackground,  
-  MovieDetailGenres, MovieDetailRow, MovieImdb, MovieInfo, 
-  MovieRating, MovieTitle, MovieOverview, RatingButtonContainerDetail, 
+  Genre, MovieBackground,
+  MovieDetailGenres, MovieDetailRow, MovieImdb, MovieInfo,
+  MovieRating, MovieTitle, MovieOverview, RatingButtonContainerDetail,
   ShowSimilar, WrapMovie, WrapMovieInfo, YourRating
 } from "./Styling";
 import { Navbar } from './Navbar'
+import { Rating } from './Rating';
 // Import what we need to use
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
@@ -18,10 +19,7 @@ export const MovieDetail = () => {
   const [movie, setMovie] = useState([])
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(true)
-  const [rate, setRate] = useState("")
 
-  const accessToken = window.localStorage.getItem("accessToken");
-  const userId = window.localStorage.getItem("userId")
 
   useEffect(() => {
     setLoading(true)
@@ -50,34 +48,15 @@ export const MovieDetail = () => {
     )
   }
 
-  const handleRating = (userId, movieId, movieTitle, rating) => {
-    setRate(rating)
-    fetch(`http://localhost:8080/users/${userId}`, {
-      method: "PUT",
-      body: JSON.stringify({ userId, movieId, movieTitle, rating }),
-      headers: { "Content-Type": "application/json", "Authorization": accessToken }
-    })
-  }
-
-  const handleWatchStatus = (userId, movieId, movieTitle, watchStatus) => {
-    fetch(`http://localhost:8080/users/${userId}`, {
-      method: "PUT",
-      body: JSON.stringify({ userId, movieId, movieTitle, watchStatus }),
-      headers: { "Content-Type": "application/json", "Authorization": accessToken }
-    })
-  }
-
-
   // Maybe also add genres and actors below
   return (
     <MovieBackground
       key={id}
     >
-    <Navbar />
       {!movie.poster_path && (
         <p>Lägg in placeholder</p>
       )}
-      
+
       <WrapMovie>
         {movie.poster_path && (
           <img
@@ -99,24 +78,15 @@ export const MovieDetail = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-            <MovieImdb>IMDb</MovieImdb>
+              <MovieImdb>IMDb</MovieImdb>
             </a>
           </MovieDetailRow>
         </WrapMovieInfo>
-        <MovieRating>⭐️ {movie.vote_average/2} / 5</MovieRating>
+        <MovieRating>⭐️ {movie.vote_average / 2} / 5</MovieRating>
       </WrapMovie>
       <YourRating>Rate this movie</YourRating>
-      <RatingButtonContainerDetail>
-        <ButtonRating onClick={(e) => handleRating(userId, movie.id, movie.title, 1)}> 1 </ButtonRating>
-        <ButtonRating onClick={(e) => handleRating(userId, movie.id, movie.title, 2)}> 2 </ButtonRating>
-        <ButtonRating onClick={(e) => handleRating(userId, movie.id, movie.title, 3)}> 3 </ButtonRating>
-        <ButtonRating onClick={(e) => handleRating(userId, movie.id, movie.title, 4)}> 4 </ButtonRating>
-        <ButtonRating onClick={(e) => handleRating(userId, movie.id, movie.title, 5)}> 5 </ButtonRating>
-        <ButtonWatch onClick={(e) => handleWatchStatus(userId, movie.id, movie.title, "rewatch")}> Rewatch </ButtonWatch>
-        <ButtonWatch onClick={(e) => handleWatchStatus(userId, movie.id, movie.title, "watch")}> Watch </ButtonWatch>
-        <ButtonWatch onClick={(e) => handleWatchStatus(userId, movie.id, movie.title, "notAgain")}> Not again</ButtonWatch>
-        <ButtonWatch onClick={(e) => handleWatchStatus(userId, movie.id, movie.title, "no")}> No thanks</ButtonWatch>
-      </RatingButtonContainerDetail>
+      <Rating movieId={movie.id} />
+
       <section className="similar-movies">
         <Link to={`/similar/${movie.id}`} >
           <ShowSimilar>Show similar movies</ShowSimilar>

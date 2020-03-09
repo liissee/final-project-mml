@@ -9,7 +9,6 @@ import {
 } from "./Styling";
 
 
-// Define <Route path=""></Route> and include links
 export const Navbar = () => {
   return (
     <MainStartContainer>

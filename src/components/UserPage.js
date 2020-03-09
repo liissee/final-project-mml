@@ -9,9 +9,26 @@ import { Link } from 'react-router-dom'
 export const UserPage = () => {
   const [moviesRated, setMoviesRated] = useState([])
   const [userList, setUserList] = useState([])
-
+  // const { userId } = useParams()
   const userId = window.localStorage.getItem("userId")
+  // let userId = 
 
+  //   const isUser = window.localStorage.getItem("userId") === userId
+
+  // if (isUser){
+  //   userId = window.localStorage.getItem("userId")
+  // } else{
+  //   userId = useParams()
+  // }
+
+  //   const selectedTeamId = thisColumn.selectedId;
+  //   //team.id === seletedTeamId, true if they match
+  //   const isTeamSelected = team.id === selectedTeamId;
+  //   team.isSelected = isTeamSelected;
+  //   // console.log("---------------------------");
+  //   // console.log("this index", props.columnIndex);
+  //   // console.log("selectedId", thisColumn.selectedId);
+  //   // console.log("is this team selected?", isTeamSelected);
 
   const ratingStars = (rating) => {
     if (rating === 5) {
@@ -22,8 +39,10 @@ export const UserPage = () => {
       return "⭐️⭐️⭐️"
     } else if (rating === 2) {
       return "⭐️⭐️"
-    } else {
+    } else if (rating === 1) {
       return "⭐️"
+    } else {
+      return ""
     }
   }
 
@@ -53,17 +72,19 @@ export const UserPage = () => {
       <Heading>Welcome!</Heading>
       <p>Movies that you have rated</p>
       <section>
-        {moviesRated.map((movie) => (
-          <MovieRatedRow
-            key={movie.movieId}
-          >
-            <Link to={`movies/${movie.movieId}`}>
-              <MovieTitleRated>{movie.movieTitle}</MovieTitleRated>
-            </Link>
-            <RatingStars>{ratingStars(movie.rating)}</RatingStars>
-          </MovieRatedRow>
-        ))}
-        <UserNames>Other users</UserNames>
+        {moviesRated[0] && (
+          moviesRated.map((movie) => (
+            <MovieRatedRow
+              key={movie.movieId}
+            >
+              <Link to={`movies/${movie.movieId}`}>
+                <MovieTitleRated>{movie.movieTitle}</MovieTitleRated>
+              </Link>
+              <RatingStars>{ratingStars(movie.rating)}</RatingStars>
+            </MovieRatedRow>
+          ))
+        )}
+        <UserNames> Other users</UserNames>
         {userList.map((user) => (
           <div
             key={user._id}

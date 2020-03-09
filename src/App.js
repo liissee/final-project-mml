@@ -14,7 +14,6 @@ import { MovieDetail } from 'components/MovieDetail'
 import { UserPage } from 'components/UserPage'
 import { OtherUser } from 'components/OtherUser'
 
-
 const reducer = combineReducers({
   movies: movies.reducer
 })
@@ -26,8 +25,8 @@ export const App = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
+        <Navbar />
         <Route path="/" exact>
-          <Navbar />
           {/* <StartPage /> */}
           <MoviesList />
         </Route>
