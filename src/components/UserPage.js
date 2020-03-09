@@ -9,8 +9,17 @@ import { Link } from 'react-router-dom'
 export const UserPage = () => {
   const [moviesRated, setMoviesRated] = useState([])
   const [userList, setUserList] = useState([])
-
+  // const { userId } = useParams()
   const userId = window.localStorage.getItem("userId")
+  // let userId = 
+
+  //   const isUser = window.localStorage.getItem("userId") === userId
+
+  // if (isUser){
+  //   userId = window.localStorage.getItem("userId")
+  // } else{
+  //   userId = useParams()
+  // }
 
 
   const ratingStars = (rating) => {
@@ -22,8 +31,10 @@ export const UserPage = () => {
       return "⭐️⭐️⭐️"
     } else if (rating === 2) {
       return "⭐️⭐️"
-    } else {
+    } else if (rating === 1) {
       return "⭐️"
+    } else {
+      return ""
     }
   }
 
@@ -64,9 +75,8 @@ export const UserPage = () => {
               <RatingStars>{ratingStars(movie.rating)}</RatingStars>
             </MovieRatedRow>
           ))
-
         )}
-        <UserNames>Other users</UserNames>
+        <UserNames> Other users</UserNames>
         {userList.map((user) => (
           <div
             key={user._id}

@@ -86,10 +86,10 @@ export const FormSearch = styled(Form)`
   `
 // Welcome component
 export const ButtonRating = styled.button`
-  background-color:#B22222;
-  border-radius:2em;
+  background-color: #B22222;
+  border-radius: 2em;
   box-sizing: border-box;
-  color:#FFFFFF;
+  color: #FFFFFF;
   display:inline-block;
   font-family:'Roboto',sans-serif;
   font-weight:300;
@@ -114,7 +114,7 @@ export const ButtonWatch = styled(ButtonRating)`
 `
 export const RatingButtonContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-bottom: 4vh;
   margin-left: 0;
 `
@@ -152,7 +152,7 @@ export const MovieDetailGenres = styled.div`
 `
 export const MovieDetailRow = styled(WelcomeMovieRow)`
   margin-top: 1vh;
-` 
+`
 export const MovieTitle = styled.h1`
   color: black;
   margin-top: 0;
@@ -287,7 +287,7 @@ export const UserNames = styled.div`
   font-size: 18px;
   margin-bottom: 2vh;
   margin-top: 6vh;
-` 
+`
 
 
 // export const MovieWrapper = styled.div`
@@ -310,3 +310,63 @@ export const UserNames = styled.div`
 
 // `
 
+
+//SWIPER
+export const NEXT = "HEJ";
+export const PREV = "HEJDÅ";
+
+export const AppContainer = styled.div`
+  text-align: center;
+  width: 100%;
+`;
+
+export const Item = styled.div`
+  text-align: center;
+  background-size: cover;
+`;
+
+export const CarouselContainer = styled.div`
+  display: flex;
+  transition: ${props => (props.sliding ? "none" : "transform 1s ease")};
+  transform: ${props => {
+    if (!props.sliding) return "translateX(calc(-80% - 20px))";
+    if (props.dir === PREV) return "translateX(calc(2 * (-80% - 20px)))";
+    return "translateX(0%)";
+  }};
+`;
+
+export const WrapperSwipe = styled.div`
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 5px 5px 20px 7px rgba(168, 168, 168, 1);
+`;
+
+export const CarouselSlot = styled.div`
+  flex: 1 0 100%; /* Decides how many cards on one row */
+  flex-basis: 80%; /* Decides how many cards on one row */
+  margin-right: 20px;
+  order: ${props => props.order};
+`;
+
+export const SlideButton = styled.button`
+  color: #fff;
+  font-size: 16px;
+  font-weight: 100;
+  padding: 10px;
+  background-color: #f66f3e;
+  border: 1px solid white;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  margin-top: 20px;
+  text-decoration: none;
+  /* float: ${props => props.float}; */
+
+  &:active {
+    position: relative;
+    top: 1px;
+  }
+  &:focus {
+    outline: 0;
+  }
+`;
