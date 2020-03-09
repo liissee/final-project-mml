@@ -29,7 +29,6 @@ export const App = () => {
       <BrowserRouter>
         <Navbar />
         <Route path="/" exact>
-          {/* <StartPage /> */}
           <MoviesList />
         </Route>
         <main>

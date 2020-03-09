@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {
-  Button, ButtonRating, ButtonWatch,
+  ButtonRating, ButtonWatch,
   RatingButtonContainer
 } from "./Styling";
 

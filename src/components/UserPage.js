@@ -12,6 +12,7 @@ export const UserPage = () => {
   // const { userId } = useParams()
   const userId = window.localStorage.getItem("userId")
 
+
   //How to change user based on ID in the URL?? 
 
   const ratingStars = (rating) => {

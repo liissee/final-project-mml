@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { DropDownList } from "components/DropDownList"
-import { MovieList, MovieWrapper, MovieListHover, Button, Item, AppContainer } from "./Styling";
-import { Swipe } from "./Swipe"
-import { searchResult } from "reducers/movies";
+// import { MovieList, MovieWrapper, MovieListHover, Button, Item, AppContainer } from "./Styling";
+// import { Swipe } from "./Swipe"
+// import { searchResult } from "reducers/movies";
 import { not_found } from "assets/not_found.jpeg"
 import "components/movielist.css"
 import { Rating } from "./Rating"
@@ -18,11 +18,10 @@ export const MoviesList = (props) => {
   const [movies, setMovies] = useState([])
   const [error, setError] = useState(false)
   const [loading, setLoading] = useState(true)
-  const dispatch = useDispatch();
   const category = useSelector(state => state.movies.chosenCategory)
   const searchResult = useSelector(state => state.movies.movies)
 
-  const accessToken = window.localStorage.getItem("accessToken")
+  //const accessToken = window.localStorage.getItem("accessToken")
 
   useEffect(() => {
     setLoading(true)

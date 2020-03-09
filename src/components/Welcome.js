@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Rating } from "./Rating"
 import {
-  Button, ButtonRating, ButtonWatch, Heading, MovieTitle,
+  Heading, MovieTitle,
   RatingButtonContainer, WelcomeMovieRow, WrapperWelcome,
   WrapperWelcomeBox
 } from "./Styling";
 import { UserPage } from './UserPage'
+
 const url = "http://localhost:8080/secrets";
-const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 
 
-export const Welcome = props => {
+export const Welcome = () => {
   const [message, setMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [movies, setMovies] = useState([])
 
   //Getting the accessToken from the browser's localStorage and sending it as the header "Authorization"
   const accessToken = window.localStorage.getItem("accessToken")
@@ -45,7 +42,6 @@ export const Welcome = props => {
     <div>
       <WrapperWelcome>
         {errorMessage && <div>{errorMessage}</div>}
-
         {message && (
           <WrapperWelcomeBox>
             <Heading>You're logged in!</Heading>

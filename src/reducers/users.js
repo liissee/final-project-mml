@@ -4,7 +4,9 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   userName: "",
   userId: "",
-  loggedIn: false
+  loggedIn: false,
+  accessToken: localStorage.getItem('accessToken'),
+  userName: localStorage.getItem('userName')
 }
 
 // Discuss which reducers and actions that should be included
@@ -18,6 +20,7 @@ export const users = createSlice({
     },
     setLoggedInUserName: (state, action) => {
       state.userName = action.payload
+      localStorage.setItem('userName', action.payload)
     }
   }
 })
