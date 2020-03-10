@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom'
 import {
   Genre, MovieBackground,
   MovieDetailGenres, MovieDetailRow, MovieImdb, MovieInfo,
-  MovieRating, MovieTitle, MovieOverview, RatingButtonContainerDetail,
+  MovieRating, MovieTitle, MovieOverview, RatingMovieWrap,
   ShowSimilar, WrapMovie, WrapMovieInfo, YourRating
 } from "./Styling";
 import { Navbar } from './Navbar'
@@ -85,7 +85,9 @@ export const MovieDetail = () => {
         <MovieRating>⭐️ {movie.vote_average / 2} / 5</MovieRating>
       </WrapMovie>
       <YourRating>Rate this movie</YourRating>
-      <Rating movieId={movie.id} />
+      <RatingMovieWrap>
+        <Rating movieId={movie.id} />
+      </RatingMovieWrap>
 
       <section className="similar-movies">
         <Link to={`/similar/${movie.id}`} >
