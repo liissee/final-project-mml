@@ -177,6 +177,9 @@ export const MovieImdb = styled(MovieInfo)`
 export const RatingButtonContainerDetail = styled(RatingButtonContainer)`
   margin-left: 18.5vw;
 `
+export const RatingMovieWrap = styled.div`
+  margin-left: 18.5vw;
+` 
 export const ShowSimilar = styled(MovieInfo)`
   color: black;
   margin-left: 18.5vw;
