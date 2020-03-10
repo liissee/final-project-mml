@@ -7,14 +7,14 @@ import { DropDownList } from "components/DropDownList"
 // import { searchResult } from "reducers/movies";
 import { not_found } from "assets/not_found.jpeg"
 import "components/movielist.css"
-import { Rating } from "./Rating"
+import { Ratings } from "./Ratings"
 
 // import not_found from "./assets/not_found"
 // Import what we need to use
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 
-export const MoviesList = (props) => {
+export const MoviesList = () => {
   const [movies, setMovies] = useState([])
   const [error, setError] = useState(false)
   const [loading, setLoading] = useState(true)
@@ -45,8 +45,6 @@ export const MoviesList = (props) => {
       <div>{error}</div>
     )
   }
-
-
 
   let movieResults = movies
   if (searchResult.length > 0) {
@@ -93,7 +91,7 @@ export const MoviesList = (props) => {
                 <h1>{movie.original_title}</h1>
               </Link>
               <p>Released {movie.release_date}</p>
-              <Rating movieId={movie.id} movieTitle={movie.title} />
+              <Ratings movieId={movie.id} movieTitle={movie.title} />
             </div>
           </div>
         ))}

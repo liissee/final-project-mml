@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import Rating from '@material-ui/lab/Rating';
+import Box from '@material-ui/core/Box';
 import {
-  ButtonRating, ButtonWatch,
-  RatingButtonContainer
+  ButtonWatch, RatingButtonContainer, ButtonRating
 } from "./Styling";
 
 
-export const Rating = ({ movieId, movieTitle }) => {
+export const Ratings = ({ movieId, movieTitle }) => {
   const [rate, setRate] = useState("")
 
   const accessToken = window.localStorage.getItem("accessToken");
@@ -52,6 +53,14 @@ export const Rating = ({ movieId, movieTitle }) => {
   return (
     <RatingButtonContainer>
       <div>
+        <Box component="fieldset" mb={3} borderColor="transparent">
+          <Rating
+            name="simple-controlled"
+            value={rate}
+            onChange={(e, rating) => handleRating(userId, movieId, movieTitle, rating)
+            }
+          />
+        </Box>
         <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, 1)}> 1 </ButtonRating>
         <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, 2)}> 2 </ButtonRating>
         <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, 3)}> 3 </ButtonRating>

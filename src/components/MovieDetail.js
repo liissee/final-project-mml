@@ -6,8 +6,7 @@ import {
   MovieRating, MovieTitle, MovieOverview, RatingMovieWrap,
   ShowSimilar, WrapMovie, WrapMovieInfo, YourRating
 } from "./Styling";
-import { Navbar } from './Navbar'
-import { Rating } from './Rating';
+import { Ratings } from './Ratings';
 // Import what we need to use
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
@@ -86,7 +85,7 @@ export const MovieDetail = () => {
       </WrapMovie>
       <YourRating>Rate this movie</YourRating>
       <RatingMovieWrap>
-        <Rating movieId={movie.id} />
+        <Ratings movieId={movie.id} />
       </RatingMovieWrap>
 
       <section className="similar-movies">

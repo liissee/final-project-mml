@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { not_found } from "assets/not_found.jpeg"
 import "components/movielist.css"
-import { Rating } from "./Rating"
+import { Ratings } from "./Ratings"
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 
@@ -21,7 +21,7 @@ export const Similar = () => {
   return (
     <div className="top-movie-list">
 
-    <section className="movie-list">
+      <section className="movie-list">
         {movies.map((movie) => (
           <div className="movie-wrapper">
             {movie.poster_path && (
@@ -35,7 +35,7 @@ export const Similar = () => {
                 <h1>{movie.original_title}</h1>
               </Link>
               <p>Released {movie.release_date}</p>
-              <Rating movieId={movie.id} movieTitle={movie.title} />
+              <Ratings movieId={movie.id} movieTitle={movie.title} />
             </div>
           </div>
         ))}
