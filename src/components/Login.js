@@ -1,18 +1,14 @@
 import React, { useState } from 'react'
 import { useHistory } from "react-router-dom";
 import { Form, Input, Label, Heading, Button, FieldContainer } from "./Styling";
-// import { useDispatch } from 'react-redux'
-// import { movies } from 'reducers/movies'
-// Import what we need to use
 
-// Create a function that POSTs user-info to our API 
-// Create a form for login
+
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  //useHistory this to route to "StartPage" when login succeeded.
+  //useHistory this to route to "Welcomepage" when login succeeded.
   const history = useHistory();
 
   const url = "http://localhost:8080/sessions"
@@ -26,8 +22,6 @@ export const Login = () => {
       headers: { "Content-Type": "application/json" }
     })
       .then(res => {
-        //(res.status !== 201) detta ger alltid error message även om det är rätt:
-        //(!res.ok) ger undefined accessToken om det är fel men inget error message
         if (!res.ok) {
           throw new Error("Your e-mail and/or password was incorrect");
         } else {

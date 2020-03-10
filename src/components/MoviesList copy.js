@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { DropDownList } from "components/DropDownList"
-// import { MovieList, MovieWrapper, MovieListHover, Button, Item, AppContainer } from "./Styling";
-// import { Swipe } from "./Swipe"
-// import { searchResult } from "reducers/movies";
+import { MovieList, MovieWrapper, MovieListHover, Button } from "./Styling";
+import { movies } from "reducers/movies"
+import { searchResult } from "reducers/movies";
 import { not_found } from "assets/not_found.jpeg"
 import "components/movielist.css"
-import { Rating } from "./Rating"
 
 // import not_found from "./assets/not_found"
 // Import what we need to use
@@ -18,10 +17,10 @@ export const MoviesList = (props) => {
   const [movies, setMovies] = useState([])
   const [error, setError] = useState(false)
   const [loading, setLoading] = useState(true)
+  const dispatch = useDispatch();
   const category = useSelector(state => state.movies.chosenCategory)
   const searchResult = useSelector(state => state.movies.movies)
 
-  //const accessToken = window.localStorage.getItem("accessToken")
 
   useEffect(() => {
     setLoading(true)
@@ -59,29 +58,10 @@ export const MoviesList = (props) => {
   //How to fetch more results, show page 2 etc..? 
   return (
     <div className="top-movie-list">
-      {/* <AppContainer>
-        <Swipe> {movieResults.map((movie) => (
-          <Item>
-            <Link key={movie.id} to={`/movies/${movie.id}`}>
-              {movie.poster_path && (
-                <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.id} />
-              )}
-              {!movie.poster_path && (
-                <img src={not_found} />
-              )}
-              <div className="hover-details">
-                <h1>{movie.original_title}</h1>
-                <p>Released {movie.release_date}</p>
-              </div>
-            </Link>
-          </Item>
-        ))}</Swipe>
-      </AppContainer> */}
-
       <DropDownList />
       <section className="movie-list">
         {movieResults.map((movie) => (
-          <div className="movie-wrapper">
+          <Link key={movie.id} to={`/movies/${movie.id}`}>
             {movie.poster_path && (
               <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.id} />
             )}
@@ -89,15 +69,11 @@ export const MoviesList = (props) => {
               <img src={not_found} />
             )}
             <div className="hover-details">
-              <Link key={movie.id} to={`/movies/${movie.id}`}>
-                <h1>{movie.original_title}</h1>
-              </Link>
+              <h1>{movie.original_title}</h1>
               <p>Released {movie.release_date}</p>
-              <Rating movieId={movie.id} movieTitle={movie.title} />
             </div>
-          </div>
+          </Link>
         ))}
-
       </section>
       {/* <Button type="button"
         onClick={() => {
@@ -105,12 +81,12 @@ export const MoviesList = (props) => {
         }}>
         Load more
       </Button> */}
-    </div >
+    </div>
   )
 }
 
 
-    //   return (
+//   return (
 //     <div className="top-movie-list">
 //       <DropDownList />
 //       <MovieWrapper>

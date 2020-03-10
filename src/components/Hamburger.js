@@ -55,14 +55,14 @@ const Menu = ({ open }) => {
         <span role="img" aria-label="about us">✅</span>
         Login
         </Link>
+      <a href="/">
+        <span role="img" aria-label="movies">🎬</span>
+        Movies
+      </a>
       <Link to="/welcome">
         <span role="img" aria-label="about us">📝</span>
         Watchlist
         </Link>
-      <a href="/">
-        <span role="img" aria-label="about us">💁🏻‍♂️</span>
-        About us
-      </a>
     </StyledMenu>
   )
 }
