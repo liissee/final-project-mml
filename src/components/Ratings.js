@@ -12,6 +12,8 @@ export const Ratings = ({ movieId, movieTitle }) => {
   const accessToken = window.localStorage.getItem("accessToken");
   const userId = window.localStorage.getItem("userId")
 
+
+
   // function that will be invoced when the user rates a movie, i.e. 
   // when the user clicks on a rating button
   // this value should be sent to our own API with PUT or POST somehow
@@ -20,8 +22,11 @@ export const Ratings = ({ movieId, movieTitle }) => {
     fetch(`http://localhost:8080/users/${userId}`, {
       method: "PUT",
       body: JSON.stringify({ userId, movieId, movieTitle, rating }),
-      headers: { "Content-Type": "application/json", "Authorization": accessToken }
+      headers: { "Content-Type": "application/json", "Authorization": accessToken },
     })
+      .then(() => {
+        window.localStorage.setItem(movieId, rating);
+      })
   }
 
   // function that will be invoced when the user clicks on "Re watch", "Watched" etc.
@@ -33,6 +38,7 @@ export const Ratings = ({ movieId, movieTitle }) => {
       headers: { "Content-Type": "application/json", "Authorization": accessToken }
     })
   }
+
 
   //  const ratingStars = (rating) => {
   //     if (rating === 5) {
