@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Heading, MovieTitle,
-  RatingButtonContainer, WelcomeMovieRow, WrapperWelcome,
-  WrapperWelcomeBox
-} from "./Styling";
+import { Heading, WrapperWelcome, WrapperWelcomeBox } from "./Styling";
 import { UserPage } from './UserPage'
 
 const url = "http://localhost:8080/secrets";
