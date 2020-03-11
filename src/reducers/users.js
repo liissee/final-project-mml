@@ -4,8 +4,8 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   userName: "",
   userId: "",
-  accessToken: localStorage.getItem('accessToken'),
-  userName: localStorage.getItem('userName')
+  accessToken: "",
+  userName: ""
 }
 
 // Discuss which reducers and actions that should be included
@@ -16,6 +16,10 @@ export const users = createSlice({
     setAccessToken: (state, action) => {
       state.accessToken = action.payload
       localStorage.setItem('accessToken', action.payload)
+    },
+    getAccessToken: (state, action) => {
+      state.accessToken = action.payload
+      localStorage.getItem('accessToken', action.payload)
     },
     removeAccessToken: (state, action) => {
       state.accessToken = ""
@@ -68,7 +72,11 @@ export const fetchUser = ({ email, password }) => {
   }
 }
 
-
+export const getLocalstorage = (accessToken) => {
+  return dispatch => {
+    dispatch(users.actions.getAccessToken(accessToken))
+  }
+}
 
 
 

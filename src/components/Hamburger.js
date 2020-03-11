@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import styled from "styled-components"
 import { Link } from "react-router-dom"
 
-
 const StyledMenu = styled.nav`
   display: flex;
   flex-direction: column;
@@ -43,7 +42,6 @@ const StyledMenu = styled.nav`
   }
 `
 
-
 const Menu = ({ open }) => {
   return (
     <StyledMenu open={open}>
@@ -59,8 +57,9 @@ const Menu = ({ open }) => {
         <span role="img" aria-label="movies">🎬</span>
         Movies
       </a>
+
       <Link to="/users/:id/movies">
-        <span role="img" aria-label="about us">📝</span>
+        <span role="img" aria-label="watchlist">📝</span>
         Watchlist
         </Link>
     </StyledMenu>

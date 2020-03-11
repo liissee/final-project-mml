@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from 'react-router-dom'
 import { Searchbar } from './Searchbar'
 import { Logout } from './Logout'
@@ -8,12 +8,14 @@ import {
   HeadingStart, HeaderStartContainer, MainStartContainer, Button
 } from "./Styling";
 import styled from 'styled-components/macro'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 export const Navbar = () => {
   // const [errorMessage, setErrorMessage] = useState("");
-  // const accessToken = window.localStorage.getItem("accessToken")
+
   const accessToken = useSelector((state) => state.users.accessToken)
+  const userName = useSelector((state) => state.users.userName)
+
 
   return (
     <MainStartContainer>
@@ -24,6 +26,9 @@ export const Navbar = () => {
       </HeaderStartContainer>
       <SubNavbar>
         <SubNavbarLeft>
+          <UserName>
+            {userName}
+          </UserName>
         </SubNavbarLeft>
         <SubNavbarRight>
           {!accessToken &&
@@ -61,6 +66,11 @@ display: flex;
 justify-content: space-between;
 `
 const SubNavbarLeft = styled.div`
+`
+const UserName = styled.p`
+color: white;
+font-weight: bold;
+padding: 5px;
 `
 const SubNavbarRight = styled.div`
 `

@@ -48,7 +48,6 @@ export const Ratings = ({ movieId, movieTitle, movieImage }) => {
           <Box component="fieldset" mb={3} borderColor="transparent">
             <Rating
               name="simple-controlled"
-              disabled={!accessToken}
               value={rate}
               onChange={(e, rating) => handleRating(userId, movieId, movieTitle, movieImage, rating)
               }

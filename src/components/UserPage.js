@@ -4,23 +4,30 @@ import {
   RatingStars, UserName, UserNames, WrapperWelcomeBox
 } from "./Styling"
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { getLocalstorage } from "../reducers/users.js"
+import { useSelector, useDispatch } from 'react-redux'
 
 
 const url = "http://localhost:8080/secrets";
 
 // Fetch data with a GET request to our MongoDB database for an individual user 
 export const UserPage = () => {
+  const dispatch = useDispatch()
+
   const [message, setMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [moviesRated, setMoviesRated] = useState([])
   const [movieStatus, setMovieStatus] = useState([])
   const [userList, setUserList] = useState([])
   const watchStatus = "watch"
-  // const accessToken = window.localStorage.getItem("accessToken")
-  const accessToken = useSelector((state) => state.users.accessToken)
-  const userName = useSelector((state) => state.users.userName)
-  const userId = useSelector((state) => state.users.userId)
+
+  const accessToken = window.localStorage.getItem("accessToken")
+  const userId = window.localStorage.getItem("userId")
+
+  //Funkar att rendera om sidan när man loggar in men sparade filmer syns inte...
+  // const accessToken = useSelector((state) => state.users.accessToken)
+  // const userName = useSelector((state) => state.users.userName)
+  // const userId = useSelector((state) => state.users.userId)
 
   // const userId = window.localStorage.getItem("userId")
   // const { userId } = useParams()
