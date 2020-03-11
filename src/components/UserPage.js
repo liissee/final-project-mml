@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import {
-  Heading, MoviesRatedParagraph, MovieRatedRow, MovieTitleRated, 
-  RatingStars, UserName, UserNames, WrapperWelcomeBox 
+  Heading, MoviesRatedParagraph, MovieRatedRow, MovieTitleRated,
+  RatingStars, UserName, UserNames, WrapperWelcomeBox
 } from "./Styling"
 import { Link } from 'react-router-dom'
 
@@ -17,11 +17,11 @@ export const UserPage = () => {
   const watchStatus = "watch"
   const accessToken = window.localStorage.getItem("accessToken")
   const userId = window.localStorage.getItem("userId")
-    // const { userId } = useParams()
+  // const { userId } = useParams()
 
 
   //How to change user based on ID in the URL?? 
-  
+
   const ratingStars = (rating) => {
     if (rating === 5) {
       return "⭐️⭐️⭐️⭐️⭐️"
@@ -51,7 +51,7 @@ export const UserPage = () => {
   //     return ""
   //   }
   // }
-  
+
   useEffect(() => {
     setErrorMessage("");
     fetch(url, {
@@ -102,52 +102,53 @@ export const UserPage = () => {
 
   return (
     <div>
-    {errorMessage && <div>{errorMessage}</div>}
-    {message && (
-      <WrapperWelcomeBox>
-      <Heading>Welcome to your user page! </Heading>
-      <br></br>
-      <MoviesRatedParagraph>Movies that you have rated </MoviesRatedParagraph>
-        {moviesRated[0] && (
-          moviesRated.map((movie) => (
-            <MovieRatedRow
-              key={movie.movieId}
-            >
-              <Link to={`/movies/${movie.movieId}`}>
-                <MovieTitleRated>{movie.movieTitle}</MovieTitleRated>
-              </Link>
-              <RatingStars>{ratingStars(movie.rating)}</RatingStars>
-            </MovieRatedRow>
-          ))
-        )}
-        
-        <br></br>
-        <div>
-        <MoviesRatedParagraph>Movies on your watchlist</MoviesRatedParagraph>
-        {movieStatus.map((movie) => (
-          <MovieRatedRow 
-            key={movie.movieId}
-          >
-            <Link to={`/movies/${movie.movieId}`}>
-              <MovieTitleRated>{movie.movieTitle}</MovieTitleRated>
-            </Link>
-          </MovieRatedRow>
-        ))}
-        </div>
+      {errorMessage && <div>{errorMessage}</div>}
+      {message && (
+        <WrapperWelcomeBox>
+          <Heading>Welcome to your user page! </Heading>
+          <br></br>
+          <MoviesRatedParagraph>Movies that you have rated </MoviesRatedParagraph>
+          {moviesRated[0] && (
+            moviesRated.map((movie) => (
+              <MovieRatedRow
+                key={movie.movieId}
+              >
+                <Link to={`/movies/${movie.movieId}`}>
+                  <MovieTitleRated>{movie.movieTitle}</MovieTitleRated>
+                </Link>
+                <RatingStars>{ratingStars(movie.rating)}</RatingStars>
+              </MovieRatedRow>
+            ))
+          )}
 
-        <UserNames>Other users - compare ratings and watchlists</UserNames>
-        {userList.map((user) => (
-          <div
-            key={user._id}
-          >
-            <Link to={`/users/${user._id}`}>
-              <UserName>{user.name}</UserName>
-            </Link>
+          <br></br>
+          <div>
+            <MoviesRatedParagraph>Movies on your watchlist</MoviesRatedParagraph>
+            {movieStatus.map((movie) => (
+              <MovieRatedRow
+                key={movie.movieId}
+              >
+                <Link to={`/movies/${movie.movieId}`}>
+                  <MovieTitleRated>{movie.movieTitle}</MovieTitleRated>
+                  <img src={movie.movieImage} alt={movie.id} />
+                </Link>
+              </MovieRatedRow>
+            ))}
           </div>
-        ))}
-      
-      </WrapperWelcomeBox>
-    )}
+
+          <UserNames>Other users - compare ratings and watchlists</UserNames>
+          {userList.map((user) => (
+            <div
+              key={user._id}
+            >
+              <Link to={`/users/${user._id}`}>
+                <UserName>{user.name}</UserName>
+              </Link>
+            </div>
+          ))}
+
+        </WrapperWelcomeBox>
+      )}
     </div>
   );
 };

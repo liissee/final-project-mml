@@ -85,8 +85,9 @@ export const MovieDetail = () => {
       </WrapMovie>
       <YourRating>Rate this movie</YourRating>
       <RatingMovieWrap>
-        <Ratings movieId={movie.id} />
-      </RatingMovieWrap>
+        <Ratings movieId={movie.id}
+          movieTitle={movie.title}
+          movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />      </RatingMovieWrap>
 
       <section className="similar-movies">
         <Link to={`/similar/${movie.id}`} >

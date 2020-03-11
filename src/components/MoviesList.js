@@ -91,7 +91,9 @@ export const MoviesList = () => {
                 <h1>{movie.original_title}</h1>
               </Link>
               <p>Released {movie.release_date}</p>
-              <Ratings movieId={movie.id} movieTitle={movie.title} />
+              <Ratings movieId={movie.id}
+                movieTitle={movie.title}
+                movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />
             </div>
           </div>
         ))}
