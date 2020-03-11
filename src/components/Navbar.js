@@ -41,7 +41,6 @@ export const Navbar = () => {
               {accessToken ? "Log out" : "Sign in"}
             </Link>
             </NavbarButton> */}
-
         </SubNavbarRight>
       </SubNavbar>
 

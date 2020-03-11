@@ -8,6 +8,7 @@ export const Logout = () => {
 
   const handleLogout = () => {
     window.localStorage.removeItem("accessToken")
+    window.localStorage.removeItem('userId')
   }
 
   return (

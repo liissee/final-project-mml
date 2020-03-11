@@ -7,7 +7,8 @@ import {
 
 
 export const Ratings = ({ movieId, movieTitle }) => {
-  const [rate, setRate] = useState("")
+  const rating = window.localStorage.getItem(movieId)
+  const [rate, setRate] = useState(rating)
 
   const accessToken = window.localStorage.getItem("accessToken");
   const userId = window.localStorage.getItem("userId")
