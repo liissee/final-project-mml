@@ -1,22 +1,27 @@
 import React, { useState, useEffect } from 'react'
 import {
-  Wrapper, MovieRatedRow, Heading,
-  MovieTitleRated, RatingStars, UserNames
+  Heading, MoviesRatedParagraph, MovieRatedRow, MovieTitleRated, 
+  RatingStars, UserName, UserNames, WrapperWelcomeBox 
 } from "./Styling"
 import { Link } from 'react-router-dom'
 
+const url = "http://localhost:8080/secrets";
+
 // Fetch data with a GET request to our MongoDB database for an individual user 
 export const UserPage = () => {
+  const [message, setMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [moviesRated, setMoviesRated] = useState([])
   const [movieStatus, setMovieStatus] = useState([])
   const [userList, setUserList] = useState([])
-  // const { userId } = useParams()
+  const watchStatus = "watch"
+  const accessToken = window.localStorage.getItem("accessToken")
   const userId = window.localStorage.getItem("userId")
-
+    // const { userId } = useParams()
 
 
   //How to change user based on ID in the URL?? 
-
+  
   const ratingStars = (rating) => {
     if (rating === 5) {
       return "⭐️⭐️⭐️⭐️⭐️"
@@ -26,14 +31,45 @@ export const UserPage = () => {
       return "⭐️⭐️⭐️"
     } else if (rating === 2) {
       return "⭐️⭐️"
-    } else if (rating === 1) {
-      return "⭐️"
     } else {
-      return ""
+      return "⭐️"
     }
   }
 
-  const watchStatus = "watch"
+  // const ratingStars = (rating) => {
+  //   if (rating === 5) {
+  //     return "⭐️⭐️⭐️⭐️⭐️"
+  //   } else if (rating === 4) {
+  //     return "⭐️⭐️⭐️⭐️"
+  //   } else if (rating === 3) {
+  //     return "⭐️⭐️⭐️"
+  //   } else if (rating === 2) {
+  //     return "⭐️⭐️"
+  //   } else if (rating === 1) {
+  //     return "⭐️"
+  //   } else {
+  //     return ""
+  //   }
+  // }
+  
+  useEffect(() => {
+    setErrorMessage("");
+    fetch(url, {
+      method: "GET",
+      headers: { Authorization: accessToken }
+    })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error("You need to sign in to view this page", JSON);
+        } else {
+          return res.json();
+        }
+      })
+      .then(json => setMessage(json.secret))
+      .catch(err => {
+        setErrorMessage(err.message);
+      });
+  }, [accessToken]);
 
   useEffect(() => {
     fetch(`http://localhost:8080/users/${userId}/movies`)
@@ -65,42 +101,53 @@ export const UserPage = () => {
 
 
   return (
-    <Wrapper>
-      <Heading>Welcome ! </Heading>
-      <p>Movies that you have rated</p>
-      <section>
+    <div>
+    {errorMessage && <div>{errorMessage}</div>}
+    {message && (
+      <WrapperWelcomeBox>
+      <Heading>Welcome to your user page! </Heading>
+      <br></br>
+      <MoviesRatedParagraph>Movies that you have rated </MoviesRatedParagraph>
         {moviesRated[0] && (
           moviesRated.map((movie) => (
             <MovieRatedRow
               key={movie.movieId}
             >
-              <Link to={`movies/${movie.movieId}`}>
+              <Link to={`/movies/${movie.movieId}`}>
                 <MovieTitleRated>{movie.movieTitle}</MovieTitleRated>
               </Link>
               <RatingStars>{ratingStars(movie.rating)}</RatingStars>
             </MovieRatedRow>
           ))
         )}
-        <UserNames> Other users</UserNames>
+        
+        <br></br>
+        <div>
+        <MoviesRatedParagraph>Movies on your watchlist</MoviesRatedParagraph>
+        {movieStatus.map((movie) => (
+          <MovieRatedRow 
+            key={movie.movieId}
+          >
+            <Link to={`/movies/${movie.movieId}`}>
+              <MovieTitleRated>{movie.movieTitle}</MovieTitleRated>
+            </Link>
+          </MovieRatedRow>
+        ))}
+        </div>
+
+        <UserNames>Other users - compare ratings and watchlists</UserNames>
         {userList.map((user) => (
           <div
             key={user._id}
           >
-            <Link to={`users/${user._id}`}>
-              <div>{user.name}</div>
+            <Link to={`/users/${user._id}`}>
+              <UserName>{user.name}</UserName>
             </Link>
           </div>
         ))}
-      </section>
-      <div>
-        <p>Movies on your watchlist</p>
-        {movieStatus.map((movie) => (
-          <div key={movie.movieId}>
-            <li>{movie.movieTitle}</li>
-          </div>
-        ))}
-
-      </div>
-    </Wrapper >
+      
+      </WrapperWelcomeBox>
+    )}
+    </div>
   );
 };

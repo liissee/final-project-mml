@@ -60,7 +60,7 @@ export const PopoverLogin = () => {
           window.localStorage.setItem("accessToken", accessToken);
           window.localStorage.setItem("userId", userId);
 
-          history.push(`/welcome`);
+          history.push(`/users/:id/movies`);
         }
       })
       .catch(err => {

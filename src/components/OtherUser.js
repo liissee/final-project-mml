@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 
 import {
-  Wrapper, MovieRatedRow, Heading,
-  MovieTitleRated, RatingStars, UserNames
+  MoviesRatedParagraph, MovieRatedRow, MovieTitleRated, 
+  RatingStars, UserNames, WrapperWelcomeBox
 } from "./Styling"
 
 export const OtherUser = (props) => {
@@ -47,36 +47,37 @@ export const OtherUser = (props) => {
   }, [])
 
   return (
-    <Wrapper>
-      <div >USER PAGE: {userName}</div>
+    <WrapperWelcomeBox>
+      <UserNames>User page: {userName}</UserNames>
+      <br></br>
+      <MoviesRatedParagraph>Movies that {userName} has rated </MoviesRatedParagraph>
       <section>
         {moviesRated.map((movie) => (
           <MovieRatedRow
             key={movie._id}
           >
-            <Link to={`/${movie.movieId}`}>
+            <Link to={`/movies/${movie.movieId}`}>
               <MovieTitleRated>{movie.movieTitle}</MovieTitleRated>
             </Link>
             <RatingStars>{ratingStars(movie.rating)}</RatingStars>
           </MovieRatedRow>
         ))}
       </section>
+      <br></br>
 
-      <div>Both of you want to watch:</div>
+      <MoviesRatedParagraph>Both of you want to watch</MoviesRatedParagraph>
       <section>
         {watchList.map((movie) => (
           <MovieRatedRow
             key={movie._id}
           >
-            <Link to={`/${movie.movieId}`}>
+            <Link to={`/movies/${movie.movieId}`}>
               <MovieTitleRated>{movie.movieTitle}</MovieTitleRated>
             </Link>
           </MovieRatedRow>
         ))}
 
       </section>
-    </Wrapper>
-
-
+    </WrapperWelcomeBox>
   )
 }

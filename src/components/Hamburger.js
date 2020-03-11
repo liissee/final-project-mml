@@ -59,7 +59,7 @@ const Menu = ({ open }) => {
         <span role="img" aria-label="movies">🎬</span>
         Movies
       </a>
-      <Link to="/welcome">
+      <Link to="/users/:id/movies">
         <span role="img" aria-label="about us">📝</span>
         Watchlist
         </Link>
