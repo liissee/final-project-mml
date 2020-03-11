@@ -78,25 +78,27 @@ export const MoviesList = () => {
 
       <DropDownList />
       <section className="movie-list">
-        {movieResults.map((movie) => (
-          <div className="movie-wrapper">
-            {movie.poster_path && (
-              <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.id} />
-            )}
-            {!movie.poster_path && (
-              <img src={not_found} />
-            )}
-            <div className="hover-details">
-              <Link key={movie.id} to={`/movies/${movie.id}`}>
-                <h1>{movie.original_title}</h1>
-              </Link>
-              <p>Released {movie.release_date}</p>
-              <Ratings movieId={movie.id}
-                movieTitle={movie.title}
-                movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />
+
+        {movieResults &&
+          movieResults.map((movie) => (
+            <div key={movie.id} className="movie-wrapper">
+              {movie.poster_path && (
+                <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.id} />
+              )}
+              {!movie.poster_path && (
+                <img src={not_found} />
+              )}
+              <div className="hover-details">
+                <Link key={movie.id} to={`/movies/${movie.id}`}>
+                  <h1>{movie.original_title}</h1>
+                </Link>
+                <p>Released {movie.release_date}</p>
+                <Ratings movieId={movie.id}
+                  movieTitle={movie.title}
+                  movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
 
       </section>
       {/* <Button type="button"

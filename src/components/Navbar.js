@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom'
 import { Searchbar } from './Searchbar'
 import { Logout } from './Logout'
@@ -8,12 +8,12 @@ import {
   HeadingStart, HeaderStartContainer, MainStartContainer, Button
 } from "./Styling";
 import styled from 'styled-components/macro'
-
+import { useDispatch, useSelector } from 'react-redux'
 
 export const Navbar = () => {
   // const [errorMessage, setErrorMessage] = useState("");
-
-  const accessToken = window.localStorage.getItem("accessToken")
+  // const accessToken = window.localStorage.getItem("accessToken")
+  const accessToken = useSelector((state) => state.users.accessToken)
 
   return (
     <MainStartContainer>
@@ -27,9 +27,15 @@ export const Navbar = () => {
         </SubNavbarLeft>
         <SubNavbarRight>
           {!accessToken &&
+            <PopoverLogin />
+          }
+          {accessToken &&
+            <Logout />
+          }
+          {/* {!accessToken &&
             <PopoverLogin />}
           {accessToken &&
-            <Logout />}
+            <Logout />} */}
           {/* {errorMessage && <div>{errorMessage}</div>} */}
 
           {/* <NavbarButton

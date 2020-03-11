@@ -41,26 +41,31 @@ export const Ratings = ({ movieId, movieTitle, movieImage }) => {
   }
 
   return (
-    <RatingButtonContainer>
-      <div>
-        <Box component="fieldset" mb={3} borderColor="transparent">
-          <Rating
-            name="simple-controlled"
-            value={rate}
-            onChange={(e, rating) => handleRating(userId, movieId, movieTitle, movieImage, rating)
-            }
-          />
-        </Box>
-        <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, movieImage, 1)}> 1 </ButtonRating>
-        <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, movieImage, 2)}> 2 </ButtonRating>
-        <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, movieImage, 3)}> 3 </ButtonRating>
-        <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, movieImage, 4)}> 4 </ButtonRating>
-        <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, movieImage, 5)}> 5 </ButtonRating>
-      </div>
-      <div>
-        <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieId, movieTitle, movieImage, "watch")}> Watch </ButtonWatch>
-        <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieId, movieTitle, movieImage, "no")}> No thanks</ButtonWatch>
-      </div>
-    </RatingButtonContainer>
+    <>
+      {/* {accessToken && */}
+      <RatingButtonContainer>
+        <div>
+          <Box component="fieldset" mb={3} borderColor="transparent">
+            <Rating
+              name="simple-controlled"
+              disabled={!accessToken}
+              value={rate}
+              onChange={(e, rating) => handleRating(userId, movieId, movieTitle, movieImage, rating)
+              }
+            />
+          </Box>
+          <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, movieImage, 1)}> 1 </ButtonRating>
+          <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, movieImage, 2)}> 2 </ButtonRating>
+          <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, movieImage, 3)}> 3 </ButtonRating>
+          <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, movieImage, 4)}> 4 </ButtonRating>
+          <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, movieImage, 5)}> 5 </ButtonRating>
+        </div>
+        <div>
+          <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieId, movieTitle, movieImage, "watch")}> Watch </ButtonWatch>
+          <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieId, movieTitle, movieImage, "no")}> No thanks</ButtonWatch>
+        </div>
+      </RatingButtonContainer>
+      {/* } */}
+    </>
   )
 }

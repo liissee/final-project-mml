@@ -4,6 +4,8 @@ import {
   RatingStars, UserName, UserNames, WrapperWelcomeBox
 } from "./Styling"
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+
 
 const url = "http://localhost:8080/secrets";
 
@@ -15,8 +17,12 @@ export const UserPage = () => {
   const [movieStatus, setMovieStatus] = useState([])
   const [userList, setUserList] = useState([])
   const watchStatus = "watch"
-  const accessToken = window.localStorage.getItem("accessToken")
-  const userId = window.localStorage.getItem("userId")
+  // const accessToken = window.localStorage.getItem("accessToken")
+  const accessToken = useSelector((state) => state.users.accessToken)
+  const userName = useSelector((state) => state.users.userName)
+  const userId = useSelector((state) => state.users.userId)
+
+  // const userId = window.localStorage.getItem("userId")
   // const { userId } = useParams()
 
 
@@ -35,22 +41,6 @@ export const UserPage = () => {
       return "⭐️"
     }
   }
-
-  // const ratingStars = (rating) => {
-  //   if (rating === 5) {
-  //     return "⭐️⭐️⭐️⭐️⭐️"
-  //   } else if (rating === 4) {
-  //     return "⭐️⭐️⭐️⭐️"
-  //   } else if (rating === 3) {
-  //     return "⭐️⭐️⭐️"
-  //   } else if (rating === 2) {
-  //     return "⭐️⭐️"
-  //   } else if (rating === 1) {
-  //     return "⭐️"
-  //   } else {
-  //     return ""
-  //   }
-  // }
 
   useEffect(() => {
     setErrorMessage("");
@@ -121,19 +111,20 @@ export const UserPage = () => {
             ))
           )}
 
-          <br></br>
           <div>
             <MoviesRatedParagraph>Movies on your watchlist</MoviesRatedParagraph>
-            {movieStatus.map((movie) => (
-              <MovieRatedRow
-                key={movie.movieId}
-              >
-                <Link to={`/movies/${movie.movieId}`}>
-                  <MovieTitleRated>{movie.movieTitle}</MovieTitleRated>
-                  <img src={movie.movieImage} alt={movie.id} />
-                </Link>
-              </MovieRatedRow>
-            ))}
+            {movieStatus[0] && (
+              movieStatus.map((movie) => (
+                <MovieRatedRow
+                  key={movie.movieId}
+                >
+                  <Link to={`/movies/${movie.movieId}`}>
+                    <MovieTitleRated>{movie.movieTitle}</MovieTitleRated>
+                    <img src={movie.movieImage} alt={movie.id} />
+                  </Link>
+                </MovieRatedRow>
+              ))
+            )}
           </div>
 
           <UserNames>Other users - compare ratings and watchlists</UserNames>
@@ -146,7 +137,6 @@ export const UserPage = () => {
               </Link>
             </div>
           ))}
-
         </WrapperWelcomeBox>
       )}
     </div>
