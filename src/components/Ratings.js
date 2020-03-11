@@ -1,15 +1,18 @@
 import React, { useState } from "react";
+import Rating from '@material-ui/lab/Rating';
+import Box from '@material-ui/core/Box';
 import {
-  Button, ButtonRating, ButtonWatch,
-  RatingButtonContainer
+  ButtonWatch, RatingButtonContainer, ButtonRating
 } from "./Styling";
 
 
-export const Rating = ({ movieId, movieTitle }) => {
+export const Ratings = ({ movieId, movieTitle }) => {
   const [rate, setRate] = useState("")
 
   const accessToken = window.localStorage.getItem("accessToken");
   const userId = window.localStorage.getItem("userId")
+
+
 
   // function that will be invoced when the user rates a movie, i.e. 
   // when the user clicks on a rating button
@@ -19,8 +22,11 @@ export const Rating = ({ movieId, movieTitle }) => {
     fetch(`http://localhost:8080/users/${userId}`, {
       method: "PUT",
       body: JSON.stringify({ userId, movieId, movieTitle, rating }),
-      headers: { "Content-Type": "application/json", "Authorization": accessToken }
+      headers: { "Content-Type": "application/json", "Authorization": accessToken },
     })
+      .then(() => {
+        window.localStorage.setItem(movieId, rating);
+      })
   }
 
   // function that will be invoced when the user clicks on "Re watch", "Watched" etc.
@@ -32,6 +38,7 @@ export const Rating = ({ movieId, movieTitle }) => {
       headers: { "Content-Type": "application/json", "Authorization": accessToken }
     })
   }
+
 
   //  const ratingStars = (rating) => {
   //     if (rating === 5) {
@@ -52,6 +59,14 @@ export const Rating = ({ movieId, movieTitle }) => {
   return (
     <RatingButtonContainer>
       <div>
+        <Box component="fieldset" mb={3} borderColor="transparent">
+          <Rating
+            name="simple-controlled"
+            value={rate}
+            onChange={(e, rating) => handleRating(userId, movieId, movieTitle, rating)
+            }
+          />
+        </Box>
         <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, 1)}> 1 </ButtonRating>
         <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, 2)}> 2 </ButtonRating>
         <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, 3)}> 3 </ButtonRating>

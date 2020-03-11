@@ -54,7 +54,7 @@ export const OtherUser = (props) => {
           <MovieRatedRow
             key={movie._id}
           >
-            <Link to={`movies/${movie.movieId}`}>
+            <Link to={`/${movie.movieId}`}>
               <MovieTitleRated>{movie.movieTitle}</MovieTitleRated>
             </Link>
             <RatingStars>{ratingStars(movie.rating)}</RatingStars>
@@ -68,7 +68,7 @@ export const OtherUser = (props) => {
           <MovieRatedRow
             key={movie._id}
           >
-            <Link to={`movies/${movie.movieId}`}>
+            <Link to={`/${movie.movieId}`}>
               <MovieTitleRated>{movie.movieTitle}</MovieTitleRated>
             </Link>
           </MovieRatedRow>

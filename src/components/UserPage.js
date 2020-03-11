@@ -8,19 +8,14 @@ import { Link } from 'react-router-dom'
 // Fetch data with a GET request to our MongoDB database for an individual user 
 export const UserPage = () => {
   const [moviesRated, setMoviesRated] = useState([])
+  const [movieStatus, setMovieStatus] = useState([])
   const [userList, setUserList] = useState([])
   // const { userId } = useParams()
   const userId = window.localStorage.getItem("userId")
-  // let userId = 
 
-  //   const isUser = window.localStorage.getItem("userId") === userId
 
-  // if (isUser){
-  //   userId = window.localStorage.getItem("userId")
-  // } else{
-  //   userId = useParams()
-  // }
 
+  //How to change user based on ID in the URL?? 
 
   const ratingStars = (rating) => {
     if (rating === 5) {
@@ -38,16 +33,14 @@ export const UserPage = () => {
     }
   }
 
-  // We need to create an app.get-route in the backend for ratedMovies
-  // Also we should think about how to fetch data from another user, randomly
-  // choosing an id in our database
+  const watchStatus = "watch"
 
   useEffect(() => {
     fetch(`http://localhost:8080/users/${userId}/movies`)
       .then(res => res.json())
       .then(json => {
         setMoviesRated(json)
-        console.log(json)
+        console.log("ratedmovies:", json)
       })
   }, [])
 
@@ -56,12 +49,24 @@ export const UserPage = () => {
       .then(res => res.json())
       .then(json => {
         setUserList(json)
+        console.log("all users:", json)
+
       })
   }, [])
 
+  useEffect(() => {
+    fetch(`http://localhost:8080/users/${userId}/movies?watchStatus=${watchStatus}`)
+      .then(res => res.json())
+      .then(json => {
+        setMovieStatus(json)
+        console.log("watchstatus:", json)
+      })
+  }, [])
+
+
   return (
     <Wrapper>
-      <Heading>Welcome!</Heading>
+      <Heading>Welcome ! </Heading>
       <p>Movies that you have rated</p>
       <section>
         {moviesRated[0] && (
@@ -87,6 +92,15 @@ export const UserPage = () => {
           </div>
         ))}
       </section>
+      <div>
+        <p>Movies on your watchlist</p>
+        {movieStatus.map((movie) => (
+          <div key={movie.movieId}>
+            <li>{movie.movieTitle}</li>
+          </div>
+        ))}
+
+      </div>
     </Wrapper >
   );
 };
