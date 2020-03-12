@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom'
 import { Searchbar } from './Searchbar'
+import { SearchUser } from './SearchUser'
 import { Logout } from './Logout'
 import { Hamburger } from 'components/Hamburger'
 import { PopoverLogin } from 'components/PopoverLogin'
@@ -23,6 +24,8 @@ export const Navbar = () => {
       <HeaderStartContainer>
         <HeadingStart><Link class-name="link-text" to={`/`}>MATCH ❤️ MOVIES</Link></HeadingStart>
         <Searchbar />
+        <SearchUser />
+
       </HeaderStartContainer>
       <SubNavbar>
         <SubNavbarLeft>

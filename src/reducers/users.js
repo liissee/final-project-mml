@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 // Define initial state, what should be included?
 const initialState = {
+  users: [],
   userName: localStorage.userName || "",
   accessToken: localStorage.accessToken || "",
   userId: localStorage.userId || ""
@@ -15,10 +16,6 @@ export const users = createSlice({
     setAccessToken: (state, action) => {
       state.accessToken = action.payload
       window.localStorage.setItem('accessToken', action.payload)
-    },
-    getAccessToken: (state, action) => {
-      state.accessToken = action.payload
-      window.localStorage.getItem('accessToken', action.payload)
     },
     removeAccessToken: (state, action) => {
       state.accessToken = ""
@@ -39,6 +36,9 @@ export const users = createSlice({
     removeUserName: (state, action) => {
       state.userName = ""
       window.localStorage.removeItem('userName', action.payload)
+    },
+    setUser: (state, action) => {
+      state.users = action.payload
     }
   }
 })
@@ -71,101 +71,16 @@ export const fetchUser = ({ email, password }) => {
   }
 }
 
-export const getLocalstorage = (accessToken) => {
+const userId = users.userId
+
+//takes searchterm as a prop/argument and send search result to MoveList.js. 
+export const searchResult = (userName) => {
   return dispatch => {
-    dispatch(users.actions.getAccessToken(accessToken))
+    fetch(`http://localhost:8080/users/:userId/allUsers?name=${userName}`)
+      .then(res => res.json())
+      .then(json => {
+        dispatch(users.actions.setUser(json))
+        console.log(json)
+      })
   }
 }
-
-
-
-
-// // REDUCERS FOR USERS/LOGIN
-// import { createSlice } from '@reduxjs/toolkit'
-// import { ui } from './ui'
-
-// export const users = createSlice({
-//   name: 'users',
-//   initialState: {
-//     accessToken: localStorage.getItem('accessToken'),
-//     userName: localStorage.getItem('userName')
-//   },
-//   reducers: {
-//     setUserName: (state, action) => {
-//       localStorage.setItem('userName', action.payload)
-//       state.userName = action.payload
-//     },
-//     removeUserName: (state, action) => {
-//       state.userName = localStorage.removeItem('userName', action.payload)
-//     },
-//     setAccessToken: (state, action) => {
-//       localStorage.setItem('accessToken', action.payload)
-//       state.accessToken = action.payload
-//     },
-//     removeAccessToken: (state, action) => {
-//       localStorage.removeItem('accessToken', action.payload)
-//       state.accessToken = ''
-//     }
-//   }
-// })
-
-// // THUNK MIDDLEWARE FOR LOGIN
-// export const fetchUser = (loginValues) => {
-//   return dispatch => {
-//     dispatch(ui.actions.setLoading(true))
-//     fetch('https://nyblad-final-project-api.herokuapp.com/login', {
-//       method: 'POST',
-//       body: JSON.stringify(loginValues),
-//       headers: { 'Content-Type': 'application/json' }
-//     })
-//       .then(res => res.json())
-//       .then(json => {
-//         if (json.notFound !== true) {
-//           dispatch(users.actions.setAccessToken(json.accessToken))
-//           dispatch(users.actions.setUserName(json.name))
-//           dispatch(ui.actions.setLoading(false))
-//           dispatch(ui.actions.setLoginFailed(false))
-//           dispatch(ui.actions.setLoginOpen(false))
-//         } else {
-//           dispatch(ui.actions.setLoading(false))
-//           dispatch(ui.actions.setLoginFailed(true))
-//         }
-//       })
-//       .catch(err => console.log('error', err))
-//   }
-// }
-
-// Learn more or give us feedback
-// import { createSlice } from '@reduxjs/toolkit'
-
-// export const ui = createSlice({
-//   name: 'ui',
-//   initialState: {
-//     isLoading: false,
-//     isLoginOpen: false,
-//     isConfirmDeleteOpen: false,
-//     isConfirmEditOpen: false,
-//     isRsvpConfirmOpen: false,
-//     isLoginFailed: false,
-//   },
-//   reducers: {
-//     setLoading: (state, action) => {
-//       state.isLoading = action.payload
-//     },
-//     setLoginOpen: (state, action) => {
-//       state.isLoginOpen = action.payload
-//     },
-//     setConfirmDeleteOpen: (state, action) => {
-//       state.isConfirmDeleteOpen = action.payload
-//     },
-//     setConfirmEditOpen: (state, action) => {
-//       state.isConfirmEditOpen = action.payload
-//     },
-//     setRsvpConfirmOpen: (state, action) => {
-//       state.isRsvpConfirmOpen = action.payload
-//     },
-//     setLoginFailed: (state, action) => {
-//       state.isLoginFailed = action.payload
-//     }
-//   }
-// })

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux";
 import { DropDownList } from "components/DropDownList"
-import { MovieList, MovieWrapper, MovieListHover, Button } from "./Styling";
+import { MovieList, MovieWrapper, MovieListHover, Button } from "../Styling";
 import { movies } from "reducers/movies"
 import { searchResult } from "reducers/movies";
 import { not_found } from "assets/not_found.jpeg"
@@ -58,6 +58,24 @@ export const MoviesList = (props) => {
   //How to fetch more results, show page 2 etc..? 
   return (
     <div className="top-movie-list">
+      {/* <AppContainer>
+        <Swipe> {movieResults.map((movie) => (
+          <Item>
+            <Link key={movie.id} to={`/movies/${movie.id}`}>
+              {movie.poster_path && (
+                <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.id} />
+              )}
+              {!movie.poster_path && (
+                <img src={not_found} />
+              )}
+              <div className="hover-details">
+                <h1>{movie.original_title}</h1>
+                <p>Released {movie.release_date}</p>
+              </div>
+            </Link>
+          </Item>
+        ))}</Swipe>
+      </AppContainer> */}
       <DropDownList />
       <section className="movie-list">
         {movieResults.map((movie) => (

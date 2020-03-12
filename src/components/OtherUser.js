@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
-
+import { useSelector } from "react-redux";
 import {
-  MoviesRatedParagraph, MovieRatedRow, MovieTitleRated, 
+  MoviesRatedParagraph, MovieRatedRow, MovieTitleRated,
   RatingStars, UserNames, WrapperWelcomeBox
 } from "./Styling"
 import { MovieDetail2 } from './MovieDetail2';
@@ -14,18 +14,14 @@ export const OtherUser = (props) => {
   const { userId } = useParams()
   const myId = window.localStorage.getItem("userId")
 
+
+  const searchResult = useSelector(state => state.users.users)
+  console.log(searchResult)
+
+  // const userId = useSelector((state) => state.users.userId)
+
   const ratingStars = (rating) => {
-    if (rating === 5) {
-      return "⭐️⭐️⭐️⭐️⭐️"
-    } else if (rating === 4) {
-      return "⭐️⭐️⭐️⭐️"
-    } else if (rating === 3) {
-      return "⭐️⭐️⭐️"
-    } else if (rating === 2) {
-      return "⭐️⭐️"
-    } else {
-      return "⭐️"
-    }
+    return "⭐️".repeat(rating)
   }
 
   useEffect(() => {
@@ -46,6 +42,7 @@ export const OtherUser = (props) => {
         console.log(json)
       })
   }, [])
+
 
   return (
     <WrapperWelcomeBox>

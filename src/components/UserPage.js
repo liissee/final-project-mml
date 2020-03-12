@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import {
   ButtonRating, Heading, MoviesRatedParagraph, MovieRatedRow, MovieTitleRated,
-  UserName, UserNames, WrapperWelcomeBox
+  UserName, UserNames, WrapperWelcomeBox, RatingStars
 } from "./Styling"
 import { Link } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { MovieDetail2 } from './MovieDetail2';
 
 
@@ -29,6 +29,8 @@ export const UserPage = () => {
   const userName = useSelector((state) => state.users.userName)
   const userId = useSelector((state) => state.users.userId)
 
+  const rating = useSelector((state) => state.movies.rating)
+
   // const userId = window.localStorage.getItem("userId")
   // const { userId } = useParams()
 
@@ -41,7 +43,6 @@ export const UserPage = () => {
 
   //Logged in or not?
   useEffect(() => {
-    console.log("is fetching")
     setErrorMessage("");
     fetch(url, {
       method: "GET",
@@ -114,15 +115,15 @@ export const UserPage = () => {
           <MoviesRatedParagraph>Movies that you have rated </MoviesRatedParagraph>
           {moviesRated.length && (
             moviesRated.map((movie) => (
-              <MovieDetail2 id={movie.movieId} />
-              // <MovieRatedRow
-              //   key={movie.movieId}
-              // >
-              //   <Link to={`/movies/${movie.movieId}`}>
-              //     <MovieTitleRated>{movie.movieTitle}</MovieTitleRated>
-              //   </Link>
-              //   <RatingStars>{ratingStars(movie.rating)}</RatingStars>
-              // </MovieRatedRow>
+              // <MovieDetail2 id={movie.movieId} />
+              <MovieRatedRow
+                key={movie.movieId}
+              >
+                <Link to={`/movies/${movie.movieId}`}>
+                  <MovieTitleRated>{movie.movieTitle}</MovieTitleRated>
+                </Link>
+                <RatingStars>{ratingStars(movie.rating)}</RatingStars>
+              </MovieRatedRow>
             ))
           )}
 

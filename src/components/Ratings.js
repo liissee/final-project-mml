@@ -1,32 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Rating } from '@material-ui/lab';
 import Box from '@material-ui/core/Box';
-import {
-  ButtonRating, ButtonWatch, RatingButtonContainer
-} from "./Styling";
+import { useSelector } from 'react-redux'
+import { ButtonWatch, RatingButtonContainer } from "./Styling";
 
 
 export const Ratings = ({ movieId, movieTitle, movieImage }) => {
-  const rating = window.localStorage.getItem(movieId)
-  const [rate, setRate] = useState(rating)
+  // const rating = window.localStorage.getItem(movieId)
+  const [rate, setRate] = useState()
 
-  const accessToken = window.localStorage.getItem("accessToken");
-  const userId = window.localStorage.getItem("userId")
 
+
+  // const accessToken = window.localStorage.getItem("accessToken");
+  // const userId = window.localStorage.getItem("userId")
+
+  const accessToken = useSelector((state) => state.users.accessToken)
+  const userId = useSelector((state) => state.users.userId)
 
   // function that will be invoced when the user rates a movie, i.e. 
   // when the user clicks on a rating button
   // this value should be sent to our own API with PUT or POST somehow
   const handleRating = (userId, movieTitle, movieImage, rating) => {
-    setRate(rating)
+    // setRate(rating)
     fetch(`http://localhost:8080/users/${userId}`, {
       method: "PUT",
       body: JSON.stringify({ userId, movieId, movieTitle, movieImage, rating }),
       headers: { "Content-Type": "application/json", "Authorization": accessToken },
     })
-      .then(() => {
-        window.localStorage.setItem(movieId, rating);
-      })
+    // .then(() => {
+    //   window.localStorage.setItem(movieId, rating);
+    // })
   }
 
   // function that will be invoced when the user clicks on "Re watch", "Watched" etc.
@@ -39,6 +42,16 @@ export const Ratings = ({ movieId, movieTitle, movieImage }) => {
     })
   }
 
+  // GET movies with rating
+  useEffect(() => {
+    // if (!userId) return;
+    fetch(`http://localhost:8080/users/${userId}/movies`)
+      .then(res => res.json())
+      .then(json => {
+        setRate(json.rating)
+      })
+  }, [])
+
   return (
     <>
       {/* {accessToken && */}
@@ -48,8 +61,8 @@ export const Ratings = ({ movieId, movieTitle, movieImage }) => {
             <Rating
               name={"simple-controlled" + movieId}
               value={rate}
+              disabled={!accessToken}
               onChange={(e, rating) => {
-                console.log("I jUst klicksedddd ", { userId, movieTitle, movieImage, rating })
                 handleRating(userId, movieTitle, movieImage, rating)
               }
               }
