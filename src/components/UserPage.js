@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import {
   Heading, MoviesRatedParagraph, MovieRatedRow, MovieTitleRated,
-  RatingStars, UserName, UserNames, WrapperWelcomeBox
+  RatingStars, UserName, UserNames, WrapperWelcomeBox, ButtonRating
 } from "./Styling"
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
@@ -18,6 +18,7 @@ export const UserPage = () => {
   const [moviesRated, setMoviesRated] = useState([])
   const [movieStatus, setMovieStatus] = useState([])
   const [userList, setUserList] = useState([])
+  const [chosenRating, setChosenRating] = useState("")
   const watchStatus = "watch"
 
   // const accessToken = window.localStorage.getItem("accessToken")
@@ -38,6 +39,7 @@ export const UserPage = () => {
     return "⭐️".repeat(rating)
   }
 
+  //Logged in or not?
   useEffect(() => {
     console.log("is fetching")
     setErrorMessage("");
@@ -46,10 +48,10 @@ export const UserPage = () => {
       headers: { Authorization: accessToken }
     })
       .then(res => {
-        if (!res.ok) {
-          throw new Error("You need to sign in to view this page", JSON);
-        } else {
+        if (res.ok) {
           return res.json();
+        } else if (!res.ok) {
+          throw new Error("You need to sign in to view this page", JSON);
         }
       })
       .then(json => setMessage(json.secret))
@@ -58,17 +60,21 @@ export const UserPage = () => {
       });
   }, [accessToken]);
 
+  let sortByRating = `?rating=${chosenRating}`
+
+  //Movies with rating
   useEffect(() => {
     if (!userId) return;
-    fetch(`http://localhost:8080/users/${userId}/movies`)
+    fetch(`http://localhost:8080/users/${userId}/movies${sortByRating}`)
       .then(res => res.json())
       .then(json => {
         setMoviesRated(json)
         console.log("ratedmovies:", json)
       })
+  }, [chosenRating])
+  //Why did we have userId as second argument?
 
-  }, [userId])
-
+  //All users
   useEffect(() => {
     if (!userId) return;
     fetch(`http://localhost:8080/users/${userId}/allUsers`)
@@ -80,6 +86,7 @@ export const UserPage = () => {
       })
   }, [userId])
 
+  //Watch status
   useEffect(() => {
     if (!userId) return;
     fetch(`http://localhost:8080/users/${userId}/movies?watchStatus=${watchStatus}`)
@@ -98,6 +105,12 @@ export const UserPage = () => {
         <WrapperWelcomeBox>
           <Heading>Welcome to your user page! </Heading>
           <br></br>
+          Sort on rating:
+          <ButtonRating onClick={(e) => setChosenRating(1)}> 1 </ButtonRating>
+          <ButtonRating onClick={(e) => setChosenRating(2)}> 2 </ButtonRating>
+          <ButtonRating onClick={(e) => setChosenRating(3)}> 3 </ButtonRating>
+          <ButtonRating onClick={(e) => setChosenRating(4)}> 4 </ButtonRating>
+          <ButtonRating onClick={(e) => setChosenRating(5)}> 5 </ButtonRating>
           <MoviesRatedParagraph>Movies that you have rated </MoviesRatedParagraph>
           {moviesRated.length && (
             moviesRated.map((movie) => (

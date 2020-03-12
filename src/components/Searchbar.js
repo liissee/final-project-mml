@@ -3,16 +3,19 @@ import { useDispatch } from "react-redux";
 import { searchResult } from "reducers/movies";
 import { FormSearch } from "./Styling";
 import { Icon, InputGroup } from "@blueprintjs/core";
+import { useHistory } from "react-router-dom";
 
 export const Searchbar = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const dispatch = useDispatch();
+  const history = useHistory()
 
   const handleSubmit = event => {
     event.preventDefault();
     if (searchTerm.length > 0) {
       dispatch(searchResult(searchTerm));
-      setSearchTerm("");
+      setSearchTerm("")
+      history.push(`/`)
       //("") set to empty searchfield
     }
   };

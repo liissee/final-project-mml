@@ -2,10 +2,9 @@ import { createSlice } from '@reduxjs/toolkit'
 
 // Define initial state, what should be included?
 const initialState = {
-  userName: "",
-  userId: "",
-  accessToken: "",
-  userName: ""
+  userName: localStorage.userName || "",
+  accessToken: localStorage.accessToken || "",
+  userId: localStorage.userId || ""
 }
 
 // Discuss which reducers and actions that should be included
@@ -15,31 +14,31 @@ export const users = createSlice({
   reducers: {
     setAccessToken: (state, action) => {
       state.accessToken = action.payload
-      localStorage.setItem('accessToken', action.payload)
+      window.localStorage.setItem('accessToken', action.payload)
     },
     getAccessToken: (state, action) => {
       state.accessToken = action.payload
-      localStorage.getItem('accessToken', action.payload)
+      window.localStorage.getItem('accessToken', action.payload)
     },
     removeAccessToken: (state, action) => {
       state.accessToken = ""
-      localStorage.removeItem('accessToken', action.payload)
+      window.localStorage.removeItem('accessToken', action.payload)
     },
     setUserId: (state, action) => {
       state.userId = action.payload
-      localStorage.setItem("userId", action.payload)
+      window.localStorage.setItem("userId", action.payload)
     },
     removeUserId: (state, action) => {
       state.userId = ""
-      localStorage.removeItem('userId', action.payload)
+      window.localStorage.removeItem('userId', action.payload)
     },
     setUserName: (state, action) => {
       state.userName = action.payload
-      localStorage.setItem('userName', action.payload)
+      window.localStorage.setItem('userName', action.payload)
     },
     removeUserName: (state, action) => {
       state.userName = ""
-      localStorage.removeItem('userName', action.payload)
+      window.localStorage.removeItem('userName', action.payload)
     }
   }
 })

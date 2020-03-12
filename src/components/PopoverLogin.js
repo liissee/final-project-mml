@@ -5,7 +5,7 @@ import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { useHistory } from "react-router-dom";
-import { Form, Input, Label, Heading } from "./Styling";
+import { Form, Input, Label, Heading, ErrorMessage } from "./Styling";
 import { fetchUser } from "../reducers/users.js"
 
 const useStyles = makeStyles(theme => ({
@@ -76,6 +76,24 @@ export const PopoverLogin = () => {
   // };
 
 
+  // const handleLogin = async (event) => {
+  //   event.preventDefault()
+  //   console.log("before dispatch")
+  //   await dispatch(fetchUser({ email, password }))
+  //   console.log("after dispatch")
+  //   if (accessToken) {
+  //     handleClose()
+  //     history.push(`/users/:id/movies`)
+  //     console.log("if email")
+  //   }
+  //   setTimeout(() => {
+  //     if (!accessToken) {
+  //       setErrorMessage("Wrong email or password. Try again!")
+  //       // history.push(`/`)
+  //     }
+  //   }, 1000);
+  // }
+
   const handleLogin = (event) => {
     event.preventDefault()
     dispatch(fetchUser({ email, password }))
@@ -93,7 +111,6 @@ export const PopoverLogin = () => {
       <Button aria-describedby={id} variant="contained" color="secondary" onClick={handleClick}>
         SIGN IN
       </Button>
-      {errorMessage}
       <Popover
         id={id}
         open={open}
@@ -109,6 +126,10 @@ export const PopoverLogin = () => {
         }}
       >
         <Typography className={classes.typography}>
+          <ErrorMessage>
+            {errorMessage}
+          </ErrorMessage>
+          {/* <form onSubmit={handleLogin}> */}
           <Label>
             Email
           <Input
@@ -124,16 +145,21 @@ export const PopoverLogin = () => {
               type="password"
               required
               value={password}
+              // onKeyPress={event => {
+              //   if (event.key === 'Enter') { handleLogin() }
+              // }}
               onChange={event => setPassword(event.target.value)}
             />
           </Label>
-          <Button type="submit" onClick={handleLogin}
+          <Button type="submit"
+            onClick={handleLogin}
           >
             LOGIN
         </Button>
           <Button type="button" onClick={reDirect}>
             Not a member?
         </Button>
+          {/* </form> */}
         </Typography>
       </Popover>
     </>

@@ -32,7 +32,7 @@ export const Ratings = ({ movieId, movieTitle, movieImage }) => {
 
   // function that will be invoced when the user clicks on "Re watch", "Watched" etc.
   // we should discuss what code to add in body: JSON - we should send the status to our API
-  const handleWatchStatus = (userId, movieId, movieTitle, movieImage, watchStatus) => {
+  const handleWatchStatus = (userId, movieTitle, movieImage, watchStatus) => {
     fetch(`http://localhost:8080/users/${userId}`, {
       method: "PUT",
       body: JSON.stringify({ userId, movieId, movieTitle, movieImage, watchStatus }),

@@ -179,7 +179,7 @@ export const RatingButtonContainerDetail = styled(RatingButtonContainer)`
 `
 export const RatingMovieWrap = styled.div`
   margin-left: 18.5vw;
-` 
+`
 export const ShowSimilar = styled(MovieInfo)`
   color: black;
   margin-left: 18.5vw;
@@ -238,7 +238,13 @@ export const HeadingStart = styled(Heading)`
     transition: color 0.3s linear;
   }
 `
+export const ErrorMessage = styled.p`
+color:red;
+font-size: 14px;
+`
+
 export const Label = styled.label`
+  display:block;
   line-height: 1px;
   color: #666;
   font-size: 13px;
@@ -305,7 +311,7 @@ export const RatingStars = styled.div`
 `
 export const UserName = styled(MovieTitleRated)`
   margin-bottom: 1vh;
-` 
+`
 export const UserNames = styled.h3`
   font-size: 18px;
   font-weigth: bold;
@@ -313,7 +319,7 @@ export const UserNames = styled.h3`
   margin-top: 6vh;
 `
 export const WrapperUserPage = styled.div`
-` 
+`
 
 
 // export const MovieWrapper = styled.div`
