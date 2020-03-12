@@ -13,8 +13,7 @@ const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 
 // Fetch data from API with a GET request using e.g. :movieId
 // Show movie details: poster, story overview, casting, rating etc.
-export const MovieDetail = () => {
-  const { id } = useParams()
+export const MovieDetail2 = ({ id }) => {
   const [movie, setMovie] = useState([])
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(true)

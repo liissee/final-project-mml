@@ -127,7 +127,7 @@ export const WrapperWelcome = styled(Wrapper)`
 export const WrapperWelcomeBox = styled(Wrapper)`
   background: #F5F5F5;
   margin-top: 0;
-  max-width: 800px;
+  max-width: 750px;
 `
 export const WelcomeMovieRow = styled.div`
   display: flex;
@@ -285,22 +285,35 @@ export const Link = styled.link`
 export const SearchContainer = styled.div`
 `
 // UserPage
-export const MovieRatedRow = styled(WelcomeMovieRow)`
+export const MoviesRatedParagraph = styled.h3`
+  font-size: 18px;
+  font-weigth: bold;
+`
+export const MovieRatedRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   margin-bottom: 2vh;
 `
 export const MovieTitleRated = styled.div`
   color: black;
-  font-size: 18px;
+  font-size: 16px;
   text-decoration: none;
 `
 export const RatingStars = styled.div`
   margin-left: auto;
 `
-export const UserNames = styled.div`
+export const UserName = styled(MovieTitleRated)`
+  margin-bottom: 1vh;
+` 
+export const UserNames = styled.h3`
   font-size: 18px;
+  font-weigth: bold;
   margin-bottom: 2vh;
   margin-top: 6vh;
 `
+export const WrapperUserPage = styled.div`
+` 
 
 
 // export const MovieWrapper = styled.div`

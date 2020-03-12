@@ -6,7 +6,7 @@ const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 // Define initial state, what should be included?
 const initialState = {
   movies: [],
-  chosenCategory: "popular",
+  chosenCategory: "popular"
 }
 
 // Discuss which reducers and actions that should be included
