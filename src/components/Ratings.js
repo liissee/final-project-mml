@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Rating from '@material-ui/lab/Rating';
+import { Rating } from '@material-ui/lab';
 import Box from '@material-ui/core/Box';
 import {
   ButtonWatch, RatingButtonContainer, ButtonRating
@@ -18,7 +18,7 @@ export const Ratings = ({ movieId, movieTitle, movieImage }) => {
   // function that will be invoced when the user rates a movie, i.e. 
   // when the user clicks on a rating button
   // this value should be sent to our own API with PUT or POST somehow
-  const handleRating = (userId, movieId, movieTitle, movieImage, rating) => {
+  const handleRating = (userId, movieTitle, movieImage, rating) => {
     setRate(rating)
     fetch(`http://localhost:8080/users/${userId}`, {
       method: "PUT",
@@ -47,21 +47,24 @@ export const Ratings = ({ movieId, movieTitle, movieImage }) => {
         <div>
           <Box component="fieldset" mb={3} borderColor="transparent">
             <Rating
-              name="simple-controlled"
+              name={"simple-controlled" + movieId}
               value={rate}
-              onChange={(e, rating) => handleRating(userId, movieId, movieTitle, movieImage, rating)
+              onChange={(e, rating) => {
+                console.log("I jUst klicksedddd ", { userId, movieTitle, movieImage, rating })
+                handleRating(userId, movieTitle, movieImage, rating)
+              }
               }
             />
           </Box>
-          <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, movieImage, 1)}> 1 </ButtonRating>
-          <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, movieImage, 2)}> 2 </ButtonRating>
-          <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, movieImage, 3)}> 3 </ButtonRating>
-          <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, movieImage, 4)}> 4 </ButtonRating>
-          <ButtonRating onClick={(e) => handleRating(userId, movieId, movieTitle, movieImage, 5)}> 5 </ButtonRating>
+          <ButtonRating onClick={(e) => handleRating(userId, movieTitle, movieImage, 1)}> 1 </ButtonRating>
+          <ButtonRating onClick={(e) => handleRating(userId, movieTitle, movieImage, 2)}> 2 </ButtonRating>
+          <ButtonRating onClick={(e) => handleRating(userId, movieTitle, movieImage, 3)}> 3 </ButtonRating>
+          <ButtonRating onClick={(e) => handleRating(userId, movieTitle, movieImage, 4)}> 4 </ButtonRating>
+          <ButtonRating onClick={(e) => handleRating(userId, movieTitle, movieImage, 5)}> 5 </ButtonRating>
         </div>
         <div>
-          <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieId, movieTitle, movieImage, "watch")}> Watch </ButtonWatch>
-          <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieId, movieTitle, movieImage, "no")}> No thanks</ButtonWatch>
+          <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieTitle, movieImage, "watch")}> Watch </ButtonWatch>
+          <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieTitle, movieImage, "no")}> No thanks</ButtonWatch>
         </div>
       </RatingButtonContainer>
       {/* } */}
