@@ -127,7 +127,7 @@ export const WrapperWelcome = styled(Wrapper)`
 export const WrapperWelcomeBox = styled(Wrapper)`
   background: #F5F5F5;
   margin-top: 0;
-  max-width: 750px;
+  max-width: 900px;
 `
 export const WelcomeMovieRow = styled.div`
   display: flex;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Rating } from '@material-ui/lab';
 import Box from '@material-ui/core/Box';
 import {
-  ButtonWatch, RatingButtonContainer, ButtonRating
+  ButtonRating, ButtonWatch, RatingButtonContainer
 } from "./Styling";
 
 
@@ -12,7 +12,6 @@ export const Ratings = ({ movieId, movieTitle, movieImage }) => {
 
   const accessToken = window.localStorage.getItem("accessToken");
   const userId = window.localStorage.getItem("userId")
-
 
 
   // function that will be invoced when the user rates a movie, i.e. 
@@ -56,11 +55,6 @@ export const Ratings = ({ movieId, movieTitle, movieImage }) => {
               }
             />
           </Box>
-          <ButtonRating onClick={(e) => handleRating(userId, movieTitle, movieImage, 1)}> 1 </ButtonRating>
-          <ButtonRating onClick={(e) => handleRating(userId, movieTitle, movieImage, 2)}> 2 </ButtonRating>
-          <ButtonRating onClick={(e) => handleRating(userId, movieTitle, movieImage, 3)}> 3 </ButtonRating>
-          <ButtonRating onClick={(e) => handleRating(userId, movieTitle, movieImage, 4)}> 4 </ButtonRating>
-          <ButtonRating onClick={(e) => handleRating(userId, movieTitle, movieImage, 5)}> 5 </ButtonRating>
         </div>
         <div>
           <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieTitle, movieImage, "watch")}> Watch </ButtonWatch>
@@ -71,3 +65,9 @@ export const Ratings = ({ movieId, movieTitle, movieImage }) => {
     </>
   )
 }
+
+// <ButtonRating onClick={(e) => handleRating(userId, movieTitle, movieImage, 1)}> 1 </ButtonRating>
+// <ButtonRating onClick={(e) => handleRating(userId, movieTitle, movieImage, 2)}> 2 </ButtonRating>
+// <ButtonRating onClick={(e) => handleRating(userId, movieTitle, movieImage, 3)}> 3 </ButtonRating>
+// <ButtonRating onClick={(e) => handleRating(userId, movieTitle, movieImage, 4)}> 4 </ButtonRating>
+// <ButtonRating onClick={(e) => handleRating(userId, movieTitle, movieImage, 5)}> 5 </ButtonRating>

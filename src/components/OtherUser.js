@@ -5,6 +5,7 @@ import {
   MoviesRatedParagraph, MovieRatedRow, MovieTitleRated, 
   RatingStars, UserNames, WrapperWelcomeBox
 } from "./Styling"
+import { MovieDetail2 } from './MovieDetail2';
 
 export const OtherUser = (props) => {
   const [moviesRated, setMoviesRated] = useState([])

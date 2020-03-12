@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import {
-  Heading, MoviesRatedParagraph, MovieRatedRow, MovieTitleRated,
-  RatingStars, UserName, UserNames, WrapperWelcomeBox, ButtonRating
+  ButtonRating, Heading, MoviesRatedParagraph, MovieRatedRow, MovieTitleRated,
+  UserName, UserNames, WrapperWelcomeBox
 } from "./Styling"
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
