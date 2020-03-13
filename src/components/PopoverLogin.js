@@ -74,7 +74,7 @@ export const PopoverLogin = () => {
   //     });
   // };
 
-
+  //This shows error but does not redirect
   // const handleLogin = async (event) => {
   //   event.preventDefault()
   //   console.log("before dispatch")

@@ -11,16 +11,20 @@ export const UserSearchResult = () => {
   console.log(searchResult)
 
   return (
+
+    // searchResult[0] && (
     <div>
       <WrapperWelcomeBox>
         <UserNames>Search result:
              {searchResult.map((user) => (
-          <Link to={`/users/${user._id}`}>
+          <Link key={user._id} to={`/users/${user._id}`}>
             <UserName>{user.name}</UserName>
           </Link>
         ))}
         </UserNames>
       </WrapperWelcomeBox>
     </div>
-  );
-};
+  )
+
+  // );
+}

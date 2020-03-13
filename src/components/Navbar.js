@@ -5,6 +5,7 @@ import { SearchUser } from './SearchUser'
 import { Logout } from './Logout'
 import { Hamburger } from 'components/Hamburger'
 import { PopoverLogin } from 'components/PopoverLogin'
+import { PopoverUserSearch } from 'components/PopoverUserSearch'
 import Button from '@material-ui/core/Button';
 
 import {
@@ -26,7 +27,7 @@ export const Navbar = () => {
       <HeaderStartContainer>
         <HeadingStart><Link to={`/`}>MATCH ❤️ MOVIES</Link></HeadingStart>
         <Searchbar />
-        <SearchUser />
+        {/* <SearchUser /> */}
 
       </HeaderStartContainer>
       <SubNavbar>
@@ -35,6 +36,7 @@ export const Navbar = () => {
             Watchlist
         </Link>
         </Button>
+        <PopoverUserSearch />
         <SubNavbarLeft>
           <UserName>
             {userName}

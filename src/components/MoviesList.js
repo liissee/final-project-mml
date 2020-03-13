@@ -21,7 +21,7 @@ export const MoviesList = () => {
   const [loading, setLoading] = useState(true)
   const category = useSelector(state => state.movies.chosenCategory)
   const searchResult = useSelector(state => state.movies.movies)
-
+  const userSearch = useSelector(state => state.users.users)
   //const accessToken = window.localStorage.getItem("accessToken")
 
   useEffect(() => {
@@ -59,7 +59,9 @@ export const MoviesList = () => {
     <div className="top-movie-list">
       <DropDownList />
       <section className="movie-list">
-        <UserSearchResult />
+        {userSearch[0] &&
+          <UserSearchResult />
+        }
         {movieResults &&
           movieResults.map((movie) => (
             <div key={movie.id} className="movie-wrapper">
