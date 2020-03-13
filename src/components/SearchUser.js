@@ -17,7 +17,6 @@ export const SearchUser = () => {
       dispatch(searchResult(userName));
       setUserName("")
       history.push(`/`)
-      //("") set to empty searchfield
     }
   };
 

@@ -28,7 +28,6 @@ export const MovieDetail2 = ({ id }) => {
           setError("Movie not found")
         } else {
           setMovie(json)
-          console.log(json)
         }
         setLoading(false)
       })
@@ -86,7 +85,7 @@ export const MovieDetail2 = ({ id }) => {
       <RatingMovieWrap>
         <Ratings movieId={movie.id}
           movieTitle={movie.title}
-          movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />      
+          movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />
       </RatingMovieWrap>
 
       <section className="similar-movies">

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux";
+import { UserSearchResult } from "./UserSearchResult"
 import { DropDownList } from "components/DropDownList"
 // import { MovieList, MovieWrapper, MovieListHover, Button, Item, AppContainer } from "./Styling";
 // import { Swipe } from "./Swipe"
@@ -50,7 +51,6 @@ export const MoviesList = () => {
   if (searchResult.length > 0) {
     movieResults = searchResult
   }
-  // console.log(searchResult)
   // Fetch data from API with a GET request
   // Render a list of movies depending on what the user has written in Searchbar
 
@@ -59,21 +59,21 @@ export const MoviesList = () => {
     <div className="top-movie-list">
       <DropDownList />
       <section className="movie-list">
-
+        <UserSearchResult />
         {movieResults &&
           movieResults.map((movie) => (
             <div key={movie.id} className="movie-wrapper">
               {movie.poster_path && (
-                <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.id} />
+                <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.title} />
               )}
               {!movie.poster_path && (
-                <img src={not_found} />
+                <img src={not_found} alt={movie.title} />
               )}
               <div className="hover-details">
                 <Link key={movie.id} to={`/movies/${movie.id}`}>
                   <h1>{movie.original_title}</h1>
+                  <p>Released {movie.release_date}</p>
                 </Link>
-                <p>Released {movie.release_date}</p>
                 <Ratings movieId={movie.id}
                   movieTitle={movie.title}
                   movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />

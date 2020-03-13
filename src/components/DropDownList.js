@@ -1,5 +1,5 @@
 import React from "react"
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import "components/dropdownlist.css"
 import { movies } from "../reducers/movies"
 

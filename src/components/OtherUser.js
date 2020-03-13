@@ -12,13 +12,8 @@ export const OtherUser = (props) => {
   const [watchList, setWatchList] = useState([])
   const [userName, setUserName] = useState("")
   const { userId } = useParams()
-  const myId = window.localStorage.getItem("userId")
-
-
-  const searchResult = useSelector(state => state.users.users)
-  console.log(searchResult)
-
-  // const userId = useSelector((state) => state.users.userId)
+  // const myId = window.localStorage.getItem("userId")
+  const myId = useSelector((state) => state.users.userId)
 
   const ratingStars = (rating) => {
     return "⭐️".repeat(rating)
@@ -30,19 +25,16 @@ export const OtherUser = (props) => {
       .then(json => {
         setMoviesRated(json.otherUser)
         setUserName(json.name)
-        console.log(json.otherUser)
       })
-  }, [])
+  }, [userId])
 
   useEffect(() => {
     fetch(`http://localhost:8080/movies/${myId}?friend=${userId}`)
       .then(res => res.json())
       .then(json => {
         setWatchList(json)
-        console.log(json)
       })
-  }, [])
-
+  }, [myId])
 
   return (
     <WrapperWelcomeBox>
@@ -74,7 +66,6 @@ export const OtherUser = (props) => {
             </Link>
           </MovieRatedRow>
         ))}
-
       </section>
     </WrapperWelcomeBox>
   )

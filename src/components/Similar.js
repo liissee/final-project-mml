@@ -23,12 +23,12 @@ export const Similar = () => {
 
       <section className="movie-list">
         {movies.map((movie) => (
-          <div className="movie-wrapper">
+          <div key={movie.id} className="movie-wrapper">
             {movie.poster_path && (
               <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.id} />
             )}
             {!movie.poster_path && (
-              <img src={not_found} />
+              <img src={not_found} alt={movie.title} />
             )}
             <div className="hover-details">
               <Link key={movie.id} to={`/movies/${movie.id}`}>

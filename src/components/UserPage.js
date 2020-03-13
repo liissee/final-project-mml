@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import {
   ButtonRating, Heading, MoviesRatedParagraph, MovieRatedRow, MovieTitleRated,
-  UserName, UserNames, WrapperWelcomeBox, RatingStars
+  WrapperWelcomeBox, RatingStars
 } from "./Styling"
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { MovieDetail2 } from './MovieDetail2';
+// import { MovieDetail2 } from './MovieDetail2';
+import { UserList } from './UserList'
 
 
 const url = "http://localhost:8080/secrets";
@@ -17,25 +18,24 @@ export const UserPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [moviesRated, setMoviesRated] = useState([])
   const [movieStatus, setMovieStatus] = useState([])
-  const [userList, setUserList] = useState([])
+  // const [userList, setUserList] = useState([])
   const [chosenRating, setChosenRating] = useState("")
   const watchStatus = "watch"
 
+  const searchResult = useSelector(state => state.users.users)
+  console.log(searchResult)
   // const accessToken = window.localStorage.getItem("accessToken")
   //const userId = window.localStorage.getItem("userId")
 
   //Funkar att rendera om sidan när man loggar in men sparade filmer syns inte...
   const accessToken = useSelector((state) => state.users.accessToken)
-  const userName = useSelector((state) => state.users.userName)
   const userId = useSelector((state) => state.users.userId)
 
-  const rating = useSelector((state) => state.movies.rating)
+  // const rating = useSelector((state) => state.movies.rating)
 
   // const userId = window.localStorage.getItem("userId")
   // const { userId } = useParams()
 
-
-  //How to change user based on ID in the URL?? 
 
   const ratingStars = (rating) => {
     return "⭐️".repeat(rating)
@@ -73,19 +73,18 @@ export const UserPage = () => {
         console.log("ratedmovies:", json)
       })
   }, [chosenRating])
-  //Why did we have userId as second argument?
 
-  //All users
-  useEffect(() => {
-    if (!userId) return;
-    fetch(`http://localhost:8080/users/${userId}/allUsers`)
-      .then(res => res.json())
-      .then(json => {
-        setUserList(json)
-        console.log("all users:", json)
+  // //All users. CREATED A SEPERATE COMPONENT!
+  // useEffect(() => {
+  //   if (!userId) return;
+  //   fetch(`http://localhost:8080/users/${userId}/allUsers`)
+  //     .then(res => res.json())
+  //     .then(json => {
+  //       setUserList(json)
+  //       console.log("all users:", json)
 
-      })
-  }, [userId])
+  //     })
+  // }, [userId])
 
   //Watch status
   useEffect(() => {
@@ -104,7 +103,7 @@ export const UserPage = () => {
       {errorMessage && <div>{errorMessage}</div>}
       {message && (
         <WrapperWelcomeBox>
-          <Heading>Welcome to your user page! </Heading>
+          <Heading>Welcome to your user page!</Heading>
           <br></br>
           Sort on rating:
           <ButtonRating onClick={(e) => setChosenRating(1)}> 1 </ButtonRating>
@@ -142,8 +141,8 @@ export const UserPage = () => {
               ))
             )}
           </div>
-
-          <UserNames>Other users - compare ratings and watchlists</UserNames>
+          <UserList />
+          {/* <UserNames>Other users - compare ratings and watchlists</UserNames>
           {userList.map((user) => (
             <div
               key={user._id}
@@ -152,7 +151,7 @@ export const UserPage = () => {
                 <UserName>{user.name}</UserName>
               </Link>
             </div>
-          ))}
+          ))} */}
         </WrapperWelcomeBox>
       )}
     </div>

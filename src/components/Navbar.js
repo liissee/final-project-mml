@@ -5,8 +5,10 @@ import { SearchUser } from './SearchUser'
 import { Logout } from './Logout'
 import { Hamburger } from 'components/Hamburger'
 import { PopoverLogin } from 'components/PopoverLogin'
+import Button from '@material-ui/core/Button';
+
 import {
-  HeadingStart, HeaderStartContainer, MainStartContainer, Button
+  HeadingStart, HeaderStartContainer, MainStartContainer
 } from "./Styling";
 import styled from 'styled-components/macro'
 import { useSelector } from 'react-redux'
@@ -22,12 +24,17 @@ export const Navbar = () => {
     <MainStartContainer>
       <Hamburger />
       <HeaderStartContainer>
-        <HeadingStart><Link class-name="link-text" to={`/`}>MATCH ❤️ MOVIES</Link></HeadingStart>
+        <HeadingStart><Link to={`/`}>MATCH ❤️ MOVIES</Link></HeadingStart>
         <Searchbar />
         <SearchUser />
 
       </HeaderStartContainer>
       <SubNavbar>
+        <Button variant="contained" color="secondary">
+          <Link to="/users/:id/movies">
+            Watchlist
+        </Link>
+        </Button>
         <SubNavbarLeft>
           <UserName>
             {userName}
@@ -40,21 +47,6 @@ export const Navbar = () => {
           {accessToken &&
             <Logout />
           }
-          {/* {!accessToken &&
-            <PopoverLogin />}
-          {accessToken &&
-            <Logout />} */}
-          {/* {errorMessage && <div>{errorMessage}</div>} */}
-
-          {/* <NavbarButton
-              onClick={() => window.localStorage.removeItem("accessToken")}
-              type="button"
-            >
-              {/* Should be linked to either log in or homepage */}
-          {/* <Link className="link-text" to={`/`}>
-              {accessToken ? "Log out" : "Sign in"}
-            </Link>
-            </NavbarButton> */}
         </SubNavbarRight>
       </SubNavbar>
 

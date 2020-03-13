@@ -34,7 +34,7 @@ export const Login = () => {
           window.localStorage.setItem("accessToken", accessToken);
           window.localStorage.setItem("userId", userId);
 
-          history.push(`/welcome`);
+          history.push(`/`);
         }
       })
       .catch(err => {

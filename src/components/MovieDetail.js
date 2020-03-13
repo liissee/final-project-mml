@@ -7,6 +7,8 @@ import {
   ShowSimilar, WrapMovie, WrapMovieInfo, YourRating
 } from "./Styling";
 import { Ratings } from './Ratings';
+import { Similar } from './Similar';
+
 // Import what we need to use
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
@@ -29,7 +31,6 @@ export const MovieDetail = () => {
           setError("Movie not found")
         } else {
           setMovie(json)
-          console.log(json)
         }
         setLoading(false)
       })
@@ -90,9 +91,11 @@ export const MovieDetail = () => {
           movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />      </RatingMovieWrap>
 
       <section className="similar-movies">
-        <Link to={`/similar/${movie.id}`} >
+        <ShowSimilar>Similar movies</ShowSimilar>
+        <Similar />
+        {/* <Link to={`/similar/${movie.id}`} >
           <ShowSimilar>Show similar movies</ShowSimilar>
-        </Link>
+        </Link> */}
       </section>
     </MovieBackground>
   )
