@@ -136,6 +136,19 @@ export const WelcomeMovieRow = styled.div`
 `
 
 // Movie detail component
+export const ActorList = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 3vh;
+` 
+export const ActorListWrap = styled.div`
+  margin-left: 2vw;
+`
+export const ActorName = styled.div`
+  color: black;
+  font-size: 16px;
+  text-decoration: none;
+`
 export const Genre = styled.div`
   background: #B22222;
   color: white;
@@ -182,7 +195,7 @@ export const RatingMovieWrap = styled.div`
 `
 export const ShowSimilar = styled(MovieInfo)`
   color: black;
-  margin-left: 18.5vw;
+  margin-left: 2vw;
   text-decoration: none;
 `
 export const WrapMovie = styled.div`

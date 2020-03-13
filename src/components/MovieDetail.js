@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useDispatch } from "react-redux"
 import {
-  Genre, MovieBackground,
+  ActorList, ActorListWrap, ActorName, Genre, MovieBackground,
   MovieDetailGenres, MovieDetailRow, MovieImdb, MovieInfo,
   MovieRating, MovieTitle, MovieOverview, RatingMovieWrap,
   ShowSimilar, WrapMovie, WrapMovieInfo, YourRating
@@ -48,8 +48,8 @@ export const MovieDetail = () => {
     fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}`)
       .then((res) => res.json())
       .then((json) => {
-        setCast(json.cast.slice(0, 8))
-        console.log(json.cast.slice(0, 8))
+        setCast(json.cast.slice(0, 6))
+        console.log(json.cast.slice(0, 6))
       })
   }, [id])
 
@@ -105,22 +105,26 @@ export const MovieDetail = () => {
       <RatingMovieWrap>
         <Ratings movieId={movie.id}
           movieTitle={movie.title}
-          movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />      </RatingMovieWrap>
-      <h4>Staring: </h4>
-      <div className="cast">
+          movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />      
+      </RatingMovieWrap>
+      
+      
+      <ActorListWrap>
+      <MovieInfo>Starring </MovieInfo>
+      <ActorList>
         {cast.map((actor) => (
           <Link key={actor.id} to={`/cast/${actor.id}`} onClick={(e) => handleActor(actor.name)}>
-            <p className="actors">{actor.name}</p>
-            <p className="actors">Character: {actor.character}</p>
+            <ActorName>{actor.name}</ActorName>
+            <ActorName>"{actor.character}"</ActorName>
             <img
               src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`} alt={movie.title}
             />
           </Link>
-
         ))}
-      </div>
+      </ActorList>
+      </ActorListWrap>
 
-      <section className="similar-movies">
+      <section>
         <ShowSimilar>Similar movies</ShowSimilar>
         <Similar />
         {/* <Link to={`/ similar / ${movie.id}`} >
