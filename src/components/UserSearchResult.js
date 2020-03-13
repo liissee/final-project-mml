@@ -12,12 +12,13 @@ export const UserSearchResult = () => {
 
   return (
     <div>
-
       <WrapperWelcomeBox>
         <UserNames>Search result:
-          <Link to={`/users/${searchResult._id}`}>
-            <UserName>{searchResult.name}</UserName>
+             {searchResult.map((user) => (
+          <Link to={`/users/${user._id}`}>
+            <UserName>{user.name}</UserName>
           </Link>
+        ))}
         </UserNames>
       </WrapperWelcomeBox>
     </div>
