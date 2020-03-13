@@ -55,13 +55,16 @@ export const UserPage = () => {
           throw new Error("You need to sign in to view this page", JSON);
         }
       })
-      .then(json => setMessage(json.secret))
+      .then(json => {
+        setMessage(json.secret)
+        setErrorMessage('');
+      })
       .catch(err => {
         setErrorMessage(err.message);
       });
   }, [accessToken]);
 
-  let sortByRating = ""
+  let sortByRating = `?rating=${chosenRating}`
   // chosenRating === "" ? "" : `?rating=${chosenRating}`
 
   //Movies with rating

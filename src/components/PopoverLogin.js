@@ -100,6 +100,15 @@ export const PopoverLogin = () => {
     history.push(`/users/:id/movies`)
   }
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      console.log('the key is enter')
+      dispatch(fetchUser({ email, password }))
+      handleClose()
+      history.push(`/users/:id/movies`)
+    }
+  }
+
   const reDirect = () => {
     history.push(`/register`);
   };
@@ -144,10 +153,12 @@ export const PopoverLogin = () => {
               required
               value={password}
               onChange={event => setPassword(event.target.value)}
+              onKeyPress={handleKeyPress}
             />
           </Label>
           <Button type="submit"
             onClick={handleLogin}
+
           >
             LOGIN
         </Button>

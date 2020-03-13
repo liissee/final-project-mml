@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
+import { useDispatch } from "react-redux"
 import {
   Genre, MovieBackground,
   MovieDetailGenres, MovieDetailRow, MovieImdb, MovieInfo,
@@ -8,6 +9,7 @@ import {
 } from "./Styling";
 import { Ratings } from './Ratings';
 import { Similar } from './Similar';
+import { movies } from '../reducers/movies'
 
 // Import what we need to use
 
@@ -20,7 +22,12 @@ export const MovieDetail = () => {
   const [movie, setMovie] = useState([])
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(true)
+  const [cast, setCast] = useState([])
+  const dispatch = useDispatch()
 
+  const handleActor = (actor) => {
+    dispatch(movies.actions.setActorName(actor))
+  }
 
   useEffect(() => {
     setLoading(true)
@@ -33,6 +40,16 @@ export const MovieDetail = () => {
           setMovie(json)
         }
         setLoading(false)
+      })
+  }, [id])
+
+  //https://api.themoviedb.org/3/movie/330457/credits?api_key=363444609247127238629594b245e069  
+  useEffect(() => {
+    fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}`)
+      .then((res) => res.json())
+      .then((json) => {
+        setCast(json.cast.slice(0, 8))
+        console.log(json.cast.slice(0, 8))
       })
   }, [id])
 
@@ -89,11 +106,24 @@ export const MovieDetail = () => {
         <Ratings movieId={movie.id}
           movieTitle={movie.title}
           movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />      </RatingMovieWrap>
+      <h4>Staring: </h4>
+      <div className="cast">
+        {cast.map((actor) => (
+          <Link key={actor.id} to={`/cast/${actor.id}`} onClick={(e) => handleActor(actor.name)}>
+            <p className="actors">{actor.name}</p>
+            <p className="actors">Character: {actor.character}</p>
+            <img
+              src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`} alt={movie.title}
+            />
+          </Link>
+
+        ))}
+      </div>
 
       <section className="similar-movies">
         <ShowSimilar>Similar movies</ShowSimilar>
         <Similar />
-        {/* <Link to={`/similar/${movie.id}`} >
+        {/* <Link to={`/ similar / ${movie.id}`} >
           <ShowSimilar>Show similar movies</ShowSimilar>
         </Link> */}
       </section>

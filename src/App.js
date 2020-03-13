@@ -14,6 +14,7 @@ import { MovieDetail } from 'components/MovieDetail'
 import { UserPage } from 'components/UserPage'
 import { OtherUser } from 'components/OtherUser'
 import { Similar } from 'components/Similar'
+import { Actors } from 'components/Actors'
 
 const reducer = combineReducers({
   movies: movies.reducer,
@@ -40,6 +41,7 @@ export const App = () => {
             <Route exact path="/users/:id/movies" component={UserPage} />
             <Route exact path="/users/:userId" component={OtherUser} />
             <Route exact path="/similar/:id" component={Similar} />
+            <Route exact path="/cast/:castId" component={Actors} />
           </Switch>
         </main>
       </BrowserRouter>

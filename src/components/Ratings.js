@@ -8,9 +8,7 @@ import { ButtonWatch, RatingButtonContainer } from "./Styling";
 export const Ratings = ({ movieId, movieTitle, movieImage }) => {
   // const rating = window.localStorage.getItem(movieId)
   const [rate, setRate] = useState()
-
-
-
+  const [loading, setLoading] = useState(true)
   // const accessToken = window.localStorage.getItem("accessToken");
   // const userId = window.localStorage.getItem("userId")
 
@@ -44,36 +42,78 @@ export const Ratings = ({ movieId, movieTitle, movieImage }) => {
 
   // GET movies with rating
   useEffect(() => {
-    // if (!userId) return;
-    fetch(`http://localhost:8080/users/${userId}/movies`)
+    //   // if (!userId) return;
+    fetch(`http://localhost:8080/users/${userId}/movies?movieId=${movieId}`)
       .then(res => res.json())
       .then(json => {
-        setRate(json.rating)
+
+        // const thisMovieRating = json.find(item => item.movieId === movieId)
+        if (json && json.rating) {
+          setRate(json.rating)
+          console.log('JAAAASON', json)
+        }
+
+        // else if (json === null) {
+        //   setRate(0)
+        // }
+
+        // setRate(json.rating ? json.rating : 0)
+        // setRate(json.rating)
+        // console.log('🤯', thisMovieRating)
       })
-  }, [])
+      .then(setLoading(false))
+  }, [movieId])
+
+  //JENNIES
+  // // GET movies with rating
+  // useEffect(() => {
+  //   //   // if (!userId) return;
+  //   fetch(`http://localhost:8080/users/${userId}/movies/`)
+  //     .then(res => res.json())
+  //     .then(json => {
+  //       console.log('JAAAASON', json)
+  //       const thisMovieRating = json.find(item => item.movieId === movieId)
+  //       setRate((thisMovieRating && thisMovieRating.rating) || 0)
+
+  //       console.log('🤯', thisMovieRating)
+  //     })
+  // }, [movieId])
+  // console.log(rate)
+
+  //  {
+  //       "_id": "5e6a086c791d8f06884e62ce",
+  //       "userId": "5e6672445e6e220891b9c5c6",
+  //       "movieId": 559969,
+  //       "movieTitle": "El Camino: A Breaking Bad Movie",
+  //       "rating": 2,
+  //       "date": "2020-03-12T10:01:16.439Z",
+  //       "__v": 0
+  //   },
 
   return (
     <>
       {/* {accessToken && */}
-      <RatingButtonContainer>
-        <div>
-          <Box component="fieldset" mb={3} borderColor="transparent">
-            <Rating
-              name={"simple-controlled" + movieId}
-              value={rate}
-              disabled={!accessToken}
-              onChange={(e, rating) => {
-                handleRating(userId, movieTitle, movieImage, rating)
-              }
-              }
-            />
-          </Box>
-        </div>
-        <div>
-          <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieTitle, movieImage, "watch")}> Watch </ButtonWatch>
-          <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieTitle, movieImage, "no")}> No thanks</ButtonWatch>
-        </div>
-      </RatingButtonContainer>
+      {!loading && (
+        <RatingButtonContainer>
+          <div>
+            <Box component="fieldset" mb={3} borderColor="transparent">
+              <Rating
+                name={"simple-controlled" + movieId}
+                value={rate}
+                disabled={!accessToken}
+                onChange={(e, rating) => {
+                  handleRating(userId, movieTitle, movieImage, rating)
+                }
+                }
+              />
+            </Box>
+          </div>
+          <div>
+            <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieTitle, movieImage, "watch")}> Watch </ButtonWatch>
+            <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieTitle, movieImage, "no")}> No thanks</ButtonWatch>
+          </div>
+        </RatingButtonContainer>
+      )}
       {/* } */}
     </>
   )

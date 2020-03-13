@@ -63,25 +63,30 @@ export const MoviesList = () => {
           <UserSearchResult />
         }
         {movieResults &&
-          movieResults.map((movie) => (
-            <div key={movie.id} className="movie-wrapper">
-              {movie.poster_path && (
-                <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.title} />
-              )}
-              {!movie.poster_path && (
-                <img src={not_found} alt={movie.title} />
-              )}
-              <div className="hover-details">
-                <Link key={movie.id} to={`/movies/${movie.id}`}>
-                  <h1>{movie.original_title}</h1>
-                  <p>Released {movie.release_date}</p>
-                </Link>
-                <Ratings movieId={movie.id}
-                  movieTitle={movie.title}
-                  movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />
+          movieResults.map((movie) => {
+            console.log(movie)
+            return (
+              <div key={movie.id} className="movie-wrapper">
+                {movie.poster_path && (
+                  <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.title} />
+                )}
+                {!movie.poster_path && (
+                  <img src={not_found} alt={movie.title} />
+                )}
+                <div className="hover-details">
+                  <Link key={movie.id} to={`/movies/${movie.id}`}>
+                    <h1>{movie.original_title}</h1>
+                    <p>Released {movie.release_date}</p>
+                  </Link>
+                  <Ratings
+                    movieId={movie.id}
+                    movieTitle={movie.title}
+                    movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          }
+          )}
 
       </section>
       {/* <Button type="button"

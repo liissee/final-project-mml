@@ -6,7 +6,8 @@ const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 // Define initial state, what should be included?
 const initialState = {
   movies: [],
-  chosenCategory: "popular"
+  chosenCategory: "popular",
+  actorName: []
 }
 
 // Discuss which reducers and actions that should be included
@@ -19,6 +20,9 @@ export const movies = createSlice({
     },
     setCategory: (state, action) => {
       state.chosenCategory = action.payload
+    },
+    setActorName: (state, action) => {
+      state.actorName = action.payload
     }
   }
 })
@@ -32,3 +36,9 @@ export const searchResult = (searchTerm, pageNumber) => {
       })
   }
 }
+
+// export const handleActor = (actor) => {
+//   return dispatch => {
+//     dispatch(movies.actions.setActorName(actor))
+//   }
+// }
