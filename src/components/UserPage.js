@@ -61,9 +61,11 @@ export const UserPage = () => {
       });
   }, [accessToken]);
 
-  let sortByRating = `?rating=${chosenRating}`
+  let sortByRating = ""
+  // chosenRating === "" ? "" : `?rating=${chosenRating}`
 
   //Movies with rating
+  //CHECK WHY THIS FETCH IS NOT HAPPENING AT FIRST RENDER
   useEffect(() => {
     if (!userId) return;
     fetch(`http://localhost:8080/users/${userId}/movies${sortByRating}`)
