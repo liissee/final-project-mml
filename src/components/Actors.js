@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
 import { useSelector } from "react-redux"
 import "components/movielist.css"
-import "components/castdetails.css"
 
 
 export const Actors = () => {
@@ -27,24 +26,14 @@ export const Actors = () => {
   }, [castId])
 
 
-  // //https://api.themoviedb.org/3/credit/52fe4210c3a36847f800135f?api_key=363444609247127238629594b245e069
-  // useEffect(() => {
-  //   fetch(`https://api.themoviedb.org/3/credit/52fe4210c3a36847f800135f?api_key=${API_KEY}`)
-  //     .then((res) => res.json())
-  //     .then((json) => {
-  //       setActorName(json.person)
-  //       console.log("second fetch", json)
-  //     })
-  // }, [])
-
   return (
-    <div className="cast-details-top">
+    <div className="top-movie-list">
       <h1>Movies with {name}</h1>
-      <section className="cast-details">
+      <section className="movie-list">
         {person.map((persons) => (
-          <Link key={persons.credit_id} to={`/movies/${persons.id}`}>
+          <Link className="movie-wrapper" key={persons.credit_id} to={`/movies/${persons.id}`}>
             <img src={`https://image.tmdb.org/t/p/w342${persons.poster_path}`} alt={persons.id} />
-            <div className="cast-details-summary">
+            <div className="hover-details">
               <h2>{persons.title}</h2>
               <p>Character: {persons.character}</p>
               <p>Released {persons.release_date}</p>
