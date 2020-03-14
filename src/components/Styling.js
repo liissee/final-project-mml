@@ -115,8 +115,8 @@ export const ButtonWatch = styled(ButtonRating)`
 export const RatingButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 4vh;
-  margin-left: 0;
+  /* margin-bottom: 4vh;
+  margin-left: 0; */
 `
 export const WrapperWelcome = styled(Wrapper)`
   border: 1px solid gray;
@@ -135,87 +135,88 @@ export const WelcomeMovieRow = styled.div`
   flex-wrap: wrap;
 `
 
-// Movie detail component
-export const ActorList = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 3vh;
-` 
-export const ActorListWrap = styled.div`
-  margin-left: 2vw;
-`
-export const ActorName = styled.div`
-  color: black;
-  font-size: 16px;
-  text-decoration: none;
-`
-export const Genre = styled.div`
-  background: #B22222;
-  color: white;
-  margin-right: 1vw;
-  padding: 4px;
-`
+// // Movie detail component
 export const MovieBackground = styled.div`
   background: white;
 `
-export const MovieDetailGenres = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 3vh;
-`
-export const MovieDetailRow = styled(WelcomeMovieRow)`
-  margin-top: 1vh;
-`
-export const MovieTitle = styled.h1`
-  color: black;
-  margin-top: 0;
-  text-decoration: none;
-`
-export const MovieRating = styled(MovieTitle)`
-`
-export const MovieOverview = styled.div`
-  font-size: 16px;
-  margin-bottom: 2vh;
-`
-export const MovieInfo = styled.h3`
-  margin-top: 1.5vh;
-  margin-bottom: 2vh;
-`
-export const MovieImdb = styled(MovieInfo)`
-  background: #FFD700;
-  color: black;
-  margin-left: 1vw;
-  width: 3.5vw;
-`
-export const RatingButtonContainerDetail = styled(RatingButtonContainer)`
-  margin-left: 18.5vw;
-`
-export const RatingMovieWrap = styled.div`
-  margin-left: 18.5vw;
-`
-export const ShowSimilar = styled(MovieInfo)`
-  color: black;
-  margin-left: 2vw;
-  text-decoration: none;
-`
-export const WrapMovie = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-left: 2vw;
-  margin-right: 2vw;
-  margin-top: 2vw;
-`
-export const WrapMovieInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-left: 2vw;
-  width: 50%;
-`
-export const YourRating = styled.h3`
-  margin-bottom: 2vh;
-  margin-left: 18.5vw;
-  margin-top: 0;
-`
+// export const ActorList = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   margin-bottom: 3vh;
+// `
+// export const ActorListWrap = styled.div`
+//   margin-left: 2vw;
+// `
+// export const ActorName = styled.div`
+//   color: black;
+//   font-size: 16px;
+//   text-decoration: none;
+// `
+// export const Genre = styled.div`
+//   background: #B22222;
+//   color: white;
+//   margin-right: 1vw;
+//   padding: 4px;
+// `
+
+// export const MovieDetailGenres = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   margin-bottom: 3vh;
+// `
+// export const MovieDetailRow = styled(WelcomeMovieRow)`
+//   margin-top: 1vh;
+// `
+// export const MovieTitle = styled.h1`
+//   color: black;
+//   margin-top: 0;
+//   text-decoration: none;
+// `
+// export const MovieRating = styled(MovieTitle)`
+// `
+// export const MovieOverview = styled.div`
+//   font-size: 16px;
+//   margin-bottom: 2vh;
+// `
+// export const MovieInfo = styled.h3`
+//   margin-top: 1.5vh;
+//   margin-bottom: 2vh;
+// `
+// export const MovieImdb = styled(MovieInfo)`
+//   background: #FFD700;
+//   color: black;
+//   margin-left: 1vw;
+//   width: 3.5vw;
+// `
+// export const RatingButtonContainerDetail = styled(RatingButtonContainer)`
+//   margin-left: 18.5vw;
+// `
+// export const RatingMovieWrap = styled.div`
+//   margin-left: 18.5vw;
+// `
+// export const ShowSimilar = styled(MovieInfo)`
+//   color: black;
+//   margin-left: 2vw;
+//   text-decoration: none;
+// `
+// export const WrapMovie = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   margin-left: 2vw;
+//   margin-right: 2vw;
+//   margin-top: 2vw;
+// `
+// export const WrapMovieInfo = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   margin-left: 2vw;
+//   width: 50%;
+// `
+// export const YourRating = styled.h3`
+//   margin-bottom: 2vh;
+//   margin-left: 18.5vw;
+//   margin-top: 0;
+// `
 
 
 // Navbar
@@ -306,7 +307,7 @@ export const SearchContainer = styled.div`
 // UserPage
 export const MoviesRatedParagraph = styled.h3`
   font-size: 18px;
-  font-weigth: bold;
+  font-weight: bold;
 `
 export const MovieRatedRow = styled.div`
   display: flex;
@@ -327,7 +328,7 @@ export const UserName = styled(MovieTitleRated)`
 `
 export const UserNames = styled.h3`
   font-size: 18px;
-  font-weigth: bold;
+  font-weight: bold;
   margin-bottom: 2vh;
   margin-top: 6vh;
 `
@@ -415,3 +416,133 @@ export const SlideButton = styled.button`
     outline: 0;
   }
 `;
+
+//MOVIE CARD ON USERPAGE
+export const MovieCard = styled.div`
+  background: pink;
+  border-radius: 20px;
+  /* padding: 20px 0 0; */
+  margin: 10px;
+    height: 200px;
+
+`
+export const WrapMovie = styled.div`
+  display: flex;
+  flex-direction: row;
+  /* margin-left: 2vw;
+  margin-right: 2vw;
+  margin-top: 2vw; */
+`
+export const MovieImage = styled.img`
+  border-radius: 20px 0 0 20px;
+  height: 200px;
+
+  `
+export const WrapMovieInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 2vw;
+  width: 70%;
+`
+export const MovieTags = styled.div`
+  display: flex;
+  flex-direction:row;
+  justify-content: space-evenly;
+  align-items:center;
+  `
+export const MovieInfo = styled.p`
+display: inline;
+padding: 5px;
+margin: 0;
+/* margin-top: 1.5vh;
+margin-bottom: 2vh; */
+color: grey;
+
+`
+export const MovieInfoLink = styled.a`
+margin:0;
+`
+
+export const TitleAndRating = styled.div`
+display: flex;
+flex-direction: row;
+`
+
+
+export const MovieTitle = styled.h1`
+  color: black;
+  margin-bottom: 0;
+  text-decoration: none;
+  font-size: 1.5em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`
+
+// Movie detail component
+export const ActorList = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 3vh;
+`
+export const ActorListWrap = styled.div`
+  margin-left: 2vw;
+`
+export const ActorName = styled.div`
+  color: black;
+  font-size: 16px;
+  text-decoration: none;
+`
+export const Genre = styled.div`
+  background: #B22222;
+  color: white;
+  margin-right: 1vw;
+  padding: 4px;
+`
+
+export const MovieDetailGenres = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 3vh;
+`
+export const MovieDetailRow = styled(WelcomeMovieRow)`
+  margin-top: 1vh;
+`
+
+export const MovieRating = styled.h4`
+
+`
+export const MovieOverview = styled.div`
+  font-size: 16px;
+  /* margin-bottom: 2vh; */
+  /* white-space: nowrap; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 60px;
+  line-height: 20px;
+    
+`
+
+export const MovieImdb = styled(MovieInfo)`
+  background: #FFD700;
+  color: black;
+  margin-left: 1vw;
+  width: 3.5vw;
+`
+export const RatingButtonContainerDetail = styled(RatingButtonContainer)`
+  margin-left: 18.5vw;
+`
+export const RatingMovieWrap = styled.div`
+  /* margin-left: 18.5vw; */
+`
+export const ShowSimilar = styled(MovieInfo)`
+  color: black;
+  margin-left: 2vw;
+  text-decoration: none;
+`
+
+export const YourRating = styled.h3`
+  margin-bottom: 2vh;
+  margin-left: 18.5vw;
+  margin-top: 0;
+`

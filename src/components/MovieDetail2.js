@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {
-  Genre, MovieBackground,
+  Genre, ActorList, ActorName,
   MovieDetailGenres, MovieDetailRow, MovieImdb, MovieInfo,
   MovieRating, MovieTitle, MovieOverview, RatingMovieWrap,
-  ShowSimilar, WrapMovie, WrapMovieInfo, YourRating
+  WrapMovie, WrapMovieInfo, YourRating, MovieCard, TitleAndRating, MovieImage, MovieTags, MovieInfoLink
 } from "./Styling";
 import { Ratings } from './Ratings';
+import { movies } from '../reducers/movies'
+
 // Import what we need to use
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
@@ -32,6 +34,14 @@ export const MovieDetail2 = ({ id }) => {
         setLoading(false)
       })
   }, [id])
+  console.log(movie)
+
+
+  if (loading) {
+    return (
+      <div className="loading-message">Movie page is loading...</div>
+    )
+  }
 
   if (loading) {
     return (
@@ -45,9 +55,12 @@ export const MovieDetail2 = ({ id }) => {
     )
   }
 
-  // Maybe also add genres and actors below
+  const cutOutDate = (date) => {
+    return date.substring(0, 4)
+  }
+
   return (
-    <MovieBackground
+    <MovieCard
       key={id}
     >
       {!movie.poster_path && (
@@ -56,43 +69,39 @@ export const MovieDetail2 = ({ id }) => {
 
       <WrapMovie>
         {movie.poster_path && (
-          <img
+          <MovieImage
             src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} alt={movie.title}
           />
         )}
         <WrapMovieInfo>
-          <MovieTitle>{movie.title}</MovieTitle>
-          <MovieDetailGenres>
-            {movie.genres.map((genre) => (
-              <Genre key={genre.name}>{genre.name}</Genre>
-            ))}
-          </MovieDetailGenres>
-          <MovieOverview>{movie.overview}</MovieOverview>
-          <MovieDetailRow>
-            <MovieInfo>⏲ {movie.runtime} min</MovieInfo>
-            <a
+
+          <Link key={movie.id} to={`/movies/${movie.id}`}>
+            <MovieTitle>{movie.title}</MovieTitle>
+          </Link>
+
+
+
+          <Ratings movieId={movie.id}
+            movieTitle={movie.title}
+            movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />
+          <MovieTags>
+            <MovieInfo><Link
               href={`https://www.imdb.com/title/${movie.imdb_id}`}
               target="_blank"
               rel="noopener noreferrer"
-            >
-              <MovieImdb>IMDb</MovieImdb>
-            </a>
+            >IMDb
+            </Link>
+            </MovieInfo>
+            <MovieInfo>{cutOutDate(movie.release_date)}</MovieInfo>
+            <MovieInfo>{movie.runtime} min</MovieInfo>
+          </MovieTags>
+
+          <MovieOverview>{movie.overview}</MovieOverview>
+          <MovieDetailRow>
+
           </MovieDetailRow>
         </WrapMovieInfo>
-        <MovieRating>⭐️ {movie.vote_average / 2} / 5</MovieRating>
-      </WrapMovie>
-      <YourRating>Your rating</YourRating>
-      <RatingMovieWrap>
-        <Ratings movieId={movie.id}
-          movieTitle={movie.title}
-          movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />
-      </RatingMovieWrap>
-
-      <section className="similar-movies">
-        <Link to={`/similar/${movie.id}`} >
-          <ShowSimilar>Show similar movies</ShowSimilar>
-        </Link>
-      </section>
-    </MovieBackground>
+      </WrapMovie >
+    </MovieCard >
   )
 }

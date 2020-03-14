@@ -5,7 +5,7 @@ import {
 } from "./Styling"
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-// import { MovieDetail2 } from './MovieDetail2';
+import { MovieDetail2 } from './MovieDetail2';
 import { UserList } from './UserList'
 
 
@@ -119,7 +119,6 @@ export const UserPage = () => {
           <MoviesRatedParagraph>Movies that you have rated </MoviesRatedParagraph>
           {moviesRated.length && (
             moviesRated.map((movie) => (
-              // <MovieDetail2 id={movie.movieId} />
               <MovieRatedRow
                 key={movie.movieId}
               >
@@ -135,14 +134,16 @@ export const UserPage = () => {
             <MoviesRatedParagraph>Movies on your watchlist</MoviesRatedParagraph>
             {movieStatus[0] && (
               movieStatus.map((movie) => (
-                <MovieRatedRow
-                  key={movie.movieId}
-                >
-                  <Link to={`/movies/${movie.movieId}`}>
-                    <MovieTitleRated>{movie.movieTitle}</MovieTitleRated>
-                    <img src={movie.movieImage} alt={movie.id} />
-                  </Link>
-                </MovieRatedRow>
+                <MovieDetail2 key={movie.movieId} id={movie.movieId} />
+
+                // <MovieRatedRow
+                //   key={movie.movieId}
+                // >
+                //   <Link to={`/movies/${movie.movieId}`}>
+                //     <MovieTitleRated>{movie.movieTitle}</MovieTitleRated>
+                //     <img src={movie.movieImage} alt={movie.id} />
+                //   </Link>
+                // </MovieRatedRow>
               ))
             )}
           </div>

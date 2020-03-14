@@ -3,7 +3,7 @@ import { Rating } from '@material-ui/lab';
 import Box from '@material-ui/core/Box';
 import { useSelector } from 'react-redux'
 import { ButtonWatch, RatingButtonContainer } from "./Styling";
-
+import styled from "styled-components/macro"
 
 export const Ratings = ({ movieId, movieTitle, movieImage }) => {
   // const rating = window.localStorage.getItem(movieId)
@@ -90,24 +90,27 @@ export const Ratings = ({ movieId, movieTitle, movieImage }) => {
   //       "__v": 0
   //   },
 
+  const Lalala = styled(Box)`
+    padding: 0;
+    margin-bottom: 50px;
+`
+
   return (
     <>
       {/* {accessToken && */}
       {!loading && (
         <RatingButtonContainer>
-          <div>
-            <Box component="fieldset" mb={3} borderColor="transparent">
-              <Rating
-                name={"simple-controlled" + movieId}
-                value={rate}
-                disabled={!accessToken}
-                onChange={(e, rating) => {
-                  handleRating(userId, movieTitle, movieImage, rating)
-                }
-                }
-              />
-            </Box>
-          </div>
+          <Lalala component="fieldset" mb={3} borderColor="transparent" marginBottom="0px" width="100px">
+            <Rating
+              name={"simple-controlled" + movieId}
+              value={rate}
+              disabled={!accessToken}
+              onChange={(e, rating) => {
+                handleRating(userId, movieTitle, movieImage, rating)
+              }
+              }
+            />
+          </Lalala>
           <div>
             <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieTitle, movieImage, "watch")}> Watch </ButtonWatch>
             <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieTitle, movieImage, "no")}> No thanks</ButtonWatch>

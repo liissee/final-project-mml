@@ -7,7 +7,7 @@ const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 const initialState = {
   movies: [],
   chosenCategory: "popular",
-  actorName: []
+  actorName: ""
 }
 
 // Discuss which reducers and actions that should be included
