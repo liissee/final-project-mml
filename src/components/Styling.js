@@ -4,6 +4,75 @@ import styled from 'styled-components/macro'
 export const Main = styled.main`
 `
 
+export const Heading = styled.h1`
+  font-size: 36px;
+  line-height: 1.5;
+  font-weight: bold;
+  margin: 10px 0;
+  text-align: center;  
+`
+
+// NAVBAR
+export const HeaderStartContainer = styled.div`
+  background: #004f4f;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  /* font-family: 'Noto Sans JP', sans-serif; */
+  font-family: 'Muli', sans-serif;
+  font-weight: 700;
+  font-size: 3em;
+/* font-family: 'Cabin', sans-serif;  */
+`
+
+// Searchbar 
+export const FormSearch = styled.form`
+  margin: 10px auto;
+  display: block;
+  /* padding: 20px 30px 30px 30px; */
+  max-width: 480px;
+  background: none;
+  border-radius: 8px;
+  `
+
+export const MainStartContainer = styled.div`
+  height: 100%;
+  width: 100%;
+`
+export const SubNavbar = styled.div`
+background: teal;
+height: 50px;
+/* background-color: inherit; */
+display: flex;
+justify-content: space-between;
+`
+export const SubNavbarLeft = styled.div`
+`
+// export const UserName = styled.p`
+// color: white;
+// font-weight: bold;
+// padding: 5px;
+// `
+export const SubNavbarRight = styled.div`
+`
+
+export const HeadingStart = styled(Heading)`
+  color: white;
+  /*Byt margin 80 till 10 för ipad och desktop*/
+  margin: 10px 0 0 80px;
+  /* margin-top: 60px; */
+  a {
+    font-size: 2rem;
+    text-transform: uppercase;
+    /* padding: 2rem 0; */
+    font-weight: bold;
+    letter-spacing: 0.5rem;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s linear;
+  }
+`
+
 
 export const FieldContainer = styled.div`
   position: relative;
@@ -26,6 +95,8 @@ export const FieldContainer = styled.div`
     line-height: 62px;
   }
 `
+
+//Var används denna?
 export const Form = styled.form`
   margin: 60px auto;
   display: block;
@@ -34,13 +105,7 @@ export const Form = styled.form`
   background: #ededed;
   border-radius: 8px;
 `
-export const Heading = styled.h1`
-  font-size: 36px;
-  line-height: 1.5;
-  font-weight: bold;
-  margin: 10px 0;
-  text-align: center;  
-`
+
 export const Input = styled.input`
   /* position: absolute;
   top: 0;
@@ -122,7 +187,7 @@ export const WrapperWelcome = styled(Wrapper)`
 `
 export const WrapperWelcomeBox = styled(Wrapper)`
   background: #F5F5F5;
-  margin-top: 0;
+  margin-top: 10px;
   max-width: 900px;
 `
 export const WelcomeMovieRow = styled.div`
@@ -258,63 +323,7 @@ export const WrapMovieInfo = styled.div`
 // `
 
 
-// Navbar
-export const HeaderStartContainer = styled.div`
-  background: black;
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  /* font-family: 'Noto Sans JP', sans-serif; */
-  font-family: 'Muli', sans-serif;
-  font-weight: 700;
-  font-size: 3em;
-/* font-family: 'Cabin', sans-serif;  */
-`
 
-// Searchbar 
-export const FormSearch = styled(Form)`
-  margin: 10px auto;
-  display: block;
-  padding: 20px 30px 30px 30px;
-  max-width: 480px;
-  background: none;
-  border-radius: 8px;
-  `
-
-export const MainStartContainer = styled.div`
-  height: 100%;
-  width: 100%;
-`
-export const SubNavbar = styled.div`
-height: 50px;
-background-color: inherit;
-display: flex;
-justify-content: space-between;
-`
-export const SubNavbarLeft = styled.div`
-`
-// export const UserName = styled.p`
-// color: white;
-// font-weight: bold;
-// padding: 5px;
-// `
-export const SubNavbarRight = styled.div`
-`
-
-export const HeadingStart = styled(Heading)`
-  color: white;
-  margin-top: 60px;
-  a {
-    font-size: 2rem;
-    text-transform: uppercase;
-    padding: 2rem 0;
-    font-weight: bold;
-    letter-spacing: 0.5rem;
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s linear;
-  }
-`
 export const ErrorMessage = styled.p`
 color:red;
 font-size: 14px;

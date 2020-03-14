@@ -8,7 +8,6 @@ import styled from "styled-components/macro"
 export const Ratings = ({ movieId, movieTitle, movieImage }) => {
   // const rating = window.localStorage.getItem(movieId)
   const [rate, setRate] = useState()
-  const [loading, setLoading] = useState(true)
   // const accessToken = window.localStorage.getItem("accessToken");
   // const userId = window.localStorage.getItem("userId")
 
@@ -19,12 +18,17 @@ export const Ratings = ({ movieId, movieTitle, movieImage }) => {
   // when the user clicks on a rating button
   // this value should be sent to our own API with PUT or POST somehow
   const handleRating = (userId, movieTitle, movieImage, rating) => {
+    setRate(rating)
     // setRate(rating)
     fetch(`http://localhost:8080/users/${userId}`, {
       method: "PUT",
       body: JSON.stringify({ userId, movieId, movieTitle, movieImage, rating }),
       headers: { "Content-Type": "application/json", "Authorization": accessToken },
-    })
+    }).catch(err => {
+      // Show an error message
+
+    });
+
     // .then(() => {
     //   window.localStorage.setItem(movieId, rating);
     // })
@@ -46,22 +50,11 @@ export const Ratings = ({ movieId, movieTitle, movieImage }) => {
     fetch(`http://localhost:8080/users/${userId}/movies?movieId=${movieId}`)
       .then(res => res.json())
       .then(json => {
-
-        // const thisMovieRating = json.find(item => item.movieId === movieId)
         if (json && json.rating) {
           setRate(json.rating)
           console.log('JAAAASON', json)
         }
-
-        // else if (json === null) {
-        //   setRate(0)
-        // }
-
-        // setRate(json.rating ? json.rating : 0)
-        // setRate(json.rating)
-        // console.log('🤯', thisMovieRating)
       })
-      .then(setLoading(false))
   }, [movieId])
 
   //JENNIES
@@ -98,25 +91,24 @@ export const Ratings = ({ movieId, movieTitle, movieImage }) => {
   return (
     <>
       {/* {accessToken && */}
-      {!loading && (
-        <RatingButtonContainer>
-          <Lalala component="fieldset" mb={3} borderColor="transparent" marginBottom="0px" width="100px">
-            <Rating
-              name={"simple-controlled" + movieId}
-              value={rate}
-              disabled={!accessToken}
-              onChange={(e, rating) => {
-                handleRating(userId, movieTitle, movieImage, rating)
-              }
-              }
-            />
-          </Lalala>
-          <div>
-            <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieTitle, movieImage, "watch")}> Watch </ButtonWatch>
-            <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieTitle, movieImage, "no")}> No thanks</ButtonWatch>
-          </div>
-        </RatingButtonContainer>
-      )}
+
+      <RatingButtonContainer>
+        <Lalala component="fieldset" mb={3} borderColor="transparent" marginBottom="0px" width="100px">
+          <Rating
+            name={"simple-controlled" + movieId}
+            value={rate}
+            disabled={!accessToken}
+            onChange={(e, rating) => {
+              handleRating(userId, movieTitle, movieImage, rating)
+            }
+            }
+          />
+        </Lalala>
+        <div>
+          <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieTitle, movieImage, "watch")}> Watch </ButtonWatch>
+          <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieTitle, movieImage, "no")}> No thanks</ButtonWatch>
+        </div>
+      </RatingButtonContainer>
       {/* } */}
     </>
   )

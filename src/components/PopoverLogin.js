@@ -113,7 +113,6 @@ export const PopoverLogin = () => {
     history.push(`/register`);
   };
 
-
   return (
     <>
       <Button aria-describedby={id} variant="contained" color="secondary" onClick={handleClick}>

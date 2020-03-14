@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { MovieDetail2 } from './MovieDetail2';
 import { UserList } from './UserList'
+import { Ratings } from './Ratings'
 
 
 const url = "http://localhost:8080/secrets";
@@ -30,6 +31,7 @@ export const UserPage = () => {
   //Funkar att rendera om sidan när man loggar in men sparade filmer syns inte...
   const accessToken = useSelector((state) => state.users.accessToken)
   const userId = useSelector((state) => state.users.userId)
+  const userName = useSelector((state) => state.users.userName)
 
   // const rating = useSelector((state) => state.movies.rating)
 
@@ -75,7 +77,7 @@ export const UserPage = () => {
       .then(res => res.json())
       .then(json => {
         setMoviesRated(json)
-        console.log("ratedmovies:", json)
+        // console.log("ratedmovies:", json)
       })
   }, [chosenRating])
 
@@ -98,7 +100,7 @@ export const UserPage = () => {
       .then(res => res.json())
       .then(json => {
         setMovieStatus(json)
-        console.log("watchstatus:", json)
+        // console.log("watchstatus:", json)
       })
   }, [userId])
 
@@ -108,8 +110,7 @@ export const UserPage = () => {
       {errorMessage && <div>{errorMessage}</div>}
       {message && (
         <WrapperWelcomeBox>
-          <Heading>Welcome to your user page!</Heading>
-          <br></br>
+          <Heading>User {userName}</Heading>
           Sort on rating:
           <ButtonRating onClick={(e) => setChosenRating(1)}> 1 </ButtonRating>
           <ButtonRating onClick={(e) => setChosenRating(2)}> 2 </ButtonRating>
@@ -125,7 +126,10 @@ export const UserPage = () => {
                 <Link to={`/movies/${movie.movieId}`}>
                   <MovieTitleRated>{movie.movieTitle}</MovieTitleRated>
                 </Link>
-                <RatingStars>{ratingStars(movie.rating)}</RatingStars>
+                <Ratings movieId={movie.id}
+                  movieTitle={movie.title}
+                  movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />
+                {/* <RatingStars>{ratingStars(movie.rating)}</RatingStars> */}
               </MovieRatedRow>
             ))
           )}

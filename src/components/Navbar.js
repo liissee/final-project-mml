@@ -25,10 +25,20 @@ export const Navbar = () => {
     <MainStartContainer>
       <Hamburger />
       <HeaderStartContainer>
-        <HeadingStart><Link to={`/`}>🎬MOVIE MATCH</Link></HeadingStart>
+        <HeadingStart>
+          <Link to={`/`}>🎬MOVIE MATCH</Link>
+        </HeadingStart>
         <Searchbar />
         {/* <SearchUser /> */}
-
+        <Link to={`/users/${userId}/movies`}>
+          <UserName>{userName}</UserName>
+        </Link>
+        {!accessToken &&
+          <PopoverLogin />
+        }
+        {accessToken &&
+          <Logout />
+        }
       </HeaderStartContainer>
       <SubNavbar>
         <Button variant="contained" color="secondary">
@@ -38,18 +48,11 @@ export const Navbar = () => {
         </Button>
         <PopoverUserSearch />
         <SubNavbarLeft>
-          <Link to={`/users/${userId}/movies`}>
-            <UserName>{userName}</UserName>
-          </Link>
+
 
         </SubNavbarLeft>
         <SubNavbarRight>
-          {!accessToken &&
-            <PopoverLogin />
-          }
-          {accessToken &&
-            <Logout />
-          }
+
         </SubNavbarRight>
       </SubNavbar>
 

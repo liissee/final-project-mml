@@ -21,21 +21,19 @@ export const Searchbar = () => {
   };
 
   return (
-    <div>
-      <FormSearch onSubmit={handleSubmit}>
-        <InputGroup
-          value={searchTerm}
-          onChange={event => setSearchTerm(event.target.value)}
-          disabled={false}
-          large={true}
-          placeholder="Search movie..."
-          rightElement={<Icon icon="icon-arrow" />}
-          leftIcon={<Icon icon="search" />}
-          small={false}
-          type="search"
-        />
-      </FormSearch>
-    </div>
+    <FormSearch onSubmit={handleSubmit}>
+      <InputGroup
+        value={searchTerm}
+        onChange={event => setSearchTerm(event.target.value)}
+        disabled={false}
+        large={true}
+        placeholder="Search movie..."
+        // rightElement={<Icon icon="icon-arrow" />}
+        leftIcon={<Icon icon="search" />}
+        small={false}
+        type="search"
+      />
+    </FormSearch>
   );
 };
 

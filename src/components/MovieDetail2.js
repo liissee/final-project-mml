@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
-  MovieCard, MovieCardInfo, MovieCardOverview, MovieCardTitle,  
-  MovieDetailRow, MovieImage, MovieTags, WrapMovieCard, WrapMovieCardInfo 
+  MovieCard, MovieCardInfo, MovieCardOverview, MovieCardTitle,
+  MovieDetailRow, MovieImage, MovieTags, WrapMovieCard, WrapMovieCardInfo
 } from "./Styling";
 import { Ratings } from './Ratings';
 import { movies } from '../reducers/movies'
@@ -32,7 +32,7 @@ export const MovieDetail2 = ({ id }) => {
         setLoading(false)
       })
   }, [id])
-  console.log(movie)
+  // console.log(movie)
 
 
   if (loading) {
