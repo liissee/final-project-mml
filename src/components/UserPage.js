@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import {
   ButtonRating, Heading, MoviesRatedParagraph, MovieRatedRow, MovieTitleRated,
-  WrapperWelcomeBox, RatingStars
+  WrapperWelcomeBox, Button, RatingStars
 } from "./Styling"
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -21,6 +21,7 @@ export const UserPage = () => {
   const [movieStatus, setMovieStatus] = useState([])
   // const [userList, setUserList] = useState([])
   const [chosenRating, setChosenRating] = useState("")
+  const [page, setPage] = useState(1)
   const watchStatus = "watch"
 
   const searchResult = useSelector(state => state.users.users)
@@ -66,20 +67,30 @@ export const UserPage = () => {
       });
   }, [accessToken]);
 
-  let sortByRating = `?rating=${chosenRating}`
+  // let sortByRating = `?rating=${chosenRating}`
   // chosenRating === "" ? "" : `?rating=${chosenRating}`
+
+
+
+  let query = ""
+  if (!chosenRating) {
+    query = `?page=${page}`
+  } else {
+    query = `?rating=${chosenRating}&page=${page}`
+  }
 
   //Movies with rating
   //CHECK WHY THIS FETCH IS NOT HAPPENING AT FIRST RENDER
+  //Denna ska kunna köra både ${sortByRating} och pageChange
   useEffect(() => {
     if (!userId) return;
-    fetch(`http://localhost:8080/users/${userId}/movies${sortByRating}`)
+    fetch(`http://localhost:8080/users/${userId}/movies${query}`)
       .then(res => res.json())
       .then(json => {
         setMoviesRated(json)
         // console.log("ratedmovies:", json)
       })
-  }, [chosenRating])
+  }, [chosenRating, page])
 
   // //All users. CREATED A SEPERATE COMPONENT!
   // useEffect(() => {
@@ -133,6 +144,7 @@ export const UserPage = () => {
               </MovieRatedRow>
             ))
           )}
+          <Button onClick={(e) => setPage(page + 1)}>More</Button>
 
           <div>
             <MoviesRatedParagraph>Movies on your watchlist</MoviesRatedParagraph>

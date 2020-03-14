@@ -24,11 +24,12 @@ export const MovieDetail2 = ({ id }) => {
     fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`)
       .then((res) => res.json())
       .then((json) => {
-        if (json.status.code === 34) {
-          setError("Movie not found")
-        } else {
-          setMovie(json)
-        }
+        // if (json.status.code === 34) {
+        //   setError("Movie not found")
+        // } 
+        // else {
+        setMovie(json)
+        // }
         setLoading(false)
       })
   }, [id])
