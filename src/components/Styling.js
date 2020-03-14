@@ -144,24 +144,24 @@ export const ActorListWrap = styled.div`
 `
 export const ActorName = styled.div`
   color: black;
-  font-size: 16px;
+  font-size: 12px;
   text-decoration: none;
   text-align:center;
   font-weight: 600;
 `
-export const WrapActor = styled.div`
- height: 100px;
- width: 100px;
- /* position:relative; */
- border-radius:50%;
- overflow: hidden;
- `
+export const ActorWrap = styled.div`
+padding: 10px;
+display: flex;
+justify-content: center;
+`
 
 export const ActorImage = styled.img`
-display:inline;
-height: auto;
-width: 100%;
-/* border-radius: 50%; */
+object-fit: cover;
+border-radius: 50%;
+height: 100px;
+width: 100px;
+/* display:inline;
+height: auto; */
 margin: 0;
 /* width: 50px;
 height: auto; */
@@ -235,11 +235,9 @@ export const YourRating = styled.h3`
 // export const RatingMovieWrap = styled.div`
 //   margin-left: 18.5vw;
 // `
-// export const ShowSimilar = styled(MovieInfo)`
-//   color: black;
-//   margin-left: 2vw;
-//   text-decoration: none;
-// `
+export const SimilarMovies = styled.div`
+width: 50%;
+`
 export const WrapMovie = styled.div`
   display: flex;
   flex-direction: row;

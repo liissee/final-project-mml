@@ -20,7 +20,6 @@ export const Similar = () => {
 
   return (
     <div className="top-movie-list">
-
       <section className="movie-list">
         {movies.map((movie) => (
           <div key={movie.id} className="movie-wrapper">
@@ -39,7 +38,6 @@ export const Similar = () => {
             </div>
           </div>
         ))}
-
       </section>
     </div >
   )

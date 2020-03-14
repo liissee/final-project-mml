@@ -5,7 +5,7 @@ import {
   ActorList, ActorListWrap, ActorName, Genre, MovieBackground,
   MovieDetailGenres, MovieDetailRow, MovieImdb, MovieInfo,
   MovieRating, MovieTitle, MovieOverview, RatingMovieWrap,
-  ShowSimilar, WrapMovie, WrapMovieInfo, YourRating, ActorImage, WrapActor
+  ShowSimilar, WrapMovie, WrapMovieInfo, YourRating, ActorImage, ActorWrap
 } from "./Styling";
 import { Ratings } from './Ratings';
 import { Similar } from './Similar';
@@ -113,16 +113,14 @@ export const MovieDetail = () => {
         <MovieInfo>Starring </MovieInfo>
         <ActorList>
           {cast.map((actor) => (
-
-            <Link key={actor.id} to={`/cast/${actor.id}`} onClick={(e) => handleActor(actor.name)}>
-              <ActorName>{actor.name}</ActorName>
-              <WrapActor>
+            <ActorWrap>
+              <Link key={actor.id} to={`/cast/${actor.id}`} onClick={(e) => handleActor(actor.name)}>
+                <ActorName>{actor.name}</ActorName>
                 <ActorImage
                   src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`} alt={movie.title}
                 />
-              </WrapActor>
-            </Link>
-
+              </Link>
+            </ActorWrap>
           ))}
         </ActorList>
       </ActorListWrap>

@@ -7,6 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;background: rgb(248,255,238);
 background: rgb(248,255,238);
 background: linear-gradient(137deg, rgba(248,255,238,0.542454481792717) 0%, rgba(0,0,0,0.5592612044817927) 38%, rgba(0,0,0,0.7665441176470589) 100%); 
+background-repeat: no-repeat;
 }
 
 code {
