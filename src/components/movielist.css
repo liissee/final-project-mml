@@ -3,7 +3,6 @@
   display:flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  background: #fff;
   margin: 25px;
 }
 .movie-wrapper{

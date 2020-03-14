@@ -5,7 +5,7 @@ import {
   ActorList, ActorListWrap, ActorName, Genre, MovieBackground,
   MovieDetailGenres, MovieDetailRow, MovieImdb, MovieInfo,
   MovieRating, MovieTitle, MovieOverview, RatingMovieWrap,
-  ShowSimilar, WrapMovie, WrapMovieInfo, YourRating
+  ShowSimilar, WrapMovie, WrapMovieInfo, YourRating, ActorImage, WrapActor
 } from "./Styling";
 import { Ratings } from './Ratings';
 import { Similar } from './Similar';
@@ -105,23 +105,26 @@ export const MovieDetail = () => {
       <RatingMovieWrap>
         <Ratings movieId={movie.id}
           movieTitle={movie.title}
-          movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />      
+          movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />
       </RatingMovieWrap>
-      
-      
+
+
       <ActorListWrap>
-      <MovieInfo>Starring </MovieInfo>
-      <ActorList>
-        {cast.map((actor) => (
-          <Link key={actor.id} to={`/cast/${actor.id}`} onClick={(e) => handleActor(actor.name)}>
-            <ActorName>{actor.name}</ActorName>
-            <ActorName>"{actor.character}"</ActorName>
-            <img
-              src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`} alt={movie.title}
-            />
-          </Link>
-        ))}
-      </ActorList>
+        <MovieInfo>Starring </MovieInfo>
+        <ActorList>
+          {cast.map((actor) => (
+
+            <Link key={actor.id} to={`/cast/${actor.id}`} onClick={(e) => handleActor(actor.name)}>
+              <ActorName>{actor.name}</ActorName>
+              <WrapActor>
+                <ActorImage
+                  src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`} alt={movie.title}
+                />
+              </WrapActor>
+            </Link>
+
+          ))}
+        </ActorList>
       </ActorListWrap>
 
       <section>

@@ -9,7 +9,7 @@ import { PopoverUserSearch } from 'components/PopoverUserSearch'
 import Button from '@material-ui/core/Button';
 
 import {
-  HeadingStart, HeaderStartContainer, MainStartContainer
+  HeadingStart, HeaderStartContainer, UserName, MainStartContainer, SubNavbar, SubNavbarLeft, SubNavbarRight
 } from "./Styling";
 import styled from 'styled-components/macro'
 import { useSelector } from 'react-redux'
@@ -19,13 +19,13 @@ export const Navbar = () => {
 
   const accessToken = useSelector((state) => state.users.accessToken)
   const userName = useSelector((state) => state.users.userName)
-
+  const userId = useSelector((state) => state.users.userId)
 
   return (
     <MainStartContainer>
       <Hamburger />
       <HeaderStartContainer>
-        <HeadingStart><Link to={`/`}>MATCH ❤️ MOVIES</Link></HeadingStart>
+        <HeadingStart><Link to={`/`}>🎬MOVIE MATCH</Link></HeadingStart>
         <Searchbar />
         {/* <SearchUser /> */}
 
@@ -38,9 +38,10 @@ export const Navbar = () => {
         </Button>
         <PopoverUserSearch />
         <SubNavbarLeft>
-          <UserName>
-            {userName}
-          </UserName>
+          <Link to={`/users/${userId}/movies`}>
+            <UserName>{userName}</UserName>
+          </Link>
+
         </SubNavbarLeft>
         <SubNavbarRight>
           {!accessToken &&
@@ -56,30 +57,4 @@ export const Navbar = () => {
 
   )
 }
-const SubNavbar = styled.div`
-height: 50px;
-background-color: firebrick;
-display: flex;
-justify-content: space-between;
-`
-const SubNavbarLeft = styled.div`
-`
-const UserName = styled.p`
-color: white;
-font-weight: bold;
-padding: 5px;
-`
-const SubNavbarRight = styled.div`
-`
 
-  // const NavbarButton = styled.button`
-  // width:70px;
-  // color: white;
-  // background-color: transparent;
-  // font-size: 16px;
-  // font-weight: bold;
-  // border:none;
-  // &:hover {
-  //   transform: scale(1,1);
-  //   cursor: pointer;
-  // `}

@@ -1,6 +1,10 @@
 import styled from 'styled-components/macro'
 
 
+export const Main = styled.main`
+`
+
+
 export const FieldContainer = styled.div`
   position: relative;
   display: block;
@@ -75,15 +79,7 @@ export const Wrapper = styled.div`
   }
 `
 
-// Searchbar 
-export const FormSearch = styled(Form)`
-  margin: 10px auto;
-  display: block;
-  padding: 20px 30px 30px 30px;
-  max-width: 480px;
-  background: none;
-  border-radius: 8px;
-  `
+
 // Welcome component
 export const ButtonRating = styled.button`
   background-color: #B22222;
@@ -140,6 +136,8 @@ export const ActorList = styled.div`
   display: flex;
   flex-direction: row;
   margin-bottom: 3vh;
+  justify-content: start;
+  
 `
 export const ActorListWrap = styled.div`
   margin-left: 2vw;
@@ -148,6 +146,25 @@ export const ActorName = styled.div`
   color: black;
   font-size: 16px;
   text-decoration: none;
+  text-align:center;
+  font-weight: 600;
+`
+export const WrapActor = styled.div`
+ height: 100px;
+ width: 100px;
+ /* position:relative; */
+ border-radius:50%;
+ overflow: hidden;
+ `
+
+export const ActorImage = styled.img`
+display:inline;
+height: auto;
+width: 100%;
+/* border-radius: 50%; */
+margin: 0;
+/* width: 50px;
+height: auto; */
 `
 export const Genre = styled.div`
   background: #B22222;
@@ -155,6 +172,7 @@ export const Genre = styled.div`
   margin-right: 1vw;
   padding: 4px;
 `
+
 export const MovieBackground = styled.div`
   /* background: white; */
 `
@@ -244,23 +262,47 @@ export const WrapMovieInfo = styled.div`
 
 // Navbar
 export const HeaderStartContainer = styled.div`
-  background: #8B0000;
+  background: black;
   display: flex;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
+  /* font-family: 'Noto Sans JP', sans-serif; */
+  font-family: 'Muli', sans-serif;
+  font-weight: 700;
+  font-size: 3em;
+/* font-family: 'Cabin', sans-serif;  */
 `
+
+// Searchbar 
+export const FormSearch = styled(Form)`
+  margin: 10px auto;
+  display: block;
+  padding: 20px 30px 30px 30px;
+  max-width: 480px;
+  background: none;
+  border-radius: 8px;
+  `
+
 export const MainStartContainer = styled.div`
-  background: #FFFFE0; 
   height: 100%;
   width: 100%;
 `
-export const StartButtonContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-left: 2vw;
-  margin-top: 40px;
-  width: 30%;
+export const SubNavbar = styled.div`
+height: 50px;
+background-color: inherit;
+display: flex;
+justify-content: space-between;
 `
+export const SubNavbarLeft = styled.div`
+`
+// export const UserName = styled.p`
+// color: white;
+// font-weight: bold;
+// padding: 5px;
+// `
+export const SubNavbarRight = styled.div`
+`
+
 export const HeadingStart = styled(Heading)`
   color: white;
   margin-top: 60px;
@@ -307,13 +349,7 @@ export const Button = styled.button`
     cursor: pointer;
   }
 `
-export const ButtonStart = styled(Button)`
-  border: 1px solid;
-  margin-left: 5%;
-  height: 54px;
-  width: 100%;
-  background: #B22222;
-`
+
 export const Link = styled.link`
   font-size: 16px;
   font-weight: bold;
