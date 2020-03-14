@@ -156,7 +156,7 @@ export const Genre = styled.div`
   padding: 4px;
 `
 export const MovieBackground = styled.div`
-  background: white;
+  /* background: white; */
 `
 export const MovieDetailGenres = styled.div`
   display: flex;
