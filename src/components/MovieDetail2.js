@@ -74,31 +74,25 @@ export const MovieDetail2 = ({ id }) => {
           />
         )}
         <WrapMovieInfo>
-
           <Link key={movie.id} to={`/movies/${movie.id}`}>
             <MovieTitle>{movie.title}</MovieTitle>
           </Link>
-
-
-
           <Ratings movieId={movie.id}
             movieTitle={movie.title}
             movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />
           <MovieTags>
-            <MovieInfo><Link
-              href={`https://www.imdb.com/title/${movie.imdb_id}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >IMDb
-            </Link>
+            <MovieInfo>
+              <Link
+                href={`https://www.imdb.com/title/${movie.imdb_id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >IMDb</Link>
             </MovieInfo>
-            <MovieInfo>{cutOutDate(movie.release_date)}</MovieInfo>
-            <MovieInfo>{movie.runtime} min</MovieInfo>
+            <MovieInfo>| {cutOutDate(movie.release_date)} |</MovieInfo>
+            <MovieInfo>{movie.runtime} min </MovieInfo>
           </MovieTags>
-
           <MovieOverview>{movie.overview}</MovieOverview>
           <MovieDetailRow>
-
           </MovieDetailRow>
         </WrapMovieInfo>
       </WrapMovie >

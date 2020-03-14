@@ -419,11 +419,11 @@ export const SlideButton = styled.button`
 
 //MOVIE CARD ON USERPAGE
 export const MovieCard = styled.div`
-  background: pink;
-  border-radius: 20px;
+background: rgb(248,255,238);
+background: linear-gradient(90deg, rgba(248,255,238,0.542454481792717) 0%, rgba(255,141,111,0.7665441176470589) 100%);  border-radius: 20px;
   /* padding: 20px 0 0; */
   margin: 10px;
-    height: 200px;
+  height: 200px;
 
 `
 export const WrapMovie = styled.div`
@@ -447,8 +447,8 @@ export const WrapMovieInfo = styled.div`
 export const MovieTags = styled.div`
   display: flex;
   flex-direction:row;
-  justify-content: space-evenly;
   align-items:center;
+  font-weight: 600;
   `
 export const MovieInfo = styled.p`
 display: inline;
@@ -457,17 +457,19 @@ margin: 0;
 /* margin-top: 1.5vh;
 margin-bottom: 2vh; */
 color: grey;
-
 `
-export const MovieInfoLink = styled.a`
-margin:0;
+export const MovieOverview = styled.div`
+  font-size: 1em;
+  /* margin-bottom: 2vh; */
+  /* white-space: nowrap; */
+  /* text-overflow: ellipsis; */
+  /* height: 60px;
+  line-height: 20px; */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
 `
-
-export const TitleAndRating = styled.div`
-display: flex;
-flex-direction: row;
-`
-
 
 export const MovieTitle = styled.h1`
   color: black;
@@ -478,6 +480,8 @@ export const MovieTitle = styled.h1`
   overflow: hidden;
   text-overflow: ellipsis;
 `
+
+
 
 // Movie detail component
 export const ActorList = styled.div`
@@ -512,16 +516,7 @@ export const MovieDetailRow = styled(WelcomeMovieRow)`
 export const MovieRating = styled.h4`
 
 `
-export const MovieOverview = styled.div`
-  font-size: 16px;
-  /* margin-bottom: 2vh; */
-  /* white-space: nowrap; */
-  overflow: hidden;
-  text-overflow: ellipsis;
-  height: 60px;
-  line-height: 20px;
-    
-`
+
 
 export const MovieImdb = styled(MovieInfo)`
   background: #FFD700;
