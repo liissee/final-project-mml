@@ -9,6 +9,7 @@ import { DropDownList } from "components/DropDownList"
 import { not_found } from "assets/not_found.jpeg"
 import "components/movielist.css"
 import { Ratings } from "./Ratings"
+import { Button } from './Styling'
 
 // import not_found from "./assets/not_found"
 // Import what we need to use
@@ -19,21 +20,26 @@ export const MoviesList = () => {
   const [movies, setMovies] = useState([])
   const [error, setError] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [page, setPage] = useState(1)
   const category = useSelector(state => state.movies.chosenCategory)
   const searchResult = useSelector(state => state.movies.movies)
   const userSearch = useSelector(state => state.users.users)
   //const accessToken = window.localStorage.getItem("accessToken")
 
+
+  //Pagination
+  let query = `&page=${page}`
+
   useEffect(() => {
     setLoading(true)
     setError(false)
-    fetch(`https://api.themoviedb.org/3/movie/${category}?api_key=${API_KEY}&language=en-US`)
+    fetch(`https://api.themoviedb.org/3/movie/${category}?api_key=${API_KEY}&language=en-US${query}`)
       .then((res) => res.json())
       .then((json) => {
         setMovies(json.results)
       })
     setLoading(false)
-  }, [category])
+  }, [category, page])
 
   if (loading) {
     return (
@@ -89,6 +95,7 @@ export const MoviesList = () => {
           )}
 
       </section>
+      <Button onClick={(e) => setPage(page + 1)}>More</Button>
       {/* <Button type="button"
         onClick={() => {
           dispatch(movies.actions.setPageNumber())
