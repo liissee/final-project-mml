@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
-  Genre, ActorList, ActorName,
-  MovieDetailGenres, MovieDetailRow, MovieImdb, MovieInfo,
-  MovieRating, MovieTitle, MovieOverview, RatingMovieWrap,
-  WrapMovie, WrapMovieInfo, YourRating, MovieCard, TitleAndRating, MovieImage, MovieTags, MovieInfoLink
+  MovieCard, MovieCardInfo, MovieCardOverview, MovieCardTitle,  
+  MovieDetailRow, MovieImage, MovieTags, WrapMovieCard, WrapMovieCardInfo 
 } from "./Styling";
 import { Ratings } from './Ratings';
 import { movies } from '../reducers/movies'
@@ -67,35 +65,35 @@ export const MovieDetail2 = ({ id }) => {
         <p>Lägg in placeholder</p>
       )}
 
-      <WrapMovie>
+      <WrapMovieCard>
         {movie.poster_path && (
           <MovieImage
             src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} alt={movie.title}
           />
         )}
-        <WrapMovieInfo>
+        <WrapMovieCardInfo>
           <Link key={movie.id} to={`/movies/${movie.id}`}>
-            <MovieTitle>{movie.title}</MovieTitle>
+            <MovieCardTitle>{movie.title}</MovieCardTitle>
           </Link>
           <Ratings movieId={movie.id}
             movieTitle={movie.title}
             movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />
           <MovieTags>
-            <MovieInfo>
+            <MovieCardInfo>
               <Link
                 href={`https://www.imdb.com/title/${movie.imdb_id}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >IMDb</Link>
-            </MovieInfo>
-            <MovieInfo>| {cutOutDate(movie.release_date)} |</MovieInfo>
-            <MovieInfo>{movie.runtime} min </MovieInfo>
+            </MovieCardInfo>
+            <MovieCardInfo>| {cutOutDate(movie.release_date)} |</MovieCardInfo>
+            <MovieCardInfo>{movie.runtime} min </MovieCardInfo>
           </MovieTags>
-          <MovieOverview>{movie.overview}</MovieOverview>
+          <MovieCardOverview>{movie.overview}</MovieCardOverview>
           <MovieDetailRow>
           </MovieDetailRow>
-        </WrapMovieInfo>
-      </WrapMovie >
-    </MovieCard >
+        </WrapMovieCardInfo>
+      </WrapMovieCard>
+    </MovieCard>
   )
 }
