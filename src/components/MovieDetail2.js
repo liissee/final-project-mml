@@ -6,8 +6,6 @@ import {
 } from "./Styling";
 import { Ratings } from './Ratings';
 import { movies } from '../reducers/movies'
-import { LoadingIndicator } from 'components/Loading'
-
 
 // Import what we need to use
 
@@ -40,11 +38,10 @@ export const MovieDetail2 = ({ id }) => {
 
   if (loading) {
     return (
-      <LoadingIndicator />
-
-      // <div className="loading-message">Movie page is loading...</div>
+      <div className="loading-message">Movie page is loading...</div>
     )
   }
+
 
 
   if (!movie.title) {

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux";
@@ -7,8 +8,6 @@ import "components/movielist.css"
 import { Ratings } from "./Ratings"
 import { Button } from './Styling'
 
-// import not_found from "./assets/not_found"
-// Import what we need to use
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 
@@ -57,8 +56,6 @@ export const MoviesList = () => {
   // Render a list of movies depending on what the user has written in Searchbar
 
   //How to fetch more results, show page 2 etc..? 
-
-
   return (
     <div className="top-movie-list">
       <DropDownList />
@@ -66,7 +63,6 @@ export const MoviesList = () => {
         {userSearch[0] &&
           <UserSearchResult />
         }
-
         {movieResults &&
           movieResults.map((movie) => {
             console.log(movie)
@@ -92,9 +88,36 @@ export const MoviesList = () => {
             )
           }
           )}
+
       </section>
       <Button onClick={(e) => setPage(page + 1)}>More</Button>
-
     </div >
   )
 }
+
+
+    //   return (
+//     <div className="top-movie-list">
+//       <DropDownList />
+//       <MovieWrapper>
+//         {movieResults.map((movie) => (
+//           <MovieList>
+//             <Link key={movie.id} to={`/movies/${movie.id}`}>
+//               {movie.poster_path && (
+//                 <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.id} />
+//               )}
+//               {!movie.poster_path && (
+//                 <p>Movie poster not found</p>
+//                 // <img src={not_found} />
+//               )}
+//               <MovieListHover>
+//                 <h1>{movie.original_title}</h1>
+//                 <p>Released {movie.release_date}</p>
+//               </MovieListHover>
+//             </Link>
+//           </MovieList>
+//         ))}
+//       </MovieWrapper>
+//     </div>
+//   )
+// }

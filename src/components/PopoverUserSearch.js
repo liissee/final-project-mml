@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import { useHistory } from "react-router-dom";
 import { Input, Label, ErrorMessage } from "./Styling";
 import { searchResult } from "../reducers/users.js"
+import { ButtonSearchUser } from "./Styling";
 
 const useStyles = makeStyles(theme => ({
   typography: {
@@ -53,9 +54,9 @@ export const PopoverUserSearch = () => {
 
   return (
     <>
-      <Button aria-describedby={id} variant="contained" color="secondary" onClick={handleClick}>
+      <ButtonSearchUser aria-describedby={id} variant="contained" color="secondary" onClick={handleClick}>
         Search User
-      </Button>
+      </ButtonSearchUser>
       <Popover
         id={id}
         open={open}

@@ -4,7 +4,6 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { movies } from 'reducers/movies'
 import { users } from 'reducers/users'
 import { ui } from 'reducers/ui'
-
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Login } from 'components/Login'
 import { Registration } from 'components/Registration'
