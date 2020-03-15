@@ -402,27 +402,6 @@ export const WrapperUserPage = styled.div`
 `
 
 
-// export const MovieWrapper = styled.div`
-//   display:flex;
-//   flex-wrap: wrap;
-//   justify-content: space-evenly;
-// `
-// export const MovieList = styled.a`
-//   width: 25%;
-//   position: relative;
-//   text-decoration: none;
-//   color: #fff;
-//   box-shadow: 3px 3px 20px rgba(0, 0, 0, .5);
-
-//   &:hover {
-
-//   }
-// `
-// export const MovieListHover = styled.a`
-
-// `
-
-
 //SWIPER
 export const NEXT = "HEJ";
 export const PREV = "HEJDÅ";
@@ -542,5 +521,45 @@ export const WrapMovieCardInfo = styled.div`
   flex-direction: column;
   margin-left: 2vw;
   width: 70%;
+`
+
+//MOVIELIST COMPONENT
+//.movie-list
+export const MovieListContainer = styled.div`
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 25px;
+`
+//.movie-wrapper
+export const MovieWrapper = styled.div`
+ width: 250px;
+  margin: 20px;
+  position: relative;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, .5);
+  text-align: center;
+ `
+
+//.movie-wrapper a + hover
+export const MovieWrapperLink = styled.a`
+  text-decoration: none;
+  color: #fff; 
+`
+
+//.movie-list .hover-details {
+export const HoverDetails = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0.75);
+  display: none;
+  border-radius: 10px;
+  padding: 20px;
+
 `
 
