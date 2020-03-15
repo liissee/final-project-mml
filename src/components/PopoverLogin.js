@@ -5,7 +5,7 @@ import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { useHistory } from "react-router-dom";
-import { Input, Label, ErrorMessage } from "./Styling";
+import { Input, Label, ErrorMessage, SignInButton } from "./Styling";
 import { fetchUser } from "../reducers/users.js"
 
 const useStyles = makeStyles(theme => ({
@@ -115,9 +115,9 @@ export const PopoverLogin = () => {
 
   return (
     <>
-      <Button aria-describedby={id} variant="contained" color="secondary" onClick={handleClick}>
+      <SignInButton aria-describedby={id} variant="contained" color="secondary" onClick={handleClick}>
         SIGN IN
-      </Button>
+      </SignInButton>
       <Popover
         id={id}
         open={open}

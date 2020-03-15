@@ -10,6 +10,7 @@ import { not_found } from "assets/not_found.jpeg"
 import "components/movielist.css"
 import { Ratings } from "./Ratings"
 import { Button } from './Styling'
+import {} from './Styling'
 
 // import not_found from "./assets/not_found"
 // Import what we need to use

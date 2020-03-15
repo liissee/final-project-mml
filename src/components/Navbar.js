@@ -9,7 +9,9 @@ import { PopoverUserSearch } from 'components/PopoverUserSearch'
 import Button from '@material-ui/core/Button';
 
 import {
-  HeadingStart, HeaderStartContainer, UserName, MainStartContainer, SubNavbar, SubNavbarLeft, SubNavbarRight
+  HeadingStart, HeaderStartContainer, NavRightContainer,
+  UserNameNav, MainStartContainer, SubNavbar, SubNavbarLeft, 
+  SubNavbarRight, WatchListLink
 } from "./Styling";
 import styled from 'styled-components/macro'
 import { useSelector } from 'react-redux'
@@ -29,9 +31,9 @@ export const Navbar = () => {
           <Link to={`/`}>🎬MOVIE MATCH</Link>
         </HeadingStart>
         <Searchbar />
-        {/* <SearchUser /> */}
+        <NavRightContainer>
         <Link to={`/users/${userId}/movies`}>
-          <UserName>{userName}</UserName>
+          <UserNameNav>{userName}</UserNameNav>
         </Link>
         {!accessToken &&
           <PopoverLogin />
@@ -39,25 +41,21 @@ export const Navbar = () => {
         {accessToken &&
           <Logout />
         }
+        </NavRightContainer>
       </HeaderStartContainer>
       <SubNavbar>
-        <Button variant="contained" color="secondary">
-          <Link to="/users/:id/movies">
-            Watchlist
+        <Link to="/">
+          <WatchListLink>Movies</WatchListLink>
         </Link>
-        </Button>
+
+        <Link to="/users/:id/movies">
+          <WatchListLink>Watchlist</WatchListLink>
+        </Link>
+
         <PopoverUserSearch />
-        <SubNavbarLeft>
 
-
-        </SubNavbarLeft>
-        <SubNavbarRight>
-
-        </SubNavbarRight>
       </SubNavbar>
-
-    </MainStartContainer >
-
+    </MainStartContainer>
   )
 }
 

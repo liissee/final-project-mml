@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 import { useDispatch } from 'react-redux'
 import { users } from "../reducers/users"
+import { SignOutButton } from './Styling'
 
 
 export const Logout = () => {
@@ -18,8 +19,8 @@ export const Logout = () => {
 
 
   return (
-    <Button variant="contained" color="secondary" onClick={handleLogout}>
+    <SignOutButton variant="contained" color="secondary" onClick={handleLogout}>
       Sign out
-    </Button>
+    </SignOutButton>
   )
 }

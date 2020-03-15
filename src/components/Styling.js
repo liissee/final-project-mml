@@ -3,7 +3,6 @@ import styled from 'styled-components/macro'
 
 export const Main = styled.main`
 `
-
 export const Heading = styled.h1`
   font-size: 36px;
   line-height: 1.5;
@@ -13,10 +12,19 @@ export const Heading = styled.h1`
 `
 
 // NAVBAR
+export const ButtonSearchUser = styled.button`
+  background: teal;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 2vw;
+  padding-top: 0;
+`
 export const HeaderStartContainer = styled.div`
   background: #004f4f;
   display: flex;
-  justify-content: center;
+  // justify-content: center;
   flex-direction: row;
   /* font-family: 'Noto Sans JP', sans-serif; */
   font-family: 'Muli', sans-serif;
@@ -24,38 +32,6 @@ export const HeaderStartContainer = styled.div`
   font-size: 3em;
 /* font-family: 'Cabin', sans-serif;  */
 `
-
-// Searchbar 
-export const FormSearch = styled.form`
-  margin: 10px auto;
-  display: block;
-  /* padding: 20px 30px 30px 30px; */
-  max-width: 480px;
-  background: none;
-  border-radius: 8px;
-  `
-
-export const MainStartContainer = styled.div`
-  height: 100%;
-  width: 100%;
-`
-export const SubNavbar = styled.div`
-background: teal;
-height: 50px;
-/* background-color: inherit; */
-display: flex;
-justify-content: space-between;
-`
-export const SubNavbarLeft = styled.div`
-`
-// export const UserName = styled.p`
-// color: white;
-// font-weight: bold;
-// padding: 5px;
-// `
-export const SubNavbarRight = styled.div`
-`
-
 export const HeadingStart = styled(Heading)`
   color: white;
   /*Byt margin 80 till 10 för ipad och desktop*/
@@ -72,6 +48,62 @@ export const HeadingStart = styled(Heading)`
     transition: color 0.3s linear;
   }
 `
+export const MainStartContainer = styled.div`
+  height: 100%;
+  width: 100%;
+`
+export const NavRightContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+`
+export const SignInButton = styled(ButtonSearchUser)`
+  background: #004f4f;
+`
+export const SignOutButton = styled(ButtonSearchUser)`
+  background: #004f4f;
+`
+export const SubNavbar = styled.div`
+  background: teal;
+  display: flex;
+  height: 50px;
+`
+export const SubNavbarLeft = styled.div`
+`
+export const SubNavbarRight = styled.div`
+`
+export const UserNameNav = styled.div`
+  color: white;
+  font-size: 16px;
+  margin-top: 4vh;
+  text-decoration: none;
+`
+export const WatchListLink = styled.div`
+  color: white;
+  font-size: 16px;
+  margin-left: 2vw;
+  margin-top: 2vh;
+  text-decoration: none;
+`
+
+// Searchbar 
+export const FormSearch = styled.form`
+  margin: 10px;
+  margin-left: 4vw;
+  display: block;
+  /* padding: 20px 30px 30px 30px; */
+  max-width: 480px;
+  background: none;
+  border-radius: 8px;
+  `
+
+
+// export const UserName = styled.p`
+// color: white;
+// font-weight: bold;
+// padding: 5px;
+// `
+
 
 
 export const FieldContainer = styled.div`
@@ -286,20 +318,6 @@ export const YourRating = styled.h3`
   margin-left: 18.5vw;
   margin-top: 0;
 `
-
-
-// export const MovieImdb = styled(MovieInfo)`
-//   background: #FFD700;
-//   color: black;
-//   margin-left: 1vw;
-//   width: 3.5vw;
-// `
-// export const RatingButtonContainerDetail = styled(RatingButtonContainer)`
-//   margin-left: 18.5vw;
-// `
-// export const RatingMovieWrap = styled.div`
-//   margin-left: 18.5vw;
-// `
 export const SimilarMovies = styled.div`
 width: 50%;
 `
@@ -413,13 +431,8 @@ export const WrapperUserPage = styled.div`
 //   text-decoration: none;
 //   color: #fff;
 //   box-shadow: 3px 3px 20px rgba(0, 0, 0, .5);
-
-//   &:hover {
-
-//   }
 // `
 // export const MovieListHover = styled.a`
-
 // `
 
 
@@ -544,3 +557,21 @@ export const WrapMovieCardInfo = styled.div`
   width: 70%;
 `
 
+
+// Movie List
+// export const MovieList = styled.section`
+//   display:flex;
+//   flex-wrap: wrap;
+//   justify-content: space-evenly;
+//   margin: 25px;
+// `
+
+// .movie-list:hover .hover-details a{
+//   display:block;
+// }
+
+
+// .movie-list .hover-details h1 {
+//   margin-top: auto;
+//   margin-bottom: 0;
+// }
