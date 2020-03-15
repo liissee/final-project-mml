@@ -5,9 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;background: rgb(248,255,238);
-background: #1b262c;
-  /* background: rgb(248,255,238); */
-/* background: linear-gradient(137deg, rgba(248,255,238,0.542454481792717) 0%, rgba(0,0,0,0.5592612044817927) 38%, rgba(0,0,0,0.7665441176470589) 100%);  */
+background: rgb(22,28,31);
+background: linear-gradient(137deg, rgba(22,28,31,0.9878326330532213) 10%, rgba(28,50,61,1) 54%, rgba(18,16,16,0.9710259103641457) 93%);  /* background: rgb(248,255,238); */
 background-repeat: no-repeat;
 }
 

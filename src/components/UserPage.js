@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import {
-  ButtonRating, Heading, MoviesRatedParagraph, MovieRatedRow, MovieTitleRated,
-  WrapperWelcomeBox, Button, RatingStars
+  WrapperWelcomeBox, Button
 } from "./Styling"
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -77,10 +76,6 @@ export const UserPage = () => {
   const [chosenList, setChosenList] = useState("watch")
   const [loading, setLoading] = useState(true)
 
-  const searchResult = useSelector(state => state.users.users)
-  console.log(searchResult)
-  // const accessToken = window.localStorage.getItem("accessToken")
-  //const userId = window.localStorage.getItem("userId")
 
   //Funkar att rendera om sidan när man loggar in men sparade filmer syns inte...
   const accessToken = useSelector((state) => state.users.accessToken)
@@ -154,6 +149,8 @@ export const UserPage = () => {
       .then(res => res.json())
       .then(json => {
         setMovieStatus(json)
+        console.log("watchstatus:", json)
+
       })
   }, [userId, page, chosenList])
 
@@ -203,7 +200,6 @@ export const UserPage = () => {
           <Button onClick={(e) => setChosenRating(3)}> 3 </Button>
           <Button onClick={(e) => setChosenRating(4)}> 4 </Button>
           <Button onClick={(e) => setChosenRating(5)}> 5 </Button>
-          {/* <MoviesRatedParagraph>Movies that you have rated </MoviesRatedParagraph> */}
           {moviesRated && chosenList === "rating" && (
             moviesRated.map((movie) => (
               movie.rating && (

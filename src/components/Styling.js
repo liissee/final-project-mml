@@ -13,7 +13,7 @@ export const Heading = styled.h1`
 
 // NAVBAR
 export const ButtonSearchUser = styled.button`
-  background: #0f4c81;
+  background: inherit;
   border: none;
   color: white;
   cursor: pointer;
@@ -22,34 +22,37 @@ export const ButtonSearchUser = styled.button`
   padding-top: 0;
   text-transform: uppercase;
   font-weight: 600;
-
 `
 export const HeaderStartContainer = styled.div`
-  background: #0a2e4e;
+  background: #1b303b;
   display: flex;
   justify-content: center;
   flex-direction: row;
-  font-family: 'Muli', sans-serif;
   font-weight: 700;
   align-items: center;
   padding: 15px;
 `
 export const HeaderTitle = styled.h1`
+  font-family: 'Muli', sans-serif;
+  /* font-family: 'Raleway', sans-serif; */
   color: white;
-  /*Byt margin 80 till 10 för ipad och desktop*/
-  /* margin: 10px 0 0 80px; */
-  /* margin-top: 60px; */
   a {
-    font-size: 2rem;
+    font-size: 3.5rem;
     text-transform: uppercase;
-    /* padding: 2rem 0; */
-    font-weight: bold;
-    letter-spacing: 0.5rem;
+    font-weight: 900;
+    letter-spacing: -5px;
+    text-shadow: 2px 2px 0px #000, 5px 4px 0px rgba(0,0,0,0.15);
     color: white;
     text-decoration: none;
     transition: color 0.3s linear;
-
   }
+`
+export const SubNavbar = styled.div`
+  background: radial-gradient(circle, rgba(0,0,0,0.2539390756302521) 100%, rgba(148,187,233,1) 100%);  display: flex;
+  height: 50px;
+  align-items: baseline;
+  text-transform: uppercase;
+  font-weight: 600;
 `
 export const MainStartContainer = styled.div`
   height: 100%;
@@ -62,22 +65,24 @@ export const NavRightContainer = styled.div`
   align-items: baseline;
 `
 export const SignInButton = styled(ButtonSearchUser)`
-  background: #0a2e4e;
+  background: inherit;
+      &:hover {
+    transform: scale(1.2);
+    text-shadow: 2px 2px 0px #000, 5px 4px 0px rgba(0,0,0,0.15);
+  }
+  
 `
 export const SignOutButton = styled(ButtonSearchUser)`
-  background: #0a2e4e;
+  background: inherit;
   text-align: none;
   align-items: start;
-`
-export const SubNavbar = styled.div`
-  background: #0f4c81;
-  display: flex;
-  height: 50px;
-  align-items: baseline;
-  text-transform: uppercase;
-  font-weight: 600;
+      &:hover {
+    transform: scale(1.2);
+    text-shadow: 2px 2px 0px #000, 5px 4px 0px rgba(0,0,0,0.15);
+  }
 
 `
+
 
 export const UserNameNav = styled.div`
   color: white;
@@ -223,19 +228,19 @@ export const WelcomeMovieRow = styled.div`
   flex-wrap: wrap;
 `
 
-// Movie detail component
+// MovieDetail component
 export const ActorList = styled.div`
   display: flex;
   flex-direction: row;
   margin-bottom: 3vh;
   justify-content: start;
-  
+  color: white;
 `
 export const ActorListWrap = styled.div`
   margin-left: 2vw;
 `
 export const ActorName = styled.div`
-  color: black;
+  color: white;
   font-size: 12px;
   text-decoration: none;
   text-align:center;
@@ -279,6 +284,7 @@ export const MovieDetailRow = styled(WelcomeMovieRow)`
 export const MovieInfo = styled.h3`
   margin-top: 1.5vh;
   margin-bottom: 2vh;
+  color:white;
 `
 export const MovieImdb = styled(MovieInfo)`
   background: #FFD700;
@@ -289,13 +295,15 @@ export const MovieImdb = styled(MovieInfo)`
 export const MovieOverview = styled.div`
   font-size: 16px;
   margin-bottom: 2vh;
+  color:white;
 `
 export const MovieTitle = styled.h1`
-  color: black;
+  color: white;
   margin-top: 0;
   text-decoration: none;
 `
 export const MovieRating = styled.h3`
+color:white;
 `
 export const RatingButtonContainerDetail = styled(RatingButtonContainer)`
   margin-left: 18.5vw;
@@ -303,18 +311,20 @@ export const RatingButtonContainerDetail = styled(RatingButtonContainer)`
 export const RatingMovieWrap = styled.div`
   margin-left: 18.5vw;
 `
-export const ShowSimilar = styled(MovieInfo)`
-  color: black;
-  margin-left: 2vw;
-  text-decoration: none;
-`
+export const ShowSimilar = styled.div`
+  color: white;
+ 
+  `
+
 export const YourRating = styled.h3`
   margin-bottom: 2vh;
   margin-left: 18.5vw;
   margin-top: 0;
+  color: white;
 `
 export const SimilarMovies = styled.div`
 width: 50%;
+
 `
 export const WrapMovie = styled.div`
   display: flex;
@@ -387,6 +397,7 @@ export const SearchContainer = styled.div`
 export const MoviesRatedParagraph = styled.h3`
   font-size: 18px;
   font-weight: bold;
+  color: white;
 `
 export const MovieRatedRow = styled.div`
   display: flex;
@@ -394,28 +405,25 @@ export const MovieRatedRow = styled.div`
   flex-wrap: wrap;
   margin-bottom: 2vh;
 `
-export const MovieTitleRated = styled.div`
-  color: black;
-  font-size: 16px;
-  text-decoration: none;
-`
+
 export const RatingStars = styled.div`
   margin-left: auto;
 `
-export const UserName = styled(MovieTitleRated)`
+export const UserName = styled.p`
   margin-bottom: 1vh;
 `
 export const UserNames = styled.h3`
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 2vh;
+  color: white;
   margin-top: 6vh;
 `
 export const WrapperUserPage = styled.div`
 `
 
 
-//MOVIE CARD ON USERPAGE
+//MOVIEDETAIL2 ON USERPAGE
 export const MovieCard = styled.div`
 background: white;
 /* background: rgb(248,255,238);
@@ -479,21 +487,3 @@ export const WrapMovieCardInfo = styled.div`
   width: 70%;
 `
 
-
-// Movie List
-// export const MovieList = styled.section`
-//   display:flex;
-//   flex-wrap: wrap;
-//   justify-content: space-evenly;
-//   margin: 25px;
-// `
-
-// .movie-list:hover .hover-details a{
-//   display:block;
-// }
-
-
-// .movie-list .hover-details h1 {
-//   margin-top: auto;
-//   margin-bottom: 0;
-// }

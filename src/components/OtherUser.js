@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useSelector } from "react-redux";
 import {
-  MoviesRatedParagraph, MovieRatedRow, MovieTitleRated,
-  RatingStars, UserNames, WrapperWelcomeBox
+  MoviesRatedParagraph,
+  UserNames, WrapperWelcomeBox
 } from "./Styling"
 import { MovieDetail2 } from './MovieDetail2';
 
@@ -12,12 +12,9 @@ export const OtherUser = (props) => {
   const [watchList, setWatchList] = useState([])
   const [userName, setUserName] = useState("")
   const { userId } = useParams()
-  // const myId = window.localStorage.getItem("userId")
   const myId = useSelector((state) => state.users.userId)
 
-  const ratingStars = (rating) => {
-    return "⭐️".repeat(rating)
-  }
+
 
   useEffect(() => {
     fetch(`http://localhost:8080/users/${userId}/otherUser`)
@@ -33,38 +30,23 @@ export const OtherUser = (props) => {
       .then(res => res.json())
       .then(json => {
         setWatchList(json)
+        console.log(json)
       })
   }, [myId])
 
   return (
     <WrapperWelcomeBox>
       <UserNames>User page: {userName}</UserNames>
-      <br></br>
+      <MoviesRatedParagraph>You have a match on {watchList.length} movies </MoviesRatedParagraph>
+      <section>
+        {watchList.map((movie) => (
+          <MovieDetail2 key={movie.movieId} id={movie.movieId} />
+        ))}
+      </section>
       <MoviesRatedParagraph>Movies that {userName} has rated </MoviesRatedParagraph>
       <section>
         {moviesRated.map((movie) => (
-          <MovieRatedRow
-            key={movie._id}
-          >
-            <Link to={`/movies/${movie.movieId}`}>
-              <MovieTitleRated>{movie.movieTitle}</MovieTitleRated>
-            </Link>
-            <RatingStars>{ratingStars(movie.rating)}</RatingStars>
-          </MovieRatedRow>
-        ))}
-      </section>
-      <br></br>
-
-      <MoviesRatedParagraph>Both of you want to watch</MoviesRatedParagraph>
-      <section>
-        {watchList.map((movie) => (
-          <MovieRatedRow
-            key={movie._id}
-          >
-            <Link to={`/movies/${movie.movieId}`}>
-              <MovieTitleRated>{movie.movieTitle}</MovieTitleRated>
-            </Link>
-          </MovieRatedRow>
+          <MovieDetail2 key={movie.movieId} id={movie.movieId} />
         ))}
       </section>
     </WrapperWelcomeBox>

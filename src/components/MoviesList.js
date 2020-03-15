@@ -52,8 +52,7 @@ export const MoviesList = () => {
   if (searchResult.length > 0) {
     movieResults = searchResult
   }
-  // Fetch data from API with a GET request
-  // Render a list of movies depending on what the user has written in Searchbar
+
 
   //How to fetch more results, show page 2 etc..? 
   return (
@@ -88,12 +87,13 @@ export const MoviesList = () => {
             )
           }
           )}
-
       </section>
       <Button onClick={(e) => setPage(page + 1)}>More</Button>
     </div >
   )
 }
+
+
 
 
     //   return (

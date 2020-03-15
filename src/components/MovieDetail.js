@@ -67,7 +67,6 @@ export const MovieDetail = () => {
     )
   }
 
-  // Maybe also add genres and actors below
   return (
     <MovieBackground
       key={id}
@@ -92,7 +91,7 @@ export const MovieDetail = () => {
           </MovieDetailGenres>
           <MovieOverview>{movie.overview}</MovieOverview>
           <MovieDetailRow>
-            <MovieInfo>⏲ {movie.runtime} min</MovieInfo>
+            <MovieInfo><span aria-label="emoji">⏱</span> {movie.runtime} min</MovieInfo>
             <a
               href={`https://www.imdb.com/title/${movie.imdb_id}`}
               target="_blank"
@@ -108,7 +107,7 @@ export const MovieDetail = () => {
       <RatingMovieWrap>
         <Ratings movieId={movie.id}
           movieTitle={movie.title}
-          movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />
+        />
       </RatingMovieWrap>
 
 
@@ -134,13 +133,10 @@ export const MovieDetail = () => {
         </ActorList>
       </ActorListWrap>
 
-      <section>
-        <ShowSimilar>Similar movies</ShowSimilar>
+      <ShowSimilar>
+        <h2>Similar movies</h2>
         <Similar />
-        {/* <Link to={`/ similar / ${movie.id}`} >
-          <ShowSimilar>Show similar movies</ShowSimilar>
-        </Link> */}
-      </section>
+      </ShowSimilar>
     </MovieBackground>
   )
 }
