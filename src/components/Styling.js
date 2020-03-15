@@ -13,29 +13,31 @@ export const Heading = styled.h1`
 
 // NAVBAR
 export const ButtonSearchUser = styled.button`
-  background: teal;
+  background: #0f4c81;
   border: none;
   color: white;
   cursor: pointer;
   font-size: 16px;
   margin-left: 2vw;
   padding-top: 0;
+  text-transform: uppercase;
+  font-weight: 600;
+
 `
 export const HeaderStartContainer = styled.div`
-  background: #004f4f;
+  background: #0a2e4e;
   display: flex;
-  // justify-content: center;
+  justify-content: center;
   flex-direction: row;
-  /* font-family: 'Noto Sans JP', sans-serif; */
   font-family: 'Muli', sans-serif;
   font-weight: 700;
-  font-size: 3em;
-/* font-family: 'Cabin', sans-serif;  */
+  align-items: center;
+  padding: 15px;
 `
-export const HeadingStart = styled(Heading)`
+export const HeaderTitle = styled.h1`
   color: white;
   /*Byt margin 80 till 10 för ipad och desktop*/
-  margin: 10px 0 0 80px;
+  /* margin: 10px 0 0 80px; */
   /* margin-top: 60px; */
   a {
     font-size: 2rem;
@@ -46,6 +48,7 @@ export const HeadingStart = styled(Heading)`
     color: white;
     text-decoration: none;
     transition: color 0.3s linear;
+
   }
 `
 export const MainStartContainer = styled.div`
@@ -56,26 +59,30 @@ export const NavRightContainer = styled.div`
   display: flex;
   flex-direction: row;
   margin-left: auto;
+  align-items: baseline;
 `
 export const SignInButton = styled(ButtonSearchUser)`
-  background: #004f4f;
+  background: #0a2e4e;
 `
 export const SignOutButton = styled(ButtonSearchUser)`
-  background: #004f4f;
+  background: #0a2e4e;
+  text-align: none;
+  align-items: start;
 `
 export const SubNavbar = styled.div`
-  background: teal;
+  background: #0f4c81;
   display: flex;
   height: 50px;
+  align-items: baseline;
+  text-transform: uppercase;
+  font-weight: 600;
+
 `
-export const SubNavbarLeft = styled.div`
-`
-export const SubNavbarRight = styled.div`
-`
+
 export const UserNameNav = styled.div`
   color: white;
   font-size: 16px;
-  margin-top: 4vh;
+  /* margin-top: 4vh; */
   text-decoration: none;
 `
 export const WatchListLink = styled.div`
@@ -206,7 +213,7 @@ export const WrapperWelcome = styled(Wrapper)`
   max-width: 800px;
 `
 export const WrapperWelcomeBox = styled(Wrapper)`
-  background: #F5F5F5;
+  background: transparent;
   margin-top: 10px;
   max-width: 900px;
 `
@@ -348,7 +355,7 @@ export const Button = styled.button`
 text-transform: uppercase;
   padding: 10px;
   margin: 2px;
-  background: #004f4f;
+  background: #0a2e4e;
   border-radius: 3px;
   border-color: transparent;
   font-size: 1em;
@@ -410,11 +417,14 @@ export const WrapperUserPage = styled.div`
 
 //MOVIE CARD ON USERPAGE
 export const MovieCard = styled.div`
-background: rgb(248,255,238);
-background: linear-gradient(90deg, rgba(248,255,238,0.542454481792717) 0%, rgba(255,141,111,0.7665441176470589) 100%);  border-radius: 20px;
+background: white;
+/* background: rgb(248,255,238);
+background: linear-gradient(90deg, rgba(248,255,238,0.542454481792717) 0%, rgba(255,141,111,0.7665441176470589) 100%);  border-radius: 20px; */
   /* padding: 20px 0 0; */
   margin: 10px;
   height: 200px;
+  padding-bottom: 5px;
+  border-radius: 20px;
 `
 export const MovieCardInfo = styled.p`
 display: inline;
@@ -426,15 +436,11 @@ color: grey;
 `
 export const MovieCardOverview = styled.div`
   font-size: 1em;
-  /* margin-bottom: 2vh; */
-  /* white-space: nowrap; */
-  /* text-overflow: ellipsis; */
-  /* height: 60px;
-  line-height: 20px; */
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;  
+    -webkit-box-orient: vertical;
+    /* margin-bottom: 5px; */
 `
 export const MovieCardTitle = styled.h1`
   color: black;

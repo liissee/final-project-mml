@@ -26,7 +26,7 @@ export const MovieDetail2 = ({ id }) => {
       .then((json) => {
         // if (json.status.code === 34) {
         //   setError("Movie not found")
-        // } 
+        // }
         // else {
         setMovie(json)
         // }

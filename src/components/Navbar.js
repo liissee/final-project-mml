@@ -6,12 +6,9 @@ import { Logout } from './Logout'
 import { Hamburger } from 'components/Hamburger'
 import { PopoverLogin } from 'components/PopoverLogin'
 import { PopoverUserSearch } from 'components/PopoverUserSearch'
-import Button from '@material-ui/core/Button';
-
 import {
-  HeadingStart, HeaderStartContainer, NavRightContainer,
-  UserNameNav, MainStartContainer, SubNavbar, SubNavbarLeft,
-  SubNavbarRight, WatchListLink
+  HeaderTitle, HeaderStartContainer, NavRightContainer,
+  UserNameNav, MainStartContainer, SubNavbar, WatchListLink
 } from "./Styling";
 import styled from 'styled-components/macro'
 import { useSelector } from 'react-redux'
@@ -25,11 +22,11 @@ export const Navbar = () => {
 
   return (
     <MainStartContainer>
-      <Hamburger />
+      {/* <Hamburger /> */}
       <HeaderStartContainer>
-        <HeadingStart>
+        <HeaderTitle>
           <Link to={`/`}>🎬MOVIE MATCH</Link>
-        </HeadingStart>
+        </HeaderTitle>
         <Searchbar />
         <NavRightContainer>
           <Link to={`/users/${userId}/movies`}>
@@ -45,11 +42,11 @@ export const Navbar = () => {
       </HeaderStartContainer>
       <SubNavbar>
         <Link to="/">
-          <WatchListLink>Movies</WatchListLink>
+          <WatchListLink>MOVIES</WatchListLink>
         </Link>
 
         <Link to="/users/:id/movies">
-          <WatchListLink>Watchlist</WatchListLink>
+          <WatchListLink>YOUR MOVIES</WatchListLink>
         </Link>
 
         <PopoverUserSearch />

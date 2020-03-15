@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import { ButtonWatch, RatingButtonContainer } from "./Styling";
 import styled from "styled-components/macro"
 
-export const Ratings = ({ movieId, movieTitle, movieImage }) => {
+export const Ratings = ({ movieId, movieTitle }) => {
   // const rating = window.localStorage.getItem(movieId)
   const [rate, setRate] = useState()
   // const accessToken = window.localStorage.getItem("accessToken");
@@ -17,12 +17,12 @@ export const Ratings = ({ movieId, movieTitle, movieImage }) => {
   // function that will be invoced when the user rates a movie, i.e. 
   // when the user clicks on a rating button
   // this value should be sent to our own API with PUT or POST somehow
-  const handleRating = (userId, movieTitle, movieImage, rating) => {
+  const handleRating = (userId, movieTitle, rating) => {
     setRate(rating)
     // setRate(rating)
     fetch(`http://localhost:8080/users/${userId}`, {
       method: "PUT",
-      body: JSON.stringify({ userId, movieId, movieTitle, movieImage, rating }),
+      body: JSON.stringify({ userId, movieId, movieTitle, rating }),
       headers: { "Content-Type": "application/json", "Authorization": accessToken },
     }).catch(err => {
       // Show an error message
@@ -36,10 +36,10 @@ export const Ratings = ({ movieId, movieTitle, movieImage }) => {
 
   // function that will be invoced when the user clicks on "Re watch", "Watched" etc.
   // we should discuss what code to add in body: JSON - we should send the status to our API
-  const handleWatchStatus = (userId, movieTitle, movieImage, watchStatus) => {
+  const handleWatchStatus = (userId, movieTitle, watchStatus) => {
     fetch(`http://localhost:8080/users/${userId}`, {
       method: "PUT",
-      body: JSON.stringify({ userId, movieId, movieTitle, movieImage, watchStatus }),
+      body: JSON.stringify({ userId, movieId, movieTitle, watchStatus }),
       headers: { "Content-Type": "application/json", "Authorization": accessToken }
     })
   }
@@ -52,7 +52,6 @@ export const Ratings = ({ movieId, movieTitle, movieImage }) => {
       .then(json => {
         if (json && json.rating) {
           setRate(json.rating)
-          console.log('JAAAASON', json)
         }
       })
   }, [movieId])
@@ -99,14 +98,14 @@ export const Ratings = ({ movieId, movieTitle, movieImage }) => {
             value={rate}
             disabled={!accessToken}
             onChange={(e, rating) => {
-              handleRating(userId, movieTitle, movieImage, rating)
+              handleRating(userId, movieTitle, rating)
             }
             }
           />
         </Lalala>
         <div>
-          <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieTitle, movieImage, "watch")}> Watch </ButtonWatch>
-          <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieTitle, movieImage, "no")}> No thanks</ButtonWatch>
+          <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieTitle, true)}> Watch </ButtonWatch>
+          <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieTitle, false)}> No thanks</ButtonWatch>
         </div>
       </RatingButtonContainer>
       {/* } */}

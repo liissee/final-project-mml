@@ -9,7 +9,6 @@ export const DropDownList = () => {
   return (
     <div className="category-dropdown">
       <label>
-        <h3>Select category</h3>
         <select className="select-css"
           onChange={(event) => {
             dispatch(movies.actions.setSearchTerm(""))

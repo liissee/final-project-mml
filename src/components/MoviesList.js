@@ -82,7 +82,7 @@ export const MoviesList = () => {
                   <Ratings
                     movieId={movie.id}
                     movieTitle={movie.title}
-                    movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />
+                  />
                 </div>
               </div>
             )
