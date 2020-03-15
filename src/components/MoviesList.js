@@ -3,10 +3,9 @@ import { Link } from "react-router-dom"
 import { useSelector } from "react-redux";
 import { UserSearchResult } from "./UserSearchResult"
 import { DropDownList } from "components/DropDownList"
-import { not_found } from "assets/not_found.jpeg"
 import "components/movielist.css"
 import { Ratings } from "./Ratings"
-import { Button, MovieListContainer, MovieWrapper, MovieWrapperLink, HoverDetails } from './Styling'
+import { Button } from './Styling'
 
 // import not_found from "./assets/not_found"
 // Import what we need to use
@@ -58,85 +57,44 @@ export const MoviesList = () => {
   // Render a list of movies depending on what the user has written in Searchbar
 
   //How to fetch more results, show page 2 etc..? 
+
+
   return (
-    <>
+    <div className="top-movie-list">
       <DropDownList />
-      <MovieListContainer>
+      <section className="movie-list">
         {userSearch[0] &&
           <UserSearchResult />
         }
+
         {movieResults &&
           movieResults.map((movie) => {
+            console.log(movie)
             return (
-              <MovieWrapper className="movie-wrapper" key={movie.id}>
+              <div key={movie.id} className="movie-wrapper">
                 {movie.poster_path && (
                   <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.title} />
                 )}
                 {!movie.poster_path && (
-                  <img src={not_found} alt={movie.title} />
+                  <img src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="Photo by Denise Jans on Unsplash" />
                 )}
-                <HoverDetails>
-                  <MovieWrapperLink as={Link} key={movie.id} to={`/movies/${movie.id}`}>
+                <div className="hover-details">
+                  <Link key={movie.id} to={`/movies/${movie.id}`}>
                     <h1>{movie.original_title}</h1>
                     <p>Released {movie.release_date}</p>
-                  </MovieWrapperLink>
+                  </Link>
                   <Ratings
                     movieId={movie.id}
                     movieTitle={movie.title}
                     movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />
-                </HoverDetails>
-              </MovieWrapper>
+                </div>
+              </div>
             )
           }
           )}
-
-      </MovieListContainer>
+      </section>
       <Button onClick={(e) => setPage(page + 1)}>More</Button>
-    </>
+
+    </div >
   )
 }
-
-// return (
-//   <div className="top-movie-list">
-//     <DropDownList />
-//     <section className="movie-list">
-//       {userSearch[0] &&
-//         <UserSearchResult />
-//       }
-//       {movieResults &&
-//         movieResults.map((movie) => {
-//           console.log(movie)
-//           return (
-//             <div key={movie.id} className="movie-wrapper">
-//               {movie.poster_path && (
-//                 <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.title} />
-//               )}
-//               {!movie.poster_path && (
-//                 <img src={not_found} alt={movie.title} />
-//               )}
-//               <div className="hover-details">
-//                 <Link key={movie.id} to={`/movies/${movie.id}`}>
-//                   <h1>{movie.original_title}</h1>
-//                   <p>Released {movie.release_date}</p>
-//                 </Link>
-//                 <Ratings
-//                   movieId={movie.id}
-//                   movieTitle={movie.title}
-//                   movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />
-//               </div>
-//             </div>
-//           )
-//         }
-//         )}
-
-//     </section>
-//     <Button onClick={(e) => setPage(page + 1)}>More</Button>
-//     {/* <Button type="button"
-//         onClick={() => {
-//           dispatch(movies.actions.setPageNumber())
-//         }}>
-//         Load more
-//       </Button> */}
-//   </div >
-// )
-// }

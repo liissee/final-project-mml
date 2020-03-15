@@ -19,9 +19,7 @@ export const Registration = () => {
       body: JSON.stringify({ name, email, password }),
       headers: { "Content-Type": "application/json" }
     })
-      //Här händer en callback funktion
       .then(res => {
-        // console.log(res.json())
         if (res.status !== 201) {
           return (
             res.json().then(json => console.log(json.message)), setFailure(true)
@@ -43,7 +41,7 @@ export const Registration = () => {
       {!registred && (
         <FieldContainer>
           <Form onSubmit={handleSubmit}>
-            {!failure && <Heading>Create new user</Heading>}
+            {!failure && <Heading>CREATE NEW USER</Heading>}
             {failure && (
               <Heading>
                 User not created. Try using another name or email!

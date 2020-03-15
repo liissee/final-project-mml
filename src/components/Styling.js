@@ -5,7 +5,7 @@ export const Main = styled.main`
 `
 
 export const Heading = styled.h1`
-  font-size: 36px;
+  font-size: 2em;
   line-height: 1.5;
   font-weight: bold;
   margin: 10px 0;
@@ -29,7 +29,6 @@ export const HeaderStartContainer = styled.div`
 export const FormSearch = styled.form`
   margin: 10px auto;
   display: block;
-  /* padding: 20px 30px 30px 30px; */
   max-width: 480px;
   background: none;
   border-radius: 8px;
@@ -73,16 +72,8 @@ export const HeadingStart = styled(Heading)`
   }
 `
 
-
+//REGISTER AND LOGIN 
 export const FieldContainer = styled.div`
-  position: relative;
-  display: block;
-  margin: 10px 0;
-  height: 54px;
-  width: 100%;
-  background: white;
-  border: #f0f;
-  border-radius: 3px;
   &.-focused label {
     font-size: 11px;
     line-height: 12px;
@@ -96,7 +87,7 @@ export const FieldContainer = styled.div`
   }
 `
 
-//Var används denna?
+//Var används denna? I Login.js och register.js
 export const Form = styled.form`
   margin: 60px auto;
   display: block;
@@ -107,11 +98,6 @@ export const Form = styled.form`
 `
 
 export const Input = styled.input`
-  /* position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0; */
   width: 100%;
   transition: border-color $standard-transition;
   z-index: 2;
@@ -225,11 +211,7 @@ object-fit: cover;
 border-radius: 50%;
 height: 100px;
 width: 100px;
-/* display:inline;
-height: auto; */
 margin: 0;
-/* width: 50px;
-height: auto; */
 `
 export const Genre = styled.div`
   background: #B22222;
@@ -239,7 +221,6 @@ export const Genre = styled.div`
 `
 
 export const MovieBackground = styled.div`
-  /* background: white; */
 `
 export const MovieDetailGenres = styled.div`
   display: flex;
@@ -258,6 +239,7 @@ export const MovieImdb = styled(MovieInfo)`
   color: black;
   margin-left: 1vw;
   width: 3.5vw;
+
 `
 export const MovieOverview = styled.div`
   font-size: 16px;
@@ -322,8 +304,6 @@ export const WrapMovieInfo = styled.div`
 //   margin-top: 0;
 // `
 
-
-
 export const ErrorMessage = styled.p`
 color:red;
 font-size: 14px;
@@ -338,23 +318,24 @@ export const Label = styled.label`
 `
 
 export const Button = styled.button`
-  display: block;
-  margin: 30px 0;
-  height: 54px;
-  width: 100%;
-  background: #33cc77;
-  border: 1px solid darken(#33cc77,0.1);
-  border-top-color: transparent;
+ cursor: pointer;
+text-transform: uppercase;
+  padding: 10px;
+  margin: 2px;
+  background: #004f4f;
   border-radius: 3px;
-  font-size: 16px;
+  border-color: transparent;
+  font-size: 1em;
   font-weight: bold;
   color: #fff;
   text-shadow: -1px -1px rgba(0,0,0,0.1);
-  transition: background $standard-transition;
-  &:hover {
-    background: lighten(#33cc77,10%);
-    cursor: pointer;
-  }
+&:hover {
+  transform: scale(1.01);
+    transition: 
+    box-shadow 0.4s, 
+    transform 0.4s;
+}
+
 `
 
 export const Link = styled.link`
@@ -364,7 +345,7 @@ export const Link = styled.link`
   text-shadow: -1px -1px rgba(0,0,0,0.1);
   transition: background $standard-transition;
   &:hover {
-    background: lighten(#33cc77,10%);
+    background: lighten(#004f4f,10%);
     cursor: pointer;
   }
 `
@@ -401,66 +382,6 @@ export const UserNames = styled.h3`
 export const WrapperUserPage = styled.div`
 `
 
-
-//SWIPER
-export const NEXT = "HEJ";
-export const PREV = "HEJDÅ";
-
-export const AppContainer = styled.div`
-  text-align: center;
-  width: 100%;
-`;
-
-export const Item = styled.div`
-  text-align: center;
-  background-size: cover;
-`;
-
-export const CarouselContainer = styled.div`
-  display: flex;
-  transition: ${props => (props.sliding ? "none" : "transform 1s ease")};
-  transform: ${props => {
-    if (!props.sliding) return "translateX(calc(-80% - 20px))";
-    if (props.dir === PREV) return "translateX(calc(2 * (-80% - 20px)))";
-    return "translateX(0%)";
-  }};
-`;
-
-export const WrapperSwipe = styled.div`
-  width: 100%;
-  overflow: hidden;
-  box-shadow: 5px 5px 20px 7px rgba(168, 168, 168, 1);
-`;
-
-export const CarouselSlot = styled.div`
-  flex: 1 0 100%; /* Decides how many cards on one row */
-  flex-basis: 80%; /* Decides how many cards on one row */
-  margin-right: 20px;
-  order: ${props => props.order};
-`;
-
-export const SlideButton = styled.button`
-  color: #fff;
-  font-size: 16px;
-  font-weight: 100;
-  padding: 10px;
-  background-color: #f66f3e;
-  border: 1px solid white;
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
-  margin-top: 20px;
-  text-decoration: none;
-  /* float: ${props => props.float}; */
-
-  &:active {
-    position: relative;
-    top: 1px;
-  }
-  &:focus {
-    outline: 0;
-  }
-`;
 
 //MOVIE CARD ON USERPAGE
 export const MovieCard = styled.div`
@@ -502,7 +423,12 @@ export const MovieCardTitle = styled.h1`
 export const MovieImage = styled.img`
   border-radius: 20px 0 0 20px;
   height: 200px;
+  width: 185px;
 `
+export const ImageNotFound = styled.img`
+width: 185px;
+`
+
 export const MovieTags = styled.div`
   display: flex;
   flex-direction:row;
@@ -523,43 +449,5 @@ export const WrapMovieCardInfo = styled.div`
   width: 70%;
 `
 
-//MOVIELIST COMPONENT
-//.movie-list
-export const MovieListContainer = styled.div`
-  display:flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  margin: 25px;
-`
-//.movie-wrapper
-export const MovieWrapper = styled.div`
- width: 250px;
-  margin: 20px;
-  position: relative;
-  text-decoration: none;
-  color: #fff;
-  border-radius: 10px;
-  box-shadow: 3px 3px 20px rgba(0, 0, 0, .5);
-  text-align: center;
- `
 
-//.movie-wrapper a + hover
-export const MovieWrapperLink = styled.a`
-  text-decoration: none;
-  color: #fff; 
-`
-
-//.movie-list .hover-details {
-export const HoverDetails = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(0,0,0,0.75);
-  display: none;
-  border-radius: 10px;
-  padding: 20px;
-
-`
 

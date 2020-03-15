@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { not_found } from "assets/not_found.jpeg"
 import "components/movielist.css"
 import { Ratings } from "./Ratings"
+import { ImageNotFound } from './Styling'
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 
@@ -27,7 +27,8 @@ export const Similar = () => {
               <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.id} />
             )}
             {!movie.poster_path && (
-              <img src={not_found} alt={movie.title} />
+              <ImageNotFound
+                src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="Photo by Denise Jans on Unsplash" />
             )}
             <div className="hover-details">
               <Link key={movie.id} to={`/movies/${movie.id}`}>

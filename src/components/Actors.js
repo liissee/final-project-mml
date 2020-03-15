@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
 import { useSelector } from "react-redux"
 import "components/movielist.css"
+import { ImageNotFound } from './Styling'
 
 
 export const Actors = () => {
@@ -32,7 +33,12 @@ export const Actors = () => {
       <section className="movie-list">
         {person.map((persons) => (
           <Link className="movie-wrapper" key={persons.credit_id} to={`/movies/${persons.id}`}>
-            <img src={`https://image.tmdb.org/t/p/w342${persons.poster_path}`} alt={persons.id} />
+            {persons.poster_path && (
+              <img src={`https://image.tmdb.org/t/p/w342${persons.poster_path}`} alt={persons.title} />
+            )}
+            {!persons.poster_path && (
+              <img src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="Photo by Denise Jans on Unsplash" />
+            )}
             <div className="hover-details">
               <h2>{persons.title}</h2>
               <p>Character: {persons.character}</p>

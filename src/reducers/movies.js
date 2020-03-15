@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { ui } from 'reducers/ui'
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 
@@ -29,10 +30,13 @@ export const movies = createSlice({
 //takes searchterm as a prop/argument and send search result to MoveList.js. 
 export const searchResult = (searchTerm, pageNumber) => {
   return dispatch => {
+    dispatch(ui.actions.setLoading(true))
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${searchTerm}&page=${pageNumber}&include_adult=false`)
       .then(res => res.json())
       .then(json => {
         dispatch(movies.actions.setSearchTerm(json.results))
+        dispatch(ui.actions.setLoading(false))
+
       })
   }
 }

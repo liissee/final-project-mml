@@ -86,3 +86,63 @@ function reducer(state, { type, numItems }) {
   }
 }
 
+
+//SWIPER STYLING
+export const NEXT = "HEJ";
+export const PREV = "HEJDÅ";
+
+export const AppContainer = styled.div`
+  text-align: center;
+  width: 100%;
+`;
+
+export const Item = styled.div`
+  text-align: center;
+  background-size: cover;
+`;
+
+export const CarouselContainer = styled.div`
+  display: flex;
+  transition: ${props => (props.sliding ? "none" : "transform 1s ease")};
+  transform: ${props => {
+    if (!props.sliding) return "translateX(calc(-80% - 20px))";
+    if (props.dir === PREV) return "translateX(calc(2 * (-80% - 20px)))";
+    return "translateX(0%)";
+  }};
+`;
+
+export const WrapperSwipe = styled.div`
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 5px 5px 20px 7px rgba(168, 168, 168, 1);
+`;
+
+export const CarouselSlot = styled.div`
+  flex: 1 0 100%; /* Decides how many cards on one row */
+  flex-basis: 80%; /* Decides how many cards on one row */
+  margin-right: 20px;
+  order: ${props => props.order};
+`;
+
+export const SlideButton = styled.button`
+  color: #fff;
+  font-size: 16px;
+  font-weight: 100;
+  padding: 10px;
+  background-color: #f66f3e;
+  border: 1px solid white;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  margin-top: 20px;
+  text-decoration: none;
+  /* float: ${props => props.float}; */
+
+  &:active {
+    position: relative;
+    top: 1px;
+  }
+  &:focus {
+    outline: 0;
+  }
+`;

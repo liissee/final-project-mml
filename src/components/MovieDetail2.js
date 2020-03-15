@@ -6,6 +6,8 @@ import {
 } from "./Styling";
 import { Ratings } from './Ratings';
 import { movies } from '../reducers/movies'
+import { LoadingIndicator } from 'components/Loading'
+
 
 // Import what we need to use
 
@@ -38,15 +40,12 @@ export const MovieDetail2 = ({ id }) => {
 
   if (loading) {
     return (
-      <div className="loading-message">Movie page is loading...</div>
+      <LoadingIndicator />
+
+      // <div className="loading-message">Movie page is loading...</div>
     )
   }
 
-  if (loading) {
-    return (
-      <div className="loading-message">Movie page is loading...</div>
-    )
-  }
 
   if (!movie.title) {
     return (
@@ -62,15 +61,15 @@ export const MovieDetail2 = ({ id }) => {
     <MovieCard
       key={id}
     >
-      {!movie.poster_path && (
-        <p>Lägg in placeholder</p>
-      )}
-
       <WrapMovieCard>
         {movie.poster_path && (
           <MovieImage
             src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} alt={movie.title}
           />
+        )}
+        {!movie.poster_path && (
+          <MovieImage
+            src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="Photo by Denise Jans on Unsplash" />
         )}
         <WrapMovieCardInfo>
           <Link key={movie.id} to={`/movies/${movie.id}`}>

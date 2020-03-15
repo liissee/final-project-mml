@@ -5,11 +5,13 @@ import {
   ActorList, ActorListWrap, ActorName, Genre, MovieBackground,
   MovieDetailGenres, MovieDetailRow, MovieImdb, MovieInfo,
   MovieRating, MovieTitle, MovieOverview, RatingMovieWrap,
-  ShowSimilar, WrapMovie, WrapMovieInfo, YourRating, ActorImage, ActorWrap
+  ShowSimilar, WrapMovie, WrapMovieInfo, YourRating, ActorImage, ActorWrap, ImageNotFound
 } from "./Styling";
 import { Ratings } from './Ratings';
 import { Similar } from './Similar';
 import { movies } from '../reducers/movies'
+
+
 
 // Import what we need to use
 
@@ -70,16 +72,17 @@ export const MovieDetail = () => {
     <MovieBackground
       key={id}
     >
-      {!movie.poster_path && (
-        <p>Lägg in placeholder</p>
-      )}
-
       <WrapMovie>
         {movie.poster_path && (
           <img
             src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} alt={movie.title}
           />
         )}
+        {!movie.poster_path && (
+          <ImageNotFound
+            src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="Photo by Denise Jans on Unsplash" />
+        )}
+
         <WrapMovieInfo>
           <MovieTitle>{movie.title}</MovieTitle>
           <MovieDetailGenres>
@@ -116,9 +119,15 @@ export const MovieDetail = () => {
             <ActorWrap>
               <Link key={actor.id} to={`/cast/${actor.id}`} onClick={(e) => handleActor(actor.name)}>
                 <ActorName>{actor.name}</ActorName>
-                <ActorImage
-                  src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`} alt={movie.title}
-                />
+                {actor.profile_path && (
+                  <ActorImage
+                    src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`}
+                  />
+                )}
+                {!actor.profile_path && (
+                  <ActorImage
+                    src="https://images.pexels.com/photos/1446948/pexels-photo-1446948.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="Photo by Engin Akyurt from Pexels" />
+                )}
               </Link>
             </ActorWrap>
           ))}

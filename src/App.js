@@ -3,6 +3,8 @@ import { Provider } from 'react-redux'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { movies } from 'reducers/movies'
 import { users } from 'reducers/users'
+import { ui } from 'reducers/ui'
+
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Login } from 'components/Login'
 import { Registration } from 'components/Registration'
@@ -19,7 +21,8 @@ import { Main } from "components/Styling"
 
 const reducer = combineReducers({
   movies: movies.reducer,
-  users: users.reducer
+  users: users.reducer,
+  ui: ui.reducer
 })
 
 const store = configureStore({ reducer })
