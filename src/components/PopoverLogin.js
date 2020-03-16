@@ -39,65 +39,12 @@ export const PopoverLogin = () => {
 
   const url = "http://localhost:8080/sessions"
 
-  //FETCH USER
-
-  // const handleSignin = event => {
-  //   event.preventDefault();
-  //   setErrorMessage("");
-  //   fetch(url, {
-  //     method: "POST",
-  //     body: JSON.stringify({ email, password }),
-  //     headers: { "Content-Type": "application/json" }
-  //   })
-  //     .then(res => {
-  //       //(res.status !== 201) detta ger alltid error message även om det är rätt:
-  //       //(!res.ok) ger undefined accessToken om det är fel men inget error message
-  //       if (!res.ok) {
-  //         throw new Error("Your e-mail and/or password was incorrect");
-  //       } else {
-  //         return res.json();
-  //       }
-  //     })
-
-  //     .then(({ accessToken, userId, name }) => {
-  //       if (accessToken && userId && name) {
-  //         window.localStorage.setItem("accessToken", accessToken)
-  //         window.localStorage.setItem("userId", userId)
-  //         handleClose()
-  //         history.push(`/users/:id/movies`)
-  //         console.log(name)
-  //         //set sign out state setLoggedIn to true ???????
-  //       }
-  //     })
-  //     .catch(err => {
-  //       setErrorMessage(err.message);
-  //     });
-  // };
-
-  //This shows error but does not redirect
-  // const handleLogin = async (event) => {
-  //   event.preventDefault()
-  //   console.log("before dispatch")
-  //   await dispatch(fetchUser({ email, password }))
-  //   console.log("after dispatch")
-  //   if (accessToken) {
-  //     handleClose()
-  //     history.push(`/users/:id/movies`)
-  //     console.log("if email")
-  //   }
-  //   setTimeout(() => {
-  //     if (!accessToken) {
-  //       setErrorMessage("Wrong email or password. Try again!")
-  //       // history.push(`/`)
-  //     }
-  //   }, 1000);
-  // }
 
   const handleLogin = (event) => {
     event.preventDefault()
     dispatch(fetchUser({ email, password }))
     handleClose()
-    history.push(`/users/:id/movies`)
+    history.push(`/`)
   }
 
   const handleKeyPress = (e) => {
@@ -105,7 +52,7 @@ export const PopoverLogin = () => {
       console.log('the key is enter')
       dispatch(fetchUser({ email, password }))
       handleClose()
-      history.push(`/users/:id/movies`)
+      history.push(`/`)
     }
   }
 

@@ -373,6 +373,7 @@ export const WatchListLink = styled.div`
   margin-left: 2vw;
   margin-top: 2vh;
   text-decoration: none;
+  background: ${props => (props.selectedTab ? "red" : "")};
   &:hover {
     color:#fe5426;
   }

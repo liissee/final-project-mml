@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux";
-import { UserSearchResult } from "./UserSearchResult"
 import { DropDownList } from "components/DropDownList"
 import "components/movielist.css"
 import { Ratings } from "./Ratings"
@@ -18,7 +17,6 @@ export const MoviesList = () => {
   const [page, setPage] = useState(1)
   const category = useSelector(state => state.movies.chosenCategory)
   const searchResult = useSelector(state => state.movies.movies)
-  const userSearch = useSelector(state => state.users.users)
   //const accessToken = window.localStorage.getItem("accessToken")
 
 

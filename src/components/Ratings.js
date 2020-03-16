@@ -46,7 +46,7 @@ export const Ratings = ({ movieId, movieTitle }) => {
 
   // GET movies with rating
   useEffect(() => {
-    //   // if (!userId) return;
+    // if (!userId) return;
     fetch(`http://localhost:8080/users/${userId}/movies?movieId=${movieId}`)
       .then(res => res.json())
       .then(json => {

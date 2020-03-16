@@ -26,7 +26,6 @@ export const UserSearchResult = () => {
 
 const Wrapper = styled.div`
   text-align:center;
-
   margin: 60px auto;
   color: white;
   padding: 20px 30px 30px 30px;

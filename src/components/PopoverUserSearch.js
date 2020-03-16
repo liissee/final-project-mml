@@ -47,10 +47,6 @@ export const PopoverUserSearch = () => {
     history.push(`/search`)
   }
 
-  // const reDirect = () => {
-  //   history.push(`/register`);
-  // };
-
 
   return (
     <>

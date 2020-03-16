@@ -11,14 +11,22 @@ import {
   UserNameNav, MainStartContainer, SubNavbar, WatchListLink
 } from "./Styling";
 import styled from 'styled-components/macro'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { ui } from '../reducers/ui'
 
-export const Navbar = () => {
+export const Navbar = (props) => {
   // const [errorMessage, setErrorMessage] = useState("");
 
   const accessToken = useSelector((state) => state.users.accessToken)
   const userName = useSelector((state) => state.users.userName)
   const userId = useSelector((state) => state.users.userId)
+  const selectedTab = useSelector((state) => state.ui.tab)
+
+  const dispatch = useDispatch()
+
+  const handleTabChange = (tab) => {
+    dispatch(ui.actions.setTab(tab))
+  }
 
   return (
     <MainStartContainer>
@@ -42,16 +50,21 @@ export const Navbar = () => {
         </NavRightContainer>
       </HeaderStartContainer>
       <SubNavbar>
-        <Link to="/">
+        <Link to="/" onClick={() => handleTabChange("movies")}>
           <WatchListLink>MOVIES</WatchListLink>
         </Link>
 
-        <Link to="/users/:id/movies">
-          <WatchListLink>YOUR MOVIES</WatchListLink>
+        <Link to="/users/:id/movies" onClick={() => handleTabChange("watch")}>
+          <WatchListLink>Watchlist</WatchListLink>
+        </Link>
+        <Link to="/users/:id/movies" onClick={() => handleTabChange("rated")}>
+          <WatchListLink>All rated</WatchListLink>
         </Link>
 
+        <Link to="/users/:id/movies" onClick={() => handleTabChange("users")}>
+          <WatchListLink>Other users</WatchListLink>
+        </Link>
         <PopoverUserSearch />
-
       </SubNavbar>
     </MainStartContainer>
   )
