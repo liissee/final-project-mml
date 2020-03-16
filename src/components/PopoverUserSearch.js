@@ -44,7 +44,7 @@ export const PopoverUserSearch = () => {
     dispatch(searchResult(userName));
     handleClose()
     setUserName("")
-    history.push(`/`)
+    history.push(`/search`)
   }
 
   // const reDirect = () => {

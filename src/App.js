@@ -16,6 +16,7 @@ import { UserPage } from 'components/UserPage'
 import { OtherUser } from 'components/OtherUser'
 import { Similar } from 'components/Similar'
 import { Actors } from 'components/Actors'
+import { UserSearchResult } from "components/UserSearchResult"
 import { Main } from "components/Styling"
 
 const reducer = combineReducers({
@@ -38,10 +39,10 @@ export const App = () => {
         <Main>
           <Switch>
             <Route exact path="/login" component={Login} />
-            {/* <Route exact path="/welcome" component={Welcome} /> */}
             <Route exact path="/register" component={Registration} />
             <Route exact path="/movies/:id" component={MovieDetail} />
             <Route exact path="/users/:id/movies" component={UserPage} />
+            <Route exact path="/search" component={UserSearchResult} />
             <Route exact path="/users/:userId" component={OtherUser} />
             <Route exact path="/similar/:id" component={Similar} />
             <Route exact path="/cast/:castId" component={Actors} />

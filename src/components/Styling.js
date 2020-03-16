@@ -1,5 +1,10 @@
 import styled from 'styled-components/macro'
 
+// FÄRGER:
+// TOMATORÖD: #fe5426
+// GUL: #ffcf3c
+// MIDNIGHTBLUE: #000f3c
+//MÖRKGRÅ: #293140
 
 export const Main = styled.main`
 `
@@ -41,7 +46,7 @@ export const HeaderTitle = styled.h1`
   line-height: 0.7;
   margin-left: 10px;
   font-family: 'Raleway', sans-serif;
-  color: white;
+  /* color: white; */
   a {
     font-size: 4rem;
     font-weight: 400;
@@ -55,6 +60,7 @@ export const HeaderTitle = styled.h1`
 export const SubNavbar = styled.div`
   color: white;
   background: #1e2026;
+  /* background: #000f3c; BLÅ */
   /* background: radial-gradient(circle, rgba(0,0,0,0.2539390756302521) 100%, rgba(148,187,233,1) 100%);   */
   display: flex;
   height: 50px;
@@ -370,10 +376,10 @@ export const Label = styled.label`
 
 export const Button = styled.button`
  cursor: pointer;
-text-transform: uppercase;
+  text-transform: uppercase;
   padding: 10px;
   margin: 2px;
-  background: #0a2e4e;
+  background: #000f3c;
   border-radius: 3px;
   border-color: transparent;
   font-size: 1em;
@@ -381,7 +387,9 @@ text-transform: uppercase;
   color: #fff;
   text-shadow: -1px -1px rgba(0,0,0,0.1);
 &:hover {
-  transform: scale(1.01);
+    background: #fe5426;
+    color: #000f3c;
+    transform: scale(1.01);
     transition: 
     box-shadow 0.4s, 
     transform 0.4s;
