@@ -29,13 +29,13 @@ export const PopoverLogin = () => {
 
 
   const handleClick = event => {
-    setAnchorEl(event.currentTarget);
+    setAnchorEl(event.currentTarget)
   };
 
   const handleClose = () => {
-    if (failed) {
-      setAnchorEl(null);
-    }
+    // if (failed) { //Hur få login-popuppen att stanna om login=failed? 
+    setAnchorEl(null);
+    // }
   };
 
   const open = Boolean(anchorEl);
@@ -43,9 +43,6 @@ export const PopoverLogin = () => {
 
   // const url = "http://localhost:8080/sessions"
 
-  const handleFailLogin = (e) => {
-
-  }
 
   const handleSignin = (event) => {
     event.preventDefault()
@@ -108,10 +105,8 @@ export const PopoverLogin = () => {
             />
           </Label>
           {failed && <ErrorText>Incorrect user and/or password.</ErrorText>}
-          {!failed && <ErrorText></ErrorText>}
           <Button type="submit"
             onClick={handleSignin}
-
           >
             LOGIN
         </Button>
