@@ -80,7 +80,6 @@ export const searchResult = (userName) => {
       .then(res => res.json())
       .then(json => {
         dispatch(users.actions.setUser(json))
-        console.log(json)
       })
   }
 }

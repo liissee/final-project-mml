@@ -59,9 +59,6 @@ export const MoviesList = () => {
     <div className="top-movie-list">
       <DropDownList />
       <section className="movie-list">
-        {userSearch[0] &&
-          <UserSearchResult />
-        }
         {movieResults &&
           movieResults.map((movie) => {
             console.log(movie)
