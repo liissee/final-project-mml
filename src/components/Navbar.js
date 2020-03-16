@@ -26,6 +26,7 @@ export const Navbar = (props) => {
 
   const handleTabChange = (tab) => {
     dispatch(ui.actions.setTab(tab))
+    dispatch(ui.actions.setPage(1))
   }
 
   return (

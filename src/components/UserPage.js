@@ -3,10 +3,11 @@ import {
   WrapperWelcomeBox, Button
 } from "./Styling"
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { MovieDetail2 } from './MovieDetail2';
 import { UserList } from './UserList'
 import { Ratings } from './Ratings'
+import { ui } from '../reducers/ui'
 
 
 //USER-PAGE
@@ -19,8 +20,9 @@ export const UserPage = (props) => {
   const [moviesRated, setMoviesRated] = useState()
   const [movieStatus, setMovieStatus] = useState()
   const [chosenRating, setChosenRating] = useState("")
-  const [page, setPage] = useState(1)
   const [loading, setLoading] = useState(true)
+
+  const dispatch = useDispatch()
 
 
   //Funkar att rendera om sidan när man loggar in men sparade filmer syns inte...
@@ -28,6 +30,7 @@ export const UserPage = (props) => {
   const userId = useSelector((state) => state.users.userId)
   const userName = useSelector((state) => state.users.userName)
   const selectedTab = useSelector((state) => state.ui.tab)
+  const page = useSelector((state) => state.ui.page)
 
   console.log(selectedTab)
 
@@ -56,15 +59,22 @@ export const UserPage = (props) => {
 
 
   let query = ""
+  console.log("SELECTED TAB: ", selectedTab)
   if (selectedTab === "watch") {
     query = `?watchStatus=true&page=${page}`
+    console.log("WAAAATCH")
   }
-  else if (!chosenRating && selectedTab === "rate") {
-    query = `?page=${page}`
-  } else if (chosenRating) {
+  else if (!chosenRating && selectedTab === "rated") {
+    query = `?rating=1&rating=2&rating=3&rating=4&rating=5&page=${page}`
+  }
+  else if (chosenRating) {
     // setChosenList("rating")
     query = `?rating=${chosenRating}&page=${page}`
   }
+  // else if (selectedTab === "rated") {
+  //   console.log("RATEEEE")
+  //   query = `?rating=${chosenRating}&page=${page}`
+  // }
 
 
   //Movies with rating
@@ -72,16 +82,17 @@ export const UserPage = (props) => {
   //Denna ska kunna köra både ${sortByRating} och pageChange
   useEffect(() => {
     if (!userId) return;
+    console.log(`http://localhost:8080/users/${userId}/movies${query}`)
     fetch(`http://localhost:8080/users/${userId}/movies${query}`)
       .then(res => res.json())
       .then(json => {
         if (selectedTab === "rated") {
-          setMoviesRated(json)
+          setMoviesRated(json.results)
           console.log("ratedmovies:", json)
-
+          console.log("query:", query)
         }
         else if (selectedTab === "watch") {
-          setMovieStatus(json)
+          setMovieStatus(json.results)
           console.log("watchstatus:", json)
         }
 
@@ -104,7 +115,10 @@ export const UserPage = (props) => {
   // console.log("MovieStatus:", movieStatus)
 
 
-
+  const handleSortOnRating = (ratingButton) => {
+    setChosenRating(ratingButton)
+    dispatch(ui.actions.setPage(1))
+  }
 
   return (
     //WATCHLIST
@@ -120,33 +134,35 @@ export const UserPage = (props) => {
             `No movies in your watchlist yet`
           )}
           <WrapperWelcomeBox>
-            <Button onClick={(e) => setPage(page + 1)}>More</Button>
+            <Button onClick={(e) => dispatch(ui.actions.setPage(page + 1))}>More</Button>
           </WrapperWelcomeBox>
         </WrapperWelcomeBox>
       )}
       {/* //RATING */}
       {selectedTab === "rated" && (
         <WrapperWelcomeBox>
-          <Button onClick={(e) => setChosenRating(1)}> 1 </Button>
-          <Button onClick={(e) => setChosenRating(2)}> 2 </Button>
-          <Button onClick={(e) => setChosenRating(3)}> 3 </Button>
-          <Button onClick={(e) => setChosenRating(4)}> 4 </Button>
-          <Button onClick={(e) => setChosenRating(5)}> 5 </Button>
-          <Button onClick={(e) => setChosenRating("")}> All </Button>
+          <Button onClick={(e) => handleSortOnRating(1)}> 1 </Button>
+          <Button onClick={(e) => handleSortOnRating(2)}> 2 </Button>
+          <Button onClick={(e) => handleSortOnRating(3)}> 3 </Button>
+          <Button onClick={(e) => handleSortOnRating(4)}> 4 </Button>
+          <Button onClick={(e) => handleSortOnRating(5)}> 5 </Button>
+          <Button onClick={(e) => handleSortOnRating("")}> All </Button>
           {moviesRated && !moviesRated.message && (
             moviesRated.map((movie) => (
-              movie.rating && (
-                <MovieDetail2 key={movie.movieId} id={movie.movieId} />
-              ))
+              // movie.rating && (
+              <MovieDetail2 key={movie.movieId} id={movie.movieId} />
+              // )
+            )
             ))}
           {moviesRated && moviesRated.message && (
             `${moviesRated.message} with this score`
           )}
+          <WrapperWelcomeBox>
+            <Button onClick={(e) => dispatch(ui.actions.setPage(page + 1))}>More</Button>
+          </WrapperWelcomeBox>
         </WrapperWelcomeBox>
       )}
-      <WrapperWelcomeBox>
-        <Button onClick={(e) => setPage(page + 1)}>More</Button>
-      </WrapperWelcomeBox>
+
 
       {/* //USERLIST */}
       {selectedTab === "users" && (
