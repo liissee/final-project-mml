@@ -87,12 +87,12 @@ export const UserPage = (props) => {
       .then(res => res.json())
       .then(json => {
         if (selectedTab === "rated") {
-          setMoviesRated(json.results)
+          setMoviesRated(json)
           console.log("ratedmovies:", json)
           console.log("query:", query)
         }
         else if (selectedTab === "watch") {
-          setMovieStatus(json.results)
+          setMovieStatus(json)
           console.log("watchstatus:", json)
         }
 
