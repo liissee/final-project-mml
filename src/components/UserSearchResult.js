@@ -24,14 +24,13 @@ export const UserSearchResult = () => {
   )
 }
 
-
 const Wrapper = styled.div`
+  text-align:center;
+
   margin: 60px auto;
   color: white;
   padding: 20px 30px 30px 30px;
-  max-width: 480px;
   background: inherit;
-
 `
 const InfoText = styled.h2`
   font-family: 'Raleway', sans-serif;
@@ -47,7 +46,6 @@ export const UserNames = styled.div`
 
 const UserName = styled(Link)`
   margin: 5px;
-  text-decoration: inherit;
   span {
     background: #fe5426;
     padding: 3px 6px;
