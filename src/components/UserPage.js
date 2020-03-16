@@ -171,7 +171,7 @@ export const UserPage = () => {
 
       })
   }, [userId, page, chosenList])
-
+  console.log(movieStatus)
 
   const classes = useStyles();
   const [value, setValue] = useState(0);
@@ -204,7 +204,7 @@ export const UserPage = () => {
           </AppBar>
           <TabPanel value={value} index={0} className={classes.tabPanel}>
             {/* <MoviesRatedParagraph>Movies on your watchlist</MoviesRatedParagraph> */}
-            {movieStatus && (
+            {movieStatus && !movieStatus.message && (
               movieStatus.map((movie) => (
                 <MovieDetail2 key={movie.movieId} id={movie.movieId} />
               ))
@@ -219,7 +219,7 @@ export const UserPage = () => {
             <Button onClick={(e) => setChosenRating(3)}> 3 </Button>
             <Button onClick={(e) => setChosenRating(4)}> 4 </Button>
             <Button onClick={(e) => setChosenRating(5)}> 5 </Button>
-            {moviesRated && chosenList === "rating" && (
+            {moviesRated && !moviesRated.message && chosenList === "rating" && (
               moviesRated.map((movie) => (
                 movie.rating && (
                   <MovieDetail2 key={movie.movieId} id={movie.movieId} />
