@@ -77,11 +77,13 @@ export const MovieDetail2 = ({ id }) => {
             movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />
           <MovieTags>
             <MovieCardInfo>
-              <Link
-                href={`https://www.imdb.com/title/${movie.imdb_id}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >IMDb</Link>
+              {movie.imdb_id && (
+                <Link
+                  href={`https://www.imdb.com/title/${movie.imdb_id}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >IMDb</Link>
+              )}
             </MovieCardInfo>
             <MovieCardInfo>| {cutOutDate(movie.release_date)} |</MovieCardInfo>
             <MovieCardInfo>{movie.runtime} min </MovieCardInfo>
