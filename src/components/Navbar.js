@@ -13,6 +13,7 @@ import {
 import styled from 'styled-components/macro'
 import { useSelector, useDispatch } from 'react-redux'
 import { ui } from '../reducers/ui'
+import { movies } from '../reducers/movies'
 
 export const Navbar = (props) => {
   // const [errorMessage, setErrorMessage] = useState("");
@@ -34,8 +35,8 @@ export const Navbar = (props) => {
       {/* <Hamburger /> */}
       <HeaderStartContainer>
         <HeaderTitle>
-          <Link to={`/`}>movie </Link>
-          <Link to={`/`}>match.</Link>
+          <Link to={`/`} onClick={() => { handleTabChange("movies"); dispatch(movies.actions.setSearchTerm("")) }}>movie </Link>
+          <Link to={`/`} onClick={() => { handleTabChange("movies"); dispatch(movies.actions.setSearchTerm("")) }}>match.</Link>
         </HeaderTitle>
         <Searchbar />
         <NavRightContainer>
@@ -67,6 +68,6 @@ export const Navbar = (props) => {
         </Link>
         <PopoverUserSearch />
       </SubNavbar>
-    </MainStartContainer>
+    </MainStartContainer >
   )
 }
