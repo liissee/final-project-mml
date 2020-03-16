@@ -6,7 +6,8 @@ export const ui = createSlice({
     isLoading: false,
     tab: "movies",
     isLoginFailed: false,
-    errorMessage: false
+    errorMessage: false,
+    page: 1
   },
   reducers: {
     setLoading: (state, action) => {
@@ -20,6 +21,9 @@ export const ui = createSlice({
     },
     setErrorMessage: (state, action) => {
       state.errorMessage = action.payload
+    },
+    setPage: (state, action) => {
+      state.page = action.payload
     }
   }
 })

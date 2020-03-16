@@ -15,8 +15,9 @@ export const Similar = () => {
       .then(res => res.json())
       .then(json => {
         setMovies(json.results)
-      }, [id])
-  })
+        // console.log(json.results)
+      })
+  }, [id])
 
   return (
     <div className="top-movie-list">

@@ -115,8 +115,8 @@ export const MovieDetail = () => {
         <MovieInfo>Starring </MovieInfo>
         <ActorList>
           {cast.map((actor) => (
-            <ActorWrap>
-              <Link key={actor.id} to={`/cast/${actor.id}`} onClick={(e) => handleActor(actor.name)}>
+            <ActorWrap key={actor.id}>
+              <Link to={`/cast/${actor.id}`} onClick={(e) => handleActor(actor.name)}>
                 <ActorName>{actor.name}</ActorName>
                 {actor.profile_path && (
                   <ActorImage
