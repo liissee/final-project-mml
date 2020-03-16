@@ -49,6 +49,7 @@ export const OtherUser = (props) => {
       <MoviesRatedParagraph>Movies that {userName} has rated </MoviesRatedParagraph>
       <section>
         {moviesRated.map((movie) => (
+          movie.rating &&
           <MovieDetail2 key={movie.movieId} id={movie.movieId} />
         ))}
       </section>
