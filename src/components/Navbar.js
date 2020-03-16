@@ -52,7 +52,7 @@ export const Navbar = (props) => {
         </NavRightContainer>
       </HeaderStartContainer>
       <SubNavbar>
-        <Link to="/" onClick={() => handleTabChange("movies")}>
+        <Link to="/" onClick={() => { handleTabChange("movies"); dispatch(movies.actions.setSearchTerm("")) }}>
           <WatchListLink>MOVIES</WatchListLink>
         </Link>
 
