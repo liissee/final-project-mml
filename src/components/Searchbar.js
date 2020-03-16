@@ -28,7 +28,6 @@ export const Searchbar = () => {
         disabled={false}
         large={true}
         placeholder="Search movie..."
-        // rightElement={<Icon icon="icon-arrow" />}
         leftIcon={<Icon icon="search" />}
         small={false}
         type="search"

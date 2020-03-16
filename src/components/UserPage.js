@@ -53,6 +53,8 @@ const useStyles = makeStyles(theme => ({
   },
   tabs: {
     backgroundColor: "#1e2026",
+    color: "white",
+    fontWeight: "700"
   },
   tabPanel: {
     lineHeight: 1
@@ -71,7 +73,7 @@ const theme = createMuiTheme({
   overrides: {
     MuiTabs: {
       indicator: {
-        backgroundColor: deepOrange[500]
+        backgroundColor: deepOrange[500],
       }
     }
   }
