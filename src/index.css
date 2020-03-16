@@ -5,12 +5,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;background: rgb(248,255,238);
-background: rgb(22,28,31);
-background: linear-gradient(137deg, rgba(22,28,31,0.9878326330532213) 10%, rgba(28,50,61,1) 54%, rgba(18,16,16,0.9710259103641457) 93%);  /* background: rgb(248,255,238); */
+background: rgb(24,21,21);
+background: linear-gradient(137deg, rgba(24,21,21,1) 7%, rgba(30,32,38,1) 33%, rgba(21,23,28,1) 49%, rgba(30,32,38,1) 81%, rgba(16,16,18,1) 100%);
 background-repeat: no-repeat;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.PrivateTabIndicator {
+  color: green;
 }

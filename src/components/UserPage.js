@@ -10,11 +10,10 @@ import { Ratings } from './Ratings'
 // import { TabNav } from './TabNav'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
-import AppBar from '@material-ui/core/AppBar'
-import Tabs from '@material-ui/core/Tabs'
-import Tab from '@material-ui/core/Tab'
-import Typography from '@material-ui/core/Typography'
-import Box from '@material-ui/core/Box'
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { AppBar, Tabs, Tab, Typography, Box } from '@material-ui/core'
+import { deepOrange } from "@material-ui/core/colors";
+
 
 //TABS
 const TabPanel = (props) => {
@@ -50,16 +49,33 @@ const a11yProps = (index) => {
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    backgroundColor: "teal",
+    backgroundColor: "#1e2026",
   },
   tabs: {
-    backgroundColor: "#00504f",
-    fontWeight: 700
+    backgroundColor: "#1e2026",
   },
   tabPanel: {
     lineHeight: 1
   }
 }))
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#ffcf3c', // main color
+    },
+    secondary: {
+      main: '#fe5426',
+    },
+  },
+  overrides: {
+    MuiTabs: {
+      indicator: {
+        backgroundColor: deepOrange[500]
+      }
+    }
+  }
+})
 
 
 //USER-PAGE
@@ -173,46 +189,48 @@ export const UserPage = () => {
 
   return (
     <WrapperWelcomeBox>
-      {userName}
-
-      <div className={classes.root}>
-        <AppBar position="static">
-          <Tabs value={value} onChange={handleChange} aria-label="simple tabs example" className={classes.tabs}>
-            <Tab label="Watchlist" {...a11yProps(0)} onClick={(e) => setChosenList("watch")} />
-            <Tab label="All rated" {...a11yProps(1)} onClick={(e) => setChosenList("rating")} />
-            <Tab label="⭐️" {...a11yProps(2)} />
-          </Tabs>
-        </AppBar>
-        <TabPanel value={value} index={0} className={classes.tabPanel}>
-          {/* <MoviesRatedParagraph>Movies on your watchlist</MoviesRatedParagraph> */}
-          {movieStatus && (
-            movieStatus.map((movie) => (
-              <MovieDetail2 key={movie.movieId} id={movie.movieId} />
-            ))
-          )}
-          <Button onClick={(e) => setPage(page + 1)}>More</Button>
-
-        </TabPanel>
-        <TabPanel className={classes.tabPanel} value={value} index={1}>
-
-          <Button onClick={(e) => setChosenRating(1)}> 1 </Button>
-          <Button onClick={(e) => setChosenRating(2)}> 2 </Button>
-          <Button onClick={(e) => setChosenRating(3)}> 3 </Button>
-          <Button onClick={(e) => setChosenRating(4)}> 4 </Button>
-          <Button onClick={(e) => setChosenRating(5)}> 5 </Button>
-          {moviesRated && chosenList === "rating" && (
-            moviesRated.map((movie) => (
-              movie.rating && (
+      <MuiThemeProvider theme={theme}>
+        <div className={classes.root}>
+          <AppBar position="static">
+            <Tabs value={value} onChange={handleChange} aria-label="simple tabs example"
+              className={classes.tabs} indicatorColor="primary"
+            >
+              <Tab label="Watchlist" {...a11yProps(0)} onClick={(e) => setChosenList("watch")} />
+              <Tab label="All rated" {...a11yProps(1)} onClick={(e) => setChosenList("rating")} />
+              <Tab label="⭐️" {...a11yProps(2)} />
+            </Tabs>
+          </AppBar>
+          <TabPanel value={value} index={0} className={classes.tabPanel}>
+            {/* <MoviesRatedParagraph>Movies on your watchlist</MoviesRatedParagraph> */}
+            {movieStatus && (
+              movieStatus.map((movie) => (
                 <MovieDetail2 key={movie.movieId} id={movie.movieId} />
               ))
-            ))}
-          <Button onClick={(e) => setPage(page + 1)}>More</Button>
+            )}
+            <Button onClick={(e) => setPage(page + 1)}>More</Button>
 
-        </TabPanel>
-        <TabPanel className={classes.tabPanel} value={value} index={2}>
-          Item Three
+          </TabPanel>
+          <TabPanel className={classes.tabPanel} value={value} index={1}>
+
+            <Button onClick={(e) => setChosenRating(1)}> 1 </Button>
+            <Button onClick={(e) => setChosenRating(2)}> 2 </Button>
+            <Button onClick={(e) => setChosenRating(3)}> 3 </Button>
+            <Button onClick={(e) => setChosenRating(4)}> 4 </Button>
+            <Button onClick={(e) => setChosenRating(5)}> 5 </Button>
+            {moviesRated && chosenList === "rating" && (
+              moviesRated.map((movie) => (
+                movie.rating && (
+                  <MovieDetail2 key={movie.movieId} id={movie.movieId} />
+                ))
+              ))}
+            <Button onClick={(e) => setPage(page + 1)}>More</Button>
+
+          </TabPanel>
+          <TabPanel className={classes.tabPanel} value={value} index={2}>
+            Item Three
       </TabPanel>
-      </div>
+        </div>
+      </MuiThemeProvider>
     </WrapperWelcomeBox>
   )
 

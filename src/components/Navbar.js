@@ -25,7 +25,8 @@ export const Navbar = () => {
       {/* <Hamburger /> */}
       <HeaderStartContainer>
         <HeaderTitle>
-          <Link to={`/`}>🎬MOVIE MATCH</Link>
+          <Link to={`/`}>movie </Link>
+          <Link to={`/`}>match.</Link>
         </HeaderTitle>
         <Searchbar />
         <NavRightContainer>

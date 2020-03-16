@@ -15,16 +15,18 @@ export const Heading = styled.h1`
 export const ButtonSearchUser = styled.button`
   background: inherit;
   border: none;
-  color: white;
   cursor: pointer;
   font-size: 16px;
   margin-left: 2vw;
   padding-top: 0;
   text-transform: uppercase;
-  font-weight: 600;
+  color: white;
+    &:hover {
+    color:#fe5426;
+  }
 `
 export const HeaderStartContainer = styled.div`
-  background: #1b303b;
+  background: #ffcf3c;
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -33,26 +35,34 @@ export const HeaderStartContainer = styled.div`
   padding: 15px;
 `
 export const HeaderTitle = styled.h1`
-  font-family: 'Muli', sans-serif;
-  /* font-family: 'Raleway', sans-serif; */
+  /* font-family: 'Muli', sans-serif; */
+  display: flex;
+  flex-direction: column;
+  line-height: 0.7;
+  margin-left: 10px;
+  font-family: 'Raleway', sans-serif;
   color: white;
   a {
-    font-size: 3.5rem;
-    text-transform: uppercase;
-    font-weight: 900;
-    letter-spacing: -5px;
-    text-shadow: 2px 2px 0px #000, 5px 4px 0px rgba(0,0,0,0.15);
-    color: white;
+    font-size: 4rem;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    /* text-shadow: 2px 2px 0px #000f3c, 5px 4px 0px rgba(0,0,0,0.15); */
+    color: #000f3c;
     text-decoration: none;
     transition: color 0.3s linear;
   }
 `
 export const SubNavbar = styled.div`
-  background: radial-gradient(circle, rgba(0,0,0,0.2539390756302521) 100%, rgba(148,187,233,1) 100%);  display: flex;
+  color: white;
+  background: #1e2026;
+  /* background: radial-gradient(circle, rgba(0,0,0,0.2539390756302521) 100%, rgba(148,187,233,1) 100%);   */
+  display: flex;
   height: 50px;
   align-items: baseline;
   text-transform: uppercase;
-  font-weight: 600;
+  a {
+    text-decoration: none;
+  }
 `
 export const MainStartContainer = styled.div`
   height: 100%;
@@ -68,7 +78,7 @@ export const SignInButton = styled(ButtonSearchUser)`
   background: inherit;
       &:hover {
     transform: scale(1.2);
-    text-shadow: 2px 2px 0px #000, 5px 4px 0px rgba(0,0,0,0.15);
+    color:#fe5426;
   }
   
 `
@@ -78,17 +88,18 @@ export const SignOutButton = styled(ButtonSearchUser)`
   align-items: start;
       &:hover {
     transform: scale(1.2);
-    text-shadow: 2px 2px 0px #000, 5px 4px 0px rgba(0,0,0,0.15);
+    color:#fe5426;
   }
-
 `
-
 
 export const UserNameNav = styled.div`
   color: white;
+  transform: uppercase;
   font-size: 16px;
-  /* margin-top: 4vh; */
   text-decoration: none;
+    &:hover {
+    color:#fe5426;
+  }
 `
 export const WatchListLink = styled.div`
   color: white;
@@ -96,6 +107,9 @@ export const WatchListLink = styled.div`
   margin-left: 2vw;
   margin-top: 2vh;
   text-decoration: none;
+  &:hover {
+    color:#fe5426;
+  }
 `
 
 // Searchbar 
@@ -339,12 +353,6 @@ export const WrapMovieInfo = styled.div`
   margin-left: 2vw;
   width: 50%;
 `
-// export const YourRating = styled.h3`
-//   margin-bottom: 2vh;
-//   margin-left: 18.5vw;
-//   margin-top: 0;
-// `
-
 
 
 export const ErrorMessage = styled.p`
