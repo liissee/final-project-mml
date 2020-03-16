@@ -209,6 +209,9 @@ export const UserPage = () => {
                 <MovieDetail2 key={movie.movieId} id={movie.movieId} />
               ))
             )}
+            {movieStatus && movieStatus.message && (
+              `No movies in your watchlist yet`
+            )}
             <Button onClick={(e) => setPage(page + 1)}>More</Button>
 
           </TabPanel>
@@ -225,6 +228,9 @@ export const UserPage = () => {
                   <MovieDetail2 key={movie.movieId} id={movie.movieId} />
                 ))
               ))}
+            {moviesRated && moviesRated.message && (
+              `${moviesRated.message} with this score`
+            )}
             <Button onClick={(e) => setPage(page + 1)}>More</Button>
 
           </TabPanel>
