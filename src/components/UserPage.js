@@ -49,10 +49,10 @@ const a11yProps = (index) => {
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    backgroundColor: "#1e2026",
+    backgroundColor: "#faf5e4",
   },
   tabs: {
-    backgroundColor: "#1e2026",
+    backgroundColor: "#004445",
     color: "white",
     fontWeight: "700"
   },
@@ -73,7 +73,7 @@ const theme = createMuiTheme({
   overrides: {
     MuiTabs: {
       indicator: {
-        backgroundColor: deepOrange[500],
+        backgroundColor: "#FFCF3C",
       }
     }
   }
@@ -199,7 +199,7 @@ export const UserPage = () => {
             >
               <Tab label="Watchlist" {...a11yProps(0)} onClick={(e) => setChosenList("watch")} />
               <Tab label="All rated" {...a11yProps(1)} onClick={(e) => setChosenList("rating")} />
-              <Tab label="⭐️" {...a11yProps(2)} />
+              <Tab label="Other users" {...a11yProps(2)} />
             </Tabs>
           </AppBar>
           <TabPanel value={value} index={0} className={classes.tabPanel}>
@@ -235,8 +235,8 @@ export const UserPage = () => {
 
           </TabPanel>
           <TabPanel className={classes.tabPanel} value={value} index={2}>
-            Item Three
-      </TabPanel>
+            <UserList />
+          </TabPanel>
         </div>
       </MuiThemeProvider>
     </WrapperWelcomeBox>
