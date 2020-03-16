@@ -7,7 +7,6 @@ const initialState = {
   userName: localStorage.userName || "",
   accessToken: localStorage.accessToken || "",
   userId: localStorage.userId || "",
-  errorMessage: ""
 }
 
 // Discuss which reducers and actions that should be included
@@ -41,9 +40,6 @@ export const users = createSlice({
     },
     setUser: (state, action) => {
       state.users = action.payload
-    },
-    setErrorMessage: (state, action) => {
-      state.errorMessage = action.payload
     }
   }
 })
@@ -70,13 +66,14 @@ export const fetchUser = ({ email, password }) => {
           dispatch(users.actions.setAccessToken(accessToken))
           dispatch(users.actions.setUserName(name))
           dispatch(users.actions.setUserId(userId))
-        } else {
-          dispatch(ui.actions.setLoginFailed(true))
+          dispatch(ui.actions.setLoginFailed(false))
         }
+        // else {
+        //   dispatch(ui.actions.setLoginFailed(true))
+        // }
       })
       // .catch(err => console.log('error', err))
-      .catch(err => dispatch(ui.actions.setLoginFailed(true))
-      )
+      .catch(err => dispatch(ui.actions.setLoginFailed(true)))
     // .catch(err => dispatch(users.actions.setErrorMessage(err.message))
     // )
   }
