@@ -5,8 +5,9 @@ import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { useHistory } from "react-router-dom";
-import { Input, Label, ErrorMessage, SignInButton } from "./Styling";
+import { Input, Label, SignInButton } from "./Styling";
 import { fetchUser } from "../reducers/users.js"
+import styled from 'styled-components/macro'
 
 const useStyles = makeStyles(theme => ({
   typography: {
@@ -17,30 +18,33 @@ const useStyles = makeStyles(theme => ({
 export const PopoverLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  // const [errorMessage, setErrorMessage] = useState("");
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
 
   const history = useHistory();
   const dispatch = useDispatch()
-  const accessToken = useSelector((state) => state.users.accessToken)
+  // const accessToken = useSelector((state) => state.users.accessToken)
+  const failed = useSelector(state => state.ui.isLoginFailed)
 
 
   const handleClick = event => {
-    setAnchorEl(event.currentTarget);
+    setAnchorEl(event.currentTarget)
   };
 
   const handleClose = () => {
+    // if (failed) { //Hur få login-popuppen att stanna om login=failed? 
     setAnchorEl(null);
+    // }
   };
 
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
 
-  const url = "http://localhost:8080/sessions"
+  // const url = "http://localhost:8080/sessions"
 
 
-  const handleLogin = (event) => {
+  const handleSignin = (event) => {
     event.preventDefault()
     dispatch(fetchUser({ email, password }))
     handleClose()
@@ -55,6 +59,7 @@ export const PopoverLogin = () => {
       history.push(`/`)
     }
   }
+
 
   const reDirect = () => {
     history.push(`/register`);
@@ -80,9 +85,6 @@ export const PopoverLogin = () => {
         }}
       >
         <Typography className={classes.typography}>
-          <ErrorMessage>
-            {errorMessage}
-          </ErrorMessage>
           <Label>
             Email
           <Input
@@ -102,9 +104,9 @@ export const PopoverLogin = () => {
               onKeyPress={handleKeyPress}
             />
           </Label>
+          {failed && <ErrorText>Incorrect user and/or password.</ErrorText>}
           <Button type="submit"
-            onClick={handleLogin}
-
+            onClick={handleSignin}
           >
             LOGIN
         </Button>
@@ -116,3 +118,8 @@ export const PopoverLogin = () => {
     </>
   );
 }
+const ErrorText = styled.p`
+  font-size: 16px;
+  color: #c65353;
+  margin: 5px;
+  `

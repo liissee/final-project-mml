@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { ui } from 'reducers/ui'
 
 // Define initial state, what should be included?
 const initialState = {
   users: [],
   userName: localStorage.userName || "",
   accessToken: localStorage.accessToken || "",
-  userId: localStorage.userId || ""
+  userId: localStorage.userId || "",
 }
 
 // Discuss which reducers and actions that should be included
@@ -65,9 +66,16 @@ export const fetchUser = ({ email, password }) => {
           dispatch(users.actions.setAccessToken(accessToken))
           dispatch(users.actions.setUserName(name))
           dispatch(users.actions.setUserId(userId))
+          dispatch(ui.actions.setLoginFailed(false))
         }
+        // else {
+        //   dispatch(ui.actions.setLoginFailed(true))
+        // }
       })
-      .catch(err => console.log('error', err))
+      // .catch(err => console.log('error', err))
+      .catch(err => dispatch(ui.actions.setLoginFailed(true)))
+    // .catch(err => dispatch(users.actions.setErrorMessage(err.message))
+    // )
   }
 }
 
