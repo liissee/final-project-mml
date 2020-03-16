@@ -22,8 +22,9 @@ export const Login = () => {
   const handleSignin = (event) => {
     event.preventDefault()
     dispatch(fetchUser({ email, password }))
-    // if (accessToken) {
-    //   history.push(`/`)
+    if (!failed) {
+      history.push(`/`)
+    }
   } //USESELECTOR
 
 
@@ -81,7 +82,6 @@ export const Login = () => {
             onChange={event => setPassword(event.target.value)}
           />
         </Label>
-        {/* <div>{errorMessage}</div> */}
         {failed && <ErrorText>Incorrect user and/or password.</ErrorText>}
 
         <Button type="submit" onClick={handleSignin}>
@@ -100,4 +100,4 @@ const ErrorText = styled.p`
   font-size: 16px;
   color: #c65353;
   margin: 5px;
-`
+  `
