@@ -59,7 +59,6 @@ export const MoviesList = () => {
       <section className="movie-list">
         {movieResults &&
           movieResults.map((movie) => {
-            console.log(movie)
             return (
               <div key={movie.id} className="movie-wrapper">
                 {movie.poster_path && (

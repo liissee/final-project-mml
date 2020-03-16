@@ -31,9 +31,12 @@ export const OtherUser = (props) => {
       .then(json => {
         setWatchList(json)
         console.log(json)
+        console.log(`http://localhost:8080/movies/${myId}?friend=${userId}`)
+        // console.log()
       })
-  }, [myId])
+  }, [userId])
 
+  console.log(watchList)
   return (
     <WrapperWelcomeBox>
       <UserNames>User page: {userName}</UserNames>

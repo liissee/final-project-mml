@@ -132,6 +132,7 @@ export const UserPage = (props) => {
           <Button onClick={(e) => setChosenRating(3)}> 3 </Button>
           <Button onClick={(e) => setChosenRating(4)}> 4 </Button>
           <Button onClick={(e) => setChosenRating(5)}> 5 </Button>
+          <Button onClick={(e) => setChosenRating("")}> All </Button>
           {moviesRated && !moviesRated.message && (
             moviesRated.map((movie) => (
               movie.rating && (
