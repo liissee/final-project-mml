@@ -53,18 +53,18 @@ export const Navbar = (props) => {
       </HeaderStartContainer>
       <SubNavbar>
         <Link to="/" onClick={() => { handleTabChange("movies"); dispatch(movies.actions.setSearchTerm("")) }}>
-          <WatchListLink>MOVIES</WatchListLink>
+          <WatchListLink className={selectedTab === "movies" ? 'active' : ''}>MOVIES</WatchListLink>
         </Link>
 
         <Link to="/users/:id/movies" onClick={() => handleTabChange("watch")}>
-          <WatchListLink>Watchlist</WatchListLink>
+          <WatchListLink className={selectedTab === "watch" ? 'active' : ''}>Watchlist</WatchListLink>
         </Link>
         <Link to="/users/:id/movies" onClick={() => handleTabChange("rated")}>
-          <WatchListLink>All rated</WatchListLink>
+          <WatchListLink className={selectedTab === "rated" ? 'active' : ''}>All rated</WatchListLink>
         </Link>
 
         <Link to="/users/:id/movies" onClick={() => handleTabChange("users")}>
-          <WatchListLink>Other users</WatchListLink>
+          <WatchListLink className={selectedTab === "users" ? 'active' : ''}>Other users</WatchListLink>
         </Link>
         <PopoverUserSearch />
       </SubNavbar>
