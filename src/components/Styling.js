@@ -100,29 +100,41 @@ export const Label = styled.label`
 // MovieDetail /////////////////////////////////////////////
 export const ActorImage = styled.img`
   border-radius: 50%;
-  height: 100px;
+  height: auto;
   margin: 0;
-  object-fit: cover;
+  // object-fit: cover;
   width: 100px;
-  /* display:inline;
+  /* display: inline;
   height: auto; */
   /* width: 50px;
   height: auto; */
 `
 export const ActorList = styled.div`
   color: white;
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
-  margin-bottom: 3vh;
+  display: grid;
+  grid-template-columns: repeat(2,2fr);
+  grid-template-rows: repeat(2,2fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+  @media(min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    margin-bottom: 3vh;
+  }
 `
 export const ActorListWrap = styled.div`
   margin-left: 2vw;
+  margin-top: 6vh;
+  @media(min-width: 768px) {
+    margin-top: 0;
+  }
 `
 export const ActorName = styled.div`
   color: white;
   font-size: 12px;
   font-weight: 600;
+  margin-bottom: 2vh;
   text-align:center;
   text-decoration: none;
 `
@@ -145,6 +157,14 @@ export const MovieDetailGenres = styled.div`
   flex-direction: row;
   margin-bottom: 3vh;
 `
+export const MovieDetailImage = styled.img`
+  margin-top: 2vh;
+  width: 230px;
+  @media(min-width: 768px) {
+    margin-top: 0;
+    width: 185px;
+  }
+`
 export const MovieDetailRow = styled.div`
   display: flex;
   flex-direction: row;
@@ -155,9 +175,11 @@ export const MovieImdb = styled.h3`
   background: #FFD700;
   color: black;
   margin-bottom: 2vh;
-  margin-left: 1vw;
+  margin-left: 5vw;
   margin-top: 1.5vh;
-  width: 3.5vw;
+  @media(min-width: 768px) {
+    margin-left: 1vw;
+  }
 `
 export const MovieInfo = styled.h3`
   color: white;
@@ -174,8 +196,11 @@ export const MovieRating = styled.h3`
 `
 export const MovieTitle = styled.h1`
   color: white;
-  margin-top: 0;
+  margin-top: 2vh;
   text-decoration: none;
+  @media(min-width: 768px) {
+    margin-top: 0;
+  }
 `
 export const RatingButtonContainerDetail = styled.div`
   display: flex;
@@ -185,7 +210,10 @@ export const RatingButtonContainerDetail = styled.div`
   margin-left: 0; */
 `
 export const RatingMovieWrap = styled.div`
-  margin-left: 18.5vw;
+  margin-left: 3vw;
+  @media(min-width: 768px) {
+    margin-left: 18.5vw;
+  }
 `
 export const ShowSimilar = styled.div`
   color: white;
@@ -193,24 +221,40 @@ export const ShowSimilar = styled.div`
 export const SimilarMovies = styled.div`
   width: 50%;
 `
+export const SimilarTitle = styled.h3`
+  margin-left: 2vw;
+`
 export const WrapMovie = styled.div`
   display: flex;
-  flex-direction: row;
-  margin-left: 2vw;
-  margin-right: 2vw;
-  margin-top: 2vw;
+  flex-direction: column;
+  margin-left: 3vw;
+  margin-right: 3vw;
+  margin-top: 3vw;
+  @media(min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    margin-top: 2vw;
+  }
 `
 export const WrapMovieInfo = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 2vw;
-  width: 50%;
+  width: 90%;
+  @media(min-width: 768px) {
+    width: 50%;
+  }
 `
 export const YourRating = styled.h3`
   color: white;
   margin-bottom: 2vh;
-  margin-left: 18.5vw;
+  margin-left: 3vw;
   margin-top: 0;
+  @media(min-width: 768px) {
+    margin-left: 18.5vw;
+  }
 `
 
 
@@ -227,6 +271,7 @@ export const MovieCard = styled.div`
   /* background: rgb(248,255,238);
   background: linear-gradient(90deg, rgba(248,255,238,0.542454481792717) 0%, rgba(255,141,111,0.7665441176470589) 100%);  border-radius: 20px; */
   /* padding: 20px 0 0; */
+  @media(min-width: 768px) {}
 `
 export const MovieCardInfo = styled.p`
   color: grey;
@@ -395,6 +440,7 @@ export const FormSearch = styled.form`
   /* padding: 20px 30px 30px 30px; */
 `
 
+
 // UserPage /////////////////////////////////////////////
 export const ButtonRating = styled.button`
   background-color: #B22222;
@@ -443,15 +489,15 @@ export const RatingButtonContainer = styled.div`
 export const RatingStars = styled.div`
   margin-left: auto;
 `
-export const UserName = styled.p`
-  margin-bottom: 1vh;
-`
-export const UserNames = styled.h3`
+export const UserName = styled.div`
   color: white;
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 16px;
   margin-bottom: 2vh;
-  margin-top: 6vh;
+  text-decoration: none;
+`
+export const UserNames = styled.h1`
+  color: white;
+  margin-bottom: 2vh;
 `
 export const WelcomeMovieRow = styled.div`
   display: flex;

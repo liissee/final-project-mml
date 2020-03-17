@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import {
-  WrapperWelcomeBox, Button
+  Button, MovieInfo, MovieTitle, WrapperWelcomeBox
 } from "./Styling"
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
@@ -125,6 +125,7 @@ export const UserPage = (props) => {
     <>
       {selectedTab === "watch" && (
         <WrapperWelcomeBox>
+          <MovieTitle>Your watchlist</MovieTitle>
           {movieStatus && !movieStatus.message && (
             movieStatus.map((movie) => (
               <MovieDetail2 key={movie.movieId} id={movie.movieId} />
@@ -141,6 +142,8 @@ export const UserPage = (props) => {
       {/* //RATING */}
       {selectedTab === "rated" && (
         <WrapperWelcomeBox>
+          <MovieTitle>Movies that you have rated</MovieTitle>
+          <MovieInfo>Sort by rating</MovieInfo>
           <Button onClick={(e) => handleSortOnRating(1)}> 1 </Button>
           <Button onClick={(e) => handleSortOnRating(2)}> 2 </Button>
           <Button onClick={(e) => handleSortOnRating(3)}> 3 </Button>
@@ -166,9 +169,7 @@ export const UserPage = (props) => {
 
       {/* //USERLIST */}
       {selectedTab === "users" && (
-        <WrapperWelcomeBox>
-          <UserList />
-        </WrapperWelcomeBox>
+        <UserList />
       )}
     </>
   )
