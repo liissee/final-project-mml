@@ -33,9 +33,9 @@ export const PopoverLogin = () => {
   };
 
   const handleClose = () => {
-    // if (failed) { //Hur få login-popuppen att stanna om login=failed? 
-    setAnchorEl(null);
-    // }
+    if (failed) { //Hur få login-popuppen att stanna om login=failed? 
+      setAnchorEl(null);
+    }
   };
 
   const open = Boolean(anchorEl);
@@ -47,6 +47,7 @@ export const PopoverLogin = () => {
   const handleSignin = (event) => {
     event.preventDefault()
     dispatch(fetchUser({ email, password }))
+
     handleClose()
     history.push(`/`)
   }

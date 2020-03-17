@@ -73,10 +73,12 @@ export const MoviesList = () => {
                     <h1>{movie.original_title}</h1>
                     <p>Released {movie.release_date}</p>
                   </Link>
-                  <Ratings
-                    movieId={movie.id}
-                    movieTitle={movie.title}
-                  />
+                  <div className="rating">
+                    <Ratings
+                      movieId={movie.id}
+                      movieTitle={movie.title}
+                    />                  </div>
+
                   <WatchStatus
                     movieId={movie.id}
                     movieTitle={movie.title} />

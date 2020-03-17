@@ -42,11 +42,13 @@ export const OtherUser = (props) => {
       <MoviesRatedParagraph>You have a match on {watchList.length} movies </MoviesRatedParagraph>
       <section>
         {watchList.map((movie) => (
-           <MovieRatedRow
-             key={movie.id}
-           >
-             <MovieInfo>{movie.movieTitle}</MovieInfo>
-           </MovieRatedRow>
+          <MovieDetail2 key={movie.movieId} id={movie.movieId} />
+
+          //  <MovieRatedRow
+          //    key={movie.id}
+          //  >
+          //    <MovieInfo>{movie.movieTitle}</MovieInfo>
+          //  </MovieRatedRow>
         ))}
       </section>
       <MoviesRatedParagraph>Movies that {userName} has rated </MoviesRatedParagraph>

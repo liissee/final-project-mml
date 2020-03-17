@@ -517,6 +517,8 @@ export const RatingButtonContainer = styled.div`
 `
 export const RatingStars = styled.div`
   margin-left: auto;
+  align-items:center;
+text-align:center;
 `
 export const UserName = styled.div`
   color: white;
