@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import {
-  Button, MovieInfo, MovieTitle, WrapperWelcomeBox, ErrorMessage
+  ButtonMore, MovieInfo, MovieTitle, WrapperWelcomeBox, ErrorMessage
 } from "./Styling"
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
@@ -31,8 +31,7 @@ export const UserPage = (props) => {
   const selectedTab = useSelector((state) => state.ui.tab)
   const page = useSelector((state) => state.ui.page)
 
-  console.log(selectedTab)
-  console.log(selectedTab)
+
 
   //Logged in or not?
   useEffect(() => {
@@ -137,7 +136,7 @@ export const UserPage = (props) => {
           )}
           {!errorMessage &&
             <WrapperWelcomeBox>
-              <Button onClick={(e) => dispatch(ui.actions.setPage(page + 1))}>More</Button>
+              <ButtonMore onClick={(e) => dispatch(ui.actions.setPage(page + 1))}>Show more</ButtonMore>
             </WrapperWelcomeBox>}
         </WrapperWelcomeBox>
       )}
@@ -149,12 +148,12 @@ export const UserPage = (props) => {
             <div>
               <MovieTitle>Movies that you have rated</MovieTitle>
               <MovieInfo>Sort by rating</MovieInfo>
-              <Button onClick={(e) => handleSortOnRating(1)}> 1 </Button>
-              <Button onClick={(e) => handleSortOnRating(2)}> 2 </Button>
-              <Button onClick={(e) => handleSortOnRating(3)}> 3 </Button>
-              <Button onClick={(e) => handleSortOnRating(4)}> 4 </Button>
-              <Button onClick={(e) => handleSortOnRating(5)}> 5 </Button>
-              <Button onClick={(e) => handleSortOnRating("")}> All </Button>
+              <ButtonMore onClick={(e) => handleSortOnRating(1)}> 1 </ButtonMore>
+              <ButtonMore onClick={(e) => handleSortOnRating(2)}> 2 </ButtonMore>
+              <ButtonMore onClick={(e) => handleSortOnRating(3)}> 3 </ButtonMore>
+              <ButtonMore onClick={(e) => handleSortOnRating(4)}> 4 </ButtonMore>
+              <ButtonMore onClick={(e) => handleSortOnRating(5)}> 5 </ButtonMore>
+              <ButtonMore onClick={(e) => handleSortOnRating("")}> All </ButtonMore>
             </div>
           }
           {moviesRated && !moviesRated.message && (
@@ -169,7 +168,7 @@ export const UserPage = (props) => {
           )}
           {!errorMessage &&
             <WrapperWelcomeBox>
-              <Button onClick={(e) => dispatch(ui.actions.setPage(page + 1))}>More</Button>
+              <ButtonMore onClick={(e) => dispatch(ui.actions.setPage(page + 1))}>Show more</ButtonMore>
             </WrapperWelcomeBox>}
         </WrapperWelcomeBox>
       )}

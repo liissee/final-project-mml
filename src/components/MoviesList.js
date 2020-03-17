@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { DropDownList } from "components/DropDownList"
 import "components/movielist.css"
 import { Ratings } from "./Ratings"
-import { Button } from './Styling'
+import { ButtonMore, ButtonContainer } from './Styling'
 import { WatchStatus } from './WatchStatus';
 
 
@@ -92,7 +92,9 @@ export const MoviesList = () => {
           }
           )}
       </section>
-      <Button onClick={(e) => setPage(page + 1)}>More</Button>
+      <ButtonContainer>
+        <ButtonMore onClick={(e) => setPage(page + 1)}>Show more</ButtonMore>
+      </ButtonContainer>
     </div >
   )
 }

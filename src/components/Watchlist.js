@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import { AppBar, Tabs, Tab, Typography, Box } from '@material-ui/core'
 import {
-  Button, WrapperWelcomeBox 
+  Button, WrapperWelcomeBox, ButtonMore
 } from "./Styling"
 
 
@@ -206,7 +206,7 @@ export const UserPage = () => {
             {movieStatus && movieStatus.message && (
               `No movies in your watchlist yet`
             )}
-            <Button onClick={(e) => setPage(page + 1)}>More</Button>
+            <Button onClick={(e) => setPage(page + 1)}>Show more</Button>
 
           </TabPanel>
           <TabPanel className={classes.tabPanel} value={value} index={1}>
@@ -225,7 +225,7 @@ export const UserPage = () => {
             {moviesRated && moviesRated.message && (
               `${moviesRated.message} with this score`
             )}
-            <Button onClick={(e) => setPage(page + 1)}>More</Button>
+            <ButtonMore onClick={(e) => setPage(page + 1)}>Show more</ButtonMore>
 
           </TabPanel>
           <TabPanel className={classes.tabPanel} value={value} index={2}>

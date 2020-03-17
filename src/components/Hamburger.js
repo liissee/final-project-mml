@@ -1,16 +1,15 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import styled from "styled-components"
+import styled from "styled-components/macro"
 import { Link } from "react-router-dom"
 import { ui } from '../reducers/ui'
 import { movies } from '../reducers/movies'
 
 
 const StyledMenu = styled.nav`
-  background: #EFFFFA;
+  background: #ffcf3c;
   display: flex;
   flex-direction: column;
-  height: 100vh;
   justify-content: center;
   left: 0;
   padding: 2rem;
@@ -21,15 +20,14 @@ const StyledMenu = styled.nav`
   transition: transform 0.3s ease-in-out;
   z-index: 2;
   width: 100%;
-
-
   a {
+    font-family: 'Raleway',sans-serif;
     font-size: 2rem;
     text-transform: uppercase;
     padding: 2rem 0;
     font-weight: bold;
     letter-spacing: 0.5rem;
-    color: #0D0C1D;
+    color: #000f3c;
     text-decoration: none;
     transition: color 0.3s linear;
 
@@ -46,33 +44,36 @@ const StyledMenu = styled.nav`
 
 export const Menu = ({ open }) => {
   const selectedTab = useSelector((state) => state.ui.tab)
-const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
-const handleTabChange = (tab) => {
-  dispatch(ui.actions.setTab(tab))
-  dispatch(ui.actions.setPage(1))
-}
+  const handleTabChange = (tab) => {
+    dispatch(ui.actions.setTab(tab))
+    dispatch(ui.actions.setPage(1))
+  }
   return (
     <StyledMenu open={open}>
-    <Link to="/" onClick={() => { handleTabChange("movies"); dispatch(movies.actions.setSearchTerm("")) }}>
-      <span role="img" aria-label="movies">🎬</span>
+      <Link to="/" onClick={() => { handleTabChange("movies"); dispatch(movies.actions.setSearchTerm("")) }}>
+        <span role="img" aria-label="movies">🎬</span>
       MOVIES
     </Link>
 
-    <Link to="/users/:id/movies" onClick={() => handleTabChange("watch")}>
-      <span role="img" aria-label="watchlist">📝</span>
+      <Link to="/users/:id/movies" onClick={() => handleTabChange("watch")}>
+        <span role="img" aria-label="watchlist">📝</span>
       Watchlist
     </Link>
 
-    <Link to="/users/:id/movies" onClick={() => handleTabChange("rated")}>
-      <span role="img" aria-label="rating">⭐️</span>
+      <Link to="/users/:id/movies" onClick={() => handleTabChange("rated")}>
+        <span role="img" aria-label="rating">⭐️</span>
       All rated
     </Link>
 
-    <Link to="/users/:id/movies" onClick={() => handleTabChange("users")}>
-      Other users
+      <Link to="/users/:id/movies" onClick={() => handleTabChange("users")}>
+        Other users
     </Link>
-
+      <Link to="/register">
+        <span role="img" aria-label="about us">🖋</span>
+        Register
+    </Link>
     </StyledMenu>
   )
 }

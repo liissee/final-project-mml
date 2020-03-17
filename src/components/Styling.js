@@ -30,7 +30,7 @@ export const Button = styled.button`
   color: #fff;
   cursor: pointer;
   font-size: 1em;
-  font-weight: bold;
+  font-weight: 600;
   margin: 2px;
   padding: 10px;
   text-shadow: -1px -1px rgba(0,0,0,0.1);
@@ -265,19 +265,19 @@ export const ImageNotFound = styled.img`
   width: 185px;
 `
 export const MovieCard = styled.div`
-  background: white;
+  background: rgb(31,33,40);
+  background: radial-gradient(circle, rgba(31,33,40,0.9346113445378151) 0%, rgba(23,23,25,0.9878326330532213) 100%);border: 2px solid #f5b333;
+  color:white;
   border-radius: 20px;
   height: 350px;
   margin: 10px;
   padding-bottom: 5px;
+
   @media(min-width: 768px) {
     height: 200px;
     margin: 10px;
     padding-bottom: 5px;
   }
-  /* background: rgb(248,255,238);
-  background: linear-gradient(90deg, rgba(248,255,238,0.542454481792717) 0%, rgba(255,141,111,0.7665441176470589) 100%);  border-radius: 20px; */
-  /* padding: 20px 0 0; */
 `
 export const MovieCardInfo = styled.p`
   color: grey;
@@ -296,7 +296,7 @@ export const MovieCardOverview = styled.div`
   /* margin-bottom: 5px; */
 `
 export const MovieCardTitle = styled.h1`
-  color: black;
+  color: white;
   font-size: 16px;
   margin-bottom: 1vh;
   overflow: hidden;
@@ -310,10 +310,11 @@ export const MovieCardTitle = styled.h1`
 `
 export const MovieImage = styled.img`
   border-radius: 20px 0 0 20px;
+
   height: 150px;
   width: 135px;
   @media(min-width: 768px) {
-    height: 200px;
+    height: 195.5px;
     width: 185px;
   }
 `
@@ -340,6 +341,7 @@ export const WrapMovieCardInfo = styled.div`
   margin-left: 2vw;
   width: 70%;
 `
+
 
 
 // Navbar /////////////////////////////////////////////
@@ -398,21 +400,22 @@ export const NavRightContainer = styled.div`
   flex-direction: row;
   margin-left: auto;
 `
-export const SignInButton = styled(ButtonSearchUser)`
+export const SignInButton = styled.button`
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 2em;
+  margin-left: 2vw;
   background: inherit;
+  font-family: 'Raleway', sans-serif;
+  margin-right: 60px;
   &:hover {
     color:#fe5426;
     transform: scale(1.2);
   }
 `
-export const SignOutButton = styled(ButtonSearchUser)`
-  background: inherit;
-  text-align: none;
-  align-items: start;
-  &:hover {
-    transform: scale(1.2);
-    color:#fe5426;
-  }
+export const SignOutButton = styled(SignInButton)`
 `
 export const SubNavbar = styled.div`
   align-items: baseline;
@@ -423,6 +426,9 @@ export const SubNavbar = styled.div`
   text-transform: uppercase;
   a {
     text-decoration: none;
+  }
+    @media(max-width: 768px) {
+    align-items: center;
   }
   /* background: radial-gradient(circle, rgba(0,0,0,0.2539390756302521) 100%, rgba(148,187,233,1) 100%);   */
 `
@@ -474,7 +480,7 @@ export const FormSearch = styled.form`
 
 // UserPage /////////////////////////////////////////////
 export const ButtonRating = styled.button`
-  background-color: #B22222;
+/*   background-color: #B22222;
   border-radius: 2em;
   box-sizing: border-box;
   color: #FFFFFF;
@@ -488,18 +494,43 @@ export const ButtonRating = styled.button`
   transition: all 0.2s;
   &:hover, &:active {
     background: #CD5C5C;
-    cursor: pointer;
+    cursor: pointer; */
   }
 `
-export const ButtonWatch = styled(ButtonRating)`
-  background-color: #FFA500;
-  border-radius: 1em;
-  margin: 0 0.2em 0.2em 0;
-  padding: 0.3em 1.2em;
-  &:hover, &:active {
-    background: #FF6347;
+export const ButtonWatch = styled(Button)`
+  border: #fff solid 2px;
+  background: inherit;
+  border-radius: 0.6em;
+  padding: 3px;
+  font-weight: 400;
+  &:hover, 
+  &:active {
+    color: #1c1a21;
+    border: #1c1a21 solid 2px;
+    background: #Fff;
+    font-weight: 600;
   }
 `
+export const ButtonMore = styled(ButtonWatch)`
+  color: #1c1a21;
+  border: #1c1a21 solid 2px;
+  background: #fff;
+  font-weight: 600;
+  padding: 10px;
+  margin-bottom: 20px;
+  &:hover, 
+  &:active {
+  border: #fff solid 2px;
+  background: inherit;
+  font-weight: 600;
+  color: white;
+  }
+`
+export const ButtonContainer = styled.div`
+display:flex;
+justify-content: center;
+`
+
 export const MoviesRatedParagraph = styled.h3`
   color: white;
   font-size: 18px;
@@ -520,7 +551,7 @@ export const RatingButtonContainer = styled.div`
 export const RatingStars = styled.div`
   margin-left: auto;
   align-items:center;
-text-align:center;
+  text-align:center;
 `
 export const UserName = styled.div`
   color: white;

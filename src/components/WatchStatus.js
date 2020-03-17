@@ -45,9 +45,11 @@ export const WatchStatus = ({ movieId, movieTitle }) => {
 
       <RatingButtonContainer>
         <div>
-          <ButtonWatch 
-            onClick={(e) => handleWatchStatus(userId, movieTitle, !watchStatus)}> 
-            {watchStatus ? "Remove from watchlist" : "Add to watchlist"} 
+
+          <ButtonWatch
+            disabled={!accessToken}
+            onClick={(e) => handleWatchStatus(userId, movieTitle, !watchStatus)}>
+            {watchStatus ? "REMOVE FROM WATCHLIST" : "ADD TO WATCHLIST"}
           </ButtonWatch>
           {/* <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieTitle, false)}> No thanks</ButtonWatch> */}
         </div>

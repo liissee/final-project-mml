@@ -7,7 +7,6 @@ import Button from '@material-ui/core/Button';
 import { useHistory } from "react-router-dom";
 import { Input, Label, SignInButton, ErrorMessage } from "./Styling";
 import { fetchUser } from "../reducers/users.js"
-import styled from 'styled-components/macro'
 
 const useStyles = makeStyles(theme => ({
   typography: {
@@ -63,6 +62,8 @@ export const PopoverLogin = () => {
 
 
   const reDirect = () => {
+    handleClose()
+    setAnchorEl(null);
     history.push(`/register`);
   };
 

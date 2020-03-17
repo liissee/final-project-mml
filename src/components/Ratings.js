@@ -9,6 +9,8 @@ export const Ratings = ({ movieId, movieTitle }) => {
   const [rate, setRate] = useState()
   const accessToken = useSelector((state) => state.users.accessToken)
   const userId = useSelector((state) => state.users.userId)
+  const failed = useSelector(state => state.ui.isLoginFailed)
+
   // const rating = window.localStorage.getItem(movieId)
   // const accessToken = window.localStorage.getItem("accessToken");
   // const userId = window.localStorage.getItem("userId")
@@ -72,11 +74,11 @@ export const Ratings = ({ movieId, movieTitle }) => {
     <>
       {/* {accessToken && */}
       <RatingButtonContainer>
-        <BoxContainer 
-          component="fieldset" 
-          mb={3} 
-          borderColor="transparent" 
-          marginBottom="0px" 
+        <BoxContainer
+          component="fieldset"
+          mb={3}
+          borderColor="transparent"
+          marginBottom="0px"
           width="100px"
         >
           <Rating
