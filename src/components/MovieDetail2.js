@@ -1,17 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Ratings } from './Ratings';
-import { movies } from '../reducers/movies'
+import { WatchStatus } from './WatchStatus'
 import {
   MovieCard, MovieCardInfo, MovieCardOverview, MovieCardTitle,
-  MovieDetailRow, MovieImage, MovieTags, WrapMovieCard, WrapMovieCardInfo
+  MovieImage, MovieTags, WrapMovieCard, WrapMovieCardInfo
 } from "./Styling";
-import { Ratings } from './Ratings';
-import { WatchStatus } from './WatchStatus'
-import { movies } from '../reducers/movies'
-
-// Import what we need to use
-
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 
@@ -78,10 +72,10 @@ export const MovieDetail2 = ({ id }) => {
             movieTitle={movie.title}
             movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} 
           />
-            movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />
-          <WatchStatus movieId={movie.id}
+          <WatchStatus 
+            movieId={movie.id}
             movieTitle={movie.title}
-            movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}></WatchStatus>
+          />
           <MovieTags>
             <MovieCardInfo>
               {movie.imdb_id && (

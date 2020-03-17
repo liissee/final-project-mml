@@ -32,7 +32,7 @@ export const Navbar = (props) => {
 
   return (
     <MainStartContainer>
-      {/* <Hamburger /> */}
+      <Hamburger/>
       <HeaderStartContainer>
         <HeaderTitle>
           <Link to={`/`} onClick={() => { handleTabChange("movies"); dispatch(movies.actions.setSearchTerm("")) }}>movie </Link>

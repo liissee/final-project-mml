@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from "react-redux";
 import {
-  MoviesRatedParagraph,
+  MovieInfo, MoviesRatedParagraph, MovieRatedRow,
   UserNames, WrapperWelcomeBox
 } from "./Styling"
 import { MovieDetail2 } from './MovieDetail2';
@@ -32,7 +32,6 @@ export const OtherUser = (props) => {
         setWatchList(json)
         console.log(json)
         console.log(`http://localhost:8080/movies/${myId}?friend=${userId}`)
-        // console.log()
       })
   }, [userId])
 
@@ -43,7 +42,11 @@ export const OtherUser = (props) => {
       <MoviesRatedParagraph>You have a match on {watchList.length} movies </MoviesRatedParagraph>
       <section>
         {watchList.map((movie) => (
-          <MovieDetail2 key={movie.movieId} id={movie.movieId} />
+           <MovieRatedRow
+             key={movie.id}
+           >
+             <MovieInfo>{movie.movieTitle}</MovieInfo>
+           </MovieRatedRow>
         ))}
       </section>
       <MoviesRatedParagraph>Movies that {userName} has rated </MoviesRatedParagraph>
@@ -56,3 +59,5 @@ export const OtherUser = (props) => {
     </WrapperWelcomeBox>
   )
 }
+
+// <MovieDetail2 key={movie.movieId} id={movie.movieId} />

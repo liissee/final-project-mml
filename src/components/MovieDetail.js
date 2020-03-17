@@ -1,24 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useDispatch } from "react-redux"
+import { Ratings } from './Ratings';
+import { WatchStatus } from './WatchStatus'
+import { Similar } from './Similar';
+import { movies } from '../reducers/movies'
 import {
   ActorImage, ActorList, ActorListWrap, ActorName, ActorWrap, Genre, ImageNotFound, 
   MovieBackground, MovieDetailGenres, MovieDetailImage, MovieDetailRow, MovieImdb, 
   MovieInfo, MovieRating, MovieTitle, MovieOverview, RatingMovieWrap,
   ShowSimilar, SimilarTitle, WrapMovie, WrapMovieInfo, YourRating 
 } from "./Styling";
-import { Ratings } from './Ratings';
-import { Similar } from './Similar';
-import { movies } from '../reducers/movies'
-
-
-
-// Import what we need to use
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 
-// Fetch data from API with a GET request using e.g. :movieId
-// Show movie details: poster, story overview, casting, rating etc.
+
 export const MovieDetail = () => {
   const { id } = useParams()
   const [movie, setMovie] = useState([])
@@ -105,11 +101,15 @@ export const MovieDetail = () => {
       </WrapMovie>
       <YourRating>Rate this movie</YourRating>
       <RatingMovieWrap>
-        <Ratings movieId={movie.id}
+        <Ratings 
+          movieId={movie.id}
+          movieTitle={movie.title}
+        />
+        <WatchStatus
+          movieId={movie.id}
           movieTitle={movie.title}
         />
       </RatingMovieWrap>
-
 
       <ActorListWrap>
         <MovieInfo>Starring </MovieInfo>
