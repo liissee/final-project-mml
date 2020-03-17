@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import {
-  Button, MovieInfo, MovieTitle, WrapperWelcomeBox
+  Button, MovieInfo, MovieTitle, WrapperWelcomeBox, ErrorMessage
 } from "./Styling"
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { MovieDetail2 } from './MovieDetail2';
 import { UserList } from './UserList'
-import { Ratings } from './Ratings'
 import { ui } from '../reducers/ui'
 
 
@@ -32,6 +31,7 @@ export const UserPage = (props) => {
   const selectedTab = useSelector((state) => state.ui.tab)
   const page = useSelector((state) => state.ui.page)
 
+  console.log(selectedTab)
   console.log(selectedTab)
 
   //Logged in or not?
@@ -125,7 +125,8 @@ export const UserPage = (props) => {
     <>
       {selectedTab === "watch" && (
         <WrapperWelcomeBox>
-          <MovieTitle>Your watchlist</MovieTitle>
+          <ErrorMessage>{errorMessage && <div>{errorMessage}</div>}</ErrorMessage>
+          {!errorMessage && <MovieTitle>Your watchlist</MovieTitle>}
           {movieStatus && !movieStatus.message && (
             movieStatus.map((movie) => (
               <MovieDetail2 key={movie.movieId} id={movie.movieId} />
@@ -134,22 +135,28 @@ export const UserPage = (props) => {
           {movieStatus && movieStatus.message && (
             `No movies in your watchlist yet`
           )}
-          <WrapperWelcomeBox>
-            <Button onClick={(e) => dispatch(ui.actions.setPage(page + 1))}>More</Button>
-          </WrapperWelcomeBox>
+          {!errorMessage &&
+            <WrapperWelcomeBox>
+              <Button onClick={(e) => dispatch(ui.actions.setPage(page + 1))}>More</Button>
+            </WrapperWelcomeBox>}
         </WrapperWelcomeBox>
       )}
       {/* //RATING */}
       {selectedTab === "rated" && (
         <WrapperWelcomeBox>
-          <MovieTitle>Movies that you have rated</MovieTitle>
-          <MovieInfo>Sort by rating</MovieInfo>
-          <Button onClick={(e) => handleSortOnRating(1)}> 1 </Button>
-          <Button onClick={(e) => handleSortOnRating(2)}> 2 </Button>
-          <Button onClick={(e) => handleSortOnRating(3)}> 3 </Button>
-          <Button onClick={(e) => handleSortOnRating(4)}> 4 </Button>
-          <Button onClick={(e) => handleSortOnRating(5)}> 5 </Button>
-          <Button onClick={(e) => handleSortOnRating("")}> All </Button>
+          <ErrorMessage>{errorMessage && <div>{errorMessage}</div>}</ErrorMessage>
+          {!errorMessage &&
+            <div>
+              <MovieTitle>Movies that you have rated</MovieTitle>
+              <MovieInfo>Sort by rating</MovieInfo>
+              <Button onClick={(e) => handleSortOnRating(1)}> 1 </Button>
+              <Button onClick={(e) => handleSortOnRating(2)}> 2 </Button>
+              <Button onClick={(e) => handleSortOnRating(3)}> 3 </Button>
+              <Button onClick={(e) => handleSortOnRating(4)}> 4 </Button>
+              <Button onClick={(e) => handleSortOnRating(5)}> 5 </Button>
+              <Button onClick={(e) => handleSortOnRating("")}> All </Button>
+            </div>
+          }
           {moviesRated && !moviesRated.message && (
             moviesRated.map((movie) => (
               // movie.rating && (
@@ -160,16 +167,19 @@ export const UserPage = (props) => {
           {moviesRated && moviesRated.message && (
             `${moviesRated.message} with this score`
           )}
-          <WrapperWelcomeBox>
-            <Button onClick={(e) => dispatch(ui.actions.setPage(page + 1))}>More</Button>
-          </WrapperWelcomeBox>
+          {!errorMessage &&
+            <WrapperWelcomeBox>
+              <Button onClick={(e) => dispatch(ui.actions.setPage(page + 1))}>More</Button>
+            </WrapperWelcomeBox>}
         </WrapperWelcomeBox>
       )}
-
-
       {/* //USERLIST */}
       {selectedTab === "users" && (
-        <UserList />
+        <WrapperWelcomeBox>
+          <ErrorMessage>{errorMessage && <div>{errorMessage}</div>}</ErrorMessage>
+          {!errorMessage &&
+            <UserList />}
+        </WrapperWelcomeBox>
       )}
     </>
   )

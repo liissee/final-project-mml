@@ -5,7 +5,7 @@ import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { useHistory } from "react-router-dom";
-import { Input, Label, SignInButton } from "./Styling";
+import { Input, Label, SignInButton, ErrorMessage } from "./Styling";
 import { fetchUser } from "../reducers/users.js"
 import styled from 'styled-components/macro'
 
@@ -105,7 +105,7 @@ export const PopoverLogin = () => {
               onKeyPress={handleKeyPress}
             />
           </Label>
-          {failed && <ErrorText>Incorrect user and/or password.</ErrorText>}
+          {failed && <ErrorMessage>Incorrect user and/or password.</ErrorMessage>}
           <Button type="submit"
             onClick={handleSignin}
           >
@@ -119,8 +119,4 @@ export const PopoverLogin = () => {
     </>
   );
 }
-const ErrorText = styled.p`
-  font-size: 16px;
-  color: #c65353;
-  margin: 5px;
-  `
+

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from "react-router-dom";
-import { Form, Input, Label, Heading, Button, FieldContainer } from "./Styling";
+import { Form, Input, Label, Heading, Button, FieldContainer, ErrorMessage } from "./Styling";
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchUser } from "../reducers/users.js"
 // import { ui } from '../reducers/ui.js'
@@ -25,7 +25,7 @@ export const Login = () => {
     if (!failed) {
       history.push(`/`)
     }
-  } //USESELECTOR
+  }
 
 
   // const handleSignin = event => {
@@ -82,7 +82,7 @@ export const Login = () => {
             onChange={event => setPassword(event.target.value)}
           />
         </Label>
-        {failed && <ErrorText>Incorrect user and/or password.</ErrorText>}
+        {failed && <ErrorMessage>Incorrect user and/or password.</ErrorMessage>}
 
         <Button type="submit" onClick={handleSignin}>
           LOGIN
@@ -95,9 +95,3 @@ export const Login = () => {
   );
 };
 
-
-const ErrorText = styled.p`
-  font-size: 16px;
-  color: #c65353;
-  margin: 5px;
-  `
