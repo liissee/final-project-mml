@@ -32,11 +32,16 @@ export const Similar = () => {
                 src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="Photo by Denise Jans on Unsplash" />
             )}
             <div className="hover-details">
-              <Link key={movie.id} to={`/movies/${movie.id}`}>
-                <h1>{movie.original_title}</h1>
-              </Link>
-              <p>Released {movie.release_date}</p>
-              <Ratings movieId={movie.id} movieTitle={movie.title} />
+              <div className="mobile-view ">
+
+                <Link key={movie.id} to={`/movies/${movie.id}`}>
+                  <h1>{movie.original_title}</h1>
+                </Link>
+                <div className="rating">
+                  <p>Released {movie.release_date}</p>
+                  <Ratings movieId={movie.id} movieTitle={movie.title} />
+                </div>
+              </div>
             </div>
           </div>
         ))}

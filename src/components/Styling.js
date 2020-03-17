@@ -43,8 +43,9 @@ export const Button = styled.button`
   }
 `
 export const ErrorMessage = styled.p`
-  color:red;
+  color:#fe5426;
   font-size: 14px;
+  
 `
 
 export const FieldContainer = styled.div`

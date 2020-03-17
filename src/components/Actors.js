@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
 import { useSelector } from "react-redux"
 import "components/movielist.css"
-import { ImageNotFound } from './Styling'
-
+import { ImageNotFound, MovieTitle } from './Styling'
+import styled from 'styled-components/macro'
 
 export const Actors = () => {
   const { castId } = useParams()
@@ -29,7 +29,7 @@ export const Actors = () => {
 
   return (
     <div className="top-movie-list">
-      <h1>Movies with {name}</h1>
+      <MovieTitle>Movies with {name}</MovieTitle>
       <section className="movie-list">
         {person.map((persons) => (
           <Link className="movie-wrapper" key={persons.credit_id} to={`/movies/${persons.id}`}>
@@ -37,12 +37,14 @@ export const Actors = () => {
               <img src={`https://image.tmdb.org/t/p/w342${persons.poster_path}`} alt={persons.title} />
             )}
             {!persons.poster_path && (
-              <img src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="Photo by Denise Jans on Unsplash" />
+              <ImageNotFound src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="Photo by Denise Jans on Unsplash" />
             )}
             <div className="hover-details">
-              <h2>{persons.title}</h2>
-              <p>Character: {persons.character}</p>
-              <p>Released {persons.release_date}</p>
+              <div className="mobile-view ">
+                <h1>{persons.title}</h1>
+                <p>Character: {persons.character}</p>
+                <p>Released {persons.release_date}</p>
+              </div>
             </div>
           </Link>
         ))}
@@ -50,4 +52,5 @@ export const Actors = () => {
     </div>
   )
 }
+
 
