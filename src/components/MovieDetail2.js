@@ -5,6 +5,7 @@ import {
   MovieDetailRow, MovieImage, MovieTags, WrapMovieCard, WrapMovieCardInfo
 } from "./Styling";
 import { Ratings } from './Ratings';
+import { WatchStatus } from './WatchStatus'
 import { movies } from '../reducers/movies'
 
 // Import what we need to use
@@ -75,6 +76,9 @@ export const MovieDetail2 = ({ id }) => {
           <Ratings movieId={movie.id}
             movieTitle={movie.title}
             movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />
+          <WatchStatus movieId={movie.id}
+            movieTitle={movie.title}
+            movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}></WatchStatus>
           <MovieTags>
             <MovieCardInfo>
               {movie.imdb_id && (

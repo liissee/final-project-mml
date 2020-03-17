@@ -34,15 +34,16 @@ export const Ratings = ({ movieId, movieTitle }) => {
     // })
   }
 
-  // function that will be invoced when the user clicks on "Re watch", "Watched" etc.
-  // we should discuss what code to add in body: JSON - we should send the status to our API
-  const handleWatchStatus = (userId, movieTitle, watchStatus) => {
-    fetch(`http://localhost:8080/users/${userId}`, {
-      method: "PUT",
-      body: JSON.stringify({ userId, movieId, movieTitle, watchStatus }),
-      headers: { "Content-Type": "application/json", "Authorization": accessToken }
-    })
-  }
+  //MOVED TO WatchStatus.js
+  // // function that will be invoced when the user clicks on "Re watch", "Watched" etc.
+  // // we should discuss what code to add in body: JSON - we should send the status to our API
+  // const handleWatchStatus = (userId, movieTitle, watchStatus) => {
+  //   fetch(`http://localhost:8080/users/${userId}`, {
+  //     method: "PUT",
+  //     body: JSON.stringify({ userId, movieId, movieTitle, watchStatus }),
+  //     headers: { "Content-Type": "application/json", "Authorization": accessToken }
+  //   })
+  // }
 
   // GET movies with rating
   useEffect(() => {
@@ -103,10 +104,10 @@ export const Ratings = ({ movieId, movieTitle }) => {
             }
           />
         </Lalala>
-        <div>
+        {/* <div>
           <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieTitle, true)}> Watch </ButtonWatch>
           <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieTitle, false)}> No thanks</ButtonWatch>
-        </div>
+        </div> */}
       </RatingButtonContainer>
       {/* } */}
     </>

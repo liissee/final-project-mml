@@ -6,6 +6,7 @@ import { DropDownList } from "components/DropDownList"
 import "components/movielist.css"
 import { Ratings } from "./Ratings"
 import { Button } from './Styling'
+import { WatchStatus } from './WatchStatus';
 
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
@@ -76,6 +77,9 @@ export const MoviesList = () => {
                     movieId={movie.id}
                     movieTitle={movie.title}
                   />
+                  <WatchStatus
+                    movieId={movie.id}
+                    movieTitle={movie.title} />
                 </div>
               </div>
             )
