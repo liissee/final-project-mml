@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useDispatch } from "react-redux"
 import {
-  ActorList, ActorListWrap, ActorName, Genre, MovieBackground,
-  MovieDetailGenres, MovieDetailRow, MovieImdb, MovieInfo,
-  MovieRating, MovieTitle, MovieOverview, RatingMovieWrap,
-  ShowSimilar, WrapMovie, WrapMovieInfo, YourRating, ActorImage, ActorWrap, ImageNotFound
+  ActorImage, ActorList, ActorListWrap, ActorName, ActorWrap, Genre, ImageNotFound, 
+  MovieBackground, MovieDetailGenres, MovieDetailImage, MovieDetailRow, MovieImdb, 
+  MovieInfo, MovieRating, MovieTitle, MovieOverview, RatingMovieWrap,
+  ShowSimilar, SimilarTitle, WrapMovie, WrapMovieInfo, YourRating 
 } from "./Styling";
 import { Ratings } from './Ratings';
 import { Similar } from './Similar';
@@ -73,7 +73,7 @@ export const MovieDetail = () => {
     >
       <WrapMovie>
         {movie.poster_path && (
-          <img
+          <MovieDetailImage
             src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} alt={movie.title}
           />
         )}
@@ -134,7 +134,7 @@ export const MovieDetail = () => {
       </ActorListWrap>
 
       <ShowSimilar>
-        <h2>Similar movies</h2>
+        <SimilarTitle>Similar movies</SimilarTitle>
         <Similar />
       </ShowSimilar>
     </MovieBackground>

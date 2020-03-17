@@ -1,21 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import {
-  WrapperWelcomeBox, Button
-} from "./Styling"
-import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 import { MovieDetail2 } from './MovieDetail2';
 import { UserList } from './UserList'
-import { Ratings } from './Ratings'
-// import { TabNav } from './TabNav'
 import PropTypes from 'prop-types'
-import { makeStyles } from '@material-ui/core/styles'
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import { AppBar, Tabs, Tab, Typography, Box } from '@material-ui/core'
-import { deepOrange } from "@material-ui/core/colors";
+import {
+  Button, WrapperWelcomeBox 
+} from "./Styling"
 
 
-//TABS
+// TABS
 const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
 
@@ -80,7 +74,7 @@ const theme = createMuiTheme({
 })
 
 
-//USER-PAGE
+// USER-PAGE
 const url = "http://localhost:8080/secrets";
 
 // Fetch data with a GET request to our MongoDB database for an individual user 

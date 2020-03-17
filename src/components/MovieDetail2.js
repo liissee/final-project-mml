@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Ratings } from './Ratings';
+import { movies } from '../reducers/movies'
 import {
   MovieCard, MovieCardInfo, MovieCardOverview, MovieCardTitle,
   MovieDetailRow, MovieImage, MovieTags, WrapMovieCard, WrapMovieCardInfo
@@ -10,10 +12,10 @@ import { movies } from '../reducers/movies'
 
 // Import what we need to use
 
+
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 
-// Fetch data from API with a GET request using e.g. :movieId
-// Show movie details: poster, story overview, casting, rating etc.
+
 export const MovieDetail2 = ({ id }) => {
   const [movie, setMovie] = useState([])
   const [error, setError] = useState("")
@@ -43,8 +45,6 @@ export const MovieDetail2 = ({ id }) => {
     )
   }
 
-
-
   if (!movie.title) {
     return (
       <div>{error}</div>
@@ -73,8 +73,11 @@ export const MovieDetail2 = ({ id }) => {
           <Link key={movie.id} to={`/movies/${movie.id}`}>
             <MovieCardTitle>{movie.title}</MovieCardTitle>
           </Link>
-          <Ratings movieId={movie.id}
+          <Ratings 
+            movieId={movie.id}
             movieTitle={movie.title}
+            movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} 
+          />
             movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} />
           <WatchStatus movieId={movie.id}
             movieTitle={movie.title}
@@ -93,8 +96,6 @@ export const MovieDetail2 = ({ id }) => {
             <MovieCardInfo>{movie.runtime} min </MovieCardInfo>
           </MovieTags>
           <MovieCardOverview>{movie.overview}</MovieCardOverview>
-          <MovieDetailRow>
-          </MovieDetailRow>
         </WrapMovieCardInfo>
       </WrapMovieCard>
     </MovieCard>
