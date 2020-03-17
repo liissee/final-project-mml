@@ -63,8 +63,6 @@ export const Ratings = ({ movieId, movieTitle }) => {
       })
   }, [movieId])
 
-  
-
   const BoxContainer = styled(Box)`
     padding: 0;
     margin-bottom: 50px;
@@ -73,9 +71,14 @@ export const Ratings = ({ movieId, movieTitle }) => {
   return (
     <>
       {/* {accessToken && */}
-
       <RatingButtonContainer>
-        <BoxContainer component="fieldset" mb={3} borderColor="transparent" marginBottom="0px" width="100px">
+        <BoxContainer 
+          component="fieldset" 
+          mb={3} 
+          borderColor="transparent" 
+          marginBottom="0px" 
+          width="100px"
+        >
           <Rating
             name={"simple-controlled" + movieId}
             value={rate}
@@ -85,20 +88,17 @@ export const Ratings = ({ movieId, movieTitle }) => {
             }
             }
           />
-
         </BoxContainer>
-        <div>
-        </Lalala>
-        {/* <div>
-
-          <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieTitle, true)}> Watch </ButtonWatch>
-          <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieTitle, false)}> No thanks</ButtonWatch>
-        </div> */}
       </RatingButtonContainer>
-      {/* } */}
     </>
   )
 }
+
+
+// {/* <div>
+//   <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieTitle, true)}> Watch </ButtonWatch>
+//   <ButtonWatch onClick={(e) => handleWatchStatus(userId, movieTitle, false)}> No thanks</ButtonWatch>
+// </div> */}
 
 // <ButtonRating onClick={(e) => handleRating(userId, movieTitle, movieImage, 1)}> 1 </ButtonRating>
 // <ButtonRating onClick={(e) => handleRating(userId, movieTitle, movieImage, 2)}> 2 </ButtonRating>

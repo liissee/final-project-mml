@@ -265,13 +265,17 @@ export const ImageNotFound = styled.img`
 export const MovieCard = styled.div`
   background: white;
   border-radius: 20px;
-  height: 200px;
+  height: 350px;
   margin: 10px;
   padding-bottom: 5px;
+  @media(min-width: 768px) {
+    height: 200px;
+    margin: 10px;
+    padding-bottom: 5px;
+  }
   /* background: rgb(248,255,238);
   background: linear-gradient(90deg, rgba(248,255,238,0.542454481792717) 0%, rgba(255,141,111,0.7665441176470589) 100%);  border-radius: 20px; */
   /* padding: 20px 0 0; */
-  @media(min-width: 768px) {}
 `
 export const MovieCardInfo = styled.p`
   color: grey;
@@ -291,17 +295,25 @@ export const MovieCardOverview = styled.div`
 `
 export const MovieCardTitle = styled.h1`
   color: black;
-  font-size: 1.5em;
-  margin-bottom: 0;
+  font-size: 16px;
+  margin-bottom: 1vh;
   overflow: hidden;
   text-decoration: none;
   text-overflow: ellipsis;
   white-space: nowrap;
+  @media(min-width: 768px) {
+    font-size: 1.5em;
+    margin-bottom: 0;
+  }
 `
 export const MovieImage = styled.img`
   border-radius: 20px 0 0 20px;
-  height: 200px;
-  width: 185px;
+  height: 150px;
+  width: 135px;
+  @media(min-width: 768px) {
+    height: 200px;
+    width: 185px;
+  }
 `
 export const MovieTags = styled.div`
   align-items:center;
@@ -311,7 +323,11 @@ export const MovieTags = styled.div`
 `
 export const WrapMovieCard = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  @media(min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+  }
   /* margin-left: 2vw;
   margin-right: 2vw;
   margin-top: 2vw; */
@@ -342,10 +358,15 @@ export const HeaderStartContainer = styled.div`
   align-items: center;
   background: #ffcf3c;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   font-weight: 700;
   justify-content: center;
   padding: 15px;
+  padding-left: 50px;
+  @media(min-width: 768px) {
+    flex-direction: row;
+    padding-left: 15px;
+  }
 `
 export const HeaderTitle = styled.h1`
   color: white;
@@ -414,6 +435,7 @@ export const UserNameNav = styled.div`
 `
 export const WatchListLink = styled.div`
   color: white;
+  display: none;
   font-size: 16px;
   margin-left: 2vw;
   margin-top: 2vh;
@@ -426,6 +448,9 @@ export const WatchListLink = styled.div`
     border-bottom: 1px solid tomato;
     padding-bottom: 1.5px;
   }
+  @media(min-width: 768px) {
+    display: inline-block;
+  }
 `
 
 
@@ -435,9 +460,13 @@ export const FormSearch = styled.form`
   border-radius: 8px;
   display: block;
   margin: 10px;
+  margin-bottom: 20px;
   margin-left: 4vw;
   max-width: 480px;
   /* padding: 20px 30px 30px 30px; */
+  @media(min-width: 768px) {
+    margin-bottom: 10px;
+  }
 `
 
 
@@ -509,7 +538,7 @@ export const Wrapper = styled.div`
   border-radius: 8px;
   display: block;
   margin: 60px auto;
-  max-width: 480px;
+  // max-width: 480px;
   padding: 20px 30px 30px 30px;
   &.link-text {
     text-decoration: none;

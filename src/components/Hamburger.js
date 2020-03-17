@@ -1,25 +1,27 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import styled from "styled-components"
 import { Link } from "react-router-dom"
+import { ui } from '../reducers/ui'
+import { movies } from '../reducers/movies'
+
 
 const StyledMenu = styled.nav`
+  background: #EFFFFA;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  background: #EFFFFA;
-  transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(-100%)'};
   height: 100vh;
-  text-align: left;
+  justify-content: center;
+  left: 0;
   padding: 2rem;
   position: absolute;
-  z-index: 2;
+  text-align: left;
   top: 0;
-  left: 0;
+  transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(-100%)'};
   transition: transform 0.3s ease-in-out;
+  z-index: 2;
+  width: 100%;
 
-  @media (max-width: 576px) {
-      width: 100%;
-    }
 
   a {
     font-size: 2rem;
@@ -42,29 +44,60 @@ const StyledMenu = styled.nav`
   }
 `
 
-const Menu = ({ open }) => {
+export const Menu = ({ open }) => {
+  const selectedTab = useSelector((state) => state.ui.tab)
+const dispatch = useDispatch()
+
+const handleTabChange = (tab) => {
+  dispatch(ui.actions.setTab(tab))
+  dispatch(ui.actions.setPage(1))
+}
   return (
     <StyledMenu open={open}>
-      <Link to="/register">
-        <span role="img" aria-label="about us">🖋</span>
-        Register
-      </Link>
-      <Link to="/login">
-        <span role="img" aria-label="about us">✅</span>
-        Login
-        </Link>
-      <a href="/">
-        <span role="img" aria-label="movies">🎬</span>
-        Movies
-      </a>
+    <Link to="/" onClick={() => { handleTabChange("movies"); dispatch(movies.actions.setSearchTerm("")) }}>
+      <span role="img" aria-label="movies">🎬</span>
+      MOVIES
+    </Link>
 
-      <Link to="/users/:id/movies">
-        <span role="img" aria-label="watchlist">📝</span>
-        Watchlist
-        </Link>
+    <Link to="/users/:id/movies" onClick={() => handleTabChange("watch")}>
+      <span role="img" aria-label="watchlist">📝</span>
+      Watchlist
+    </Link>
+
+    <Link to="/users/:id/movies" onClick={() => handleTabChange("rated")}>
+      <span role="img" aria-label="rating">⭐️</span>
+      All rated
+    </Link>
+
+    <Link to="/users/:id/movies" onClick={() => handleTabChange("users")}>
+      Other users
+    </Link>
+
     </StyledMenu>
   )
 }
+
+
+// <Link to="/">
+// <span role="img" aria-label="movies">🎬</span>
+// Movies
+// </Link>
+
+// <Link to="/users/:id/movies">
+// <span role="img" aria-label="watchlist">📝</span>
+// Watchlist
+// </Link>
+
+// <Link to="/register">
+// <span role="img" aria-label="about us">🖋</span>
+// Register
+// </Link>
+// <Link to="/login">
+// <span role="img" aria-label="about us">✅</span>
+// Login
+// </Link>
+
+
 
 const StyledBurger = styled.button`
   position: absolute;
@@ -119,20 +152,24 @@ const Burger = ({ open, setOpen }) => {
   )
 }
 
-
+const HamburgerWrap = styled.div`
+  display: inline-block;
+  @media(min-width: 768px) {
+    display: none;
+  }
+`
 
 
 export const Hamburger = () => {
   const [open, setOpen] = useState(false);
   const node = React.useRef();
   return (
-    <div>
-
+    <HamburgerWrap>
       <div ref={node}>
         <Burger open={open} setOpen={setOpen} />
         <Menu open={open} setOpen={setOpen} />
       </div>
-    </div>
+    </HamburgerWrap>
   )
 }
 
