@@ -2,47 +2,48 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components/macro'
 
-export const Comments = () => {
+export const Comments = ({movieId, movieTitle}) => {
   const accessToken = useSelector((state) => state.users.accessToken)
   const userId = useSelector((state) => state.users.userId)
   const [comment, setComment] = useState("")
   const [postedComment, setPostedComment] = useState("")
 
   const CommentCard = styled.div`
-    border: 1px solid gray;
-    background: #F5F5F5;
-    color: black;
     display: flex;
     flex-direction: column;
     height: 35vh;
     margin-bottom: 4vh;
-    padding-left: 10vw;
-    width: 70vw;
+    margin-left: 2vw;
+    width: 60vw;
   ` 
   const CommentForm = styled.form`
   `
   const CommentTitle = styled.h3`
+    color: white;
   `
   const CommentLabel = styled.label`
   `
   const CommentTextarea = styled.textarea`
-    height: 4vh;
+    font-size: 16px;
+    height: 12vh;
+    margin-bottom: 2vh;
     margin-left: 0;
     margin-top: 1vh;
     resize: none;
-    width: 65vw;
+    width: 55vw;
   `
   const CommentSendButton = styled.button`
-    background: black;
+    background: white;
     border: none;
-    color: white;
+    color: black;
     cursor: pointer;
     font-size: 14px;
     font-weight: bold;
-    margin: 8px 0;
+    height: 6vh;
     margin-bottom: 3vh;
+    margin-left: 0;
     margin-top: 1vh;
-    width: 65vw;
+    width: 10vw;
   `
 
   const handleSubmit = (userId, movieTitle, comment) => {
@@ -65,12 +66,12 @@ export const Comments = () => {
   return(
     <CommentCard>
       <CommentForm>
-        <CommentTitle>Comments</CommentTitle>
+        <CommentTitle>Comment</CommentTitle>
         
         <CommentLabel>
         <CommentTextarea
-          value={message}
-          onChange={event => setMessage(event.target.value)}
+          value={comment}
+          onChange={event => setComment(event.target.value)}
         >
         </CommentTextarea>
         </CommentLabel>
