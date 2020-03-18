@@ -12,6 +12,7 @@ const url = 'https://final-movie-match.herokuapp.com/secrets'
 export const UserList = () => {
   const [userList, setUserList] = useState([])
   const userId = useSelector((state) => state.users.userId)
+  const [watchList, setWatchList] = useState([])
 
   // All users
   useEffect(() => {
@@ -25,6 +26,16 @@ export const UserList = () => {
       })
   }, [userId])
 
+
+  // useEffect(() => {
+  //   fetch(`https://final-movie-match.herokuapp.com/movies/${user._id}?friend=${userId}`)
+  //     // fetch(`http://localhost:8080/movies/${myId}?friend=${userId}`)
+  //     .then(res => res.json())
+  //     .then(json => {
+  //       setWatchList(json)
+  //     })
+  // }, [userId])
+  // console.log(watchList)
 
   return (
     <WrapperWelcomeBox>

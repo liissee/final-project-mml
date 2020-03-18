@@ -3,10 +3,10 @@ import { useParams } from 'react-router-dom'
 import { useSelector } from "react-redux";
 import {
   MovieInfo, MoviesRatedParagraph, MovieRatedRow,
-  OtherUserMain, UserNames, WrapperWelcomeBox
+  UserNames, WrapperWelcomeBox
 } from "./Styling"
 import { MovieCards } from './MovieCards';
-
+import styled from "styled-components/macro"
 
 export const OtherUser = (props) => {
   const [moviesRated, setMoviesRated] = useState([])
@@ -63,3 +63,9 @@ export const OtherUser = (props) => {
     </OtherUserMain>
   )
 }
+// Otheruser /////////////////////////////////////////////
+const OtherUserMain = styled.section`
+  /* background: black;
+  height: 100%;
+  margin: 0; */
+`

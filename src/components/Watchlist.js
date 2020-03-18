@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import { AppBar, Tabs, Tab, Typography, Box } from '@material-ui/core'
 import {
-  Button, WrapperWelcomeBox, ButtonMore
+  Button, WrapperWelcomeBox, ButtonMore, ErrorMessage
 } from "./Styling"
 
 
@@ -207,7 +207,7 @@ export const UserPage = () => {
               ))
             )}
             {movieStatus && movieStatus.message && (
-              `No movies in your watchlist yet`
+              <ErrorMessage>`No movies in your watchlist yet`</ErrorMessage>
             )}
             <Button onClick={(e) => setPage(page + 1)}>Show more</Button>
 

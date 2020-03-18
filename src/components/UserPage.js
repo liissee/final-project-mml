@@ -132,7 +132,7 @@ export const UserPage = (props) => {
             ))
           )}
           {movieStatus && movieStatus.message && (
-            `No movies in your watchlist yet`
+            <ErrorMessage>`No movies in your watchlist yet`</ErrorMessage>
           )}
           {!errorMessage &&
             <WrapperWelcomeBox>
