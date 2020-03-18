@@ -309,11 +309,11 @@ export const MovieCardTitle = styled.h1`
   }
 `
 export const MovieImage = styled.img`
-  border-radius: 20px 0 0 20px;
-
+  border-radius: 20px 0 0 0;
   height: 150px;
   width: 135px;
   @media(min-width: 768px) {
+    border-radius: 20px 0 0 20px;
     height: 195.5px;
     width: 185px;
   }

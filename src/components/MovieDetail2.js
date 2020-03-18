@@ -67,12 +67,12 @@ export const MovieDetail2 = ({ id }) => {
           <Link key={movie.id} to={`/movies/${movie.id}`}>
             <MovieCardTitle>{movie.title}</MovieCardTitle>
           </Link>
-          <Ratings 
+          <Ratings
             movieId={movie.id}
             movieTitle={movie.title}
-            movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} 
+            movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
           />
-          <WatchStatus 
+          <WatchStatus
             movieId={movie.id}
             movieTitle={movie.title}
           />
