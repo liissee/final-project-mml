@@ -33,7 +33,6 @@ export const Similar = () => {
             )}
             <div className="hover-details">
               <div className="mobile-view ">
-
                 <Link key={movie.id} to={`/movies/${movie.id}`}>
                   <h1>{movie.original_title}</h1>
                 </Link>

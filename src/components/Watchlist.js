@@ -75,7 +75,8 @@ const theme = createMuiTheme({
 
 
 // USER-PAGE
-const url = "http://localhost:8080/secrets";
+const url = 'https://final-movie-match.herokuapp.com/secrets'
+// const url = "http://localhost:8080/secrets";
 
 // Fetch data with a GET request to our MongoDB database for an individual user 
 export const UserPage = () => {
@@ -139,7 +140,8 @@ export const UserPage = () => {
   //Denna ska kunna köra både ${sortByRating} och pageChange
   useEffect(() => {
     if (!userId) return;
-    fetch(`http://localhost:8080/users/${userId}/movies${query}`)
+    fetch(`https://final-movie-match.herokuapp.com/users/${userId}/movies${query}`)
+      // fetch(`http://localhost:8080/users/${userId}/movies${query}`)
       .then(res => res.json())
       .then(json => {
         if (chosenList === "rating") {
@@ -157,7 +159,8 @@ export const UserPage = () => {
   //Watch status
   useEffect(() => {
     if (!userId) return;
-    fetch(`http://localhost:8080/users/${userId}/movies?watchStatus=${true}`)
+    fetch(`https://final-movie-match.herokuapp.com/users/${userId}/movies?watchStatus=${true}`)
+      // fetch(`http://localhost:8080/users/${userId}/movies?watchStatus=${true}`)
       .then(res => res.json())
       .then(json => {
         setMovieStatus(json)

@@ -14,7 +14,8 @@ export const Ratingcopy = ({ movieId, movieTitle }) => {
   // this value should be sent to our own API with PUT or POST somehow
   const handleRating = (userId, movieId, movieTitle, rating) => {
     setRate(rating)
-    fetch(`http://localhost:8080/users/${userId}`, {
+    fetch(`https://final-movie-match.herokuapp.com/users/${userId}`, {
+      // fetch(`http://localhost:8080/users/${userId}`, {
       method: "PUT",
       body: JSON.stringify({ userId, movieId, movieTitle, rating }),
       headers: { "Content-Type": "application/json", "Authorization": accessToken }

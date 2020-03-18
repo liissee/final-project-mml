@@ -10,8 +10,8 @@ import { ui } from '../reducers/ui'
 
 
 //USER-PAGE
-const url = "http://localhost:8080/secrets";
-
+// const url = "http://localhost:8080/secrets";
+const url = 'https://final-movie-match.herokuapp.com/secrets'
 // Fetch data with a GET request to our MongoDB database for an individual user 
 export const UserPage = (props) => {
   const [message, setMessage] = useState("");
@@ -81,8 +81,8 @@ export const UserPage = (props) => {
   //Denna ska kunna köra både ${sortByRating} och pageChange
   useEffect(() => {
     if (!userId) return;
-    console.log(`http://localhost:8080/users/${userId}/movies${query}`)
-    fetch(`http://localhost:8080/users/${userId}/movies${query}`)
+    fetch(`https://final-movie-match.herokuapp.com/users/${userId}/movies${query}`)
+      // fetch(`http://localhost:8080/users/${userId}/movies${query}`)
       .then(res => res.json())
       .then(json => {
         if (selectedTab === "rated") {
