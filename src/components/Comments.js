@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components/macro'
+import { ButtonWatch } from './Styling'
 
-export const Comments = ({movieId, movieTitle}) => {
+export const Comments = ({ movieId, movieTitle }) => {
   const accessToken = useSelector((state) => state.users.accessToken)
   const userId = useSelector((state) => state.users.userId)
   const [comment, setComment] = useState("")
@@ -15,7 +16,7 @@ export const Comments = ({movieId, movieTitle}) => {
     margin-bottom: 4vh;
     margin-left: 2vw;
     width: 60vw;
-  ` 
+  `
   const CommentForm = styled.form`
   `
   const CommentTitle = styled.h3`
@@ -46,7 +47,7 @@ export const Comments = ({movieId, movieTitle}) => {
     width: 10vw;
   `
 
-  const handleSubmit = (userId, movieTitle, comment) => {
+  const handleSubmit = (userId, movieTitle, comment, event) => {
     fetch(`https://final-movie-match.herokuapp.com/users/${userId}`, {
       method: "PUT",
       body: JSON.stringify({ userId, movieId, movieTitle, comment }),
@@ -54,36 +55,42 @@ export const Comments = ({movieId, movieTitle}) => {
     })
       .then(() => {
         setComment("")
+        console.log(comment)
         onFormSubmit(comment)
+        event.preventDefault()
+
       })
       .catch(err => console.log("error:", err))
   }
 
-  const onFormSubmit = comment => {
+  const onFormSubmit = event => {
     setPostedComment(comment)
+    event.preventDefault()
+
   }
 
-  return(
-    <CommentCard>
-      <CommentForm>
+  return (
+    <div>
+      <form>
         <CommentTitle>Comment</CommentTitle>
-        
-        <CommentLabel>
-        <CommentTextarea
-          value={comment}
-          onChange={event => setComment(event.target.value)}
-        >
-        </CommentTextarea>
-        </CommentLabel>
 
-        <CommentSendButton
+        <label>
+          <textarea
+            value={comment}
+            placeholder="Type your thought here..."
+            onChange={event => setComment(event.target.value)}
+          >
+          </textarea>
+        </label>
+
+        <ButtonWatch
           type="submit"
           onClick={handleSubmit}
         >
           Submit comment
-        </CommentSendButton>
-      
-      </CommentForm>
-    </CommentCard>
+        </ButtonWatch>
+
+      </form>
+    </div>
   )
 }
