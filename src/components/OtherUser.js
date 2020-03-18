@@ -16,7 +16,7 @@ export const OtherUser = (props) => {
   const myId = useSelector((state) => state.users.userId)
 
   useEffect(() => {
-    fetch(`http://https://final-movie-match.herokuapp.com/users/${userId}/otherUser`)
+    fetch(`https://final-movie-match.herokuapp.com/users/${userId}/otherUser`)
       // fetch(`http://localhost:8080/users/${userId}/otherUser`)
       .then(res => res.json())
       .then(json => {
@@ -26,7 +26,7 @@ export const OtherUser = (props) => {
   }, [userId])
 
   useEffect(() => {
-    fetch(`http://https://final-movie-match.herokuapp.com/movies/${myId}?friend=${userId}`)
+    fetch(`https://final-movie-match.herokuapp.com/movies/${myId}?friend=${userId}`)
       // fetch(`http://localhost:8080/movies/${myId}?friend=${userId}`)
       .then(res => res.json())
       .then(json => {
