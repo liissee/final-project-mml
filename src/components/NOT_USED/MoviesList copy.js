@@ -6,7 +6,7 @@ import { MovieList, MovieWrapper, MovieListHover, Button } from "../Styling";
 import { movies } from "reducers/movies"
 import { searchResult } from "reducers/movies";
 import { not_found } from "assets/not_found.jpeg"
-import "components/movielist.css"
+import "pages/movielist.css"
 
 // import not_found from "./assets/not_found"
 // Import what we need to use

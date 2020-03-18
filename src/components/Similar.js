@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import "components/movielist.css"
+import "pages/movielist.css"
 import { Ratings } from "./Ratings"
 import { ImageNotFound } from './Styling'
 

@@ -46,7 +46,6 @@ export const PopoverLogin = () => {
   const handleSignin = (event) => {
     event.preventDefault()
     dispatch(fetchUser({ email, password }))
-
     handleClose()
     history.push(`/`)
   }
@@ -59,7 +58,6 @@ export const PopoverLogin = () => {
       history.push(`/`)
     }
   }
-
 
   const reDirect = () => {
     handleClose()

@@ -178,14 +178,6 @@ export const UserPage = () => {
     // handleHandleChange()
   }
 
-  // const handleHandleChange = (value) => {
-  //   if (value === 0) {
-  //     setChosenList("watch")
-  //   } else if (value === 1) {
-  //     setChosenList("rating")
-  //   }
-  // }
-
   return (
     <WrapperWelcomeBox>
       <MuiThemeProvider theme={theme}>

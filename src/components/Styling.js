@@ -44,7 +44,8 @@ export const Button = styled.button`
   }
 `
 export const ErrorMessage = styled.p`
-  color:#fe5426;
+    color: ${props => props.color ? props.color : "#fe5426"};
+/* color:#fe5426; */
   font-size: 14px;
   
 `

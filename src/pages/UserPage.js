@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import {
   ButtonMore, MovieInfo, MovieTitle, WrapperWelcomeBox, ErrorMessage
-} from "./Styling"
+} from "../components/Styling"
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { MovieCards } from './MovieCards';
-import { UserList } from './UserList'
+import { MovieCards } from '../components/MovieCards';
+import { UserList } from '../components/UserList'
 import { ui } from '../reducers/ui'
 
 

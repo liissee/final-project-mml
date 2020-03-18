@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
 import { useSelector } from "react-redux"
-import "components/movielist.css"
+import "pages/movielist.css"
 import { ImageNotFound, MovieTitle } from './Styling'
 import styled from 'styled-components/macro'
 
@@ -9,11 +9,8 @@ export const Actors = () => {
   const { castId } = useParams()
   const name = useSelector(state => state.movies.actorName)
 
-  console.log(castId)
   const [person, setPerson] = useState([])
-  // const [actorName, setActorName] = useState("")
 
-  console.log(name)
   const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 
   //https://api.themoviedb.org/3/person/192/movie_credits?api_key=363444609247127238629594b245e069&language=en-US
@@ -22,7 +19,6 @@ export const Actors = () => {
       .then((res) => res.json())
       .then((json) => {
         setPerson(json.cast)
-        console.log(json.cast)
       })
   }, [castId])
 

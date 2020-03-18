@@ -1,18 +1,24 @@
 import React from "react";
 import { useSwipeable } from "react-swipeable";
-import {
-  WrapperSwipe,
-  CarouselContainer,
-  CarouselSlot,
-  SlideButton,
-  PREV,
-  NEXT
-} from "components/Styling"
+import styled from 'styled-components/macro'
+
+// import {
+//   WrapperSwipe,
+//   CarouselContainer,
+//   CarouselSlot,
+//   SlideButton,
+//   PREV,
+//   NEXT
+// } from "components/Styling"
+//SWIPER STYLING
+const NEXT = "HEJ";
+const PREV = "HEJDÅ";
 
 const getOrder = ({ index, pos, numItems }) => {
   return index - pos < 0 ? numItems - Math.abs(index - pos) : index - pos;
 };
 const initialState = { pos: 0, sliding: false, dir: NEXT };
+
 
 export const Swipe = props => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
@@ -87,21 +93,18 @@ function reducer(state, { type, numItems }) {
 }
 
 
-//SWIPER STYLING
-export const NEXT = "HEJ";
-export const PREV = "HEJDÅ";
 
-export const AppContainer = styled.div`
+const AppContainer = styled.div`
   text-align: center;
   width: 100%;
 `;
 
-export const Item = styled.div`
+const Item = styled.div`
   text-align: center;
   background-size: cover;
 `;
 
-export const CarouselContainer = styled.div`
+const CarouselContainer = styled.div`
   display: flex;
   transition: ${props => (props.sliding ? "none" : "transform 1s ease")};
   transform: ${props => {
@@ -111,20 +114,20 @@ export const CarouselContainer = styled.div`
   }};
 `;
 
-export const WrapperSwipe = styled.div`
+const WrapperSwipe = styled.div`
   width: 100%;
   overflow: hidden;
   box-shadow: 5px 5px 20px 7px rgba(168, 168, 168, 1);
 `;
 
-export const CarouselSlot = styled.div`
+const CarouselSlot = styled.div`
   flex: 1 0 100%; /* Decides how many cards on one row */
   flex-basis: 80%; /* Decides how many cards on one row */
   margin-right: 20px;
   order: ${props => props.order};
 `;
 
-export const SlideButton = styled.button`
+const SlideButton = styled.button`
   color: #fff;
   font-size: 16px;
   font-weight: 100;

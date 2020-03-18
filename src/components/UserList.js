@@ -28,17 +28,6 @@ export const UserList = () => {
       })
   }, [userId])
 
-
-  // useEffect(() => {
-  //   fetch(`https://final-movie-match.herokuapp.com/movies/${user._id}?friend=${userId}`)
-  //     // fetch(`http://localhost:8080/movies/${myId}?friend=${userId}`)
-  //     .then(res => res.json())
-  //     .then(json => {
-  //       setWatchList(json)
-  //     })
-  // }, [userId])
-  // console.log(watchList)
-
   return (
     <Wrapper>
       <InfoText>Other users - compare ratings and watchlists</InfoText>

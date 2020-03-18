@@ -4,10 +4,9 @@ import { useSelector } from "react-redux";
 import {
   // MovieInfo, MoviesRatedParagraph, MovieRatedRow,
   // UserNames, WrapperWelcomeBox
-
-} from "./Styling"
-import { MoviesMatched } from './MoviesMatched';
-import styled from "styled-components/macro"
+} from "../components/Styling"
+import { MoviesMatched } from '../components/MoviesMatched';
+import styled, { keyframes } from 'styled-components/macro'
 
 
 export const OtherUser = (props) => {
@@ -45,7 +44,8 @@ export const OtherUser = (props) => {
           <UserNames>USERNAME: {userName}</UserNames>
           {watchList.length > 0
             ? <MoviesRatedParagraph>YEY! YOU HAVE A MATCH ON {watchList.length} MOVIES </MoviesRatedParagraph>
-            : <MoviesRatedParagraph>Add some movies to your watchlist and see if you have a match with {userName}!</MoviesRatedParagraph>}
+            : <MoviesRatedParagraph>Add some movies to your watchlist and see if you have a match with {userName}!</MoviesRatedParagraph>
+          }
         </Header>
         <Matched>
           {watchList.map((movie) => (
@@ -69,6 +69,19 @@ export const OtherUser = (props) => {
     </OtherUserMain>
   )
 }
+
+const jump = keyframes`
+  0%   {transform: translate3d(0,0,0);}
+  20%  {transform: translate3d(0,10%,0);}
+  40%  {transform: translate3d(0,30%,0);}
+  50% {transform: translate3d(0,50%,0);}
+  100% {transform: translate3d(0,50%,0);}
+`
+const Image = styled.img`
+  transform-origin: 50% 50%;
+  animation: ${jump} .5s linear alternate infinite;
+`
+
 // Otheruser /////////////////////////////////////////////
 const OtherUserMain = styled.section`
   /* background: black;
@@ -82,14 +95,11 @@ const UserNames = styled.h1`
 font-size: 1.5em;
 font-weight: normal;
 padding: 20px;
-
 `
 const Matched = styled.section`
-
 `
 
 const Rated = styled.section`
-
 `
 const MoviesRatedParagraph = styled.h3`
   padding: 15px;

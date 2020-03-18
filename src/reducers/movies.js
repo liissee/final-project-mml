@@ -36,7 +36,6 @@ export const searchResult = (searchTerm, pageNumber) => {
       .then(json => {
         dispatch(movies.actions.setSearchTerm(json.results))
         dispatch(ui.actions.setLoading(false))
-
       })
   }
 }

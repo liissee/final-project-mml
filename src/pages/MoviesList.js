@@ -3,10 +3,10 @@ import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux";
 import { DropDownList } from "components/DropDownList"
-import "components/movielist.css"
-import { Ratings } from "./Ratings"
-import { ButtonMore, ButtonContainer } from './Styling'
-import { WatchStatus } from './WatchStatus';
+import "pages/movielist.css"
+import { Ratings } from "../components/Ratings"
+import { ButtonMore, ButtonContainer, ErrorMessage } from '../components/Styling'
+import { WatchStatus } from '../components/WatchStatus';
 
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
@@ -37,7 +37,7 @@ export const MoviesList = () => {
 
   if (loading) {
     return (
-      <div className="loading-message">Movie page is loading...</div>
+      <ErrorMessage color="white">Movie page is loading...</ErrorMessage>
     )
   }
 
