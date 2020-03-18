@@ -6,6 +6,7 @@ import {
   UserNames, WrapperWelcomeBox
 } from "./Styling"
 import { MovieDetail2 } from './MovieDetail2';
+import styled from 'styled-components/macro'
 
 export const OtherUser = (props) => {
   const [moviesRated, setMoviesRated] = useState([])
@@ -37,29 +38,36 @@ export const OtherUser = (props) => {
 
   console.log(watchList)
   return (
-    <WrapperWelcomeBox>
-      <UserNames>User page: {userName}</UserNames>
-      <MoviesRatedParagraph>You have a match on {watchList.length} movies </MoviesRatedParagraph>
-      <section>
-        {watchList.map((movie) => (
-          <MovieDetail2 key={movie.movieId} id={movie.movieId} />
+    <OtherUserMain>
+      <WrapperWelcomeBox>
+        <UserNames>Username: {userName}</UserNames>
+        <MoviesRatedParagraph>You have a match on {watchList.length} movies </MoviesRatedParagraph>
+        <section>
+          {watchList.map((movie) => (
+            <MovieDetail2 key={movie.movieId} id={movie.movieId} />
 
-          //  <MovieRatedRow
-          //    key={movie.id}
-          //  >
-          //    <MovieInfo>{movie.movieTitle}</MovieInfo>
-          //  </MovieRatedRow>
-        ))}
-      </section>
-      <MoviesRatedParagraph>Movies that {userName} has rated </MoviesRatedParagraph>
-      <section>
-        {moviesRated.map((movie) => (
-          movie.rating &&
-          <MovieDetail2 key={movie.movieId} id={movie.movieId} />
-        ))}
-      </section>
-    </WrapperWelcomeBox>
+            //  <MovieRatedRow
+            //    key={movie.id}
+            //  >
+            //    <MovieInfo>{movie.movieTitle}</MovieInfo>
+            //  </MovieRatedRow>
+          ))}
+        </section>
+        <MoviesRatedParagraph>Movies that {userName} has rated </MoviesRatedParagraph>
+        <section>
+          {moviesRated.map((movie) => (
+            movie.rating &&
+            <MovieDetail2 key={movie.movieId} id={movie.movieId} />
+          ))}
+        </section>
+      </WrapperWelcomeBox>
+    </OtherUserMain>
+
   )
 }
 
-// <MovieDetail2 key={movie.movieId} id={movie.movieId} />
+const OtherUserMain = styled.section`
+background: black;
+margin: 0;
+height: 100%;
+`
