@@ -5,6 +5,7 @@ import { Ratings } from './Ratings';
 import { WatchStatus } from './WatchStatus'
 import { Similar } from './Similar';
 import { movies } from '../reducers/movies'
+import { Comments } from './Comments'
 import {
   ActorImage, ActorList, ActorListWrap, ActorName, ActorWrap, Genre, ImageNotFound, 
   MovieBackground, MovieDetailGenres, MovieDetailImage, MovieDetailRow, MovieImdb, 
@@ -132,7 +133,9 @@ export const MovieDetail = () => {
           ))}
         </ActorList>
       </ActorListWrap>
-
+    
+      <Comments/>
+       
       <ShowSimilar>
         <SimilarTitle>Similar movies</SimilarTitle>
         <Similar />
