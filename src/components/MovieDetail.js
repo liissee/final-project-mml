@@ -134,7 +134,10 @@ export const MovieDetail = () => {
         </ActorList>
       </ActorListWrap>
     
-      <Comments/>
+      <Comments
+        movieId={movie.id}
+        movieTitle={movie.title}
+      />
        
       <ShowSimilar>
         <SimilarTitle>Similar movies</SimilarTitle>
