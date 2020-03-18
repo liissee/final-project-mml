@@ -11,7 +11,7 @@ export const WatchStatus = ({ movieId, movieTitle }) => {
   // Function that is invoced when the user clicks on Add or Remove from watchlist
   const handleWatchStatus = (userId, movieTitle, watchStatus) => {
     setWatchStatus(watchStatus)
-    fetch(`https://final-movie-match.herokuapp.com//users/${userId}`, {
+    fetch(`https://final-movie-match.herokuapp.com/users/${userId}`, {
       // fetch(`http://localhost:8080/users/${userId}`, {
       method: "PUT",
       body: JSON.stringify({ userId, movieId, movieTitle, watchStatus }),
