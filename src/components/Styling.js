@@ -2,11 +2,12 @@ import styled from 'styled-components/macro'
 
 
 export const Heading = styled.h1`
-  font-size: 2em;
-  font-weight: bold;
-  line-height: 1.5;
+  font-size: 1.5em;
+  font-weight: normal;
   margin: 10px 0;
   text-align: center;  
+  color: ${props => props.color ? props.color : "#000"};
+  border-radius: 15px;
 `
 export const Link = styled.link`
   color: #fff;
@@ -113,7 +114,7 @@ export const MovieCard = styled.div`
   padding-bottom: 5px;
 
   @media(min-width: 768px) {
-    height: 200px;
+    height: 30vh;
     margin: 10px;
     padding-bottom: 5px;
   }
@@ -153,7 +154,7 @@ export const MovieImage = styled.img`
   width: 135px;
   @media(min-width: 768px) {
     border-radius: 20px 0 0 20px;
-    height: 195.5px;
+    height: 29.5vh;
     width: 185px;
   }
 `
@@ -463,11 +464,11 @@ export const WatchListLink = styled.div`
 `
 
 // Otheruser /////////////////////////////////////////////
-export const OtherUserMain = styled.section`
-  background: black;
-  height: 100%;
-  margin: 0;
-`
+// export const OtherUserMain = styled.section`
+//   /* background: black;
+//   height: 100%;
+//   margin: 0; */
+// `
 
 // Searchbar /////////////////////////////////////////////
 export const FormSearch = styled.form`
@@ -568,6 +569,7 @@ export const UserName = styled.div`
 `
 export const UserNames = styled.h1`
   color: white;
+  text-transform: uppercase;
   margin-bottom: 2vh;
 `
 export const WelcomeMovieRow = styled.div`

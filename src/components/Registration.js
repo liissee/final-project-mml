@@ -39,6 +39,9 @@ export const Registration = () => {
 
   return (
     <FieldContainer>
+      {registred &&
+        <Heading color={"#fff"}>Success! Continuing to login...</Heading>
+      }
       {!registred && (
         <FieldContainer>
           <Form onSubmit={handleSubmit}>
@@ -48,7 +51,6 @@ export const Registration = () => {
                 User not created. Try using another name or email!
               </Heading>
             )}
-
             <Label>
               Name {name.length < 2 && name.length !== 0 && " is too short"}
               {name.length > 20 && " is too long"}
@@ -97,12 +99,6 @@ export const Registration = () => {
               Already a member?
             </Button>
           </Form>
-        </FieldContainer>
-      )}
-      {registred && (
-        <FieldContainer>
-          <Heading>User created!</Heading>
-          <Heading>Continuing to login...</Heading>
         </FieldContainer>
       )}
     </FieldContainer>
