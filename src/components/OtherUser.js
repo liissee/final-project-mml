@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from "react-redux";
 import {
-  MovieInfo, MoviesRatedParagraph, MovieRatedRow,
-  UserNames, WrapperWelcomeBox
+  // MovieInfo, MoviesRatedParagraph, MovieRatedRow,
+  // UserNames, WrapperWelcomeBox
+
 } from "./Styling"
-import { MovieCards } from './MovieCards';
+import { MoviesMatched } from './MoviesMatched';
 import styled from "styled-components/macro"
+
 
 export const OtherUser = (props) => {
   const [moviesRated, setMoviesRated] = useState([])
@@ -39,11 +41,15 @@ export const OtherUser = (props) => {
   return (
     <OtherUserMain>
       <WrapperWelcomeBox>
-        <UserNames>Username: {userName}</UserNames>
-        <MoviesRatedParagraph>You have a match on {watchList.length} movies </MoviesRatedParagraph>
-        <section>
+        <Header>
+          <UserNames>USERNAME: {userName}</UserNames>
+          {watchList.length > 0
+            ? <MoviesRatedParagraph>YEY! YOU HAVE A MATCH ON {watchList.length} MOVIES </MoviesRatedParagraph>
+            : <MoviesRatedParagraph>Add some movies to your watchlist and see if you have a match with {userName}!</MoviesRatedParagraph>}
+        </Header>
+        <Matched>
           {watchList.map((movie) => (
-            <MovieCards key={movie.movieId} id={movie.movieId} />
+            <MoviesMatched key={movie.movieId} id={movie.movieId} />
 
             //  <MovieRatedRow
             //    key={movie.id}
@@ -51,14 +57,14 @@ export const OtherUser = (props) => {
             //    <MovieInfo>{movie.movieTitle}</MovieInfo>
             //  </MovieRatedRow>
           ))}
-        </section>
+        </Matched>
         <MoviesRatedParagraph>Movies that {userName} has rated </MoviesRatedParagraph>
-        <section>
+        <Rated>
           {moviesRated.map((movie) => (
             movie.rating &&
-            <MovieCards key={movie.movieId} id={movie.movieId} />
+            <MoviesMatched key={movie.movieId} id={movie.movieId} />
           ))}
-        </section>
+        </Rated>
       </WrapperWelcomeBox>
     </OtherUserMain>
   )
@@ -68,4 +74,31 @@ const OtherUserMain = styled.section`
   /* background: black;
   height: 100%;
   margin: 0; */
+`
+const Header = styled.section`
+
+`
+const UserNames = styled.h1`
+font-size: 1.5em;
+font-weight: normal;
+padding: 20px;
+
+`
+const Matched = styled.section`
+
+`
+
+const Rated = styled.section`
+
+`
+const MoviesRatedParagraph = styled.h3`
+  padding: 15px;
+  font-size: 1.5;
+  font-weight: normal;
+  text-align: center;
+`
+const WrapperWelcomeBox = styled.div`
+color: white;
+  /* background: red;
+  max-width: 900px; */
 `

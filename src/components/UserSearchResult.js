@@ -43,11 +43,13 @@ export const UserNames = styled.div`
   flex-direction: column;
 `
 
-const UserName = styled(Link)`
+const UserName = styled.div`
   margin: 5px;
+  a{
+  text-decoration: none;}
   span {
     background: #fe5426;
-    padding: 3px 6px;
+    padding: 3px 20px;
     color: #000f3c;
   &:hover {
     color:  #fe5426;

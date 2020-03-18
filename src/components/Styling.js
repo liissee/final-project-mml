@@ -569,6 +569,7 @@ export const UserName = styled.div`
 `
 export const UserNames = styled.h1`
   color: white;
+  text-transform: uppercase;
   margin-bottom: 2vh;
 `
 export const WelcomeMovieRow = styled.div`
