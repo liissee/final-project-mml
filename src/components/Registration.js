@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Heading, FieldContainer, Form, Label, Input, Button } from "./Styling";
+import { Button, FieldContainer, Form, Heading, Input, Label  } from "./Styling";
 
 const url = "http://localhost:8080/users";
 

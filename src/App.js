@@ -9,7 +9,6 @@ import { Login } from 'components/Login'
 import { Registration } from 'components/Registration'
 import "@blueprintjs/core/lib/css/blueprint.css";
 import { MoviesList } from 'components/MoviesList'
-// import { Welcome } from 'components/NOT_USED/Welcome'
 import { Navbar } from 'components/Navbar'
 import { MovieDetail } from 'components/MovieDetail'
 import { UserPage } from 'components/UserPage'
@@ -52,4 +51,3 @@ export const App = () => {
     </Provider>
   )
 }
-

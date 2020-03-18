@@ -99,6 +99,90 @@ export const Label = styled.label`
 `
 
 
+// MovieCards on Userpage and Otheruser page /////////////////////////////////////////////
+export const ImageNotFound = styled.img`
+  width: 185px;
+`
+export const MovieCard = styled.div`
+  background: rgb(31,33,40);
+  background: radial-gradient(circle, rgba(31,33,40,0.9346113445378151) 0%, rgba(23,23,25,0.9878326330532213) 100%);border: 2px solid #f5b333;
+  color:white;
+  border-radius: 20px;
+  height: 350px;
+  margin: 10px;
+  padding-bottom: 5px;
+
+  @media(min-width: 768px) {
+    height: 200px;
+    margin: 10px;
+    padding-bottom: 5px;
+  }
+`
+export const MovieCardInfo = styled.p`
+  color: grey;
+  display: inline;
+  margin: 0;
+  padding: 5px;
+  /* margin-top: 1.5vh;
+  margin-bottom: 2vh; */
+`
+export const MovieCardOverview = styled.div`
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  font-size: 1em;
+  overflow: hidden;
+  /* margin-bottom: 5px; */
+`
+export const MovieCardTitle = styled.h1`
+  color: white;
+  font-size: 16px;
+  margin-bottom: 1vh;
+  overflow: hidden;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  @media(min-width: 768px) {
+    font-size: 1.5em;
+    margin-bottom: 0;
+  }
+`
+export const MovieImage = styled.img`
+  border-radius: 20px 0 0 0;
+  height: 150px;
+  width: 135px;
+  @media(min-width: 768px) {
+    border-radius: 20px 0 0 20px;
+    height: 195.5px;
+    width: 185px;
+  }
+`
+export const MovieTags = styled.div`
+  align-items:center;
+  display: flex;
+  flex-direction:row;
+  font-weight: 600;
+`
+export const WrapMovieCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  @media(min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+  }
+  /* margin-left: 2vw;
+  margin-right: 2vw;
+  margin-top: 2vw; */
+`
+export const WrapMovieCardInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 2vw;
+  width: 70%;
+`
+
+
+
 // MovieDetail /////////////////////////////////////////////
 export const ActorImage = styled.img`
   border-radius: 50%;
@@ -260,89 +344,6 @@ export const YourRating = styled.h3`
 `
 
 
-// MovieDetail2 on Userpage /////////////////////////////////////////////
-export const ImageNotFound = styled.img`
-  width: 185px;
-`
-export const MovieCard = styled.div`
-  background: rgb(31,33,40);
-  background: radial-gradient(circle, rgba(31,33,40,0.9346113445378151) 0%, rgba(23,23,25,0.9878326330532213) 100%);border: 2px solid #f5b333;
-  color:white;
-  border-radius: 20px;
-  height: 350px;
-  margin: 10px;
-  padding-bottom: 5px;
-
-  @media(min-width: 768px) {
-    height: 200px;
-    margin: 10px;
-    padding-bottom: 5px;
-  }
-`
-export const MovieCardInfo = styled.p`
-  color: grey;
-  display: inline;
-  margin: 0;
-  padding: 5px;
-  /* margin-top: 1.5vh;
-  margin-bottom: 2vh; */
-`
-export const MovieCardOverview = styled.div`
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  font-size: 1em;
-  overflow: hidden;
-  /* margin-bottom: 5px; */
-`
-export const MovieCardTitle = styled.h1`
-  color: white;
-  font-size: 16px;
-  margin-bottom: 1vh;
-  overflow: hidden;
-  text-decoration: none;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  @media(min-width: 768px) {
-    font-size: 1.5em;
-    margin-bottom: 0;
-  }
-`
-export const MovieImage = styled.img`
-  border-radius: 20px 0 0 0;
-  height: 150px;
-  width: 135px;
-  @media(min-width: 768px) {
-    border-radius: 20px 0 0 20px;
-    height: 195.5px;
-    width: 185px;
-  }
-`
-export const MovieTags = styled.div`
-  align-items:center;
-  display: flex;
-  flex-direction:row;
-  font-weight: 600;
-`
-export const WrapMovieCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  @media(min-width: 768px) {
-    display: flex;
-    flex-direction: row;
-  }
-  /* margin-left: 2vw;
-  margin-right: 2vw;
-  margin-top: 2vw; */
-`
-export const WrapMovieCardInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-left: 2vw;
-  width: 70%;
-`
-
-
 
 // Navbar /////////////////////////////////////////////
 export const ButtonSearchUser = styled.button`
@@ -461,6 +462,12 @@ export const WatchListLink = styled.div`
   }
 `
 
+// Otheruser /////////////////////////////////////////////
+export const OtherUserMain = styled.section`
+  background: black;
+  height: 100%;
+  margin: 0;
+`
 
 // Searchbar /////////////////////////////////////////////
 export const FormSearch = styled.form`

@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { ui } from 'reducers/ui'
 
-// Define initial state, what should be included?
+// Initial state
 const initialState = {
   users: [],
   userName: localStorage.userName || "",
   accessToken: localStorage.accessToken || "",
-  userId: localStorage.userId || "",
+  userId: localStorage.userId || ""
 }
 
-// Discuss which reducers and actions that should be included
+// Reducers and actions
 export const users = createSlice({
   name: 'user',
   initialState,
@@ -24,7 +24,7 @@ export const users = createSlice({
     },
     setUserId: (state, action) => {
       state.userId = action.payload
-      window.localStorage.setItem("userId", action.payload)
+      window.localStorage.setItem('userId', action.payload)
     },
     removeUserId: (state, action) => {
       state.userId = ""
@@ -81,7 +81,7 @@ export const fetchUser = ({ email, password }) => {
 
 const userId = users.userId
 
-//takes searchterm as a prop/argument and send search result to MoveList.js. 
+// Takes searchterm as a prop/argument and send search result to MoveList.js. 
 export const searchResult = (userName) => {
   return dispatch => {
     fetch(`http://localhost:8080/users/:userId/allUsers?name=${userName}`)

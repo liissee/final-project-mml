@@ -3,10 +3,10 @@ import { useParams } from 'react-router-dom'
 import { useSelector } from "react-redux";
 import {
   MovieInfo, MoviesRatedParagraph, MovieRatedRow,
-  UserNames, WrapperWelcomeBox
+  OtherUserMain, UserNames, WrapperWelcomeBox
 } from "./Styling"
-import { MovieDetail2 } from './MovieDetail2';
-import styled from 'styled-components/macro'
+import { MovieCards } from './MovieCards';
+
 
 export const OtherUser = (props) => {
   const [moviesRated, setMoviesRated] = useState([])
@@ -14,8 +14,6 @@ export const OtherUser = (props) => {
   const [userName, setUserName] = useState("")
   const { userId } = useParams()
   const myId = useSelector((state) => state.users.userId)
-
-
 
   useEffect(() => {
     fetch(`http://localhost:8080/users/${userId}/otherUser`)
@@ -37,6 +35,7 @@ export const OtherUser = (props) => {
   }, [userId])
 
   console.log(watchList)
+
   return (
     <OtherUserMain>
       <WrapperWelcomeBox>
@@ -44,7 +43,7 @@ export const OtherUser = (props) => {
         <MoviesRatedParagraph>You have a match on {watchList.length} movies </MoviesRatedParagraph>
         <section>
           {watchList.map((movie) => (
-            <MovieDetail2 key={movie.movieId} id={movie.movieId} />
+            <MovieCards key={movie.movieId} id={movie.movieId} />
 
             //  <MovieRatedRow
             //    key={movie.id}
@@ -57,17 +56,10 @@ export const OtherUser = (props) => {
         <section>
           {moviesRated.map((movie) => (
             movie.rating &&
-            <MovieDetail2 key={movie.movieId} id={movie.movieId} />
+            <MovieCards key={movie.movieId} id={movie.movieId} />
           ))}
         </section>
       </WrapperWelcomeBox>
     </OtherUserMain>
-
   )
 }
-
-const OtherUserMain = styled.section`
-background: black;
-margin: 0;
-height: 100%;
-`

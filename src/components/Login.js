@@ -1,22 +1,22 @@
 import React, { useState } from 'react'
 import { useHistory } from "react-router-dom";
-import { Form, Input, Label, Heading, Button, FieldContainer, ErrorMessage } from "./Styling";
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchUser } from "../reducers/users.js"
+import { Button, ErrorMessage, FieldContainer, 
+  Form,  Heading, Input, Label } from "./Styling";
+import { users } from "../reducers/users.js"
 // import { ui } from '../reducers/ui.js'
-import styled from 'styled-components/macro'
 
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [errorMessage, setErrorMessage] = useState("");
-
   const history = useHistory();
   const dispatch = useDispatch()
-  // const errorMessage = useSelector((state) => state.users.errorMessage)
   const failed = useSelector(state => state.ui.isLoginFailed)
 
+  // const [errorMessage, setErrorMessage] = useState("");
+  // const errorMessage = useSelector((state) => state.users.errorMessage)
   // const url = "http://localhost:8080/sessions"
 
   const handleSignin = (event) => {
@@ -26,35 +26,6 @@ export const Login = () => {
       history.push(`/`)
     }
   }
-
-
-  // const handleSignin = event => {
-  //   event.preventDefault();
-  //   setErrorMessage("");
-  //   fetch(url, {
-  //     method: "POST",
-  //     body: JSON.stringify({ email, password }),
-  //     headers: { "Content-Type": "application/json" }
-  //   })
-  //     .then(res => {
-  //       if (!res.ok) {
-  //         throw new Error("Your e-mail and/or password was incorrect");
-  //       } else {
-  //         return res.json();
-  //       }
-  //     })
-  //     .then(({ accessToken, userId }) => {
-  //       if (accessToken && userId) {
-  //         window.localStorage.setItem("accessToken", accessToken);
-  //         window.localStorage.setItem("userId", userId);
-
-  //         history.push(`/`);
-  //       }
-  //     })
-  //     .catch(err => {
-  //       setErrorMessage(err.message);
-  //     });
-  // };
 
   const reDirect = () => {
     history.push(`/register`);
@@ -95,3 +66,32 @@ export const Login = () => {
   );
 };
 
+
+
+  // const handleSignin = event => {
+  //   event.preventDefault();
+  //   setErrorMessage("");
+  //   fetch(url, {
+  //     method: "POST",
+  //     body: JSON.stringify({ email, password }),
+  //     headers: { "Content-Type": "application/json" }
+  //   })
+  //     .then(res => {
+  //       if (!res.ok) {
+  //         throw new Error("Your e-mail and/or password was incorrect");
+  //       } else {
+  //         return res.json();
+  //       }
+  //     })
+  //     .then(({ accessToken, userId }) => {
+  //       if (accessToken && userId) {
+  //         window.localStorage.setItem("accessToken", accessToken);
+  //         window.localStorage.setItem("userId", userId);
+
+  //         history.push(`/`);
+  //       }
+  //     })
+  //     .catch(err => {
+  //       setErrorMessage(err.message);
+  //     });
+  // };

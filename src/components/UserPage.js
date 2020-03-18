@@ -4,7 +4,7 @@ import {
 } from "./Styling"
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { MovieDetail2 } from './MovieDetail2';
+import { MovieCards } from './MovieCards';
 import { UserList } from './UserList'
 import { ui } from '../reducers/ui'
 
@@ -128,7 +128,7 @@ export const UserPage = (props) => {
           {!errorMessage && <MovieTitle>Your watchlist</MovieTitle>}
           {movieStatus && !movieStatus.message && (
             movieStatus.map((movie) => (
-              <MovieDetail2 key={movie.movieId} id={movie.movieId} />
+              <MovieCards key={movie.movieId} id={movie.movieId} />
             ))
           )}
           {movieStatus && movieStatus.message && (
@@ -159,7 +159,7 @@ export const UserPage = (props) => {
           {moviesRated && !moviesRated.message && (
             moviesRated.map((movie) => (
               // movie.rating && (
-              <MovieDetail2 key={movie.movieId} id={movie.movieId} />
+              <MovieCards key={movie.movieId} id={movie.movieId} />
               // )
             )
             ))}

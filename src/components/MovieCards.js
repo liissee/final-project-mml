@@ -10,7 +10,7 @@ import {
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 
 
-export const MovieDetail2 = ({ id }) => {
+export const MovieCards = ({ id }) => {
   const [movie, setMovie] = useState([])
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(true)
