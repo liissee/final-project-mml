@@ -47,26 +47,22 @@ export const Comments = ({ movieId, movieTitle }) => {
     width: 10vw;
   `
 
-  const handleSubmit = (userId, movieTitle, comment, event) => {
+  const handleSubmit = (comment) => {
     fetch(`https://final-movie-match.herokuapp.com/users/${userId}`, {
       method: "PUT",
       body: JSON.stringify({ userId, movieId, movieTitle, comment }),
       headers: { "Content-Type": "application/json", "Authorization": accessToken },
     })
       .then(() => {
-        setComment("")
-        console.log(comment)
-        onFormSubmit(comment)
-        event.preventDefault()
-
+        setPostedComment(comment)
       })
       .catch(err => console.log("error:", err))
   }
 
-  const onFormSubmit = event => {
-    setPostedComment(comment)
+  const handleNewComment = event => {
     event.preventDefault()
-
+    handleSubmit(comment)
+    setComment("")
   }
 
   return (
@@ -85,7 +81,7 @@ export const Comments = ({ movieId, movieTitle }) => {
 
         <ButtonWatch
           type="submit"
-          onClick={handleSubmit}
+          onClick={handleNewComment}
         >
           Submit comment
         </ButtonWatch>
