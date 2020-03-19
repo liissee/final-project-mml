@@ -70,6 +70,9 @@ export const Form = styled.form`
   margin: 60px auto;
   max-width: 480px;
   padding: 20px 30px 30px 30px;
+  @media(max-width: 500px) {
+   max-width: 35vh;
+  }
 `
 export const Input = styled.input`
   background: transparent;
