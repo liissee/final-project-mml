@@ -7,6 +7,7 @@ import {
 } from "../components/Styling"
 import { MoviesMatched } from '../components/MoviesMatched';
 import styled, { keyframes } from 'styled-components/macro'
+import Icon from '@material-ui/core/Icon'
 import { happyicon } from 'assets/happyicon.png'
 
 export const OtherUser = (props) => {
@@ -37,6 +38,66 @@ export const OtherUser = (props) => {
 
   console.log(watchList)
 
+  const ratingStars = (rating) => {
+    if (rating === 5) {
+      return (
+        <>
+          <Icon>star</Icon>
+          <Icon>star</Icon>
+          <Icon>star</Icon>
+          <Icon>star</Icon>
+          <Icon>star</Icon>
+        </>
+      )
+
+    } else if (rating === 4) {
+      return (
+        <>
+          <Icon>star</Icon>
+          <Icon>star</Icon>
+          <Icon>star</Icon>
+          <Icon>star</Icon>
+        </>
+      )
+    } else if (rating === 3) {
+      return (
+        <>
+          <Icon>star</Icon>
+          <Icon>star</Icon>
+          <Icon>star</Icon>
+        </>
+      )
+    } else if (rating === 2) {
+      return (
+        <>
+          <Icon>star</Icon>
+          <Icon>star</Icon>
+        </>
+      )
+    } else if (rating === 1) {
+      return <Icon>star</Icon>
+    } else {
+      return
+    }
+  }
+
+  //   const handleRatingStars = (rating) => {
+  //     let amountOfStars = []
+  //     for (let i = 0; i < rating; i++) {
+  //       amountOfStars.push(
+  //         (<View>
+  //           <Text>{this.props.photos[0].description}</Text>
+  //         </View>)
+  //       );
+  //     }
+
+  //   return (
+  //     <View>
+  //       {photoHolder}
+  //     </View>
+  //   )
+  // }
+
   return (
     <OtherUserMain>
       <WrapperWelcomeBox>
@@ -63,13 +124,47 @@ export const OtherUser = (props) => {
         <Rated>
           {moviesRated.map((movie) => (
             movie.rating &&
-            <MoviesMatched key={movie.movieId} id={movie.movieId} />
+            <RatedCard>
+              <OthersRating><RatedSpan>{userName}s rating: </RatedSpan> {ratingStars(movie.rating)} </OthersRating>
+              <MoviesMatched key={movie.movieId} id={movie.movieId} />
+            </RatedCard>
           ))}
         </Rated>
       </WrapperWelcomeBox>
     </OtherUserMain>
   )
 }
+
+const RatedSpan = styled.span`
+padding: 4px 2px 0 0;
+`
+
+const RatedCard = styled.div`
+position: relative;
+`
+
+const OthersRating = styled.div`
+  position: absolute;
+  top: 74px;
+  left: 210px;
+  display:flex;
+  @media(min-width: 768px) and (max-width: 1024px) {
+    top: 80px;
+    left: 216px;
+  }
+  @media(min-width: 1025px) and (max-width: 1225px) {
+    top: 80px;
+    left: 220px;
+  }
+  @media(min-width: 1225px) and (max-width: 1425px) {
+    top: 80px;
+    left: 226px;
+  }
+  @media(min-width: 1425px) {
+    top: 80px;
+    left: 230px;
+  }
+`
 
 const jump = keyframes`
   0%   {transform: translate3d(0,0,0);}

@@ -7,10 +7,10 @@ import { Similar } from './Similar';
 import { movies } from '../reducers/movies'
 import { Comments } from './Comments'
 import {
-  ActorImage, ActorList, ActorListWrap, ActorName, ActorWrap, Genre, ImageNotFound, 
-  MovieBackground, MovieDetailGenres, MovieDetailImage, MovieDetailRow, MovieImdb, 
+  ActorImage, ActorList, ActorListWrap, ActorName, ActorWrap, ActorImageWrap, Genre, ImageNotFound,
+  MovieBackground, MovieDetailGenres, MovieDetailImage, MovieDetailRow, MovieImdb,
   MovieInfo, MovieRating, MovieTitle, MovieOverview, RatingMovieWrap,
-  ShowSimilar, SimilarTitle, WrapMovie, WrapMovieInfo, YourRating 
+  ShowSimilar, SimilarTitle, WrapMovie, WrapMovieInfo, YourRating
 } from "./Styling";
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
@@ -98,11 +98,11 @@ export const MovieDetail = () => {
             </a>
           </MovieDetailRow>
         </WrapMovieInfo>
-        <MovieRating>⭐️ {movie.vote_average / 2} / 5</MovieRating>
+        {/* <MovieRating>⭐️ {movie.vote_average / 2} / 5</MovieRating> */}
       </WrapMovie>
       <YourRating>Rate this movie</YourRating>
       <RatingMovieWrap>
-        <Ratings 
+        <Ratings
           movieId={movie.id}
           movieTitle={movie.title}
         />
@@ -116,13 +116,15 @@ export const MovieDetail = () => {
         <MovieInfo>Starring </MovieInfo>
         <ActorList>
           {cast.map((actor) => (
-            <ActorWrap key={actor.id}>
-              <Link to={`/cast/${actor.id}`} onClick={(e) => handleActor(actor.name)}>
+            <ActorWrap >
+              <Link key={actor.id} to={`/cast/${actor.id}`} onClick={(e) => handleActor(actor.name)}>
                 <ActorName>{actor.name}</ActorName>
                 {actor.profile_path && (
-                  <ActorImage
-                    src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`}
-                  />
+                  <ActorImageWrap>
+                    <ActorImage
+                      src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`}
+                    />
+                  </ActorImageWrap>
                 )}
                 {!actor.profile_path && (
                   <ActorImage
@@ -133,12 +135,12 @@ export const MovieDetail = () => {
           ))}
         </ActorList>
       </ActorListWrap>
-    
+
       <Comments
         movieId={movie.id}
         movieTitle={movie.title}
       />
-       
+
       <ShowSimilar>
         <SimilarTitle>Similar movies</SimilarTitle>
         <Similar />

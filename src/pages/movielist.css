@@ -35,6 +35,10 @@
   padding: 20px;
 }
 
+.hover-details:hover {
+color: white;
+}
+
 .movie-wrapper:hover .hover-details {
   display: flex;
   flex-wrap: wrap;
