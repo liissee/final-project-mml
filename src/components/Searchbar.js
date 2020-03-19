@@ -4,6 +4,8 @@ import { searchResult } from "reducers/movies";
 import { FormSearch } from "./Styling";
 import { Icon, InputGroup } from "@blueprintjs/core";
 import { useHistory } from "react-router-dom";
+import { SearchLine } from "./Styling"
+import styled from "styled-components/macro"
 
 export const Searchbar = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -22,19 +24,19 @@ export const Searchbar = () => {
 
   return (
     <FormSearch onSubmit={handleSubmit}>
-      <InputGroup
+      <SearchLine
         value={searchTerm}
         onChange={event => setSearchTerm(event.target.value)}
         disabled={false}
         large={true}
-        placeholder="Search movie..."
+        placeholder="🔍Search movie..."
         leftIcon={<Icon icon="search" />}
         small={false}
         type="search"
       />
     </FormSearch>
-  );
-};
+  )
+}
 
 
 

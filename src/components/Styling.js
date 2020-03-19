@@ -486,6 +486,13 @@ export const FormSearch = styled.form`
   }
 `
 
+export const SearchLine = styled.input`
+border: none;
+border-bottom: 2px solid black;
+background: transparent;
+font-size: 16px;
+`
+
 
 // UserPage /////////////////////////////////////////////
 export const ButtonRating = styled.button`
