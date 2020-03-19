@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components/macro'
 import { ButtonWatch } from './Styling'
+import "components/comments.css"
 
 export const Comments = ({ movieId, movieTitle }) => {
   const accessToken = useSelector((state) => state.users.accessToken)
   const userId = useSelector((state) => state.users.userId)
   const [comment, setComment] = useState("")
+  const [comments, setComments] = useState([])
   const [postedComment, setPostedComment] = useState("")
 
   const CommentCard = styled.div`
@@ -47,6 +49,14 @@ export const Comments = ({ movieId, movieTitle }) => {
     width: 10vw;
   `
 
+  useEffect(() => {
+    fetch(``)
+      .then(res => res.json())
+      .then(json  => {
+        setComments(json)
+      })
+  }, [])
+
   const handleSubmit = (comment) => {
     fetch(`https://final-movie-match.herokuapp.com/users/${userId}`, {
       method: "PUT",
@@ -66,27 +76,41 @@ export const Comments = ({ movieId, movieTitle }) => {
   }
 
   return (
-    <div>
-      <form>
-        <CommentTitle>Comment</CommentTitle>
+    <div className="comments-main-wrapper">
+      <div className="comments-post-wrapper">
+        <form>
+          <CommentTitle>Your review</CommentTitle>
 
-        <label>
-          <textarea
-            value={comment}
-            placeholder="Type your thought here..."
-            onChange={event => setComment(event.target.value)}
+          <label>
+            <textarea
+              className="textarea-review"
+              rows="3"
+              value={comment}
+              placeholder="Type your review here..."
+              onChange={event => setComment(event.target.value)}
+            >
+            </textarea>
+          </label>
+        
+          <div>
+          <ButtonWatch
+            type="submit"
+            onClick={handleNewComment}
           >
-          </textarea>
-        </label>
-
-        <ButtonWatch
-          type="submit"
-          onClick={handleNewComment}
-        >
-          Submit comment
-        </ButtonWatch>
-
-      </form>
+            Submit
+          </ButtonWatch>
+          </div>
+        </form>
+      </div>
+      
+      <h3 className="cards-title">Reviews</h3>
+      <div className="cards-wrapper">
+        <article className="cards">
+          <div className="comment">
+      
+          </div>
+        </article>
+      </div>
     </div>
   )
 }
