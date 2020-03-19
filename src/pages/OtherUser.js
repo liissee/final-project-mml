@@ -8,6 +8,7 @@ import {
 import { MoviesMatched } from '../components/MoviesMatched';
 import styled, { keyframes } from 'styled-components/macro'
 import Icon from '@material-ui/core/Icon'
+import { happyicon } from 'assets/happyicon.png'
 
 export const OtherUser = (props) => {
   const [moviesRated, setMoviesRated] = useState([])
@@ -101,6 +102,7 @@ export const OtherUser = (props) => {
     <OtherUserMain>
       <WrapperWelcomeBox>
         <Header>
+          {/* <img src={happyicon} /> */}
           <UserNames>USERNAME: {userName}</UserNames>
           {watchList.length > 0
             ? <MoviesRatedParagraph>YEY! YOU HAVE A MATCH ON {watchList.length} MOVIES </MoviesRatedParagraph>

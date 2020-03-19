@@ -15,8 +15,8 @@ export const UserSearchResult = () => {
       <InfoText>Visit other users and see what movies you both like</InfoText>
       <UserNames>
         {searchResult.map((user) => (
-          <UserName key={user._id} to={`/users/${user._id}`}>
-            <span>{user.name}</span>
+          <UserName key={user._id}><Link to={`/users/${user._id}`}>
+            <span>{user.name}</span></Link>
           </UserName>
         ))}
       </UserNames>
