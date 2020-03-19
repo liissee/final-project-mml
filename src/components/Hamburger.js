@@ -43,9 +43,10 @@ const StyledMenu = styled.nav`
   }
 `
 
-export const Menu = ({ open }) => {
+export const Menu = ({ open, setOpen }) => {
   const selectedTab = useSelector((state) => state.ui.tab)
   const dispatch = useDispatch()
+  const [show, setShow] = useState(false)
 
   const handleTabChange = (tab) => {
     dispatch(ui.actions.setTab(tab))
@@ -53,51 +54,35 @@ export const Menu = ({ open }) => {
   }
   return (
     <StyledMenu open={open}>
-      <Link to="/" onClick={() => { handleTabChange("movies"); dispatch(movies.actions.setSearchTerm("")) }}>
+      <Link to="/" onClick={() => { handleTabChange("movies"); dispatch(movies.actions.setSearchTerm("")); setOpen(!open) }}>
         <span role="img" aria-label="movies">🎬</span>
       MOVIES
     </Link>
 
-      <Link to="/users/:id/movies" onClick={() => handleTabChange("watch")}>
+      <Link to="/users/:id/movies" onClick={() => { handleTabChange("watch"); setOpen(!open) }}>
         <span role="img" aria-label="watchlist">📝</span>
       Watchlist
     </Link>
 
-      <Link to="/users/:id/movies" onClick={() => handleTabChange("rated")}>
+      <Link to="/users/:id/movies" onClick={() => { handleTabChange("rated"); setOpen(!open) }}>
         <span role="img" aria-label="rating">⭐️</span>
       All rated
     </Link>
 
-      <Link to="/users/:id/movies" onClick={() => handleTabChange("users")}>
+      <Link to="/users/:id/movies" onClick={() => { handleTabChange("users"); setOpen(!open) }}>
         Other users
     </Link>
-      <Link to="/register">
-        <span role="img" aria-label="about us">🖋</span>
+      <Link to="/login" onClick={() => setOpen(!open)}>
+        <span role="img" aria-label="login">✅</span>
+        Sign in
+    </Link>
+      <Link to="/register" onClick={() => setOpen(!open)}>
+        <span role="img" aria-label="register">🖋</span>
         Register
     </Link>
     </StyledMenu>
   )
 }
-
-
-// <Link to="/">
-// <span role="img" aria-label="movies">🎬</span>
-// Movies
-// </Link>
-
-// <Link to="/users/:id/movies">
-// <span role="img" aria-label="watchlist">📝</span>
-// Watchlist
-// </Link>
-
-// <Link to="/register">
-// <span role="img" aria-label="about us">🖋</span>
-// Register
-// </Link>
-// <Link to="/login">
-// <span role="img" aria-label="about us">✅</span>
-// Login
-// </Link>
 
 
 
