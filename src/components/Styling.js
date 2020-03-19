@@ -110,9 +110,9 @@ export const MovieCard = styled.div`
   background: radial-gradient(circle, rgba(31,33,40,0.9346113445378151) 0%, rgba(23,23,25,0.9878326330532213) 100%);border: 2px solid #f5b333;
   color:white;
   border-radius: 20px;
-  height: 350px;
+  height: auto;
   margin: 10px;
-  padding-bottom: 5px;
+  padding: 0 8px 8px 0;
 
   @media(min-width: 768px) {
     height: 30vh;
@@ -150,9 +150,11 @@ export const MovieCardTitle = styled.h1`
   }
 `
 export const MovieImage = styled.img`
-  border-radius: 20px 0 0 0;
-  height: 150px;
-  width: 135px;
+  border-radius: 20px 0 0 20px;
+  /* height: 150px;
+  width: 135px; */
+  height: 29.5vh;
+    width: 185px;
   @media(min-width: 768px) {
     border-radius: 20px 0 0 20px;
     height: 29.5vh;
@@ -168,10 +170,8 @@ export const MovieTags = styled.div`
 export const WrapMovieCard = styled.div`
   display: flex;
   flex-direction: column;
-  @media(min-width: 768px) {
     display: flex;
     flex-direction: row;
-  }
   /* margin-left: 2vw;
   margin-right: 2vw;
   margin-top: 2vw; */

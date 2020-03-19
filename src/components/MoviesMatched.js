@@ -6,6 +6,8 @@ import {
   MovieCard, MovieCardInfo, MovieCardOverview, MovieCardTitle,
   MovieImage, MovieTags, WrapMovieCard, WrapMovieCardInfo
 } from "./Styling";
+import styled from 'styled-components/macro'
+
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 
@@ -49,6 +51,15 @@ export const MoviesMatched = ({ id }) => {
     return date.substring(0, 4)
   }
 
+  const StyledRatings = styled.div`
+  display: flex;
+  margin-bottom: 16px;
+  `
+
+  const RatingsText = styled.p`
+  margin-top: 4px;
+  `
+
   return (
     <MovieCard
       key={id}
@@ -67,11 +78,15 @@ export const MoviesMatched = ({ id }) => {
           <Link key={movie.id} to={`/movies/${movie.id}`}>
             <MovieCardTitle>{movie.title}</MovieCardTitle>
           </Link>
-          <Ratings
-            movieId={movie.id}
-            movieTitle={movie.title}
-            movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
-          />
+          <StyledRatings>
+            <RatingsText>Your rating:</RatingsText>
+            <Ratings
+              movieId={movie.id}
+              movieTitle={movie.title}
+              movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
+            />
+          </StyledRatings>
+          <RatingsText></RatingsText>
           <WatchStatus
             movieId={movie.id}
             movieTitle={movie.title}
