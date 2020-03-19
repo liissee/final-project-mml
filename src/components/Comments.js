@@ -7,6 +7,8 @@ import "components/comments.css"
 export const Comments = ({ movieId, movieTitle }) => {
   const accessToken = useSelector((state) => state.users.accessToken)
   const userId = useSelector((state) => state.users.userId)
+  const userName = useSelector((state) => state.users.userName)
+
   const [comment, setComment] = useState("")
   const [comments, setComments] = useState([])
   const [postedComment, setPostedComment] = useState("")
@@ -49,18 +51,12 @@ export const Comments = ({ movieId, movieTitle }) => {
     width: 10vw;
   `
 
-  useEffect(() => {
-    fetch(``)
-      .then(res => res.json())
-      .then(json  => {
-        setComments(json)
-      })
-  }, [])
 
   const handleSubmit = (comment) => {
-    fetch(`https://final-movie-match.herokuapp.com/users/${userId}`, {
+    fetch(`http://localhost:8080/users/${userId}`, {
+      // fetch(`https://final-movie-match.herokuapp.com/users/${userId}`, {
       method: "PUT",
-      body: JSON.stringify({ userId, movieId, movieTitle, comment }),
+      body: JSON.stringify({ userId, movieId, movieTitle, comment, userName }),
       headers: { "Content-Type": "application/json", "Authorization": accessToken },
     })
       .then(() => {
@@ -68,6 +64,16 @@ export const Comments = ({ movieId, movieTitle }) => {
       })
       .catch(err => console.log("error:", err))
   }
+
+  useEffect(() => {
+    fetch(`http://localhost:8080/comments/${movieId}`)
+      .then(res => res.json())
+      .then(json => {
+        setComments(json)
+        console.log(json)
+      })
+  }, [comment])
+
 
   const handleNewComment = event => {
     event.preventDefault()
@@ -91,23 +97,28 @@ export const Comments = ({ movieId, movieTitle }) => {
             >
             </textarea>
           </label>
-        
+
           <div>
-          <ButtonWatch
-            type="submit"
-            onClick={handleNewComment}
-          >
-            Submit
+            <ButtonWatch
+              type="submit"
+              onClick={handleNewComment}
+            >
+              Submit
           </ButtonWatch>
           </div>
         </form>
       </div>
-      
+
       <h3 className="cards-title">Reviews</h3>
       <div className="cards-wrapper">
         <article className="cards">
           <div className="comment">
-      
+            {comments.map((comment) => (
+              <>
+                <p>{comment.comment}</p>
+                <p>{comment.userName}</p>
+              </>
+            ))}
           </div>
         </article>
       </div>
