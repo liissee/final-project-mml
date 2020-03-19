@@ -10,7 +10,6 @@ export const UserSearchResult = () => {
   const searchResult = useSelector(state => state.users.users)
 
   return (
-
     <Wrapper>
       <InfoText>Visit other users and see what movies you both like</InfoText>
       <UserNames>
