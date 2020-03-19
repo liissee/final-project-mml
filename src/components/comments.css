@@ -1,0 +1,34 @@
+.cards-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2vw;
+  margin-top: 2vh;
+}
+
+.cards {
+  background: #F5F5F5;
+  border: 1px solid gray;
+  height: 10vh;
+  margin-bottom: 4vh;
+  overflow-wrap: break-word;
+  width: 40vw;
+  word-wrap: break-word;
+}
+
+.cards-title {
+  color: white;
+  font-size: 16px;
+  margin-left: 2vw;
+}
+
+.comments-post-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2vw;
+}
+
+.textarea-review {
+  height: 20vh;
+  margin-bottom: 2vh;
+  width: 40vw;
+}
