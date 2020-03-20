@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Rating } from '@material-ui/lab';
 import Box from '@material-ui/core/Box';
+// import StarBorderIcon from '@material-ui/icons/StarBorder';
 import { useSelector } from 'react-redux'
-import { ButtonWatch, RatingButtonContainer } from "./Styling";
+import { RatingButtonContainer } from "./Styling";
 import styled from "styled-components/macro"
 
 export const Ratings = ({ movieId, movieTitle }) => {
@@ -20,22 +21,8 @@ export const Ratings = ({ movieId, movieTitle }) => {
       body: JSON.stringify({ userId, movieId, movieTitle, rating }),
       headers: { "Content-Type": "application/json", "Authorization": accessToken },
     }).catch(err => {
-      // Show an error message
+      console.log("Failed to fetch")
     });
-    // .then(() => {
-    //   window.localStorage.setItem(movieId, rating);
-    // })
-  }
-
-
-  // Function that is invoced when the user clicks on "Watch" or "No thanks"
-  const handleWatchStatus = (userId, movieTitle, watchStatus) => {
-    fetch(`http://localhost:8080/users/${userId}`, {
-      // fetch(`https://final-movie-match.herokuapp.com/users/${userId}`, {
-      method: "PUT",
-      body: JSON.stringify({ userId, movieId, movieTitle, watchStatus }),
-      headers: { "Content-Type": "application/json", "Authorization": accessToken }
-    })
   }
 
   // GET movies with rating
@@ -52,8 +39,8 @@ export const Ratings = ({ movieId, movieTitle }) => {
   }, [movieId])
 
   const BoxContainer = styled(Box)`
-    padding: 0;
     margin-bottom: 50px;
+    padding: 0;
 `
 
   return (
@@ -74,6 +61,7 @@ export const Ratings = ({ movieId, movieTitle }) => {
               handleRating(userId, movieTitle, rating)
             }
             }
+            // emptyIcon={<StarBorderIcon color="yellow" fontSize="inherit" />}
           />
         </BoxContainer>
       </RatingButtonContainer>
