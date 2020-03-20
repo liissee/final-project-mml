@@ -8,10 +8,13 @@ import { useSelector } from 'react-redux'
 
 export const UserSearchResult = () => {
   const searchResult = useSelector(state => state.users.users)
-
+  console.log(searchResult)
   return (
     <Wrapper>
-      <InfoText>Visit other users and see what movies you both like</InfoText>
+      {searchResult.length === 0
+        ? <InfoText>Sorry, can't find any users with that name</InfoText>
+        : <InfoText>Visit other users and see what movies you both like</InfoText>
+      }
       <UserNames>
         {searchResult.map((user) => (
           <UserName key={user._id}><Link to={`/users/${user._id}`}>
