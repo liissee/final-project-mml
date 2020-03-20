@@ -89,7 +89,6 @@ export const MovieCards = ({ id }) => {
             <MovieCardInfo>| {cutOutDate(movie.release_date)} |</MovieCardInfo>
             <MovieCardInfo>{movie.runtime} min </MovieCardInfo>
           </MovieTags>
-          <MovieCardOverview>{movie.overview}</MovieCardOverview>
         </WrapMovieCardInfo>
       </WrapMovieCard>
     </MovieCard>

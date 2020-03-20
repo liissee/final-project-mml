@@ -5,11 +5,11 @@ import { useSelector } from 'react-redux'
 import { RatingButtonContainer } from "./Styling";
 import styled from "styled-components/macro"
 
+
 export const Ratings = ({ movieId, movieTitle }) => {
   const [rate, setRate] = useState()
   const accessToken = useSelector((state) => state.users.accessToken)
   const userId = useSelector((state) => state.users.userId)
-
 
   // Function that is invoced when the user rates a movie
   const handleRating = (userId, movieTitle, rating) => {

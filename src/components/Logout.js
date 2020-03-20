@@ -2,7 +2,7 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { users } from "../reducers/users"
-import { SignOutButton, Button } from './Styling'
+import { SignOutButton } from './Styling'
 import styled from 'styled-components/macro'
 
 
@@ -44,14 +44,14 @@ export const LogoutStatic = () => {
 }
 
 const LogoutStaticButton = styled.button`
-font-family: 'Raleway',sans-serif;
-    font-size: 1rem;
-    text-transform: uppercase;
-    font-weight: bold;
-    padding: 0;
-    margin: 0;
-    letter-spacing: 0.5rem;
-    color: #000f3c;
-    text-decoration: none;
-    transition: color 0.3s linear;
+  color: #000f3c;
+  font-family: 'Raleway',sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 0.5rem;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s linear;
 `

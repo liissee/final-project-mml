@@ -111,12 +111,11 @@ export const ImageNotFound = styled.img`
 export const MovieCard = styled.div`
   background: rgb(31,33,40);
   background: radial-gradient(circle, rgba(31,33,40,0.9346113445378151) 0%, rgba(23,23,25,0.9878326330532213) 100%);border: 2px solid #f5b333;
-  color:white;
+  color: white;
   border-radius: 20px;
   height: auto;
   margin: 10px;
   padding: 0 8px 8px 0;
-
   @media(min-width: 768px) {
     height: 30vh;
     margin: 10px;
@@ -137,6 +136,8 @@ export const MovieCardOverview = styled.div`
   -webkit-box-orient: vertical;
   font-size: 1em;
   overflow: hidden;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
   /* margin-bottom: 5px; */
 `
 export const MovieCardTitle = styled.h1`
@@ -183,6 +184,7 @@ export const WrapMovieCardInfo = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 2vw;
+  padding-bottom: 2vh;
   width: 65%;
   @media(min-width: 768px) {
     width: 70%;
@@ -369,7 +371,9 @@ export const WrapRating = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 10px;
+  padding-right: 50px;
   @media(min-width: 768px) {
+    margin-left: 2vw;
     margin-top: 0;
   }
 `
@@ -383,7 +387,20 @@ export const YourRating = styled.h2`
   }
 `
 
+// MoviesMatched /////////////////////////////////////////////
+export const RatingsText = styled.p`
+  margin-top: 4px;
+`
 
+export const StyledRatings = styled.div`
+  display: flex;
+  margin-bottom: 16px;
+`
+
+export const StyledMovieImage = styled(MovieImage)`
+  height: 200px;
+  width: auto;
+`
 
 // Navbar /////////////////////////////////////////////
 export const ButtonSearchUser = styled.button`
@@ -636,7 +653,6 @@ export const Wrapper = styled.div`
   border-radius: 8px;
   display: block;
   margin: 60px auto;
-  // max-width: 480px;
   &.link-text {
     text-decoration: none;
   }
@@ -658,6 +674,7 @@ export const WrapperWelcomeBox = styled(Wrapper)`
   max-width: 900px;
 `
 
-//Var används denna? 
+
+// Other
 export const SearchContainer = styled.div`
 `

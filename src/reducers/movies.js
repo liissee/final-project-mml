@@ -4,14 +4,14 @@ import { ui } from 'reducers/ui'
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 
 
-// Define initial state, what should be included?
+// Define initial state
 const initialState = {
   movies: [],
   chosenCategory: "popular",
   actorName: ""
 }
 
-// Discuss which reducers and actions that should be included
+
 export const movies = createSlice({
   name: 'movies',
   initialState,
@@ -27,7 +27,8 @@ export const movies = createSlice({
     }
   }
 })
-//takes searchterm as a prop/argument and send search result to MoveList.js. 
+
+// Takes searchterm as a prop/argument and send search result to MoveList.js. 
 export const searchResult = (searchTerm, pageNumber) => {
   return dispatch => {
     dispatch(ui.actions.setLoading(true))
@@ -39,9 +40,3 @@ export const searchResult = (searchTerm, pageNumber) => {
       })
   }
 }
-
-// export const handleActor = (actor) => {
-//   return dispatch => {
-//     dispatch(movies.actions.setActorName(actor))
-//   }
-// }

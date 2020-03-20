@@ -16,7 +16,6 @@ export const Similar = () => {
       .then(res => res.json())
       .then(json => {
         setMovies(json.results)
-        // console.log(json.results)
       })
   }, [id])
 

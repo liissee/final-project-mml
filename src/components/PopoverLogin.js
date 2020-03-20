@@ -5,8 +5,8 @@ import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { useHistory } from "react-router-dom";
-import { Input, Label, SignInButton, ErrorMessage } from "./Styling";
 import { fetchUser } from "../reducers/users.js"
+import { ErrorMessage, Input, Label, SignInButton } from "./Styling";
 
 const useStyles = makeStyles(theme => ({
   typography: {
@@ -17,31 +17,25 @@ const useStyles = makeStyles(theme => ({
 export const PopoverLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [errorMessage, setErrorMessage] = useState("");
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
 
   const history = useHistory();
   const dispatch = useDispatch()
-  // const accessToken = useSelector((state) => state.users.accessToken)
   const failed = useSelector(state => state.ui.isLoginFailed)
-
 
   const handleClick = event => {
     setAnchorEl(event.currentTarget)
   };
 
   const handleClose = () => {
-    if (failed) { //Hur få login-popuppen att stanna om login=failed? 
+    if (failed) {
       setAnchorEl(null);
     }
   };
 
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
-
-  // const url = "http://localhost:8080/sessions"
-
 
   const handleSignin = (event) => {
     event.preventDefault()
@@ -64,6 +58,7 @@ export const PopoverLogin = () => {
     setAnchorEl(null);
     history.push(`/register`);
   };
+
 
   return (
     <>
@@ -88,21 +83,21 @@ export const PopoverLogin = () => {
           <Label>
             Email
           <Input
-              type="email"
-              required
-              value={email}
-              onChange={event => setEmail(event.target.value.toLowerCase())}
-            />
+            type="email"
+            required
+            value={email}
+            onChange={event => setEmail(event.target.value.toLowerCase())}
+          />
           </Label>
           <Label>
             Password
           <Input
-              type="password"
-              required
-              value={password}
-              onChange={event => setPassword(event.target.value)}
-              onKeyPress={handleKeyPress}
-            />
+            type="password"
+            required
+            value={password}
+            onChange={event => setPassword(event.target.value)}
+            onKeyPress={handleKeyPress}
+          />
           </Label>
           {failed && <ErrorMessage>Incorrect user and/or password.</ErrorMessage>}
           <Button type="submit"
@@ -118,4 +113,3 @@ export const PopoverLogin = () => {
     </>
   );
 }
-

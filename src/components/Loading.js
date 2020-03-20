@@ -20,8 +20,8 @@ export const LoadingIndicator = () => {
 }
 
 const LoadingIcon = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-padding: 1em;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 1em;
 `

@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from "react-redux";
-import {
-  // MovieInfo, MoviesRatedParagraph, MovieRatedRow,
-  // UserNames, WrapperWelcomeBox
-} from "../components/Styling"
+import { WrapperWelcomeBox } from "../components/Styling"
 import { MoviesMatched } from '../components/MoviesMatched';
 import styled, { keyframes } from 'styled-components/macro'
 import Icon from '@material-ui/core/Icon'
-import { happyicon } from 'assets/happyicon.png'
 
-export const OtherUser = (props) => {
+
+export const OtherUser = () => {
   const [moviesRated, setMoviesRated] = useState([])
   const [watchList, setWatchList] = useState([])
   const [userName, setUserName] = useState("")
@@ -83,20 +80,19 @@ export const OtherUser = (props) => {
 
   return (
     <OtherUserMain>
-      <WrapperWelcomeBox>
+      <WrapperOtherUser>
         <Header>
-          {/* <img src={happyicon} /> */}
           <UserNames>USERNAME: {userName}</UserNames>
           {watchList.length > 0
             ? <MoviesRatedParagraph>YEY! YOU HAVE A MATCH ON {watchList.length} MOVIES </MoviesRatedParagraph>
             : <MoviesRatedParagraph>Add some movies to your watchlist and see if you have a match with {userName}!</MoviesRatedParagraph>
           }
         </Header>
-        <Matched>
+        <WrapperWelcomeBox>
           {watchList.map((movie) => (
             <MoviesMatched key={movie.movieId} id={movie.movieId} />
           ))}
-        </Matched>
+        </WrapperWelcomeBox>
         <MoviesRatedParagraph>Movies that {userName} has rated </MoviesRatedParagraph>
         <Rated>
           {moviesRated.map((movie) => (
@@ -107,87 +103,86 @@ export const OtherUser = (props) => {
             </RatedCard>
           ))}
         </Rated>
-      </WrapperWelcomeBox>
+      </WrapperOtherUser>
     </OtherUserMain>
   )
 }
 
 
-//temporary styling
+// Temporary styling
 const Rated = styled.section`
+  background: transparent;
+  margin-top: 10px;
+  max-width: 900px;
+  border-radius: 8px;
+  display: block;
+  margin: 60px auto;
+  &.link-text {
+    text-decoration: none;
+  }
   @media(min-width: 768px) {
-    margin: 0 359px;
+    padding: 20px 30px 30px 30px;
   }
+  // @media(min-width: 768px) {
+  //   margin: 0 359px;
+  // }
 `
-//Other
-const RatedSpan = styled.span`
-padding: 4px 2px 0 0;
-`
-
+// Other
 const RatedCard = styled.div`
-position: relative;
-`
-
-const OthersRating = styled.div`
-  position: absolute;
-  top: 74px;
-  left: 155px;
-  display:flex;
-  flex-wrap: wrap;
-  @media(min-width: 768px) and (max-width: 1024px) {
-    top: 80px;
-    left: 216px;
-  }
-  @media(min-width: 1025px) and (max-width: 1225px) {
-    top: 80px;
-    left: 220px;
-  }
-  @media(min-width: 1225px) and (max-width: 1425px) {
-    top: 80px;
-    left: 226px;
-  }
-  @media(min-width: 1425px) {
-    top: 80px;
-    left: 230px;
-  }
+  position: relative;
 `
 
 const jump = keyframes`
   0%   {transform: translate3d(0,0,0);}
   20%  {transform: translate3d(0,10%,0);}
   40%  {transform: translate3d(0,30%,0);}
-  50% {transform: translate3d(0,50%,0);}
+  50%  {transform: translate3d(0,50%,0);}
   100% {transform: translate3d(0,50%,0);}
 `
 const Image = styled.img`
-  transform-origin: 50% 50%;
   animation: ${jump} .5s linear alternate infinite;
+  transform-origin: 50% 50%;
 `
+const RatedSpan = styled.span`
+  padding: 4px 2px 0 0;
+`
+const OthersRating = styled.div`
+  display:flex;
+  flex-wrap: wrap;
+  left: 155px;
+  position: absolute;
+  top: 74px;
+  @media(min-width: 768px) {
+    top: 80px;
+    left: 216px;
+  }
+  @media(min-width: 1024px) {
+    top: 80px;
+    left: 220px;
+  }
+`
+
+
 
 // Otheruser /////////////////////////////////////////////
-const OtherUserMain = styled.section`
-  /* background: black;
-  height: 100%;
-  margin: 0; */
-`
 const Header = styled.section`
-
-`
-const UserNames = styled.h1`
-font-size: 1.5em;
-font-weight: normal;
-padding: 20px;
 `
 const Matched = styled.section`
 `
 const MoviesRatedParagraph = styled.h3`
-  padding: 15px;
   font-size: 1.5;
   font-weight: normal;
+  padding: 15px;
   text-align: center;
 `
-const WrapperWelcomeBox = styled.div`
-color: white;
-  /* background: red;
-  max-width: 900px; */
+const OtherUserMain = styled.section`
+`
+const UserNames = styled.h1`
+  font-size: 1.5em;
+  font-weight: normal;
+  padding: 20px;
+  text-align: center;
+`
+const WrapperOtherUser = styled.div`
+  color: white;
 `

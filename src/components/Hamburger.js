@@ -51,6 +51,8 @@ export const Menu = ({ open, setOpen }) => {
     dispatch(ui.actions.setTab(tab))
     dispatch(ui.actions.setPage(1))
   }
+
+
   return (
     <StyledMenu open={open}>
       <Link to="/" onClick={() => { handleTabChange("movies"); dispatch(movies.actions.setSearchTerm("")); setOpen(!open) }}>
@@ -142,13 +144,13 @@ const Burger = ({ open, setOpen }) => {
   )
 }
 
+
 const HamburgerWrap = styled.div`
   display: inline-block;
   @media(min-width: 768px) {
     display: none;
   }
 `
-
 
 export const Hamburger = () => {
   const [open, setOpen] = useState(false);
@@ -162,4 +164,3 @@ export const Hamburger = () => {
     </HamburgerWrap>
   )
 }
-

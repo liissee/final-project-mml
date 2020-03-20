@@ -1,12 +1,11 @@
-
 import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux";
 import { DropDownList } from "components/DropDownList"
-import "pages/movielist.css"
 import { Ratings } from "../components/Ratings"
-import { ButtonMore, ButtonContainer, ErrorMessage } from '../components/Styling'
 import { WatchStatus } from '../components/WatchStatus';
+import "pages/movielist.css"
+import { ButtonContainer, ButtonMore, ErrorMessage } from '../components/Styling'
 
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
@@ -18,10 +17,8 @@ export const MoviesList = () => {
   const [page, setPage] = useState(1)
   const category = useSelector(state => state.movies.chosenCategory)
   const searchResult = useSelector(state => state.movies.movies)
-  //const accessToken = window.localStorage.getItem("accessToken")
 
-
-  //Pagination
+  // Pagination
   let query = `&page=${page}`
 
   useEffect(() => {
@@ -53,7 +50,6 @@ export const MoviesList = () => {
   }
 
 
-  //How to fetch more results, show page 2 etc..? 
   return (
     <div className="top-movie-list">
       <DropDownList />
@@ -98,32 +94,3 @@ export const MoviesList = () => {
     </div >
   )
 }
-
-
-
-
-    //   return (
-//     <div className="top-movie-list">
-//       <DropDownList />
-//       <MovieWrapper>
-//         {movieResults.map((movie) => (
-//           <MovieList>
-//             <Link key={movie.id} to={`/movies/${movie.id}`}>
-//               {movie.poster_path && (
-//                 <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.id} />
-//               )}
-//               {!movie.poster_path && (
-//                 <p>Movie poster not found</p>
-//                 // <img src={not_found} />
-//               )}
-//               <MovieListHover>
-//                 <h1>{movie.original_title}</h1>
-//                 <p>Released {movie.release_date}</p>
-//               </MovieListHover>
-//             </Link>
-//           </MovieList>
-//         ))}
-//       </MovieWrapper>
-//     </div>
-//   )
-// }

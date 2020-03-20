@@ -1,23 +1,20 @@
 import React from "react";
+import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Searchbar } from './Searchbar'
-import { SearchUser } from './SearchUser'
 import { Logout } from './Logout'
 import { Hamburger } from 'components/Hamburger'
 import { PopoverLogin } from 'components/PopoverLogin'
 import { PopoverUserSearch } from 'components/PopoverUserSearch'
-import {
-  HeaderTitle, HeaderStartContainer, NavRightContainer,
-  UserNameNav, MainStartContainer, SubNavbar, WatchListLink
-} from "./Styling";
-import styled from 'styled-components/macro'
-import { useSelector, useDispatch } from 'react-redux'
 import { ui } from '../reducers/ui'
 import { movies } from '../reducers/movies'
+import {
+  HeaderStartContainer, HeaderTitle, MainStartContainer, 
+  NavRightContainer, SubNavbar, UserNameNav, WatchListLink
+} from "./Styling";
 
-export const Navbar = (props) => {
-  // const [errorMessage, setErrorMessage] = useState("");
 
+export const Navbar = () => {
   const accessToken = useSelector((state) => state.users.accessToken)
   const userName = useSelector((state) => state.users.userName)
   const userId = useSelector((state) => state.users.userId)
@@ -30,6 +27,7 @@ export const Navbar = (props) => {
     dispatch(ui.actions.setPage(1))
   }
 
+  
   return (
     <MainStartContainer>
       <Hamburger />

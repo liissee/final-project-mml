@@ -62,6 +62,7 @@ export const MovieDetail = () => {
       <div>{error}</div>
     )
   }
+  
 
   return (
     <MovieBackground
@@ -99,7 +100,6 @@ export const MovieDetail = () => {
             </a>
           </MovieDetailRow>
         </WrapMovieInfo>
-        {/* <MovieRating>⭐️ {movie.vote_average / 2} / 5</MovieRating> */}
       
       <WrapRating>
         <YourRating>Rate this movie</YourRating>

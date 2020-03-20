@@ -1,20 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import {
-  // UserName, UserNames, WrapperWelcomeBox
-} from "./Styling"
 import styled from 'styled-components/macro'
 
-
-
-// const url = "http://localhost:8080/secrets";
-const url = 'https://final-movie-match.herokuapp.com/secrets'
 
 export const UserList = () => {
   const [userList, setUserList] = useState([])
   const userId = useSelector((state) => state.users.userId)
-  const [watchList, setWatchList] = useState([])
 
   // All users
   useEffect(() => {
@@ -45,25 +37,9 @@ export const UserList = () => {
 };
 
 
-const Wrapper = styled.div`
-  text-align:center;
-  margin: 60px auto;
-  color: white;
-  padding: 20px 30px 30px 30px;
-  background: inherit;
-`
 const InfoText = styled.h2`
   font-family: 'Raleway', sans-serif;
 `
-export const UserNames = styled.div`
-  font-size: 18px;
-  margin-bottom: 2vh;
-  color: #000f3c;
-  margin-top: 6vh;
-  display: flex;
-  flex-direction: column;
-`
-
 const UserName = styled.div`
   margin: 5px;
   a{
@@ -77,4 +53,20 @@ const UserName = styled.div`
     background: #000f3c;
   }
 }
+`
+export const UserNames = styled.div`
+  color: #000f3c;
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  margin-bottom: 2vh;
+  margin-top: 6vh;
+`
+
+const Wrapper = styled.div`
+  background: inherit;
+  color: white;
+  margin: 60px auto;
+  padding: 20px 30px 30px 30px;
+  text-align: center;
 `

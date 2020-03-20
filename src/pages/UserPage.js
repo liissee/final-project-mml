@@ -1,40 +1,32 @@
 import React, { useState, useEffect } from 'react'
-import {
-  ButtonMore, MovieInfo, MovieTitle, WrapperWelcomeBox, ErrorMessage
-} from "../components/Styling"
-import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { MovieCards } from '../components/MovieCards';
 import { UserList } from '../components/UserList'
 import { ui } from '../reducers/ui'
 import Icon from '@material-ui/core/Icon'
 import styled from "styled-components/macro"
+import {
+  ButtonMore, ErrorMessage, MovieTitle, WrapperWelcomeBox
+} from "../components/Styling"
 
-//USER-PAGE
 // const url = "http://localhost:8080/secrets";
 const url = 'https://final-movie-match.herokuapp.com/secrets'
-// Fetch data with a GET request to our MongoDB database for an individual user 
+
+
 export const UserPage = (props) => {
   const [message, setMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [moviesRated, setMoviesRated] = useState()
   const [movieStatus, setMovieStatus] = useState()
   const [chosenRating, setChosenRating] = useState("")
-  const [loading, setLoading] = useState(true)
 
+  const accessToken = useSelector((state) => state.users.accessToken)
+  const page = useSelector((state) => state.ui.page)
+  const selectedTab = useSelector((state) => state.ui.tab)
+  const userId = useSelector((state) => state.users.userId)
   const dispatch = useDispatch()
 
-
-  //Funkar att rendera om sidan när man loggar in men sparade filmer syns inte...
-  const accessToken = useSelector((state) => state.users.accessToken)
-  const userId = useSelector((state) => state.users.userId)
-  const userName = useSelector((state) => state.users.userName)
-  const selectedTab = useSelector((state) => state.ui.tab)
-  const page = useSelector((state) => state.ui.page)
-
-
-
-  //Logged in or not?
+  // Logged in or not?
   useEffect(() => {
     setErrorMessage("");
     fetch(url, {
@@ -71,8 +63,7 @@ export const UserPage = (props) => {
     query = `?rating=${chosenRating}&page=${page}`
   }
 
-  //Movies with rating
-
+  // Movies with rating
   useEffect(() => {
     if (!userId) return;
     fetch(`https://final-movie-match.herokuapp.com/users/${userId}/movies${query}`)
@@ -98,42 +89,42 @@ export const UserPage = (props) => {
     dispatch(ui.actions.setPage(1))
   }
 
-  const Yellow = styled(Icon)`
-  color: #ffb402;
-  position: absolute;
-  left: 5px;
-  top: 5px;
-  z-index: 1;
-  `
 
   const Number = styled.p`
-  position: absolute;
-  left: 27px;
-  top: 23px;
-  z-index: 2;
-  color: black;
-  font-weight: bold;
-
+    color: black;
+    font-weight: bold;
+    left: 27px;
+    position: absolute;
+    top: 23px;
+    z-index: 2;
+  `
+  const OtherButtonMore = styled(ButtonMore)`
+    margin-bottom: 0;
+    margin-left: 5px;
+  `
+  const Yellow = styled(Icon)`
+    color: #ffb402;
+    left: 5px;
+    position: absolute;
+    top: 5px;
+    z-index: 1;
   `
   const YellowButtonMore = styled.button`
-  background-color: transparent;
-  border: none;
-  position: relative;
-  height: 50px;
-  width: 50px;
+    background-color: transparent;
+    border: none;
+    height: 50px;
+    position: relative;
+    width: 50px;
   `
 
   const Sort = styled.div`
-display: flex;
-align-items: center;
-`
-  const OtherButtonMore = styled(ButtonMore)`
-margin-bottom: 0;
-margin-left: 5px;
-`
+    align-items: center;
+    display: flex;
+  `
+ 
 
   return (
-    //WATCHLIST
+    // WATCHLIST
     <>
       {selectedTab === "watch" && (
         <WrapperWelcomeBox>
@@ -153,7 +144,7 @@ margin-left: 5px;
             </WrapperWelcomeBox>}
         </WrapperWelcomeBox>
       )}
-      {/* //RATING */}
+      // RATING
       {selectedTab === "rated" && (
         <WrapperWelcomeBox>
           <ErrorMessage>{errorMessage && <div>{errorMessage}</div>}</ErrorMessage>
@@ -161,7 +152,6 @@ margin-left: 5px;
             <>
               <MovieTitle>Movies that you have rated</MovieTitle>
               <Sort>
-                {/* <MovieInfo>Sort by rating</MovieInfo> */}
                 <YellowButtonMore onClick={(e) => handleSortOnRating(1)}><Number>1</Number><Yellow style={{ fontSize: 50 }}>star</Yellow></YellowButtonMore>
                 <YellowButtonMore onClick={(e) => handleSortOnRating(2)}><Number>2</Number><Yellow style={{ fontSize: 50 }}>star</Yellow></YellowButtonMore>
                 <YellowButtonMore onClick={(e) => handleSortOnRating(3)}><Number>3</Number><Yellow style={{ fontSize: 50 }}>star</Yellow></YellowButtonMore>

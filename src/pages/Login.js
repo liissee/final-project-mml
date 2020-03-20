@@ -8,16 +8,12 @@ import {
 } from "../components/Styling";
 
 
-
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
   const dispatch = useDispatch()
   const failed = useSelector(state => state.ui.isLoginFailed)
-
-
-  // const url = "http://localhost:8080/sessions"
 
   const handleSignin = (event) => {
     event.preventDefault()
@@ -30,6 +26,7 @@ export const Login = () => {
   const reDirect = () => {
     history.push(`/register`);
   };
+
 
   return (
     <FieldContainer>
@@ -65,4 +62,3 @@ export const Login = () => {
     </FieldContainer>
   );
 };
-

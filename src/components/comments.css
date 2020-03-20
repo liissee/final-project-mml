@@ -1,40 +1,9 @@
-.comments-form{
-  background: #ebebeb;
-  box-shadow: 5px 5px;
-  height: 200px;
-  border: solid 1px #7e7e7e;
-  margin-top: 20px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.text-length{
-  display: flex;
-  color: white;  
-}
-.buttonwrapper{
-  display: flex;
-  width: 400px;
-  justify-content: space-between;
+.buttonwrapper {
   align-items: baseline;
-}
-
-.red {
-  color:red;
-}
-.comment {
-display: flex;
-flex-wrap: wrap;
-}
-.cards-wrapper {
   display: flex;
-  flex-direction: column;
-  margin-left: 2vw;
-  margin-top: 2vh;
+  justify-content: space-between;
+  width: 400px;
 }
-
 .cards {
   background: #F5F5F5;
   border: 1px solid gray;
@@ -43,6 +12,59 @@ flex-wrap: wrap;
   overflow-wrap: break-word;
   width: 40vw;
   word-wrap: break-word;
+}
+.cards-title {
+  color: white;
+  font-size: 16px;
+  margin-left: 2vw;
+}
+.cards-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2vw;
+  margin-top: 2vh;
+}
+.comment {
+  display: flex;
+  flex-wrap: wrap;
+}
+.comments-form {
+  background: #ebebeb;
+  border: solid 1px #7e7e7e;
+  box-shadow: 5px 5px;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 20px;
+}
+.comments-post-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2vw;
+}
+.inside-cards {
+  background: rgba(29, 43, 49, 0.11);
+  border: solid 1px #ffcf3c;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 10px;
+  max-height: 130px;
+  overflow: scroll;
+  overflow-wrap: break-word;
+  padding: 20px 20px 10px 20px;
+  width: 300px;
+  word-wrap: break-word;
+}
+.red {
+  color:red;
+}
+.text-length {
+  color: white;  
+  display: flex;
 }
 textarea, input {
   padding: 7px;
@@ -54,42 +76,13 @@ textarea, input {
 }
 textarea::placeholder, 
 input::placeholder {
-background: #fff;
-height: 100%;
-color: #93989d;
-opacity: 0.5;
+  background: #fff;
+  color: #93989d;
+  height: 100%;
+  opacity: 0.5;
 }
-
-.cards-title {
-  color: white;
-  font-size: 16px;
-  margin-left: 2vw;
-}
-
-.comments-post-wrapper {
-  display: flex;
-  flex-direction: column;
-  margin-left: 2vw;
-}
-
 .textarea-review {
   height: 10vh;
   margin-bottom: 2vh;
   width: 400px;
-}
-
-.inside-cards{  
-  display: flex;
-background: rgba(29, 43, 49, 0.11);
-  flex-direction: column;
-  justify-content: space-between;
-  width: 300px;
-  max-height: 130px;
-  border: solid 1px #ffcf3c;
-  margin: 10px;
-  padding: 20px 20px 10px 20px;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  overflow: scroll;
-  color: white;
 }

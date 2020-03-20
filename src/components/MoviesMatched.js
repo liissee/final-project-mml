@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom'
 import { Ratings } from './Ratings';
 import { WatchStatus } from './WatchStatus'
 import {
-  MovieCard, MovieCardInfo, MovieCardOverview, MovieCardTitle,
-  MovieImage, MovieTags, WrapMovieCard, WrapMovieCardInfo
+  MovieCard, MovieCardInfo, MovieCardTitle, MovieImage, 
+  MovieTags, RatingsText, StyledRatings, StyledMovieImage, 
+  WrapMovieCard, WrapMovieCardInfo
 } from "./Styling";
-import styled from 'styled-components/macro'
-
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 
@@ -17,22 +16,20 @@ export const MoviesMatched = ({ id }) => {
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(true)
 
+  const cutOutDate = (date) => {
+    return date.substring(0, 4)
+  }
+
 
   useEffect(() => {
     setLoading(true)
     fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`)
       .then((res) => res.json())
       .then((json) => {
-        // if (json.status.code === 34) {
-        //   setError("Movie not found")
-        // }
-        // else {
         setMovie(json)
-        // }
         setLoading(false)
       })
   }, [id])
-  // console.log(movie)
 
 
   if (loading) {
@@ -47,23 +44,7 @@ export const MoviesMatched = ({ id }) => {
     )
   }
 
-  const cutOutDate = (date) => {
-    return date.substring(0, 4)
-  }
 
-  const StyledRatings = styled.div`
-  display: flex;
-  margin-bottom: 16px;
-  `
-
-  const RatingsText = styled.p`
-  margin-top: 4px;
-  `
-
-  const StyledMovieImage = styled(MovieImage)`
-  height: 200px;
-  width: auto;
-  `
 
   return (
     <MovieCard
@@ -110,7 +91,6 @@ export const MoviesMatched = ({ id }) => {
             <MovieCardInfo>| {cutOutDate(movie.release_date)} |</MovieCardInfo>
             <MovieCardInfo>{movie.runtime} min </MovieCardInfo>
           </MovieTags>
-          <MovieCardOverview>{movie.overview}</MovieCardOverview>
         </WrapMovieCardInfo>
       </WrapMovieCard>
     </MovieCard>
