@@ -79,11 +79,11 @@ export const MovieCards = ({ id }) => {
           <MovieTags>
             <MovieCardInfo>
               {movie.imdb_id && (
-                <Link
+                <a
                   href={`https://www.imdb.com/title/${movie.imdb_id}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                >IMDb</Link>
+                >IMDb</a>
               )}
             </MovieCardInfo>
             <MovieCardInfo>| {cutOutDate(movie.release_date)} |</MovieCardInfo>
