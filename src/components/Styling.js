@@ -156,8 +156,8 @@ export const MovieImage = styled.img`
   border-radius: 20px 0 0 20px;
   /* height: 150px;
   width: 135px; */
-  height: 29.5vh;
-    width: 185px;
+  height: 180px;
+  width: auto;
   @media(min-width: 768px) {
     border-radius: 20px 0 0 20px;
     height: 29.5vh;
@@ -183,7 +183,10 @@ export const WrapMovieCardInfo = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 2vw;
-  width: 70%;
+  width: 65%;
+  @media(min-width: 768px) {
+    width: 70%;
+  }
 `
 
 
@@ -608,9 +611,11 @@ export const Wrapper = styled.div`
   display: block;
   margin: 60px auto;
   // max-width: 480px;
-  padding: 20px 30px 30px 30px;
   &.link-text {
     text-decoration: none;
+  }
+  @media(min-width: 768px) {
+    padding: 20px 30px 30px 30px;
   }
 `
 export const WrapperUserPage = styled.div`
