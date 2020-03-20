@@ -13,44 +13,10 @@ export const Comments = ({ movieId, movieTitle }) => {
   const [comments, setComments] = useState([])
   const [postedComment, setPostedComment] = useState("")
 
-  const CommentCard = styled.div`
-    display: flex;
-    flex-direction: column;
-    height: 35vh;
-    margin-bottom: 4vh;
-    margin-left: 2vw;
-    width: 60vw;
-  `
-  const CommentForm = styled.form`
-  `
+
   const CommentTitle = styled.h3`
     color: white;
   `
-  const CommentLabel = styled.label`
-  `
-  const CommentTextarea = styled.textarea`
-    font-size: 16px;
-    height: 12vh;
-    margin-bottom: 2vh;
-    margin-left: 0;
-    margin-top: 1vh;
-    resize: none;
-    width: 55vw;
-  `
-  const CommentSendButton = styled.button`
-    background: white;
-    border: none;
-    color: black;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
-    height: 6vh;
-    margin-bottom: 3vh;
-    margin-left: 0;
-    margin-top: 1vh;
-    width: 10vw;
-  `
-
 
   const handleSubmit = (comment) => {
     fetch(`http://localhost:8080/users/${userId}`, {
@@ -72,7 +38,7 @@ export const Comments = ({ movieId, movieTitle }) => {
         setComments(json)
         console.log(json)
       })
-  }, [comment])
+  }, [postedComment])
 
 
   const handleNewComment = event => {
@@ -84,7 +50,7 @@ export const Comments = ({ movieId, movieTitle }) => {
   return (
     <div className="comments-main-wrapper">
       <div className="comments-post-wrapper">
-        <form>
+        <form className="comment-form">
           <CommentTitle>Your review</CommentTitle>
 
           <label>
@@ -97,31 +63,34 @@ export const Comments = ({ movieId, movieTitle }) => {
             >
             </textarea>
           </label>
-
-          <div>
-            <ButtonWatch
-              type="submit"
-              onClick={handleNewComment}
-            >
-              Submit
+          <div className="buttonwrapper">
+            <div>
+              <ButtonWatch
+                type="submit"
+                disabled={comment.length < 5 || comment.length > 300 ? true : false}
+                onClick={handleNewComment}
+              >
+                Submit
           </ButtonWatch>
+            </div>
+            <div className="text-length">
+              <p className={comment.length < 5 || comment.length > 300 ? "red" : "black"}>{comment.length}</p><p>/300</p>
+            </div>
           </div>
         </form>
       </div>
 
       <h3 className="cards-title">Reviews</h3>
       <div className="cards-wrapper">
-        <article className="cards">
-          <div className="comment">
-            {comments.map((comment) => (
-              <>
-                <p>{comment.comment}</p>
-                <p>{comment.userName}</p>
-              </>
-            ))}
-          </div>
-        </article>
+        <div className="comment">
+          {comments.map((comment) => (
+            <article className="inside-cards">
+              <p>{comment.comment}</p>
+              <p>Username: {comment.userName}</p>
+            </article>
+          ))}
+        </div>
       </div>
-    </div>
+    </div >
   )
 }
