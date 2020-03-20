@@ -60,18 +60,23 @@ export const MoviesMatched = ({ id }) => {
   margin-top: 4px;
   `
 
+  const StyledMovieImage = styled(MovieImage)`
+  height: 200px;
+  width: auto;
+  `
+
   return (
     <MovieCard
       key={id}
     >
       <WrapMovieCard>
         {movie.poster_path && (
-          <MovieImage
+          <StyledMovieImage
             src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} alt={movie.title}
           />
         )}
         {!movie.poster_path && (
-          <MovieImage
+          <StyledMovieImage
             src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="Photo by Denise Jans on Unsplash" />
         )}
         <WrapMovieCardInfo>
@@ -86,6 +91,7 @@ export const MoviesMatched = ({ id }) => {
               movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
             />
           </StyledRatings>
+          <RatingsText></RatingsText>
           <RatingsText></RatingsText>
           <WatchStatus
             movieId={movie.id}

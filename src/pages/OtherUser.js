@@ -98,6 +98,7 @@ export const OtherUser = (props) => {
   //   )
   // }
 
+
   return (
     <OtherUserMain>
       <WrapperWelcomeBox>
@@ -125,7 +126,7 @@ export const OtherUser = (props) => {
           {moviesRated.map((movie) => (
             movie.rating &&
             <RatedCard>
-              <OthersRating><RatedSpan>{userName}s rating: </RatedSpan> {ratingStars(movie.rating)} </OthersRating>
+              <OthersRating><RatedSpan>{userName}s rating: </RatedSpan> <span>{ratingStars(movie.rating)}</span> </OthersRating>
               <MoviesMatched key={movie.movieId} id={movie.movieId} />
             </RatedCard>
           ))}
@@ -135,6 +136,14 @@ export const OtherUser = (props) => {
   )
 }
 
+
+//temporary styling
+const Rated = styled.section`
+  @media(min-width: 768px) {
+    margin: 0 359px;
+  }
+`
+//Other
 const RatedSpan = styled.span`
 padding: 4px 2px 0 0;
 `
@@ -146,8 +155,9 @@ position: relative;
 const OthersRating = styled.div`
   position: absolute;
   top: 74px;
-  left: 210px;
+  left: 155px;
   display:flex;
+  flex-wrap: wrap;
   @media(min-width: 768px) and (max-width: 1024px) {
     top: 80px;
     left: 216px;
@@ -193,9 +203,6 @@ font-weight: normal;
 padding: 20px;
 `
 const Matched = styled.section`
-`
-
-const Rated = styled.section`
 `
 const MoviesRatedParagraph = styled.h3`
   padding: 15px;
