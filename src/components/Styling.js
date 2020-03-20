@@ -252,7 +252,6 @@ export const Genre = styled.div`
   padding: 4px;
 `
 export const MovieBackground = styled.div`
-  /* background: white; */
 `
 export const MovieDetailGenres = styled.div`
   display: flex;
@@ -288,9 +287,9 @@ export const MovieImdb = styled.h3`
 `
 export const MovieInfo = styled.h3`
   color: white;
-  text-align: center;
   margin: 0;
   padding-top: 2px;
+  text-align: center;
   /* margin-bottom: 2vh;
   margin-top: 1.5vh; */
 `
@@ -298,9 +297,6 @@ export const MovieOverview = styled.div`
   color: white;
   font-size: 16px;
   margin-bottom: 2vh;
-`
-export const MovieRating = styled.h3`
-  color:white;
 `
 export const MovieTitle = styled.h1`
   color: white;
@@ -332,6 +328,15 @@ export const SimilarMovies = styled.div`
 export const SimilarTitle = styled.h3`
   margin-left: 2vw;
 `
+export const StarringTitle = styled(MovieInfo)`
+  margin-bottom: 3vh;
+  margin-left: 2vw;
+  margin-top: 3vh;
+  width: 5vw;
+  @media(min-width: 768px) {
+    margin-left: 0;
+  }
+`
 export const WrapMovie = styled.div`
   display: flex;
   flex-direction: column;
@@ -355,7 +360,13 @@ export const WrapMovieInfo = styled.div`
     width: 50%;
   }
 `
-export const YourRating = styled.h3`
+export const WrapRating = styled.div`
+  margin-top: 6vh;
+  @media(min-width: 768px) {
+    margin-top: 0;
+  }
+`
+export const YourRating = styled.h2`
   color: white;
   margin-bottom: 2vh;
   margin-left: 3vw;

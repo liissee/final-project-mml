@@ -7,10 +7,10 @@ import { Similar } from './Similar';
 import { movies } from '../reducers/movies'
 import { Comments } from './Comments'
 import {
-  ActorImage, ActorList, ActorListWrap, ActorName, ActorWrap, ActorImageWrap, Genre, ImageNotFound,
-  MovieBackground, MovieDetailGenres, MovieDetailImage, MovieDetailRow, MovieImdb,
-  MovieInfo, MovieRating, MovieTitle, MovieOverview, RatingMovieWrap,
-  ShowSimilar, SimilarTitle, WrapMovie, WrapMovieInfo, YourRating
+  ActorImage, ActorList, ActorListWrap, ActorName, ActorWrap, ActorImageWrap, Genre, 
+  ImageNotFound, MovieBackground, MovieDetailGenres, MovieDetailImage, MovieDetailRow, 
+  MovieImdb, MovieInfo, MovieTitle, MovieOverview, RatingMovieWrap, ShowSimilar, 
+  SimilarTitle, StarringTitle, WrapMovie, WrapMovieInfo, WrapRating, YourRating
 } from "./Styling";
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
@@ -42,7 +42,6 @@ export const MovieDetail = () => {
       })
   }, [id])
 
-  //https://api.themoviedb.org/3/movie/330457/credits?api_key=363444609247127238629594b245e069  
   useEffect(() => {
     fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}`)
       .then((res) => res.json())
@@ -69,6 +68,7 @@ export const MovieDetail = () => {
       key={id}
     >
       <WrapMovie>
+        <div>
         {movie.poster_path && (
           <MovieDetailImage
             src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} alt={movie.title}
@@ -78,6 +78,7 @@ export const MovieDetail = () => {
           <ImageNotFound
             src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="Photo by Denise Jans on Unsplash" />
         )}
+        </div>
 
         <WrapMovieInfo>
           <MovieTitle>{movie.title}</MovieTitle>
@@ -99,21 +100,24 @@ export const MovieDetail = () => {
           </MovieDetailRow>
         </WrapMovieInfo>
         {/* <MovieRating>⭐️ {movie.vote_average / 2} / 5</MovieRating> */}
+      
+      <WrapRating>
+        <YourRating>Rate this movie</YourRating>
+        <RatingMovieWrap>
+          <Ratings
+            movieId={movie.id}
+            movieTitle={movie.title}
+          />
+          <WatchStatus
+            movieId={movie.id}
+            movieTitle={movie.title}
+          />
+        </RatingMovieWrap>
+      </WrapRating>  
       </WrapMovie>
-      <YourRating>Rate this movie</YourRating>
-      <RatingMovieWrap>
-        <Ratings
-          movieId={movie.id}
-          movieTitle={movie.title}
-        />
-        <WatchStatus
-          movieId={movie.id}
-          movieTitle={movie.title}
-        />
-      </RatingMovieWrap>
 
       <ActorListWrap>
-        <MovieInfo>Starring </MovieInfo>
+        <StarringTitle>Starring </StarringTitle>
         <ActorList>
           {cast.map((actor) => (
             <ActorWrap >
