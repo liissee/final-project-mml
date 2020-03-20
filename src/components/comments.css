@@ -1,3 +1,33 @@
+.comments-form{
+  background: #ebebeb;
+  box-shadow: 5px 5px;
+  height: 200px;
+  border: solid 1px #7e7e7e;
+  margin-top: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.text-length{
+  display: flex;
+  color: white;  
+}
+.buttonwrapper{
+  display: flex;
+  width: 400px;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.red {
+  color:red;
+}
+.comment {
+display: flex;
+flex-wrap: wrap;
+}
 .cards-wrapper {
   display: flex;
   flex-direction: column;
@@ -14,6 +44,21 @@
   width: 40vw;
   word-wrap: break-word;
 }
+textarea, input {
+  padding: 7px;
+  opacity: 1;
+  background: #fff;
+  width: 100%;
+  border: none;
+  border: 1px solid #93989d;
+}
+textarea::placeholder, 
+input::placeholder {
+background: #fff;
+height: 100%;
+color: #93989d;
+opacity: 0.5;
+}
 
 .cards-title {
   color: white;
@@ -28,7 +73,23 @@
 }
 
 .textarea-review {
-  height: 20vh;
+  height: 10vh;
   margin-bottom: 2vh;
-  width: 40vw;
+  width: 400px;
+}
+
+.inside-cards{  
+  display: flex;
+background: rgba(29, 43, 49, 0.11);
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px;
+  max-height: 130px;
+  border: solid 1px #ffcf3c;
+  margin: 10px;
+  padding: 20px 20px 10px 20px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  overflow: scroll;
+  color: white;
 }
