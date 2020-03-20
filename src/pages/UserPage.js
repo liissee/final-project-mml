@@ -7,7 +7,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { MovieCards } from '../components/MovieCards';
 import { UserList } from '../components/UserList'
 import { ui } from '../reducers/ui'
-
+import Icon from '@material-ui/core/Icon'
+import styled from "styled-components/macro"
 
 //USER-PAGE
 const url = "http://localhost:8080/secrets";
@@ -119,6 +120,40 @@ export const UserPage = (props) => {
     dispatch(ui.actions.setPage(1))
   }
 
+  const Yellow = styled(Icon)`
+  color: #ffb402;
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  z-index: 1;
+  `
+
+  const Number = styled.p`
+  position: absolute;
+  left: 27px;
+  top: 23px;
+  z-index: 2;
+  color: black;
+  font-weight: bold;
+
+  `
+  const YellowButtonMore = styled.button`
+  background-color: transparent;
+  border: none;
+  position: relative;
+  height: 50px;
+  width: 50px;
+  `
+
+  const Sort = styled.div`
+display: flex;
+align-items: center;
+`
+  const OtherButtonMore = styled(ButtonMore)`
+margin-bottom: 0;
+margin-left: 5px;
+`
+
   return (
     //WATCHLIST
     <>
@@ -145,16 +180,18 @@ export const UserPage = (props) => {
         <WrapperWelcomeBox>
           <ErrorMessage>{errorMessage && <div>{errorMessage}</div>}</ErrorMessage>
           {!errorMessage &&
-            <div>
+            <>
               <MovieTitle>Movies that you have rated</MovieTitle>
-              <MovieInfo>Sort by rating</MovieInfo>
-              <ButtonMore onClick={(e) => handleSortOnRating(1)}> 1 </ButtonMore>
-              <ButtonMore onClick={(e) => handleSortOnRating(2)}> 2 </ButtonMore>
-              <ButtonMore onClick={(e) => handleSortOnRating(3)}> 3 </ButtonMore>
-              <ButtonMore onClick={(e) => handleSortOnRating(4)}> 4 </ButtonMore>
-              <ButtonMore onClick={(e) => handleSortOnRating(5)}> 5 </ButtonMore>
-              <ButtonMore onClick={(e) => handleSortOnRating("")}> All </ButtonMore>
-            </div>
+              <Sort>
+                {/* <MovieInfo>Sort by rating</MovieInfo> */}
+                <YellowButtonMore onClick={(e) => handleSortOnRating(1)}><Number>1</Number><Yellow style={{ fontSize: 50 }}>star</Yellow></YellowButtonMore>
+                <YellowButtonMore onClick={(e) => handleSortOnRating(2)}><Number>2</Number><Yellow style={{ fontSize: 50 }}>star</Yellow></YellowButtonMore>
+                <YellowButtonMore onClick={(e) => handleSortOnRating(3)}><Number>3</Number><Yellow style={{ fontSize: 50 }}>star</Yellow></YellowButtonMore>
+                <YellowButtonMore onClick={(e) => handleSortOnRating(4)}><Number>4</Number><Yellow style={{ fontSize: 50 }}>star</Yellow></YellowButtonMore>
+                <YellowButtonMore onClick={(e) => handleSortOnRating(5)}><Number>5</Number><Yellow style={{ fontSize: 50 }}>star</Yellow></YellowButtonMore>
+                <OtherButtonMore onClick={(e) => handleSortOnRating("")}> All </OtherButtonMore>
+              </Sort>
+            </>
           }
           {moviesRated && !moviesRated.message && (
             moviesRated.map((movie) => (
