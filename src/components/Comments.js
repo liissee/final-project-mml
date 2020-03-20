@@ -19,8 +19,8 @@ export const Comments = ({ movieId, movieTitle }) => {
   `
 
   const handleSubmit = (comment) => {
-    fetch(`http://localhost:8080/users/${userId}`, {
-      // fetch(`https://final-movie-match.herokuapp.com/users/${userId}`, {
+    // fetch(`http://localhost:8080/users/${userId}`, {
+    fetch(`https://final-movie-match.herokuapp.com/users/${userId}`, {
       method: "PUT",
       body: JSON.stringify({ userId, movieId, movieTitle, comment, userName }),
       headers: { "Content-Type": "application/json", "Authorization": accessToken },
@@ -32,7 +32,7 @@ export const Comments = ({ movieId, movieTitle }) => {
   }
 
   useEffect(() => {
-    fetch(`http://localhost:8080/comments/${movieId}`)
+    fetch(`https://final-movie-match.herokuapp.com/comments/${movieId}`)
       .then(res => res.json())
       .then(json => {
         setComments(json)
