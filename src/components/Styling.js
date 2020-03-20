@@ -362,6 +362,13 @@ export const WrapMovieInfo = styled.div`
 `
 export const WrapRating = styled.div`
   margin-top: 6vh;
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 230px;
+  height: 150px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
   @media(min-width: 768px) {
     margin-top: 0;
   }
@@ -369,7 +376,7 @@ export const WrapRating = styled.div`
 export const YourRating = styled.h2`
   color: white;
   margin-bottom: 2vh;
-  margin-left: 3vw;
+  /* margin-left: 3vw; */
   margin-top: 0;
   @media(min-width: 768px) {
     /* margin-left: 18.5vw; */

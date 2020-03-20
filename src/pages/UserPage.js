@@ -11,8 +11,8 @@ import Icon from '@material-ui/core/Icon'
 import styled from "styled-components/macro"
 
 //USER-PAGE
-const url = "http://localhost:8080/secrets";
-// const url = 'https://final-movie-match.herokuapp.com/secrets'
+// const url = "http://localhost:8080/secrets";
+const url = 'https://final-movie-match.herokuapp.com/secrets'
 // Fetch data with a GET request to our MongoDB database for an individual user 
 export const UserPage = (props) => {
   const [message, setMessage] = useState("");
@@ -68,22 +68,15 @@ export const UserPage = (props) => {
     query = `?rating=1&rating=2&rating=3&rating=4&rating=5&page=${page}`
   }
   else if (chosenRating) {
-    // setChosenList("rating")
     query = `?rating=${chosenRating}&page=${page}`
   }
-  // else if (selectedTab === "rated") {
-  //   console.log("RATEEEE")
-  //   query = `?rating=${chosenRating}&page=${page}`
-  // }
-
 
   //Movies with rating
-  //CHECK WHY THIS FETCH IS NOT HAPPENING AT FIRST RENDER
-  //Denna ska kunna köra både ${sortByRating} och pageChange
+
   useEffect(() => {
     if (!userId) return;
-    // fetch(`https://final-movie-match.herokuapp.com/users/${userId}/movies${query}`)
-    fetch(`http://localhost:8080/users/${userId}/movies${query}`)
+    fetch(`https://final-movie-match.herokuapp.com/users/${userId}/movies${query}`)
+      // fetch(`http://localhost:8080/users/${userId}/movies${query}`)
       .then(res => res.json())
       .then(json => {
         if (selectedTab === "rated") {
@@ -98,21 +91,6 @@ export const UserPage = (props) => {
 
       })
   }, [chosenRating, page, selectedTab])
-
-  console.log("moviesRated", moviesRated)
-
-  // //Watch status
-  // useEffect(() => {
-  //   if (!userId) return;
-  //   fetch(`http://localhost:8080/users/${userId}/movies?watchStatus=true`)
-  //     .then(res => res.json())
-  //     .then(json => {
-  //       setMovieStatus(json)
-  //       console.log("watchstatus:", json)
-
-  //     })
-  // }, [userId, page, selectedTab])
-  // console.log("MovieStatus:", movieStatus)
 
 
   const handleSortOnRating = (ratingButton) => {
@@ -195,9 +173,7 @@ margin-left: 5px;
           }
           {moviesRated && !moviesRated.message && (
             moviesRated.map((movie) => (
-              // movie.rating && (
               <MovieCards key={movie.movieId} id={movie.movieId} />
-              // )
             )
             ))}
           {moviesRated && moviesRated.message && (
@@ -209,7 +185,6 @@ margin-left: 5px;
             </WrapperWelcomeBox>}
         </WrapperWelcomeBox>
       )}
-      {/* //USERLIST */}
       {selectedTab === "users" && (
         <WrapperWelcomeBox>
           <ErrorMessage>{errorMessage && <div>{errorMessage}</div>}</ErrorMessage>
@@ -220,38 +195,3 @@ margin-left: 5px;
     </>
   )
 }
-  // return (
-  //   <div>
-  //     {errorMessage && <div>{errorMessage}</div>}
-  //     {message && (
-  //       <WrapperWelcomeBox>
-  //         {/* <TabNav /> */}
-  //         <Heading>User {userName}</Heading>
-  //         Sort on rating:
-  //         <ButtonRating onClick={(e) => setChosenRating(1)}> 1 </ButtonRating>
-  //         <ButtonRating onClick={(e) => setChosenRating(2)}> 2 </ButtonRating>
-  //         <ButtonRating onClick={(e) => setChosenRating(3)}> 3 </ButtonRating>
-  //         <ButtonRating onClick={(e) => setChosenRating(4)}> 4 </ButtonRating>
-  //         <ButtonRating onClick={(e) => setChosenRating(5)}> 5 </ButtonRating>
-  //         <MoviesRatedParagraph>Movies that you have rated </MoviesRatedParagraph>
-  //         {moviesRated.length && (
-  //           moviesRated.map((movie) => (
-  //             <MovieDetail2 key={movie.movieId} id={movie.movieId} />
-  //           ))
-  //         )}
-  //         <Button onClick={(e) => setPage(page + 1)}>More</Button>
-
-  //         <div>
-  //           <MoviesRatedParagraph>Movies on your watchlist</MoviesRatedParagraph>
-  //           {movieStatus[0] && (
-  //             movieStatus.map((movie) => (
-  //               <MovieDetail2 key={movie.movieId} id={movie.movieId} />
-  //             ))
-  //           )}
-  //         </div>
-  //         <UserList />
-  //       </WrapperWelcomeBox>
-  //     )}
-  //   </div>
-  // );
-// };

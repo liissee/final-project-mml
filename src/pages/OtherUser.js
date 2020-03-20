@@ -18,8 +18,8 @@ export const OtherUser = (props) => {
   const myId = useSelector((state) => state.users.userId)
 
   useEffect(() => {
-    // fetch(`https://final-movie-match.herokuapp.com/users/${userId}/otherUser`)
-    fetch(`http://localhost:8080/users/${userId}/otherUser`)
+    fetch(`https://final-movie-match.herokuapp.com/users/${userId}/otherUser`)
+      // fetch(`http://localhost:8080/users/${userId}/otherUser`)
       .then(res => res.json())
       .then(json => {
         setMoviesRated(json.otherUser)
@@ -28,8 +28,8 @@ export const OtherUser = (props) => {
   }, [userId])
 
   useEffect(() => {
-    // fetch(`https://final-movie-match.herokuapp.com/movies/${myId}?friend=${userId}`)
-    fetch(`http://localhost:8080/movies/${myId}?friend=${userId}`)
+    fetch(`https://final-movie-match.herokuapp.com/movies/${myId}?friend=${userId}`)
+      // fetch(`http://localhost:8080/movies/${myId}?friend=${userId}`)
       .then(res => res.json())
       .then(json => {
         setWatchList(json)
@@ -81,24 +81,6 @@ export const OtherUser = (props) => {
     }
   }
 
-  //   const handleRatingStars = (rating) => {
-  //     let amountOfStars = []
-  //     for (let i = 0; i < rating; i++) {
-  //       amountOfStars.push(
-  //         (<View>
-  //           <Text>{this.props.photos[0].description}</Text>
-  //         </View>)
-  //       );
-  //     }
-
-  //   return (
-  //     <View>
-  //       {photoHolder}
-  //     </View>
-  //   )
-  // }
-
-
   return (
     <OtherUserMain>
       <WrapperWelcomeBox>
@@ -113,12 +95,6 @@ export const OtherUser = (props) => {
         <Matched>
           {watchList.map((movie) => (
             <MoviesMatched key={movie.movieId} id={movie.movieId} />
-
-            //  <MovieRatedRow
-            //    key={movie.id}
-            //  >
-            //    <MovieInfo>{movie.movieTitle}</MovieInfo>
-            //  </MovieRatedRow>
           ))}
         </Matched>
         <MoviesRatedParagraph>Movies that {userName} has rated </MoviesRatedParagraph>

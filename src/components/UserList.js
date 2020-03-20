@@ -8,8 +8,8 @@ import styled from 'styled-components/macro'
 
 
 
-const url = "http://localhost:8080/secrets";
-// const url = 'https://final-movie-match.herokuapp.com/secrets'
+// const url = "http://localhost:8080/secrets";
+const url = 'https://final-movie-match.herokuapp.com/secrets'
 
 export const UserList = () => {
   const [userList, setUserList] = useState([])
@@ -19,8 +19,8 @@ export const UserList = () => {
   // All users
   useEffect(() => {
     if (!userId) return;
-    // fetch(`https://final-movie-match.herokuapp.com/users/${userId}/allUsers`)
-    fetch(`http://localhost:8080/users/${userId}/allUsers`)
+    fetch(`https://final-movie-match.herokuapp.com/users/${userId}/allUsers`)
+      // fetch(`http://localhost:8080/users/${userId}/allUsers`)
       .then(res => res.json())
       .then(json => {
         setUserList(json)

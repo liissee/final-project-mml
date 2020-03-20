@@ -75,8 +75,8 @@ const theme = createMuiTheme({
 
 
 // USER-PAGE
-// const url = 'https://final-movie-match.herokuapp.com/secrets'
-const url = "http://localhost:8080/secrets";
+const url = 'https://final-movie-match.herokuapp.com/secrets'
+// const url = "http://localhost:8080/secrets";
 
 // Fetch data with a GET request to our MongoDB database for an individual user 
 export const UserPage = () => {

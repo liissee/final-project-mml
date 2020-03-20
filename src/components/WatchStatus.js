@@ -11,8 +11,8 @@ export const WatchStatus = ({ movieId, movieTitle }) => {
   // Function that is invoced when the user clicks on Add or Remove from watchlist
   const handleWatchStatus = (userId, movieTitle, watchStatus) => {
     setWatchStatus(watchStatus)
-    // fetch(`https://final-movie-match.herokuapp.com/users/${userId}`, {
-    fetch(`http://localhost:8080/users/${userId}`, {
+    fetch(`https://final-movie-match.herokuapp.com/users/${userId}`, {
+      // fetch(`http://localhost:8080/users/${userId}`, {
       method: "PUT",
       body: JSON.stringify({ userId, movieId, movieTitle, watchStatus }),
       headers: { "Content-Type": "application/json", "Authorization": accessToken }
@@ -23,8 +23,8 @@ export const WatchStatus = ({ movieId, movieTitle }) => {
   // GET a movie's watchstatus
   useEffect(() => {
     if (!userId) return;
-    // fetch(`https://final-movie-match.herokuapp.com/users/${userId}/movies?movieId=${movieId}`)
-    fetch(`http://localhost:8080/users/${userId}/movies?movieId=${movieId}`)
+    fetch(`https://final-movie-match.herokuapp.com/users/${userId}/movies?movieId=${movieId}`)
+      // fetch(`http://localhost:8080/users/${userId}/movies?movieId=${movieId}`)
       .then(res => res.json())
       .then(json => {
         console.log("This should get all movies", json)
@@ -53,8 +53,3 @@ export const WatchStatus = ({ movieId, movieTitle }) => {
   )
 }
 
-// <ButtonRating onClick={(e) => handleRating(userId, movieTitle, movieImage, 1)}> 1 </ButtonRating>
-// <ButtonRating onClick={(e) => handleRating(userId, movieTitle, movieImage, 2)}> 2 </ButtonRating>
-// <ButtonRating onClick={(e) => handleRating(userId, movieTitle, movieImage, 3)}> 3 </ButtonRating>
-// <ButtonRating onClick={(e) => handleRating(userId, movieTitle, movieImage, 4)}> 4 </ButtonRating>
-// <ButtonRating onClick={(e) => handleRating(userId, movieTitle, movieImage, 5)}> 5 </ButtonRating>

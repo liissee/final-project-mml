@@ -23,7 +23,6 @@ export const Ratings = ({ movieId, movieTitle }) => {
       console.log("Failed to fetch")
     });
   }
-  }
 
   // GET movies with rating
   useEffect(() => {
@@ -52,6 +51,8 @@ export const Ratings = ({ movieId, movieTitle }) => {
           borderColor="transparent"
           marginBottom="0px"
           width="100px"
+          borderRadius="10px"
+          bgcolor="rgba(255, 255, 255, 0.1)"
         >
           <Rating
             name={"simple-controlled" + movieId}

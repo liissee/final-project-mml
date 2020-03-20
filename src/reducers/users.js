@@ -45,8 +45,8 @@ export const users = createSlice({
 })
 
 
-// const url = 'https://final-movie-match.herokuapp.com/sessions'
-const url = "http://localhost:8080/sessions"
+const url = 'https://final-movie-match.herokuapp.com/sessions'
+// const url = "http://localhost:8080/sessions"
 
 export const fetchUser = ({ email, password }) => {
   return dispatch => {
@@ -69,14 +69,10 @@ export const fetchUser = ({ email, password }) => {
           dispatch(users.actions.setUserId(userId))
           dispatch(ui.actions.setLoginFailed(false))
         }
-        // else {
-        //   dispatch(ui.actions.setLoginFailed(true))
-        // }
+
       })
-      // .catch(err => console.log('error', err))
       .catch(err => dispatch(ui.actions.setLoginFailed(true)))
-    // .catch(err => dispatch(users.actions.setErrorMessage(err.message))
-    // )
+
   }
 }
 
@@ -85,8 +81,8 @@ const userId = users.userId
 // Takes searchterm as a prop/argument and send search result to MoveList.js. 
 export const searchResult = (userName) => {
   return dispatch => {
-    // fetch(`https://final-movie-match.herokuapp.com/users/:userId/allUsers?name=${userName}`)
-    fetch(`http://localhost:8080/users/:userId/allUsers?name=${userName}`)
+    fetch(`https://final-movie-match.herokuapp.com/users/:userId/allUsers?name=${userName}`)
+      // fetch(`http://localhost:8080/users/:userId/allUsers?name=${userName}`)
       .then(res => res.json())
       .then(json => {
         dispatch(users.actions.setUser(json))
