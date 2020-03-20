@@ -4,7 +4,7 @@ import styled from "styled-components/macro"
 import { Link } from "react-router-dom"
 import { ui } from '../reducers/ui'
 import { movies } from '../reducers/movies'
-
+import { LogoutStatic } from './Logout'
 
 const StyledMenu = styled.nav`
   background: #ffcf3c;
@@ -13,7 +13,7 @@ const StyledMenu = styled.nav`
   justify-content: center;
   height: 100vh;
   left: 0;
-  padding: 2rem;
+  padding: 1.5rem;
   position: absolute;
   text-align: left;
   top: 0;
@@ -25,7 +25,7 @@ const StyledMenu = styled.nav`
     font-family: 'Raleway',sans-serif;
     font-size: 2rem;
     text-transform: uppercase;
-    padding: 2rem 0;
+    padding: 1.3rem 0;
     font-weight: bold;
     letter-spacing: 0.5rem;
     color: #000f3c;
@@ -46,7 +46,6 @@ const StyledMenu = styled.nav`
 export const Menu = ({ open, setOpen }) => {
   const selectedTab = useSelector((state) => state.ui.tab)
   const dispatch = useDispatch()
-  const [show, setShow] = useState(false)
 
   const handleTabChange = (tab) => {
     dispatch(ui.actions.setTab(tab))
@@ -80,6 +79,10 @@ export const Menu = ({ open, setOpen }) => {
         <span role="img" aria-label="register">🖋</span>
         Register
     </Link>
+      <Link onClick={() => setOpen(!open)}>
+        <span role="img" aria-label="logout">❌</span>
+        <LogoutStatic />
+      </Link>
     </StyledMenu>
   )
 }
