@@ -2,12 +2,12 @@
 .movie-list{
   display:flex;
   flex-wrap: wrap;
+  margin: 20px;
   justify-content: space-evenly;
-  margin: 25px;
 }
 .movie-wrapper{
   width: 250px;
-  margin: 20px;
+  margin: 10px;
   position: relative;
   text-decoration: none;
   color: #fff;

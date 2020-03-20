@@ -419,13 +419,18 @@ export const NavRightContainer = styled.div`
   display: flex;
   flex-direction: row;
   margin-left: auto;
+      @media(max-width: 600px) {
+      margin-right: 10px;
+      padding: 0;
+      display: flex;   
+  }
 `
 export const SignInButton = styled.button`
   cursor: pointer;
   border: none;
   color: #fff;
   text-transform: uppercase;
-  font-size: 2em;
+  font-size: 1.5em;
   margin-left: 2vw;
   background: inherit;
   font-family: 'Raleway', sans-serif;
@@ -433,6 +438,9 @@ export const SignInButton = styled.button`
   &:hover {
     color:#fe5426;
     transform: scale(1.2);
+  }
+   @media(max-width: 600px) {
+     display: none;
   }
 `
 export const SignOutButton = styled(SignInButton)`
