@@ -80,15 +80,16 @@ opacity: 0.5;
 
 .inside-cards{  
   display: flex;
+background: rgba(29, 43, 49, 0.11);
   flex-direction: column;
   justify-content: space-between;
   width: 300px;
-  max-height: 100px;
-  border: solid 1px #7e7e7e;
+  max-height: 130px;
+  border: solid 1px #ffcf3c;
   margin: 10px;
   padding: 20px 20px 10px 20px;
   word-wrap: break-word;
   overflow-wrap: break-word;
-    overflow: scroll;
+  overflow: scroll;
   color: white;
 }
