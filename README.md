@@ -24,3 +24,6 @@ Backend:
 - Mongoose
 - Mongo Atlas
 - bcrypt/crypto
+
+### Deployed project
+Link to deployed project: https://movie-match-finalproject.netlify.com/
