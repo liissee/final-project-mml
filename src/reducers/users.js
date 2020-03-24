@@ -46,7 +46,7 @@ export const users = createSlice({
 
 
 const url = 'https://final-movie-match.herokuapp.com/sessions'
-// const url = "http://localhost:8080/sessions"
+
 
 export const fetchUser = ({ email, password }) => {
   return dispatch => {
@@ -81,7 +81,6 @@ export const fetchUser = ({ email, password }) => {
 export const searchResult = (userName) => {
   return dispatch => {
     fetch(`https://final-movie-match.herokuapp.com/users/:userId/allUsers?name=${userName}`)
-      // fetch(`http://localhost:8080/users/:userId/allUsers?name=${userName}`)
       .then(res => res.json())
       .then(json => {
         dispatch(users.actions.setUser(json))

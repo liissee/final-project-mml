@@ -6,7 +6,7 @@ import {
   MovieCard, MovieCardInfo, MovieCardTitle, MovieTags, 
   RatingsText, StyledMovieImage, StyledRatings,  
   WrapMovieCard, WrapMovieCardInfo
-} from "./Styling";
+} from './Styling'
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 

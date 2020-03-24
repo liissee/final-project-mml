@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { useHistory } from "react-router-dom"
+import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchUser } from "../reducers/users.js"
+import { fetchUser } from '../reducers/users.js'
 import {
   Button, ErrorMessage, FieldContainer,
   Form, Heading, Input, Label
-} from "../components/Styling"
+} from '../components/Styling'
 
 
 export const Login = () => {

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { ButtonWatch, RatingButtonContainer } from "./Styling";
+import { ButtonWatch, RatingButtonContainer } from './Styling'
 
 
 export const WatchStatus = ({ movieId, movieTitle }) => {
@@ -12,7 +12,6 @@ export const WatchStatus = ({ movieId, movieTitle }) => {
   const handleWatchStatus = (userId, movieTitle, watchStatus) => {
     setWatchStatus(watchStatus)
     fetch(`https://final-movie-match.herokuapp.com/users/${userId}`, {
-      // fetch(`http://localhost:8080/users/${userId}`, {
       method: "PUT",
       body: JSON.stringify({ userId, movieId, movieTitle, watchStatus }),
       headers: { "Content-Type": "application/json", "Authorization": accessToken }
@@ -20,11 +19,10 @@ export const WatchStatus = ({ movieId, movieTitle }) => {
     console.log(watchStatus)
   }
 
-  // GET a movie's watchstatus
+  // Get a movie's watchstatus
   useEffect(() => {
     if (!userId) return;
     fetch(`https://final-movie-match.herokuapp.com/users/${userId}/movies?movieId=${movieId}`)
-      // fetch(`http://localhost:8080/users/${userId}/movies?movieId=${movieId}`)
       .then(res => res.json())
       .then(json => {
         console.log("This should get all movies", json)

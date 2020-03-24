@@ -12,7 +12,6 @@ export const UserList = () => {
   useEffect(() => {
     if (!userId) return;
     fetch(`https://final-movie-match.herokuapp.com/users/${userId}/allUsers`)
-      // fetch(`http://localhost:8080/users/${userId}/allUsers`)
       .then(res => res.json())
       .then(json => {
         setUserList(json)

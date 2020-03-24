@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Hamburger } from 'components/Hamburger'
@@ -11,7 +11,7 @@ import { ui } from '../reducers/ui'
 import {
   HeaderStartContainer, HeaderTitle, MainStartContainer, 
   NavRightContainer, SubNavbar, UserNameNav, WatchListLink
-} from "./Styling";
+} from './Styling'
 
 
 export const Navbar = () => {

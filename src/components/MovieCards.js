@@ -5,7 +5,7 @@ import { WatchStatus } from './WatchStatus'
 import {
   MovieCard, MovieCardInfo, MovieCardTitle, MovieImage, 
   MovieTags, WrapMovieCard, WrapMovieCardInfo
-} from "./Styling";
+} from './Styling'
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 

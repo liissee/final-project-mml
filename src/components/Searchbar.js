@@ -1,9 +1,9 @@
-import React, { useState } from "react"
-import { useDispatch } from "react-redux"
-import { useHistory } from "react-router-dom"
-import { Icon } from "@blueprintjs/core"
-import { searchResult } from "reducers/movies"
-import { FormSearch, SearchLine } from "./Styling"
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { Icon } from '@blueprintjs/core'
+import { searchResult } from 'reducers/movies'
+import { FormSearch, SearchLine } from './Styling'
 
 
 export const Searchbar = () => {

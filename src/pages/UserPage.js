@@ -4,12 +4,11 @@ import { MovieCards } from '../components/MovieCards'
 import { UserList } from '../components/UserList'
 import { ui } from '../reducers/ui'
 import Icon from '@material-ui/core/Icon'
-import styled from "styled-components/macro"
+import styled from 'styled-components/macro'
 import {
   ButtonMore, ErrorMessage, MovieTitle, WrapperWelcomeBox
-} from "../components/Styling"
+} from '../components/Styling'
 
-// const url = "http://localhost:8080/secrets";
 const url = 'https://final-movie-match.herokuapp.com/secrets'
 
 
@@ -67,7 +66,6 @@ export const UserPage = () => {
   useEffect(() => {
     if (!userId) return;
     fetch(`https://final-movie-match.herokuapp.com/users/${userId}/movies${query}`)
-      // fetch(`http://localhost:8080/users/${userId}/movies${query}`)
       .then(res => res.json())
       .then(json => {
         if (selectedTab === "rated") {

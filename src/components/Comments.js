@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import "components/comments.css"
-import styled from 'styled-components/macro'
-import { ButtonWatch } from './Styling'
+import 'components/comments.css'
+import { ButtonShowReviews, ButtonWatch } from './Styling'
 
 export const Comments = ({ movieId, movieTitle }) => {
   const accessToken = useSelector((state) => state.users.accessToken)
@@ -12,14 +11,10 @@ export const Comments = ({ movieId, movieTitle }) => {
   const [comment, setComment] = useState("")
   const [comments, setComments] = useState([])
   const [postedComment, setPostedComment] = useState("")
+  const [reviews, setShowReviews] = useState(false)
 
-
-  const CommentTitle = styled.h3`
-    color: white;
-  `
 
   const handleSubmit = (comment) => {
-    // fetch(`http://localhost:8080/users/${userId}`, {
     fetch(`https://final-movie-match.herokuapp.com/users/${userId}`, {
       method: "PUT",
       body: JSON.stringify({ userId, movieId, movieTitle, comment, userName }),
@@ -47,11 +42,15 @@ export const Comments = ({ movieId, movieTitle }) => {
     setComment("")
   }
 
+  const handleReviews = () => {
+    setShowReviews(!reviews)
+  }
+
   return (
     <div className="comments-main-wrapper">
       <div className="comments-post-wrapper">
         <form className="comment-form">
-          <CommentTitle>Your review</CommentTitle>
+          <h3 className="comment-title">Your review</h3>
 
           <label>
             <textarea
@@ -71,7 +70,7 @@ export const Comments = ({ movieId, movieTitle }) => {
                 onClick={handleNewComment}
               >
                 Submit
-          </ButtonWatch>
+              </ButtonWatch>
             </div>
             <div className="text-length">
               <p className={comment.length < 5 || comment.length > 300 ? "red" : "black"}>{comment.length}</p><p>/300</p>
@@ -80,7 +79,13 @@ export const Comments = ({ movieId, movieTitle }) => {
         </form>
       </div>
 
-      <h3 className="cards-title">Reviews</h3>
+      <ButtonShowReviews
+        type="button"
+        onClick={() => {handleReviews()}}
+      >
+        Show reviews
+      </ButtonShowReviews>
+      {reviews && (
       <div className="cards-wrapper">
         <div className="comment">
           {comments.map((comment) => (
@@ -91,6 +96,7 @@ export const Comments = ({ movieId, movieTitle }) => {
           ))}
         </div>
       </div>
+      )}
     </div >
   )
 }

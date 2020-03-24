@@ -22,6 +22,8 @@ export const Link = styled.link`
 `
 export const Main = styled.main`
 `
+
+
 // Hamburger /////////////////////////////////////////////
 export const HamburgerWrap = styled.div`
   display: inline-block;
@@ -193,16 +195,25 @@ export const Label = styled.label`
 
 // Logout /////////////////////////////////////////////
 export const LogoutStaticButton = styled.button`
+  background: #ffcf3c;
+  border: none;
   color: #000f3c;
   font-family: 'Raleway',sans-serif;
-  font-size: 1rem;
+  font-size: 2rem;
   font-weight: bold;
   letter-spacing: 0.5rem;
-  margin: 0;
-  padding: 0;
+  padding: 1.3rem 0;
   text-decoration: none;
   text-transform: uppercase;
   transition: color 0.3s linear;
+  @media (max-width: 576px) {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  &:hover {
+    color: #343078;
+}
+}
 `
 
 
@@ -282,7 +293,6 @@ export const WrapMovieCardInfo = styled.div`
     width: 70%;
   }
 `
-
 
 
 // MovieDetail /////////////////////////////////////////////
@@ -596,12 +606,6 @@ export const WatchListLink = styled.div`
   }
 `
 
-// Otheruser /////////////////////////////////////////////
-// export const OtherUserMain = styled.section`
-//   /* background: black;
-//   height: 100%;
-//   margin: 0; */
-// `
 
 // Searchbar /////////////////////////////////////////////
 export const FormSearch = styled.form`
@@ -642,6 +646,10 @@ export const ButtonWatch = styled(Button)`
     color: #1c1a21;
     font-weight: 600;
   }
+`
+export const ButtonShowReviews = styled(ButtonWatch)`
+  margin-left: 2vw;
+  margin-top: 3vh;
 `
 export const ButtonMore = styled(ButtonWatch)`
   background: #fff;

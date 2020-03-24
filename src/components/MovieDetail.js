@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from "react-redux"
+import { useDispatch } from 'react-redux'
 import { useParams, Link } from 'react-router-dom'
 import { Comments } from './Comments'
 import { Ratings } from './Ratings'
@@ -11,7 +11,7 @@ import {
   ImageNotFound, MovieBackground, MovieDetailGenres, MovieDetailImage, MovieDetailRow, 
   MovieImdb, MovieInfo, MovieOverview, MovieTitle, RatingMovieWrap, ShowSimilar, 
   SimilarTitle, StarringTitle, WrapMovie, WrapMovieInfo, WrapRating, YourRating
-} from "./Styling";
+} from './Styling'
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 

@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from "react-router-dom"
+import { useHistory } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 import Popover from '@material-ui/core/Popover'
 import Typography from '@material-ui/core/Typography'
-import { fetchUser } from "../reducers/users.js"
+import { fetchUser } from '../reducers/users.js'
 import { makeStyles } from '@material-ui/core/styles'
-import { ErrorMessage, Input, Label, SignInButton } from "./Styling"
+import { ErrorMessage, Input, Label, SignInButton } from './Styling'
 
 const useStyles = makeStyles(theme => ({
   typography: {
@@ -15,12 +15,12 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export const PopoverLogin = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const classes = useStyles();
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const classes = useStyles()
+  const [anchorEl, setAnchorEl] = useState(null)
 
-  const history = useHistory();
+  const history = useHistory()
   const dispatch = useDispatch()
   const failed = useSelector(state => state.ui.isLoginFailed)
 
@@ -34,7 +34,7 @@ export const PopoverLogin = () => {
     }
   };
 
-  const open = Boolean(anchorEl);
+  const open = Boolean(anchorEl)
   const id = open ? 'simple-popover' : undefined;
 
   const handleSignin = (event) => {
@@ -56,8 +56,8 @@ export const PopoverLogin = () => {
   const reDirect = () => {
     handleClose()
     setAnchorEl(null);
-    history.push(`/register`);
-  };
+    history.push(`/register`)
+  }
 
 
   return (
@@ -111,5 +111,5 @@ export const PopoverLogin = () => {
         </Typography>
       </Popover>
     </>
-  );
+  )
 }

@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import Box from '@material-ui/core/Box'
 import { Rating } from '@material-ui/lab'
-import styled from "styled-components/macro"
-import { RatingButtonContainer } from "./Styling"
+import styled from 'styled-components/macro'
+import { RatingButtonContainer } from './Styling'
 
 
 export const Ratings = ({ movieId, movieTitle }) => {
@@ -15,7 +15,6 @@ export const Ratings = ({ movieId, movieTitle }) => {
   const handleRating = (userId, movieTitle, rating) => {
     setRate(rating)
     fetch(`https://final-movie-match.herokuapp.com/users/${userId}`, {
-      // fetch(`http://localhost:8080/users/${userId}`, {
       method: "PUT",
       body: JSON.stringify({ userId, movieId, movieTitle, rating }),
       headers: { "Content-Type": "application/json", "Authorization": accessToken },
@@ -24,11 +23,10 @@ export const Ratings = ({ movieId, movieTitle }) => {
     });
   }
 
-  // GET movies with rating
+  // Get movies with rating
   useEffect(() => {
     if (!userId) return;
     fetch(`https://final-movie-match.herokuapp.com/users/${userId}/movies?movieId=${movieId}`)
-      // fetch(`http://localhost:8080/users/${userId}/movies?movieId=${movieId}`)
       .then(res => res.json())
       .then(json => {
         if (json && json.rating) {

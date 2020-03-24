@@ -1,9 +1,11 @@
+
 .buttonwrapper {
   align-items: baseline;
   display: flex;
   justify-content: space-between;
   width: 400px;
 }
+
 .cards {
   background: #F5F5F5;
   border: 1px solid gray;
@@ -13,20 +15,19 @@
   width: 40vw;
   word-wrap: break-word;
 }
-.cards-title {
-  color: white;
-  font-size: 16px;
-  margin-left: 2vw;
-}
 .cards-wrapper {
   display: flex;
   flex-direction: column;
   margin-left: 2vw;
   margin-top: 2vh;
 }
+
 .comment {
   display: flex;
   flex-wrap: wrap;
+}
+.comment-title {
+  color: white;
 }
 .comments-form {
   background: #ebebeb;
@@ -44,6 +45,7 @@
   flex-direction: column;
   margin-left: 2vw;
 }
+
 .inside-cards {
   background: rgba(29, 43, 49, 0.11);
   border: solid 1px #ffcf3c;
@@ -59,13 +61,16 @@
   width: 300px;
   word-wrap: break-word;
 }
+
 .red {
   color:red;
 }
+
 .text-length {
   color: white;  
   display: flex;
 }
+
 textarea, input {
   padding: 7px;
   opacity: 1;

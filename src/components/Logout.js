@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { users } from "../reducers/users"
+import { users } from '../reducers/users'
 import { LogoutStaticButton, SignOutButton } from './Styling'
 
 

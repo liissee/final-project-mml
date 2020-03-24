@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
-import { useParams, Link } from "react-router-dom"
-import "pages/movielist.css"
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useParams, Link } from 'react-router-dom'
+import 'pages/movielist.css'
 import { ImageNotFound, MovieTitle } from './Styling'
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
@@ -34,7 +34,7 @@ export const Actors = () => {
               <ImageNotFound src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="Photo by Denise Jans on Unsplash" />
             )}
             <div className="hover-details">
-              <div className="mobile-view ">
+              <div className="mobile-view">
                 <h1>{persons.title}</h1>
                 <p>Character: {persons.character}</p>
                 <p>Released {persons.release_date}</p>

@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { useHistory } from "react-router-dom"
+import { useHistory } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 import Popover from '@material-ui/core/Popover'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
-import { searchResult } from "../reducers/users.js"
-import { ButtonSearchUser, Input, Label } from "./Styling"
+import { searchResult } from '../reducers/users.js'
+import { ButtonSearchUser, Input, Label } from './Styling'
 
 const useStyles = makeStyles(theme => ({
   typography: {
@@ -15,19 +15,19 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export const PopoverUserSearch = () => {
-  const [userName, setUserName] = useState("");
-  const classes = useStyles();
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [userName, setUserName] = useState("")
+  const classes = useStyles()
+  const [anchorEl, setAnchorEl] = useState(null)
 
-  const history = useHistory();
+  const history = useHistory()
   const dispatch = useDispatch()
 
   const handleClick = event => {
-    setAnchorEl(event.currentTarget);
+    setAnchorEl(event.currentTarget)
   };
 
   const handleClose = () => {
-    setAnchorEl(null);
+    setAnchorEl(null)
   };
 
   const open = Boolean(anchorEl);
@@ -35,7 +35,7 @@ export const PopoverUserSearch = () => {
 
   const handleSearch = (event) => {
     event.preventDefault()
-    dispatch(searchResult(userName));
+    dispatch(searchResult(userName))
     handleClose()
     setUserName("")
     history.push(`/search`)
@@ -77,5 +77,5 @@ export const PopoverUserSearch = () => {
         </Typography>
       </Popover>
     </>
-  );
+  )
 }

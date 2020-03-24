@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useSelector } from "react-redux"
+import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import Icon from '@material-ui/core/Icon'
 import { MoviesMatched } from '../components/MoviesMatched'
@@ -16,7 +16,6 @@ export const OtherUser = () => {
 
   useEffect(() => {
     fetch(`https://final-movie-match.herokuapp.com/users/${userId}/otherUser`)
-      // fetch(`http://localhost:8080/users/${userId}/otherUser`)
       .then(res => res.json())
       .then(json => {
         setMoviesRated(json.otherUser)
@@ -26,7 +25,6 @@ export const OtherUser = () => {
 
   useEffect(() => {
     fetch(`https://final-movie-match.herokuapp.com/movies/${myId}?friend=${userId}`)
-      // fetch(`http://localhost:8080/movies/${myId}?friend=${userId}`)
       .then(res => res.json())
       .then(json => {
         setWatchList(json)
@@ -109,7 +107,8 @@ export const OtherUser = () => {
 }
 
 
-
+const Header = styled.section`
+`
 const jump = keyframes`
   0%   {transform: translate3d(0,0,0);}
   20%  {transform: translate3d(0,10%,0);}
@@ -120,6 +119,14 @@ const jump = keyframes`
 const Image = styled.img`
   animation: ${jump} .5s linear alternate infinite;
   transform-origin: 50% 50%;
+`
+const Matched = styled.section`
+`
+const MoviesRatedParagraph = styled.h3`
+  font-size: 1.5;
+  font-weight: normal;
+  padding: 15px;
+  text-align: center;
 `
 const OthersRating = styled.div`
   display: flex;
@@ -135,6 +142,8 @@ const OthersRating = styled.div`
     left: 220px;
     top: 80px;
   }
+`
+const OtherUserMain = styled.section`
 `
 const Rated = styled.section`
   background: transparent;
@@ -157,20 +166,6 @@ const RatedSpan = styled.span`
   padding: 4px 2px 0 0;
 `
 
-
-// Otheruser /////////////////////////////////////////////
-const Header = styled.section`
-`
-const Matched = styled.section`
-`
-const MoviesRatedParagraph = styled.h3`
-  font-size: 1.5;
-  font-weight: normal;
-  padding: 15px;
-  text-align: center;
-`
-const OtherUserMain = styled.section`
-`
 const UserNames = styled.h1`
   font-size: 1.5em;
   font-weight: normal;
