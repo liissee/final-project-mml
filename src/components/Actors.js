@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react"
-import { useParams, Link } from "react-router-dom"
 import { useSelector } from "react-redux"
+import { useParams, Link } from "react-router-dom"
 import "pages/movielist.css"
 import { ImageNotFound, MovieTitle } from './Styling'
+
+const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 
 
 export const Actors = () => {
   const { castId } = useParams()
   const name = useSelector(state => state.movies.actorName)
   const [person, setPerson] = useState([])
-
-  const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 
   useEffect(() => {
     fetch(`https://api.themoviedb.org/3/person/${castId}/movie_credits?api_key=${API_KEY}&language=en-US`)

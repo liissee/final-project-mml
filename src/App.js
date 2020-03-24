@@ -1,22 +1,22 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { movies } from 'reducers/movies'
-import { users } from 'reducers/users'
-import { ui } from 'reducers/ui'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { movies } from 'reducers/movies'
+import { ui } from 'reducers/ui'
+import { users } from 'reducers/users'
+import { Actors } from 'components/Actors'
 import { Login } from 'pages/Login'
-import { Registration } from 'pages/Registration'
-import "@blueprintjs/core/lib/css/blueprint.css";
+import { MovieDetail } from 'components/MovieDetail'
 import { MoviesList } from 'pages/MoviesList'
 import { Navbar } from 'components/Navbar'
-import { MovieDetail } from 'components/MovieDetail'
-import { UserPage } from 'pages/UserPage'
 import { OtherUser } from 'pages/OtherUser'
+import { Registration } from 'pages/Registration'
 import { Similar } from 'components/Similar'
-import { Actors } from 'components/Actors'
-import { UserSearchResult } from "components/UserSearchResult"
-import { Main } from "components/Styling"
+import { UserPage } from 'pages/UserPage'
+import { UserSearchResult } from 'components/UserSearchResult'
+import '@blueprintjs/core/lib/css/blueprint.css'
+import { Main } from 'components/Styling'
 
 const reducer = combineReducers({
   movies: movies.reducer,

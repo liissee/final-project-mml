@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { MovieCards } from '../components/MovieCards';
+import { MovieCards } from '../components/MovieCards'
 import { UserList } from '../components/UserList'
 import { ui } from '../reducers/ui'
 import Icon from '@material-ui/core/Icon'
@@ -13,9 +13,9 @@ import {
 const url = 'https://final-movie-match.herokuapp.com/secrets'
 
 
-export const UserPage = (props) => {
-  const [message, setMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+export const UserPage = () => {
+  const [message, setMessage] = useState("")
+  const [errorMessage, setErrorMessage] = useState("")
   const [moviesRated, setMoviesRated] = useState()
   const [movieStatus, setMovieStatus] = useState()
   const [chosenRating, setChosenRating] = useState("")
@@ -28,26 +28,26 @@ export const UserPage = (props) => {
 
   // Logged in or not?
   useEffect(() => {
-    setErrorMessage("");
+    setErrorMessage("")
     fetch(url, {
       method: "GET",
       headers: { Authorization: accessToken }
     })
       .then(res => {
         if (res.ok) {
-          return res.json();
+          return res.json()
         } else if (!res.ok) {
-          throw new Error("You need to sign in to view this page", JSON);
+          throw new Error("You need to sign in to view this page", JSON)
         }
       })
       .then(json => {
         setMessage(json.secret)
-        setErrorMessage('');
+        setErrorMessage('')
       })
       .catch(err => {
-        setErrorMessage(err.message);
-      });
-  }, [accessToken]);
+        setErrorMessage(err.message)
+      })
+  }, [accessToken])
 
 
   let query = ""
@@ -102,6 +102,10 @@ export const UserPage = (props) => {
     margin-bottom: 0;
     margin-left: 5px;
   `
+  const Sort = styled.div`
+    align-items: center;
+    display: flex;
+  `
   const Yellow = styled(Icon)`
     color: #ffb402;
     left: 5px;
@@ -116,15 +120,10 @@ export const UserPage = (props) => {
     position: relative;
     width: 50px;
   `
-
-  const Sort = styled.div`
-    align-items: center;
-    display: flex;
-  `
  
 
   return (
-    // WATCHLIST
+    // Watchlist
     <>
       {selectedTab === "watch" && (
         <WrapperWelcomeBox>
@@ -144,7 +143,7 @@ export const UserPage = (props) => {
             </WrapperWelcomeBox>}
         </WrapperWelcomeBox>
       )}
-      // RATING
+      // Rating
       {selectedTab === "rated" && (
         <WrapperWelcomeBox>
           <ErrorMessage>{errorMessage && <div>{errorMessage}</div>}</ErrorMessage>

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { ui } from 'reducers/ui'
 
-// Initial state
+
 const initialState = {
   users: [],
   userName: localStorage.userName || "",
@@ -9,7 +9,7 @@ const initialState = {
   userId: localStorage.userId || ""
 }
 
-// Reducers and actions
+
 export const users = createSlice({
   name: 'user',
   initialState,
@@ -57,7 +57,7 @@ export const fetchUser = ({ email, password }) => {
     })
       .then(res => {
         if (!res.ok) {
-          throw new Error("Your e-mail and/or password was incorrect");
+          throw new Error("Your e-mail and/or password was incorrect")
         } else {
           return res.json();
         }
@@ -76,7 +76,6 @@ export const fetchUser = ({ email, password }) => {
   }
 }
 
-const userId = users.userId
 
 // Takes searchterm as a prop/argument and send search result to MoveList.js. 
 export const searchResult = (userName) => {

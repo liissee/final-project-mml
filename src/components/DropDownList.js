@@ -1,10 +1,12 @@
 import React from "react"
-import { useDispatch } from "react-redux";
-import "components/dropdownlist.css"
+import { useDispatch } from "react-redux"
 import { movies } from "../reducers/movies"
+import "components/dropdownlist.css"
+
 
 export const DropDownList = () => {
   const dispatch = useDispatch()
+
 
   return (
     <div className="category-dropdown">

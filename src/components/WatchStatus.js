@@ -44,7 +44,7 @@ export const WatchStatus = ({ movieId, movieTitle }) => {
         <div>
           <ButtonWatch
             disabled={!accessToken}
-            onClick={(e) => handleWatchStatus(userId, movieTitle, !watchStatus)}>
+            onClick={() => handleWatchStatus(userId, movieTitle, !watchStatus)}>
             {watchStatus ? "REMOVE FROM WATCHLIST" : "ADD TO WATCHLIST"}
           </ButtonWatch>
         </div>
@@ -52,4 +52,3 @@ export const WatchStatus = ({ movieId, movieTitle }) => {
     </>
   )
 }
-

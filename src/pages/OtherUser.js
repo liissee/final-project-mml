@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector } from "react-redux"
 import { useParams } from 'react-router-dom'
-import { useSelector } from "react-redux";
-import { WrapperWelcomeBox } from "../components/Styling"
-import { MoviesMatched } from '../components/MoviesMatched';
-import styled, { keyframes } from 'styled-components/macro'
 import Icon from '@material-ui/core/Icon'
+import { MoviesMatched } from '../components/MoviesMatched'
+import styled, { keyframes } from 'styled-components/macro'
+import { WrapperWelcomeBox } from "../components/Styling"
 
 
 export const OtherUser = () => {
@@ -32,7 +32,6 @@ export const OtherUser = () => {
         setWatchList(json)
       })
   }, [userId])
-
   console.log(watchList)
 
   const ratingStars = (rating) => {
@@ -78,6 +77,7 @@ export const OtherUser = () => {
     }
   }
 
+
   return (
     <OtherUserMain>
       <WrapperOtherUser>
@@ -109,7 +109,33 @@ export const OtherUser = () => {
 }
 
 
-// Temporary styling
+
+const jump = keyframes`
+  0%   {transform: translate3d(0,0,0);}
+  20%  {transform: translate3d(0,10%,0);}
+  40%  {transform: translate3d(0,30%,0);}
+  50%  {transform: translate3d(0,50%,0);}
+  100% {transform: translate3d(0,50%,0);}
+`
+const Image = styled.img`
+  animation: ${jump} .5s linear alternate infinite;
+  transform-origin: 50% 50%;
+`
+const OthersRating = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  left: 155px;
+  position: absolute;
+  top: 74px;
+  @media(min-width: 768px) {
+    left: 216px;
+    top: 80px;
+  }
+  @media(min-width: 1024px) {
+    left: 220px;
+    top: 80px;
+  }
+`
 const Rated = styled.section`
   background: transparent;
   margin-top: 10px;
@@ -123,45 +149,13 @@ const Rated = styled.section`
   @media(min-width: 768px) {
     padding: 20px 30px 30px 30px;
   }
-  // @media(min-width: 768px) {
-  //   margin: 0 359px;
-  // }
 `
-// Other
 const RatedCard = styled.div`
   position: relative;
-`
-
-const jump = keyframes`
-  0%   {transform: translate3d(0,0,0);}
-  20%  {transform: translate3d(0,10%,0);}
-  40%  {transform: translate3d(0,30%,0);}
-  50%  {transform: translate3d(0,50%,0);}
-  100% {transform: translate3d(0,50%,0);}
-`
-const Image = styled.img`
-  animation: ${jump} .5s linear alternate infinite;
-  transform-origin: 50% 50%;
 `
 const RatedSpan = styled.span`
   padding: 4px 2px 0 0;
 `
-const OthersRating = styled.div`
-  display:flex;
-  flex-wrap: wrap;
-  left: 155px;
-  position: absolute;
-  top: 74px;
-  @media(min-width: 768px) {
-    top: 80px;
-    left: 216px;
-  }
-  @media(min-width: 1024px) {
-    top: 80px;
-    left: 220px;
-  }
-`
-
 
 
 // Otheruser /////////////////////////////////////////////

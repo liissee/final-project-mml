@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Ratings } from './Ratings';
+import { Ratings } from './Ratings'
 import { WatchStatus } from './WatchStatus'
 import {
-  MovieCard, MovieCardInfo, MovieCardOverview, MovieCardTitle,
-  MovieImage, MovieTags, WrapMovieCard, WrapMovieCardInfo
+  MovieCard, MovieCardInfo, MovieCardTitle, MovieImage, 
+  MovieTags, WrapMovieCard, WrapMovieCardInfo
 } from "./Styling";
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
@@ -21,21 +21,15 @@ export const MovieCards = ({ id }) => {
     fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`)
       .then((res) => res.json())
       .then((json) => {
-        // if (json.status.code === 34) {
-        //   setError("Movie not found")
-        // }
-        // else {
         setMovie(json)
-        // }
         setLoading(false)
       })
   }, [id])
-  // console.log(movie)
 
 
   if (loading) {
     return (
-      <div className="loading-message">Movie page is loading...</div>
+      <div>Movie page is loading...</div>
     )
   }
 

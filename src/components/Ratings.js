@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { Rating } from '@material-ui/lab';
-import Box from '@material-ui/core/Box';
+import React, { useState, useEffect } from "react"
 import { useSelector } from 'react-redux'
-import { RatingButtonContainer } from "./Styling";
+import Box from '@material-ui/core/Box'
+import { Rating } from '@material-ui/lab'
 import styled from "styled-components/macro"
+import { RatingButtonContainer } from "./Styling"
 
 
 export const Ratings = ({ movieId, movieTitle }) => {

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import "pages/movielist.css"
 import { Ratings } from "./Ratings"
 import { WatchStatus } from "./WatchStatus"
+import "pages/movielist.css"
 import { ImageNotFound } from './Styling'
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
+
 
 export const Similar = () => {
   const { id } = useParams()

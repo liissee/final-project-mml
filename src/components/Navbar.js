@@ -1,13 +1,13 @@
 import React from "react";
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { Searchbar } from './Searchbar'
-import { Logout } from './Logout'
 import { Hamburger } from 'components/Hamburger'
+import { Logout } from './Logout'
 import { PopoverLogin } from 'components/PopoverLogin'
 import { PopoverUserSearch } from 'components/PopoverUserSearch'
-import { ui } from '../reducers/ui'
+import { Searchbar } from './Searchbar'
 import { movies } from '../reducers/movies'
+import { ui } from '../reducers/ui'
 import {
   HeaderStartContainer, HeaderTitle, MainStartContainer, 
   NavRightContainer, SubNavbar, UserNameNav, WatchListLink
@@ -16,8 +16,8 @@ import {
 
 export const Navbar = () => {
   const accessToken = useSelector((state) => state.users.accessToken)
-  const userName = useSelector((state) => state.users.userName)
   const userId = useSelector((state) => state.users.userId)
+  const userName = useSelector((state) => state.users.userName)
   const selectedTab = useSelector((state) => state.ui.tab)
 
   const dispatch = useDispatch()

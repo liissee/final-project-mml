@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Ratings } from './Ratings';
+import { Ratings } from './Ratings'
 import { WatchStatus } from './WatchStatus'
 import {
-  MovieCard, MovieCardInfo, MovieCardTitle, MovieImage, 
-  MovieTags, RatingsText, StyledRatings, StyledMovieImage, 
+  MovieCard, MovieCardInfo, MovieCardTitle, MovieTags, 
+  RatingsText, StyledMovieImage, StyledRatings,  
   WrapMovieCard, WrapMovieCardInfo
 } from "./Styling";
 
@@ -20,7 +20,6 @@ export const MoviesMatched = ({ id }) => {
     return date.substring(0, 4)
   }
 
-
   useEffect(() => {
     setLoading(true)
     fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`)
@@ -31,10 +30,9 @@ export const MoviesMatched = ({ id }) => {
       })
   }, [id])
 
-
   if (loading) {
     return (
-      <div className="loading-message">Movie page is loading...</div>
+      <div>Movie page is loading...</div>
     )
   }
 
@@ -43,7 +41,6 @@ export const MoviesMatched = ({ id }) => {
       <div>{error}</div>
     )
   }
-
 
 
   return (

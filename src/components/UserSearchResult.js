@@ -1,9 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components/macro'
-import { 
-} from "./Styling"
 
 
 export const UserSearchResult = () => {
@@ -36,11 +34,11 @@ const UserName = styled.div`
     text-decoration: none;}
   span {
     background: #fe5426;
-    padding: 3px 20px;
     color: #000f3c;
+    padding: 3px 20px;
   &:hover {
-    color:  #fe5426;
     background: #000f3c;
+    color: #fe5426;
   }
 }
 `

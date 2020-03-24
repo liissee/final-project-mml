@@ -1,7 +1,7 @@
 import React from 'react'
-import styled from 'styled-components/macro'
 import { useSelector } from 'react-redux'
 import Loader from 'react-loader-spinner'
+import { LoadingIcon } from './Styling'
 
 export const LoadingIndicator = () => {
   const isLoading = useSelector((state) => state.ui.isLoading)
@@ -18,10 +18,3 @@ export const LoadingIndicator = () => {
     </LoadingIcon>
   )
 }
-
-const LoadingIcon = styled.div`
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  padding: 1em;
-`

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { makeStyles } from '@material-ui/core/styles';
-import Popover from '@material-ui/core/Popover';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom"
+import Button from '@material-ui/core/Button'
+import Popover from '@material-ui/core/Popover'
+import Typography from '@material-ui/core/Typography'
 import { fetchUser } from "../reducers/users.js"
-import { ErrorMessage, Input, Label, SignInButton } from "./Styling";
+import { makeStyles } from '@material-ui/core/styles'
+import { ErrorMessage, Input, Label, SignInButton } from "./Styling"
 
 const useStyles = makeStyles(theme => ({
   typography: {

@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { MovieCards } from './MovieCards';
-import { UserList } from './UserList'
 import PropTypes from 'prop-types'
-import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import { AppBar, Tabs, Tab, Typography, Box } from '@material-ui/core'
+import { MovieCards } from './MovieCards'
+import { UserList } from './UserList'
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import { AppBar, Box, Tab, Tabs, Typography } from '@material-ui/core'
 import {
-  Button, WrapperWelcomeBox, ButtonMore, ErrorMessage
+  Button, ButtonMore, ErrorMessage, WrapperWelcomeBox 
 } from "./Styling"
 
 
-// TABS
+// Tabs
 const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
 
@@ -58,7 +58,7 @@ const useStyles = makeStyles(theme => ({
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#ffcf3c', // main color
+      main: '#ffcf3c',
     },
     secondary: {
       main: '#fe5426',
@@ -87,16 +87,12 @@ export const UserPage = () => {
   const [chosenRating, setChosenRating] = useState("")
   const [page, setPage] = useState(1)
   const [chosenList, setChosenList] = useState("watch")
-  const [loading, setLoading] = useState(true)
 
-
-  //Funkar att rendera om sidan när man loggar in men sparade filmer syns inte...
   const accessToken = useSelector((state) => state.users.accessToken)
   const userId = useSelector((state) => state.users.userId)
-  const userName = useSelector((state) => state.users.userName)
 
 
-  //Logged in or not?
+  // Logged in or not?
   useEffect(() => {
     setErrorMessage("");
     fetch(url, {
@@ -119,8 +115,6 @@ export const UserPage = () => {
       });
   }, [accessToken]);
 
-  // let sortByRating = `?rating=${chosenRating}`
-  // chosenRating === "" ? "" : `?rating=${chosenRating}`
 
   let query = ""
   if (chosenList === "watch") {
@@ -129,15 +123,10 @@ export const UserPage = () => {
   else if (!chosenRating && chosenList === "rating") {
     query = `?page=${page}`
   } else if (chosenRating) {
-    // setChosenList("rating")
     query = `?rating=${chosenRating}&page=${page}`
   }
 
-
-
-  //Movies with rating
-  //CHECK WHY THIS FETCH IS NOT HAPPENING AT FIRST RENDER
-  //Denna ska kunna köra både ${sortByRating} och pageChange
+  // Movies with rating
   useEffect(() => {
     if (!userId) return;
     fetch(`https://final-movie-match.herokuapp.com/users/${userId}/movies${query}`)
@@ -147,16 +136,12 @@ export const UserPage = () => {
         if (chosenList === "rating") {
           setMoviesRated(json)
         }
-        // else if (chosenList === "watch") {
-        //   setMovieStatus(json)
-        // } 
         console.log("ratedmovies:", json)
       })
-    console.log("HALLÅ?!")
   }, [chosenRating, page, chosenList])
-
   console.log(moviesRated)
-  //Watch status
+
+  // Watchstatus
   useEffect(() => {
     if (!userId) return;
     fetch(`https://final-movie-match.herokuapp.com/users/${userId}/movies?watchStatus=${true}`)
@@ -175,7 +160,6 @@ export const UserPage = () => {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    // handleHandleChange()
   }
 
   return (
@@ -192,7 +176,6 @@ export const UserPage = () => {
             </Tabs>
           </AppBar>
           <TabPanel value={value} index={0} className={classes.tabPanel}>
-            {/* <MoviesRatedParagraph>Movies on your watchlist</MoviesRatedParagraph> */}
             {movieStatus && !movieStatus.message && (
               movieStatus.map((movie) => (
                 <MovieCards key={movie.movieId} id={movie.movieId} />
@@ -205,7 +188,6 @@ export const UserPage = () => {
 
           </TabPanel>
           <TabPanel className={classes.tabPanel} value={value} index={1}>
-
             <Button onClick={(e) => setChosenRating(1)}> 1 </Button>
             <Button onClick={(e) => setChosenRating(2)}> 2 </Button>
             <Button onClick={(e) => setChosenRating(3)}> 3 </Button>
@@ -230,39 +212,4 @@ export const UserPage = () => {
       </MuiThemeProvider>
     </WrapperWelcomeBox>
   )
-
-  // return (
-  //   <div>
-  //     {errorMessage && <div>{errorMessage}</div>}
-  //     {message && (
-  //       <WrapperWelcomeBox>
-  //         {/* <TabNav /> */}
-  //         <Heading>User {userName}</Heading>
-  //         Sort on rating:
-  //         <ButtonRating onClick={(e) => setChosenRating(1)}> 1 </ButtonRating>
-  //         <ButtonRating onClick={(e) => setChosenRating(2)}> 2 </ButtonRating>
-  //         <ButtonRating onClick={(e) => setChosenRating(3)}> 3 </ButtonRating>
-  //         <ButtonRating onClick={(e) => setChosenRating(4)}> 4 </ButtonRating>
-  //         <ButtonRating onClick={(e) => setChosenRating(5)}> 5 </ButtonRating>
-  //         <MoviesRatedParagraph>Movies that you have rated </MoviesRatedParagraph>
-  //         {moviesRated.length && (
-  //           moviesRated.map((movie) => (
-  //             <MovieDetail2 key={movie.movieId} id={movie.movieId} />
-  //           ))
-  //         )}
-  //         <Button onClick={(e) => setPage(page + 1)}>More</Button>
-
-  //         <div>
-  //           <MoviesRatedParagraph>Movies on your watchlist</MoviesRatedParagraph>
-  //           {movieStatus[0] && (
-  //             movieStatus.map((movie) => (
-  //               <MovieDetail2 key={movie.movieId} id={movie.movieId} />
-  //             ))
-  //           )}
-  //         </div>
-  //         <UserList />
-  //       </WrapperWelcomeBox>
-  //     )}
-  //   </div>
-  // );
 };

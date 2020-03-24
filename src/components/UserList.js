@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components/macro'
 
 
@@ -19,6 +19,7 @@ export const UserList = () => {
         console.log("all users:", json)
       })
   }, [userId])
+
 
   return (
     <Wrapper>

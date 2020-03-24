@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import "components/comments.css"
 import styled from 'styled-components/macro'
 import { ButtonWatch } from './Styling'
-import "components/comments.css"
 
 export const Comments = ({ movieId, movieTitle }) => {
   const accessToken = useSelector((state) => state.users.accessToken)

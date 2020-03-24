@@ -3,8 +3,6 @@ import { ui } from 'reducers/ui'
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 
-
-// Define initial state
 const initialState = {
   movies: [],
   chosenCategory: "popular",

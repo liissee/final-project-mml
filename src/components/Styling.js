@@ -2,12 +2,12 @@ import styled from 'styled-components/macro'
 
 
 export const Heading = styled.h1`
+  border-radius: 15px;
+  color: ${props => props.color ? props.color : "#000"};
   font-size: 1.5em;
   font-weight: normal;
   margin: 10px 0;
   text-align: center;  
-  color: ${props => props.color ? props.color : "#000"};
-  border-radius: 15px;
 `
 export const Link = styled.link`
   color: #fff;
@@ -22,6 +22,96 @@ export const Link = styled.link`
 `
 export const Main = styled.main`
 `
+// Hamburger /////////////////////////////////////////////
+export const HamburgerWrap = styled.div`
+  display: inline-block;
+  @media(min-width: 768px) {
+    display: none;
+  }
+`
+export const StyledBurger = styled.button`
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 2rem;
+  justify-content: space-around;
+  left: 2rem;
+  padding: 0;
+  position: absolute;
+  top: 5%;
+  width: 2rem;
+  z-index: 10;
+  &:focus {
+    outline: none;
+  }
+  div {
+    background: ${({ open }) => open ? '#0D0C1D' : '#EFFFFA'};
+    border-radius: 10px;
+    height: 0.25rem;
+    position: relative;
+    transform-origin: 1px;
+    transition: all 0.3s linear;
+    width: 2rem;
+    :first-child {
+      transform: ${({ open }) => open ? 'rotate(45deg)' : 'rotate(0)'};
+    }
+    :nth-child(2) {
+      opacity: ${({ open }) => open ? '0' : '1'};
+      transform: ${({ open }) => open ? 'translateX(20px)' : 'translateX(0)'};
+    }
+    :nth-child(3) {
+      transform: ${({ open }) => open ? 'rotate(-45deg)' : 'rotate(0)'};
+    }
+  }
+`
+export const StyledMenu = styled.nav`
+  background: #ffcf3c;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  padding: 1.5rem;
+  position: absolute;
+  text-align: left;
+  top: 0;
+  transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(-100%)'};
+  transition: transform 0.3s ease-in-out;
+  z-index: 2;
+  width: 100%;
+  a {
+    color: #000f3c;
+    font-family: 'Raleway',sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 0.5rem;
+    padding: 1.3rem 0;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.3s linear;
+
+    @media (max-width: 576px) {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    &:hover {
+      color: #343078;
+    }
+  }
+`
+
+
+// Loading /////////////////////////////////////////////
+export const LoadingIcon = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+`
+
 
 // Login and Registration /////////////////////////////////////////////
 export const Button = styled.button`
@@ -44,12 +134,9 @@ export const Button = styled.button`
   }
 `
 export const ErrorMessage = styled.p`
-    color: ${props => props.color ? props.color : "#fe5426"};
-/* color:#fe5426; */
+  color: ${props => props.color ? props.color : "#fe5426"};
   font-size: 14px;
-  
 `
-
 export const FieldContainer = styled.div`
   &.-focused label {
     bottom: auto;
@@ -104,15 +191,30 @@ export const Label = styled.label`
 `
 
 
-// MovieCards on Userpage and Otheruser page /////////////////////////////////////////////
+// Logout /////////////////////////////////////////////
+export const LogoutStaticButton = styled.button`
+  color: #000f3c;
+  font-family: 'Raleway',sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 0.5rem;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s linear;
+`
+
+
+// MovieCards on UserPage and OtherUser components /////////////////////////////////////////////
 export const ImageNotFound = styled.img`
   width: 185px;
 `
 export const MovieCard = styled.div`
   background: rgb(31,33,40);
   background: radial-gradient(circle, rgba(31,33,40,0.9346113445378151) 0%, rgba(23,23,25,0.9878326330532213) 100%);border: 2px solid #f5b333;
-  color: white;
   border-radius: 20px;
+  color: white;
   height: auto;
   margin: 10px;
   padding: 0 8px 8px 0;
@@ -127,18 +229,15 @@ export const MovieCardInfo = styled.p`
   display: inline;
   margin: 0;
   padding: 5px;
-  /* margin-top: 1.5vh;
-  margin-bottom: 2vh; */
 `
 export const MovieCardOverview = styled.div`
   display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
   font-size: 1em;
   overflow: hidden;
   overflow-wrap: break-word;
   word-wrap: break-word;
-  /* margin-bottom: 5px; */
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 `
 export const MovieCardTitle = styled.h1`
   color: white;
@@ -155,8 +254,6 @@ export const MovieCardTitle = styled.h1`
 `
 export const MovieImage = styled.img`
   border-radius: 20px 0 0 20px;
-  /* height: 150px;
-  width: 135px; */
   height: 180px;
   width: auto;
   @media(min-width: 768px) {
@@ -173,12 +270,7 @@ export const MovieTags = styled.div`
 `
 export const WrapMovieCard = styled.div`
   display: flex;
-  flex-direction: column;
-    display: flex;
-    flex-direction: row;
-  /* margin-left: 2vw;
-  margin-right: 2vw;
-  margin-top: 2vw; */
+  flex-direction: row;
 `
 export const WrapMovieCardInfo = styled.div`
   display: flex;
@@ -195,21 +287,25 @@ export const WrapMovieCardInfo = styled.div`
 
 // MovieDetail /////////////////////////////////////////////
 export const ActorImage = styled.img`
-display:inline;
-
-height: auto;
-width: 100%;
-
-margin: -20% 0 0 0;
-/* object-fit: cover; */
+  display: inline;
+  height: auto;
+  margin: -20% 0 0 0;
+  width: 100%;
+`
+export const ActorImageWrap = styled.div`
+  border-radius: 50%;
+  height: 100px;
+  overflow: hidden;
+  padding-bottom: 20px;
+  width: 100px;
 `
 export const ActorList = styled.div`
   color: white;
   display: grid;
-  grid-template-columns: repeat(2,2fr);
-  grid-template-rows: repeat(2,2fr);
   grid-column-gap: 5px;
   grid-row-gap: 5px;
+  grid-template-columns: repeat(2,2fr);
+  grid-template-rows: repeat(2,2fr);
   @media(min-width: 768px) {
     display: flex;
     flex-direction: row;
@@ -229,7 +325,7 @@ export const ActorName = styled.div`
   font-size: 12px;
   font-weight: 600;
   margin-bottom: 2vh;
-  text-align:center;
+  text-align: center;
   text-decoration: none;
 `
 export const ActorWrap = styled.div`
@@ -237,15 +333,6 @@ export const ActorWrap = styled.div`
   justify-content: center;
   padding: 10px;
 `
-export const ActorImageWrap = styled.div`
-height: 100px;
- width: 100px;
- border-radius:50%;
- overflow: hidden;
-
- padding-bottom: 20px;
-`
-
 export const Genre = styled.div`
   background: #B22222;
   color: white;
@@ -266,7 +353,6 @@ export const MovieDetailImage = styled.img`
   width: 230px;
   @media(min-width: 768px) {
     margin-top: 0;
-    /* width: 185px; */
   }
 `
 export const MovieDetailRow = styled.div`
@@ -279,10 +365,8 @@ export const MovieImdb = styled.h3`
   background: #FFD700;
   color: black;
   margin: 0;
-  padding: 4px;
-  /* margin-bottom: 2vh; */
   margin-left: 5vw;
-  /* margin-top: 1.5vh; */
+  padding: 4px;
   @media(min-width: 768px) {
     margin-left: 1vw;
   }
@@ -292,8 +376,6 @@ export const MovieInfo = styled.h3`
   margin: 0;
   padding-top: 2px;
   text-align: center;
-  /* margin-bottom: 2vh;
-  margin-top: 1.5vh; */
 `
 export const MovieOverview = styled.div`
   color: white;
@@ -312,14 +394,9 @@ export const RatingButtonContainerDetail = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 18.5vw;
-  /* margin-bottom: 4vh;
-  margin-left: 0; */
 `
 export const RatingMovieWrap = styled.div`
   margin-left: 3vw;
-  @media(min-width: 768px) {
-    /* margin-left: 18.5vw; */
-  }
 `
 export const ShowSimilar = styled.div`
   color: white;
@@ -363,15 +440,15 @@ export const WrapMovieInfo = styled.div`
   }
 `
 export const WrapRating = styled.div`
-  margin-top: 6vh;
-  background-color: rgba(255, 255, 255, 0.1);
-  width: 230px;
-  height: 150px;
-  display:flex;
-  flex-direction: column;
   align-items: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 150px;
+  margin-top: 6vh;
   padding: 10px;
   padding-right: 50px;
+  width: 230px;
   @media(min-width: 768px) {
     margin-left: 2vw;
     margin-top: 0;
@@ -380,27 +457,23 @@ export const WrapRating = styled.div`
 export const YourRating = styled.h2`
   color: white;
   margin-bottom: 2vh;
-  /* margin-left: 3vw; */
   margin-top: 0;
-  @media(min-width: 768px) {
-    /* margin-left: 18.5vw; */
-  }
 `
+
 
 // MoviesMatched /////////////////////////////////////////////
 export const RatingsText = styled.p`
   margin-top: 4px;
 `
-
 export const StyledRatings = styled.div`
   display: flex;
   margin-bottom: 16px;
 `
-
 export const StyledMovieImage = styled(MovieImage)`
   height: 200px;
   width: auto;
 `
+
 
 // Navbar /////////////////////////////////////////////
 export const ButtonSearchUser = styled.button`
@@ -444,9 +517,7 @@ export const HeaderTitle = styled.h1`
     letter-spacing: 1.5px;
     text-decoration: none;
     transition: color 0.3s linear;
-    /* text-shadow: 2px 2px 0px #000f3c, 5px 4px 0px rgba(0,0,0,0.15); */
   }
-  /* font-family: 'Muli', sans-serif; */
 `
 export const MainStartContainer = styled.div`
   height: 100%;
@@ -457,22 +528,22 @@ export const NavRightContainer = styled.div`
   display: flex;
   flex-direction: row;
   margin-left: auto;
-      @media(max-width: 600px) {
-      margin-right: 10px;
-      padding: 0;
-      display: flex;   
+  @media(max-width: 600px) {
+    display: flex;  
+    margin-right: 10px;
+    padding: 0; 
   }
 `
 export const SignInButton = styled.button`
-  cursor: pointer;
+  background: inherit;
   border: none;
   color: #fff;
-  text-transform: uppercase;
+  cursor: pointer;
+  font-family: 'Raleway', sans-serif;
   font-size: 1.5em;
   margin-left: 2vw;
-  background: inherit;
-  font-family: 'Raleway', sans-serif;
   margin-right: 60px;
+  text-transform: uppercase;
   &:hover {
     color:#fe5426;
     transform: scale(1.2);
@@ -493,10 +564,9 @@ export const SubNavbar = styled.div`
   a {
     text-decoration: none;
   }
-    @media(max-width: 768px) {
+  @media(max-width: 768px) {
     align-items: center;
   }
-  /* background: radial-gradient(circle, rgba(0,0,0,0.2539390756302521) 100%, rgba(148,187,233,1) 100%);   */
 `
 export const UserNameNav = styled.div`
   color: white;
@@ -518,7 +588,6 @@ export const WatchListLink = styled.div`
     color:#fe5426;
   }
   &.active {
-    /* text-decoration: underline tomato; */
     border-bottom: 1px solid tomato;
     padding-bottom: 1.5px;
   }
@@ -543,73 +612,52 @@ export const FormSearch = styled.form`
   margin-bottom: 20px;
   margin-left: 4vw;
   max-width: 480px;
-  /* padding: 20px 30px 30px 30px; */
   @media(min-width: 768px) {
     margin-bottom: 10px;
   }
 `
-
 export const SearchLine = styled.input`
-border: none;
-border-bottom: 2px solid black;
-background: transparent;
-font-size: 16px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid black;
+  font-size: 16px;
 `
 
 
 // UserPage /////////////////////////////////////////////
-export const ButtonRating = styled.button`
-/*   background-color: #B22222;
-  border-radius: 2em;
-  box-sizing: border-box;
-  color: #FFFFFF;
-  display:inline-block;
-  font-family:'Roboto',sans-serif;
-  font-weight:300;
-  margin:0 0.3em 0.3em 0;
-  padding:0.3em 1.2em;
-  text-align:center;
-  text-decoration:none;
-  transition: all 0.2s;
-  &:hover, &:active {
-    background: #CD5C5C;
-    cursor: pointer; */
-  }
+export const ButtonContainer = styled.div`
+  display:flex;
+  justify-content: center;
 `
 export const ButtonWatch = styled(Button)`
-  border: #fff solid 2px;
   background: inherit;
+  border: #fff solid 2px;
   border-radius: 0.6em;
-  padding: 3px;
   font-weight: 400;
+  padding: 3px;
   &:hover, 
   &:active {
-    color: #1c1a21;
-    border: #1c1a21 solid 2px;
     background: #Fff;
+    border: #1c1a21 solid 2px;
+    color: #1c1a21;
     font-weight: 600;
   }
 `
 export const ButtonMore = styled(ButtonWatch)`
-  color: #1c1a21;
-  border: #1c1a21 solid 2px;
   background: #fff;
+  border: #1c1a21 solid 2px;
+  color: #1c1a21;
   font-weight: 600;
-  padding: 10px;
   margin-bottom: 20px;
+  padding: 10px;
   &:hover, 
   &:active {
-  border: #fff solid 2px;
   background: inherit;
-  font-weight: 600;
+  border: #fff solid 2px;
   color: white;
+  font-weight: 600;
   }
 `
-export const ButtonContainer = styled.div`
-display:flex;
-justify-content: center;
-`
-
 export const MoviesRatedParagraph = styled.h3`
   color: white;
   font-size: 18px;
@@ -624,12 +672,10 @@ export const MovieRatedRow = styled.div`
 export const RatingButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
-  /* margin-bottom: 4vh;
-  margin-left: 0; */
 `
 export const RatingStars = styled.div`
+  align-items: center;
   margin-left: auto;
-  align-items:center;
   text-align:center;
 `
 export const UserName = styled.div`
@@ -640,8 +686,8 @@ export const UserName = styled.div`
 `
 export const UserNames = styled.h1`
   color: white;
-  text-transform: uppercase;
   margin-bottom: 2vh;
+  text-transform: uppercase;
 `
 export const WelcomeMovieRow = styled.div`
   display: flex;
@@ -675,6 +721,6 @@ export const WrapperWelcomeBox = styled(Wrapper)`
 `
 
 
-// Other
+// Other /////////////////////////////////////////////
 export const SearchContainer = styled.div`
 `

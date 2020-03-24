@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
 import { useDispatch } from "react-redux"
-import { Ratings } from './Ratings';
-import { WatchStatus } from './WatchStatus'
-import { Similar } from './Similar';
-import { movies } from '../reducers/movies'
+import { useParams, Link } from 'react-router-dom'
 import { Comments } from './Comments'
+import { Ratings } from './Ratings'
+import { Similar } from './Similar'
+import { WatchStatus } from './WatchStatus'
+import { movies } from '../reducers/movies'
 import {
-  ActorImage, ActorList, ActorListWrap, ActorName, ActorWrap, ActorImageWrap, Genre, 
+  ActorImage, ActorImageWrap, ActorList, ActorListWrap, ActorName, ActorWrap, Genre, 
   ImageNotFound, MovieBackground, MovieDetailGenres, MovieDetailImage, MovieDetailRow, 
-  MovieImdb, MovieInfo, MovieTitle, MovieOverview, RatingMovieWrap, ShowSimilar, 
+  MovieImdb, MovieInfo, MovieOverview, MovieTitle, RatingMovieWrap, ShowSimilar, 
   SimilarTitle, StarringTitle, WrapMovie, WrapMovieInfo, WrapRating, YourRating
 } from "./Styling";
 
@@ -53,7 +53,7 @@ export const MovieDetail = () => {
 
   if (loading) {
     return (
-      <div className="loading-message">Movie page is loading...</div>
+      <div>Movie page is loading...</div>
     )
   }
 

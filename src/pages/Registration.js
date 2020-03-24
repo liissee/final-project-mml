@@ -1,17 +1,18 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { Button, FieldContainer, Form, Heading, Input, Label } from "../components/Styling";
+import React, { useState } from "react"
+import { useHistory } from "react-router-dom"
+import { Button, FieldContainer, Form, Heading, Input, Label } from "../components/Styling"
 
 // const url = "http://localhost:8080/users";
 const url = "https://final-movie-match.herokuapp.com/users"
 
+
 export const Registration = () => {
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [registred, setRegistred] = useState(false);
-  const [failure, setFailure] = useState(false);
-  const history = useHistory();
+  const [name, setName] = useState("")
+  const [password, setPassword] = useState("")
+  const [email, setEmail] = useState("")
+  const [registred, setRegistred] = useState(false)
+  const [failure, setFailure] = useState(false)
+  const history = useHistory()
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -24,18 +25,18 @@ export const Registration = () => {
         if (res.status !== 201) {
           return (
             res.json().then(json => console.log(json.message)), setFailure(true)
-          );
+          )
         } else {
-          setRegistred(true);
+          setRegistred(true)
           setTimeout(reDirect, 2000);
         }
       })
-      .catch(err => console.log("Error:", err));
-  };
+      .catch(err => console.log("Error:", err))
+  }
 
   const reDirect = () => {
-    history.push(`/login`);
-  };
+    history.push(`/login`)
+  }
 
   return (
     <FieldContainer>
@@ -102,5 +103,5 @@ export const Registration = () => {
         </FieldContainer>
       )}
     </FieldContainer>
-  );
-};
+  )
+}
