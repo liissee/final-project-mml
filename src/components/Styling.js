@@ -20,8 +20,8 @@ export const Link = styled.link`
     cursor: pointer;
   }
 `
-export const Main = styled.main`
-`
+// export const Main = styled.main`
+// `
 
 
 // Hamburger /////////////////////////////////////////////
@@ -93,11 +93,7 @@ export const StyledMenu = styled.nav`
     text-decoration: none;
     text-transform: uppercase;
     transition: color 0.3s linear;
-
-    @media (max-width: 576px) {
-      font-size: 1.5rem;
       text-align: center;
-    }
 
     &:hover {
       color: #343078;
@@ -508,6 +504,7 @@ export const HeaderStartContainer = styled.div`
   justify-content: center;
   padding: 15px;
   padding-left: 50px;
+  margin: 0;
   @media(min-width: 768px) {
     flex-direction: row;
     padding-left: 15px;
@@ -528,10 +525,6 @@ export const HeaderTitle = styled.h1`
     text-decoration: none;
     transition: color 0.3s linear;
   }
-`
-export const MainStartContainer = styled.div`
-  height: 100%;
-  width: 100%;
 `
 export const NavRightContainer = styled.div`
   align-items: baseline;
