@@ -46,21 +46,22 @@
   margin-left: 2vw;
 }
 
-.inside-cards {
-  background: rgba(29, 43, 49, 0.11);
-  border: solid 1px #ffcf3c;
-  color: white;
+.inside-cards{  
   display: flex;
+background: rgba(29, 43, 49, 0.11);
   flex-direction: column;
   justify-content: space-between;
-  margin: 10px;
-  max-height: 130px;
-  overflow: scroll;
-  overflow-wrap: break-word;
-  padding: 20px 20px 10px 20px;
   width: 300px;
+  max-height: 130px;
+  border: solid 1px #ffcf3c;
+  margin: 10px;
+  padding: 20px 20px 10px 20px;
   word-wrap: break-word;
+  overflow-wrap: break-word;
+  overflow: scroll;
+  color: white;
 }
+
 
 .red {
   color:red;
@@ -79,13 +80,7 @@ textarea, input {
   border: none;
   border: 1px solid #93989d;
 }
-textarea::placeholder, 
-input::placeholder {
-  background: #fff;
-  color: #93989d;
-  height: 100%;
-  opacity: 0.5;
-}
+
 .textarea-review {
   height: 10vh;
   margin-bottom: 2vh;
