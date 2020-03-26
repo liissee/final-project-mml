@@ -69,8 +69,8 @@ export const MoviesMatched = ({ id }) => {
               movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
             />
           </StyledRatings>
-          {/* <RatingsText></RatingsText>
-          <RatingsText></RatingsText> */}
+          <RatingsText></RatingsText>
+          <RatingsText></RatingsText>
           <WatchStatus
             movieId={movie.id}
             movieTitle={movie.title}

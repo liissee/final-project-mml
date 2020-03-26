@@ -136,11 +136,11 @@ const OthersRating = styled.div`
   top: 74px;
   @media(min-width: 768px) {
     left: 216px;
-    top: 80px;
+    /* top: 80px; */
   }
   @media(min-width: 1024px) {
     left: 220px;
-    top: 80px;
+    /* top: 80px; */
   }
 `
 const OtherUserMain = styled.section`

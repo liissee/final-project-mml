@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import 'components/comments.css'
 import { ButtonShowReviews, ButtonWatch } from './Styling'
+import EdiText from "react-editext"
+import styled from "styled-components/macro"
+
 
 export const Comments = ({ movieId, movieTitle }) => {
   const accessToken = useSelector((state) => state.users.accessToken)
@@ -13,11 +16,24 @@ export const Comments = ({ movieId, movieTitle }) => {
   const [postedComment, setPostedComment] = useState("")
   const [reviews, setShowReviews] = useState(false)
 
+  const url = "https://final-movie-match.herokuapp.com"
+  // const url = "http://localhost:8080"
+  // const handleSubmit = (comment) => {
+  //   fetch(`http://localhost:8080/users/${userId}`, {
+  //     method: "PUT",
+  //     body: JSON.stringify({ userId, movieId, movieTitle, comment, userName }),
+  //     headers: { "Content-Type": "application/json", "Authorization": accessToken },
+  //   })
+  //     .then(() => {
+  //       setPostedComment(comment)
+  //     })
+  //     .catch(err => console.log("error:", err))
+  // }
 
   const handleSubmit = (comment) => {
-    fetch(`https://final-movie-match.herokuapp.com/users/${userId}`, {
+    fetch(`${url}/comments/${movieId}`, {
       method: "PUT",
-      body: JSON.stringify({ userId, movieId, movieTitle, comment, userName }),
+      body: JSON.stringify({ userId, comment, userName, movieId }),
       headers: { "Content-Type": "application/json", "Authorization": accessToken },
     })
       .then(() => {
@@ -26,8 +42,9 @@ export const Comments = ({ movieId, movieTitle }) => {
       .catch(err => console.log("error:", err))
   }
 
+  //Get comments
   useEffect(() => {
-    fetch(`https://final-movie-match.herokuapp.com/comments/${movieId}`)
+    fetch(`${url}/comments/${movieId}`)
       .then(res => res.json())
       .then(json => {
         setComments(json)
@@ -44,6 +61,17 @@ export const Comments = ({ movieId, movieTitle }) => {
 
   const handleReviews = () => {
     setShowReviews(!reviews)
+  }
+
+  const handleRemove = ({ userName, comment }) => {
+    fetch(`${url}/comments/${movieId}`, {
+      method: "DELETE",
+      body: JSON.stringify({ userId, userName, comment }),
+      headers: { "Content-Type": "application/json", "Authorization": sessionStorage.getItem("id_token") }
+    })
+      .catch(err => {
+        throw err;
+      })
   }
 
   return (
@@ -81,22 +109,83 @@ export const Comments = ({ movieId, movieTitle }) => {
 
       <ButtonShowReviews
         type="button"
-        onClick={() => {handleReviews()}}
+        onClick={() => { handleReviews() }}
       >
         Show reviews
       </ButtonShowReviews>
       {reviews && (
-      <div className="cards-wrapper">
-        <div className="comment">
-          {comments.map((comment) => (
-            <article className="inside-cards">
-              <p>{comment.comment}</p>
-              <p>Username: {comment.userName}</p>
-            </article>
-          ))}
+        <div className="cards-wrapper">
+          <div className="comment">
+
+            {comments[0] && comments.map((comment) => (
+              <>
+                <article className="inside-cards">
+                  <p>{comment}</p>
+                  {/* <p>Username: {comment.userName}</p> */}
+                  <button typ="button" onClick={() => { handleRemove(comment.userName) }}>Remove</button>
+                </article>
+
+                {/* <StyledEdiText
+                  value={comment.comment}
+                  type="textarea"
+                  inputProps={{ rows: 5 }}
+                  // onSave={handleEdit}
+                  // editing={editing}
+                  hideIcons={true}
+                  saveButtonContent="Spara"
+                  cancelButtonContent="Avbryt"
+                  editButtonContent="Edit message"
+                /> */}
+              </>
+            ))}
+          </div>
         </div>
-      </div>
       )}
     </div >
   )
 }
+
+export const StyledEdiText = styled(EdiText)`
+  div[editext="view-container"], div[editext="edit-container"] {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    align-items: flex-start;
+    font-size: 14px;
+    font-weight: 300;
+    color: #283E51;
+    @media(min-width: 768px) {
+    font-size: 16px;
+  }
+  }
+  textarea {
+    border: 2px solid #ecdfc8;
+    width: 245px;
+    height: 80px;
+    resize: none;
+    padding: 5px;
+    font-size: 14px;
+    margin: 5px 0;
+    @media(min-width: 768px) {
+    width: 465px;
+  }
+  }
+  button[editext="edit-button"] {
+    display:none;
+  }
+  button[editext="save-button"], button[editext="cancel-button"] {
+    background-color: #ecdfc8;
+    color: #283E51;
+    padding: 4px 8px;
+    font-family: 'Quicksand', sans-serif;
+    border-radius: 4px;
+    margin: 0 8px 0 0;
+    cursor: pointer;
+    border: 0.5px solid rgba(40, 62, 81, 0.5);
+    box-shadow: 2px 2px 4px rgba(40, 62, 81, 1); 
+    transition: background-color 0.2s ease-out;
+    @media(min-width: 768px) {
+    width: 65px;
+  }
+  }
+`

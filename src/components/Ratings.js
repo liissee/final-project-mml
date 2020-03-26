@@ -46,15 +46,6 @@ export const Ratings = ({ movieId, movieTitle }) => {
   return (
     <>
       <RatingButtonContainer>
-        {/* <Box component="fieldset" mb={3} borderColor="transparent">
-          <Rating
-            name="customized-empty"
-            defaultValue={2}
-            precision={0.5}
-            emptyIcon={<StarBorderIcon fontSize="inherit" />}
-          />
-        </Box> */}
-
         <BoxContainer
           component="fieldset"
           mb={3}

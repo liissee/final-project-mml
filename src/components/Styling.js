@@ -345,7 +345,7 @@ export const Genre = styled.div`
   background: #B22222;
   color: white;
   margin: 0;
-  margin-right: 1vw;
+  margin: 0 1vw 1vw 0;
   padding: 4px;
 `
 export const MovieBackground = styled.div`
@@ -357,10 +357,10 @@ export const MovieDetailGenres = styled.div`
   margin-bottom: 3vh;
 `
 export const MovieDetailImage = styled.img`
-  margin-top: 2vh;
   width: 230px;
-  @media(min-width: 768px) {
-    margin-top: 0;
+  
+  @media(max-width: 400px) {
+    width: 100%;
   }
 `
 export const MovieDetailRow = styled.div`
@@ -399,16 +399,18 @@ export const MovieTitle = styled.h1`
     margin-top: 0;
   }
 `
-export const RatingButtonContainerDetail = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-left: 18.5vw;
-`
+
 export const RatingMovieWrap = styled.div`
 display: flex;
 justify-content: space-between;
 align-items: center;
 margin-bottom: 5px;
+width: 350px;
+  @media(max-width: 768px) {
+   flex-direction: column;
+   align-items: start;
+
+  }
 `
 export const ShowSimilar = styled.div`
   color: white;

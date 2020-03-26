@@ -4,7 +4,7 @@ export const ui = createSlice({
   name: 'ui',
   initialState: {
     isLoading: false,
-    tab: "movies",
+    tab: "watch",
     isLoginFailed: false,
     errorMessage: false,
     page: 1

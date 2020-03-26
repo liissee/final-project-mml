@@ -16,7 +16,6 @@ export const WatchStatus = ({ movieId, movieTitle }) => {
       body: JSON.stringify({ userId, movieId, movieTitle, watchStatus }),
       headers: { "Content-Type": "application/json", "Authorization": accessToken }
     })
-    console.log(watchStatus)
   }
 
   // Get a movie's watchstatus
@@ -25,10 +24,8 @@ export const WatchStatus = ({ movieId, movieTitle }) => {
     fetch(`https://final-movie-match.herokuapp.com/users/${userId}/movies?movieId=${movieId}`)
       .then(res => res.json())
       .then(json => {
-        console.log("This should get all movies", json)
         if (json && json.watchStatus) {
           setWatchStatus(json.watchStatus)
-          console.log(watchStatus)
         } else if (json && !json.watchStatus) {
           setWatchStatus(false)
         }
