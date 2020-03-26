@@ -4,7 +4,7 @@ import { Ratings } from './Ratings'
 import { WatchStatus } from './WatchStatus'
 import {
   MovieCard, MovieCardInfo, MovieCardTitle, MovieImage,
-  MovieTags, WrapMovieCard, WrapMovieCardInfo, MovieCardOverview
+  MovieTags, WrapMovieCard, WrapMovieCardInfo, MovieCardOverview, ImdbLink
 } from './Styling'
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
@@ -73,11 +73,11 @@ export const MovieCards = ({ id }) => {
           <MovieTags>
             <MovieCardInfo>
               {movie.imdb_id && (
-                <a
+                <ImdbLink
                   href={`https://www.imdb.com/title/${movie.imdb_id}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                >IMDb</a>
+                >IMDb</ImdbLink>
               )}
             </MovieCardInfo>
             <MovieCardInfo>| {cutOutDate(movie.release_date)} |</MovieCardInfo>

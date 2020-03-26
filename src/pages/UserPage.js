@@ -3,10 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { MovieCards } from '../components/MovieCards'
 import { UserList } from '../components/UserList'
 import { ui } from '../reducers/ui'
-import Icon from '@material-ui/core/Icon'
-import styled from 'styled-components/macro'
 import {
-  ButtonMore, ErrorMessage, MovieTitle, WrapperWelcomeBox
+  ButtonMore, ErrorMessage, MovieTitle, WrapperWelcomeBox, Number, OtherButtonMore, Sort, Yellow, YellowButtonMore
 } from '../components/Styling'
 
 const url = 'https://final-movie-match.herokuapp.com/secrets'
@@ -84,39 +82,6 @@ export const UserPage = () => {
     setChosenRating(ratingButton)
     dispatch(ui.actions.setPage(1))
   }
-
-
-  const Number = styled.p`
-    color: black;
-    font-weight: bold;
-    left: 27px;
-    position: absolute;
-    top: 23px;
-    z-index: 2;
-  `
-  const OtherButtonMore = styled(ButtonMore)`
-    margin-bottom: 0;
-    margin-left: 5px;
-  `
-  const Sort = styled.div`
-    align-items: center;
-    display: flex;
-  `
-  const Yellow = styled(Icon)`
-    color: #ffb402;
-    left: 5px;
-    position: absolute;
-    top: 5px;
-    z-index: 1;
-  `
-  const YellowButtonMore = styled.button`
-    background-color: transparent;
-    border: none;
-    height: 50px;
-    position: relative;
-    width: 50px;
-  `
-
 
   return (
     // Watchlist

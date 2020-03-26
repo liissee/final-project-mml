@@ -5,7 +5,7 @@ import Icon from '@material-ui/core/Icon'
 import { MoviesMatched } from '../components/MoviesMatched'
 import styled, { keyframes } from 'styled-components/macro'
 import { WrapperWelcomeBox } from "../components/Styling"
-
+import StarBorderIcon from '@material-ui/icons/StarBorder';
 
 export const OtherUser = () => {
   const [moviesRated, setMoviesRated] = useState([])
@@ -36,42 +36,65 @@ export const OtherUser = () => {
     if (rating === 5) {
       return (
         <>
-          <Icon>star</Icon>
-          <Icon>star</Icon>
-          <Icon>star</Icon>
-          <Icon>star</Icon>
-          <Icon>star</Icon>
+          <Icon style={{ color: "tomato" }} >star</Icon>
+          <Icon style={{ color: "tomato" }} >star</Icon>
+          <Icon style={{ color: "tomato" }} >star</Icon>
+          <Icon style={{ color: "tomato" }} >star</Icon>
+          <Icon style={{ color: "tomato" }} >star</Icon>
         </>
       )
 
     } else if (rating === 4) {
       return (
         <>
-          <Icon>star</Icon>
-          <Icon>star</Icon>
-          <Icon>star</Icon>
-          <Icon>star</Icon>
+          <Icon style={{ color: "tomato" }} >star</Icon>
+          <Icon style={{ color: "tomato" }} >star</Icon>
+          <Icon style={{ color: "tomato" }} >star</Icon>
+          <Icon style={{ color: "tomato" }} >star</Icon>
+          <StarBorderIcon style={{ color: "rgba(255, 255, 255, 0.8)" }} />
         </>
       )
     } else if (rating === 3) {
       return (
         <>
-          <Icon>star</Icon>
-          <Icon>star</Icon>
-          <Icon>star</Icon>
+          <Icon style={{ color: "tomato" }} > star</Icon>
+          <Icon style={{ color: "tomato" }} >star</Icon>
+          <Icon style={{ color: "tomato" }} >star</Icon>
+          <StarBorderIcon style={{ color: "rgba(255, 255, 255, 0.8)" }} />
+          <StarBorderIcon style={{ color: "rgba(255, 255, 255, 0.8)" }} />
         </>
       )
     } else if (rating === 2) {
       return (
         <>
-          <Icon>star</Icon>
-          <Icon>star</Icon>
+          <Icon style={{ color: "tomato" }} >star</Icon>
+          <Icon style={{ color: "tomato" }} >star</Icon>
+          <StarBorderIcon style={{ color: "rgba(255, 255, 255, 0.8)" }} />
+          <StarBorderIcon style={{ color: "rgba(255, 255, 255, 0.8)" }} />
+          <StarBorderIcon style={{ color: "rgba(255, 255, 255, 0.8)" }} />
         </>
       )
     } else if (rating === 1) {
-      return <Icon>star</Icon>
+      return (
+        <>
+          <Icon style={{ color: "tomato" }} >star</Icon>
+          <StarBorderIcon style={{ color: "rgba(255, 255, 255, 0.8)" }} />
+          <StarBorderIcon style={{ color: "rgba(255, 255, 255, 0.8)" }} />
+          <StarBorderIcon style={{ color: "rgba(255, 255, 255, 0.8)" }} />
+          <StarBorderIcon style={{ color: "rgba(255, 255, 255, 0.8)" }} />
+          <StarBorderIcon style={{ color: "rgba(255, 255, 255, 0.8)" }} />
+        </>
+      )
     } else {
-      return
+      return (
+        <>
+          <StarBorderIcon style={{ color: "rgba(255, 255, 255, 0.8)" }} />
+          <StarBorderIcon style={{ color: "rgba(255, 255, 255, 0.8)" }} />
+          <StarBorderIcon style={{ color: "rgba(255, 255, 255, 0.8)" }} />
+          <StarBorderIcon style={{ color: "rgba(255, 255, 255, 0.8)" }} />
+          <StarBorderIcon style={{ color: "rgba(255, 255, 255, 0.8)" }} />
+        </>
+      )
     }
   }
 
@@ -88,7 +111,10 @@ export const OtherUser = () => {
         </Header>
         <WrapperWelcomeBox>
           {watchList.map((movie) => (
-            <MoviesMatched key={movie.movieId} id={movie.movieId} />
+            <RatedCard>
+              <OthersRating><RatedSpan>{userName}s rating: </RatedSpan> <span>{ratingStars(movie.rating)}</span> </OthersRating>
+              <MoviesMatched key={movie.movieId} id={movie.movieId} />
+            </RatedCard>
           ))}
         </WrapperWelcomeBox>
         <MoviesRatedParagraph>Movies that {userName} has rated </MoviesRatedParagraph>

@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-
+import Icon from '@material-ui/core/Icon'
 
 export const Heading = styled.h1`
   border-radius: 15px;
@@ -234,7 +234,19 @@ export const MovieCardInfo = styled.p`
   display: inline;
   margin: 0;
   padding: 5px;
+  &a{
+    text-decoration:none;
+  }
 `
+export const ImdbLink = styled.a`
+color: #ffcf3c;
+&:hover{
+text-decoration: none;
+color: black;
+background-color: #ffcf3c;
+}
+`
+
 export const MovieCardOverview = styled.div`
   font-size: 1em;
   overflow: hidden;
@@ -256,6 +268,9 @@ export const MovieCardTitle = styled.h1`
   text-overflow: ellipsis;
   white-space: nowrap;
   font-family: 'Raleway', sans-serif;
+  &:hover a{
+    text-decoration:none;
+  }
   @media(min-width: 768px) {
     font-size: 1.5em;
     margin-bottom: 0;
@@ -733,6 +748,37 @@ export const WrapperWelcomeBox = styled(Wrapper)`
   max-width: 900px;
 `
 
+export const Number = styled.p`
+color: black;
+font-weight: bold;
+left: 27px;
+position: absolute;
+top: 23px;
+z-index: 2;
+`
+export const OtherButtonMore = styled(ButtonMore)`
+margin: 10px 0 0 5px;
+/* margin-bottom: 0;
+margin-left: 5px; */
+`
+export const Sort = styled.div`
+align-items: center;
+display: flex;
+`
+export const Yellow = styled(Icon)`
+color: #ffb402;
+left: 5px;
+position: absolute;
+top: 5px;
+z-index: 1;
+`
+export const YellowButtonMore = styled.button`
+background-color: transparent;
+border: none;
+height: 50px;
+position: relative;
+width: 50px;
+`
 
 // Other /////////////////////////////////////////////
 export const SearchContainer = styled.div`
