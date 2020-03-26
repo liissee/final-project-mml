@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import { Ratings } from './Ratings'
 import { WatchStatus } from './WatchStatus'
 import {
-  MovieCard, MovieCardInfo, MovieCardTitle, MovieTags, 
-  RatingsText, StyledMovieImage, StyledRatings,  
+  MovieCard, MovieCardInfo, MovieCardTitle, MovieTags,
+  RatingsText, StyledMovieImage, StyledRatings,
   WrapMovieCard, WrapMovieCardInfo
 } from './Styling'
 
@@ -69,8 +69,8 @@ export const MoviesMatched = ({ id }) => {
               movieImage={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
             />
           </StyledRatings>
-          <RatingsText></RatingsText>
-          <RatingsText></RatingsText>
+          {/* <RatingsText></RatingsText>
+          <RatingsText></RatingsText> */}
           <WatchStatus
             movieId={movie.id}
             movieTitle={movie.title}

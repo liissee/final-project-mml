@@ -1,4 +1,5 @@
 /* MovieList and Similar */
+
 .movie-list {
   display: flex;
   flex-wrap: wrap;
@@ -18,10 +19,13 @@
 }
 .movie-list:hover .hover-details a {
   display: block;
+  color: white;
+  text-decoration: none;
 }
 .movie-list .hover-details h1 {
   margin-bottom: 0;
   margin-top: auto;
+  font-family: 'Raleway', sans-serif;
 }
 
 .movie-wrapper {
@@ -64,6 +68,10 @@
   margin-right: 15%;
 }
 
+.mobile-view p {
+  margin-bottom: 0;
+}
+  
 
 /* Mobile */
 @media(max-width: 600px) {

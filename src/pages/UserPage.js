@@ -50,10 +50,8 @@ export const UserPage = () => {
 
 
   let query = ""
-  console.log("SELECTED TAB: ", selectedTab)
   if (selectedTab === "watch") {
     query = `?watchStatus=true&page=${page}`
-    console.log("WAAAATCH")
   }
   else if (!chosenRating && selectedTab === "rated") {
     query = `?rating=1&rating=2&rating=3&rating=4&rating=5&page=${page}`
@@ -118,7 +116,7 @@ export const UserPage = () => {
     position: relative;
     width: 50px;
   `
- 
+
 
   return (
     // Watchlist
@@ -141,7 +139,7 @@ export const UserPage = () => {
             </WrapperWelcomeBox>}
         </WrapperWelcomeBox>
       )}
-      // Rating
+
       {selectedTab === "rated" && (
         <WrapperWelcomeBox>
           <ErrorMessage>{errorMessage && <div>{errorMessage}</div>}</ErrorMessage>

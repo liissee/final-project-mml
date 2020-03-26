@@ -7,9 +7,9 @@ import { Similar } from './Similar'
 import { WatchStatus } from './WatchStatus'
 import { movies } from '../reducers/movies'
 import {
-  ActorImage, ActorImageWrap, ActorList, ActorListWrap, ActorName, ActorWrap, Genre, 
-  ImageNotFound, MovieBackground, MovieDetailGenres, MovieDetailImage, MovieDetailRow, 
-  MovieImdb, MovieInfo, MovieOverview, MovieTitle, RatingMovieWrap, ShowSimilar, 
+  ActorImage, ActorImageWrap, ActorList, ActorListWrap, ActorName, ActorWrap, Genre,
+  ImageNotFound, MovieBackground, MovieDetailGenres, MovieDetailImage, MovieDetailRow,
+  MovieImdb, MovieInfo, MovieOverview, MovieTitle, RatingMovieWrap, ShowSimilar,
   SimilarTitle, StarringTitle, WrapMovie, WrapMovieInfo, WrapRating, YourRating
 } from './Styling'
 
@@ -62,7 +62,7 @@ export const MovieDetail = () => {
       <div>{error}</div>
     )
   }
-  
+
 
   return (
     <MovieBackground
@@ -70,19 +70,31 @@ export const MovieDetail = () => {
     >
       <WrapMovie>
         <div>
-        {movie.poster_path && (
-          <MovieDetailImage
-            src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} alt={movie.title}
-          />
-        )}
-        {!movie.poster_path && (
-          <ImageNotFound
-            src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="Photo by Denise Jans on Unsplash" />
-        )}
+          {movie.poster_path && (
+            <MovieDetailImage
+              src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} alt={movie.title}
+            />
+          )}
+          {!movie.poster_path && (
+            <ImageNotFound
+              src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="Photo by Denise Jans on Unsplash" />
+          )}
         </div>
 
         <WrapMovieInfo>
           <MovieTitle>{movie.title}</MovieTitle>
+          <RatingMovieWrap>
+
+            <Ratings
+              movieId={movie.id}
+              movieTitle={movie.title}
+            />
+            <WatchStatus
+              movieId={movie.id}
+              movieTitle={movie.title}
+            />
+
+          </RatingMovieWrap>
           <MovieDetailGenres>
             {movie.genres.map((genre) => (
               <Genre key={genre.name}>{genre.name}</Genre>
@@ -100,20 +112,13 @@ export const MovieDetail = () => {
             </a>
           </MovieDetailRow>
         </WrapMovieInfo>
-      
-      <WrapRating>
-        <YourRating>Rate this movie</YourRating>
-        <RatingMovieWrap>
-          <Ratings
-            movieId={movie.id}
-            movieTitle={movie.title}
-          />
-          <WatchStatus
-            movieId={movie.id}
-            movieTitle={movie.title}
-          />
-        </RatingMovieWrap>
-      </WrapRating>  
+
+        {/* <WrapRating>
+          <YourRating>Rate this movie</YourRating>
+          <RatingMovieWrap>
+
+          </RatingMovieWrap>
+        </WrapRating> */}
       </WrapMovie>
 
       <ActorListWrap>

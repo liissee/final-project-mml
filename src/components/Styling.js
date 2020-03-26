@@ -7,7 +7,8 @@ export const Heading = styled.h1`
   font-size: 1.5em;
   font-weight: normal;
   margin: 10px 0;
-  text-align: center;  
+  text-align: center; 
+  font-family: 'Raleway', sans-serif; 
 `
 export const Link = styled.link`
   color: #fff;
@@ -20,9 +21,6 @@ export const Link = styled.link`
     cursor: pointer;
   }
 `
-// export const Main = styled.main`
-// `
-
 
 // Hamburger /////////////////////////////////////////////
 export const HamburgerWrap = styled.div`
@@ -224,7 +222,7 @@ export const MovieCard = styled.div`
   color: white;
   height: auto;
   margin: 10px;
-  padding: 0 8px 8px 0;
+  padding-right: 8px;
   @media(min-width: 768px) {
     height: 30vh;
     margin: 10px;
@@ -238,13 +236,16 @@ export const MovieCardInfo = styled.p`
   padding: 5px;
 `
 export const MovieCardOverview = styled.div`
-  display: -webkit-box;
   font-size: 1em;
   overflow: hidden;
   overflow-wrap: break-word;
   word-wrap: break-word;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  display: none;
+  @media(min-width: 768px) {
+    display: -webkit-box;
+  }
 `
 export const MovieCardTitle = styled.h1`
   color: white;
@@ -254,6 +255,7 @@ export const MovieCardTitle = styled.h1`
   text-decoration: none;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-family: 'Raleway', sans-serif;
   @media(min-width: 768px) {
     font-size: 1.5em;
     margin-bottom: 0;
@@ -392,6 +394,7 @@ export const MovieTitle = styled.h1`
   color: white;
   margin-top: 2vh;
   text-decoration: none;
+  font-family: 'Raleway', sans-serif;
   @media(min-width: 768px) {
     margin-top: 0;
   }
@@ -402,7 +405,10 @@ export const RatingButtonContainerDetail = styled.div`
   margin-left: 18.5vw;
 `
 export const RatingMovieWrap = styled.div`
-  margin-left: 3vw;
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 5px;
 `
 export const ShowSimilar = styled.div`
   color: white;
@@ -616,8 +622,11 @@ export const FormSearch = styled.form`
 export const SearchLine = styled.input`
   background: transparent;
   border: none;
-  border-bottom: 2px solid black;
+  border-bottom: 1px solid #fe5426;
   font-size: 16px;
+  &::placeholder {
+    color: white;
+  }
 `
 
 
@@ -628,16 +637,15 @@ export const ButtonContainer = styled.div`
 `
 export const ButtonWatch = styled(Button)`
   background: inherit;
-  border: #fff solid 2px;
-  border-radius: 0.6em;
+  border: #fff solid 1px;
+  border-radius: 2px;
   font-weight: 400;
-  padding: 3px;
+  padding: 2px 4px;
   &:hover, 
   &:active {
-    background: #Fff;
-    border: #1c1a21 solid 2px;
+    background: #ffcf3c;
+    border: #ffcf3c solid 1px;
     color: #1c1a21;
-    font-weight: 600;
   }
 `
 export const ButtonShowReviews = styled(ButtonWatch)`

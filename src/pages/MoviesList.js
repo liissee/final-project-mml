@@ -49,6 +49,9 @@ export const MoviesList = () => {
     movieResults = searchResult
   }
 
+  const cutOutDate = (date) => {
+    return date.substring(0, 4)
+  }
 
   return (
     <div className="top-movie-list">
@@ -68,7 +71,7 @@ export const MoviesList = () => {
                   <div className="mobile-view ">
                     <Link key={movie.id} to={`/movies/${movie.id}`}>
                       <h1>{movie.original_title}</h1>
-                      <p>Released {movie.release_date}</p>
+                      <p>{cutOutDate(movie.release_date)}</p>
                     </Link>
                     <div className="rating">
                       <Ratings
