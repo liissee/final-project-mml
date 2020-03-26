@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import 'components/comments.css'
-import { ButtonShowReviews, ButtonWatch } from './Styling'
+import { ButtonShowReviews, ButtonWatch, NewComment } from './Styling'
 import EdiText from "react-editext"
 import styled from "styled-components/macro"
 
@@ -81,14 +81,13 @@ export const Comments = ({ movieId, movieTitle }) => {
           <h3 className="comment-title">Your review</h3>
 
           <label>
-            <textarea
+            <NewComment
               className="textarea-review"
               rows="3"
               value={comment}
               placeholder="Type your review here..."
               onChange={event => setComment(event.target.value)}
-            >
-            </textarea>
+            />
           </label>
           <div className="buttonwrapper">
             <div>

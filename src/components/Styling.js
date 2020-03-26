@@ -354,11 +354,10 @@ export const MovieDetailGenres = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-bottom: 3vh;
+  margin-bottom: 1vh;
 `
 export const MovieDetailImage = styled.img`
   width: 230px;
-  
   @media(max-width: 400px) {
     width: 100%;
   }
@@ -449,7 +448,10 @@ export const WrapMovieInfo = styled.div`
   flex-direction: column;
   margin-left: 2vw;
   width: 90%;
-  @media(min-width: 768px) {
+  @media(min-width: 768px) and (max-width: 1024px) {
+    width: 70%;
+  }
+  @media(min-width: 1025px) {
     width: 50%;
   }
 `
@@ -734,4 +736,20 @@ export const WrapperWelcomeBox = styled(Wrapper)`
 
 // Other /////////////////////////////////////////////
 export const SearchContainer = styled.div`
+`
+
+//Comments
+export const NewComment = styled.textarea`
+  border: 2px solid #fe5426;
+  border-radius: 2px;
+  width: 100%;
+  max-width: 300px;
+  height: 80px;
+  resize: none;
+  padding: 5px;
+  font-size: 14px;
+  @media(min-width: 768px) {
+    width: 475px;
+    font-size: 16px;
+  }
 `

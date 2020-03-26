@@ -122,12 +122,11 @@ export const MovieDetail = () => {
       </WrapMovie>
 
       <ActorListWrap>
-        <StarringTitle>Starring </StarringTitle>
+        {/* <StarringTitle>Starring </StarringTitle> */}
         <ActorList>
           {cast.map((actor) => (
             <ActorWrap >
               <Link key={actor.id} to={`/cast/${actor.id}`} onClick={(e) => handleActor(actor.name)}>
-                <ActorName>{actor.name}</ActorName>
                 {actor.profile_path && (
                   <ActorImageWrap>
                     <ActorImage
@@ -139,6 +138,7 @@ export const MovieDetail = () => {
                   <ActorImage
                     src="https://images.pexels.com/photos/1446948/pexels-photo-1446948.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="Photo by Engin Akyurt from Pexels" />
                 )}
+                <ActorName>{actor.name}</ActorName>
               </Link>
             </ActorWrap>
           ))}
