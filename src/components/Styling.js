@@ -532,6 +532,7 @@ export const HeaderStartContainer = styled.div`
   padding-left: 50px;
   @media(min-width: 768px) {
     flex-direction: row;
+    justify-content: space-between;
     padding-left: 15px;
   }
 `
@@ -551,15 +552,15 @@ export const HeaderTitle = styled.h1`
     transition: color 0.3s linear;
   }
 `
-export const MainStartContainer = styled.div`
-  height: 100%;
-  width: 100%;
-`
+// export const MainStartContainer = styled.div`
+//   height: 100%;
+//   width: 100%;
+// `
 export const NavRightContainer = styled.div`
   align-items: baseline;
   display: flex;
   flex-direction: row;
-  margin-left: auto;
+  /* margin-left: auto; */
   @media(max-width: 600px) {
     display: flex;  
     margin-right: 10px;
@@ -574,7 +575,7 @@ export const SignInButton = styled.button`
   font-family: 'Raleway', sans-serif;
   font-size: 1.5em;
   margin-left: 2vw;
-  margin-right: 60px;
+  /* margin-right: 60px; */
   text-transform: uppercase;
   &:hover {
     color:#fe5426;

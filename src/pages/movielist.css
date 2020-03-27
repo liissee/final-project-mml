@@ -1,4 +1,4 @@
-/* MovieList and Similar */
+/* 
 
 .movie-list {
   display: flex;
@@ -75,7 +75,7 @@
 }
   
 
-/* Mobile */
+
 @media(max-width: 600px) {
   .mobile-view {
     bottom: 0%;
@@ -144,4 +144,4 @@
     flex-direction: column;
     margin-right: 10%;
   }
-  }
+  } */

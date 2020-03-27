@@ -9,7 +9,7 @@ import { Searchbar } from './Searchbar'
 import { movies } from '../reducers/movies'
 import { ui } from '../reducers/ui'
 import {
-  HeaderStartContainer, HeaderTitle, MainStartContainer, 
+  HeaderStartContainer, HeaderTitle,
   NavRightContainer, SubNavbar, UserNameNav, WatchListLink
 } from './Styling'
 
@@ -27,18 +27,18 @@ export const Navbar = () => {
     dispatch(ui.actions.setPage(1))
   }
 
-  
+
   return (
-    <MainStartContainer>
-      <Hamburger />
+    <>
       <HeaderStartContainer>
+        <Hamburger />
         <HeaderTitle>
           <Link to={`/`} onClick={() => { handleTabChange("movies"); dispatch(movies.actions.setSearchTerm("")) }}>movie </Link>
           <Link to={`/`} onClick={() => { handleTabChange("movies"); dispatch(movies.actions.setSearchTerm("")) }}>match.</Link>
         </HeaderTitle>
         <Searchbar />
         <NavRightContainer>
-          <Link to={`/users/${userId}/movies`}>
+          <Link to={`/users/${userId}/movies`} onClick={() => { handleTabChange("watch") }}>
             <UserNameNav>{userName}</UserNameNav>
           </Link>
           {!accessToken &&
@@ -66,6 +66,6 @@ export const Navbar = () => {
         </Link>
         <PopoverUserSearch />
       </SubNavbar>
-    </MainStartContainer >
+    </>
   )
 }
