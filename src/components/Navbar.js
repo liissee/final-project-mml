@@ -10,7 +10,7 @@ import { movies } from '../reducers/movies'
 import { ui } from '../reducers/ui'
 import {
   HeaderStartContainer, HeaderTitle,
-  NavRightContainer, SubNavbar, UserNameNav, WatchListLink
+  NavRightContainer, SubNavbar, SubNavLeft, SubNavRight, UserNameNav, WatchListLink
 } from './Styling'
 
 
@@ -39,7 +39,7 @@ export const Navbar = () => {
         </HeaderTitle>
         <Searchbar />
         <NavRightContainer>
-          <Link to={`/users/${userId}/movies`}>
+          <Link to={`/users/${userId}/movies`} onClick={() => { handleTabChange("watch") }}>
             <UserNameNav>{userName}</UserNameNav>
           </Link>
           {!accessToken &&
@@ -51,21 +51,23 @@ export const Navbar = () => {
         </NavRightContainer>
       </HeaderStartContainer>
       <SubNavbar>
-        <Link to="/" onClick={() => { handleTabChange("movies"); dispatch(movies.actions.setSearchTerm("")) }}>
-          <WatchListLink className={selectedTab === "movies" ? 'active' : ''}>MOVIES</WatchListLink>
-        </Link>
-
-        <Link to="/users/:id/movies" onClick={() => handleTabChange("watch")}>
-          <WatchListLink className={selectedTab === "watch" ? 'active' : ''}>Watchlist</WatchListLink>
-        </Link>
-        <Link to="/users/:id/movies" onClick={() => handleTabChange("rated")}>
-          <WatchListLink className={selectedTab === "rated" ? 'active' : ''}>All rated</WatchListLink>
-        </Link>
-
-        <Link to="/users/:id/movies" onClick={() => handleTabChange("users")}>
-          <WatchListLink className={selectedTab === "users" ? 'active' : ''}>Other users</WatchListLink>
-        </Link>
-        <PopoverUserSearch />
+        <SubNavLeft>
+          <Link to="/" onClick={() => { handleTabChange("movies"); dispatch(movies.actions.setSearchTerm("")) }}>
+            <WatchListLink className={selectedTab === "movies" ? 'active' : ''}>MOVIES</WatchListLink>
+          </Link>
+          <Link to={`/users/${userId}/movies`} onClick={() => handleTabChange("users")}>
+            <WatchListLink className={selectedTab === "users" ? 'active' : ''}>Other users</WatchListLink>
+          </Link>
+          <PopoverUserSearch />
+        </SubNavLeft>
+        <SubNavRight>
+          <Link to={`/users/${userId}/movies`} onClick={() => handleTabChange("watch")}>
+            <WatchListLink className={selectedTab === "watch" ? 'active' : ''}>Watchlist</WatchListLink>
+          </Link>
+          <Link to={`/users/${userId}/movies`} onClick={() => handleTabChange("rated")}>
+            <WatchListLink className={selectedTab === "rated" ? 'active' : ''}>All rated</WatchListLink>
+          </Link>
+        </SubNavRight>
       </SubNavbar>
     </>
   )

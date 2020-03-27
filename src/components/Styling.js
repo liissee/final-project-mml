@@ -513,7 +513,7 @@ export const ButtonSearchUser = styled.button`
   color: white;
   cursor: pointer;
   font-size: 16px;
-  margin-left: 2vw;
+  /* margin-left: 2vw; */
   padding-top: 0;
   text-transform: uppercase;
   &:hover {
@@ -532,6 +532,7 @@ export const HeaderStartContainer = styled.div`
   margin: 0;
   @media(min-width: 768px) {
     flex-direction: row;
+    justify-content: space-between;
     padding-left: 15px;
   }
 `
@@ -555,7 +556,7 @@ export const NavRightContainer = styled.div`
   align-items: baseline;
   display: flex;
   flex-direction: row;
-  margin-left: auto;
+  /* margin-left: auto; */
   @media(max-width: 600px) {
     display: flex;  
     margin-right: 10px;
@@ -570,7 +571,7 @@ export const SignInButton = styled.button`
   font-family: 'Raleway', sans-serif;
   font-size: 1.5em;
   margin-left: 2vw;
-  margin-right: 60px;
+  /* margin-right: 60px; */
   text-transform: uppercase;
   &:hover {
     color:#fe5426;
@@ -587,8 +588,10 @@ export const SubNavbar = styled.div`
   background: #1e2026;
   color: white;
   display: flex;
+  justify-content: space-between;
   height: 50px;
   text-transform: uppercase;
+  margin: 0 15px;
   a {
     text-decoration: none;
   }
@@ -596,6 +599,12 @@ export const SubNavbar = styled.div`
     align-items: center;
   }
 `
+export const SubNavLeft = styled.div`
+`
+
+export const SubNavRight = styled.div`
+`
+
 export const UserNameNav = styled.div`
   color: white;
   font-size: 16px;
@@ -609,8 +618,9 @@ export const WatchListLink = styled.div`
   color: white;
   display: none;
   font-size: 16px;
-  margin-left: 2vw;
-  margin-top: 2vh;
+  /* margin-left: 2vw; */
+  /* margin-top: 2vh; */
+  margin: 2vh 1vh;
   text-decoration: none;
   &:hover {
     color:#fe5426;
@@ -643,8 +653,12 @@ export const SearchLine = styled.input`
   border: none;
   border-bottom: 1px solid #fe5426;
   font-size: 16px;
+  width: 200px;
   &::placeholder {
     color: white;
+  }
+  @media(min-width: 768px) {
+    width: 250px;
   }
 `
 
