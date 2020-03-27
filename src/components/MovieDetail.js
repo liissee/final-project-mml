@@ -76,7 +76,7 @@ export const MovieDetail = () => {
             />
           )}
           {!movie.poster_path && (
-            <ImageNotFound
+            <MovieDetailImage
               src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="Photo by Denise Jans on Unsplash" />
           )}
         </div>
@@ -135,8 +135,10 @@ export const MovieDetail = () => {
                   </ActorImageWrap>
                 )}
                 {!actor.profile_path && (
-                  <ActorImage
-                    src="https://images.pexels.com/photos/1446948/pexels-photo-1446948.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="Photo by Engin Akyurt from Pexels" />
+                  <ActorImageWrap>
+                    <ActorImage
+                      src="https://images.pexels.com/photos/1446948/pexels-photo-1446948.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="Photo by Engin Akyurt from Pexels" />
+                  </ActorImageWrap>
                 )}
                 <ActorName>{actor.name}</ActorName>
               </Link>
