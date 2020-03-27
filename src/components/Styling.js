@@ -268,6 +268,7 @@ export const MovieCardTitle = styled.h1`
   text-overflow: ellipsis;
   white-space: nowrap;
   font-family: 'Raleway', sans-serif;
+  padding: 0 20px 0 0;
   &:hover a{
     text-decoration:none;
   }
@@ -281,7 +282,6 @@ export const MovieImage = styled.img`
   height: 180px;
   width: auto;
   @media(min-width: 768px) {
-    border-radius: 20px 0 0 20px;
     height: 29.5vh;
     width: 185px;
   }
@@ -295,6 +295,7 @@ export const MovieTags = styled.div`
 export const WrapMovieCard = styled.div`
   display: flex;
   flex-direction: row;
+  border-radius: 20px 0 0 20px;
 `
 export const WrapMovieCardInfo = styled.div`
   display: flex;
@@ -680,6 +681,9 @@ export const ButtonWatch = styled(Button)`
     border: #ffcf3c solid 1px;
     color: #1c1a21;
   }
+  @media(max-width: 600px) {
+    width: 120px;
+  }
 `
 export const ButtonShowReviews = styled(ButtonWatch)`
   margin-left: 2vw;
@@ -812,4 +816,153 @@ export const NewComment = styled.textarea`
     width: 475px;
     font-size: 16px;
   }
+`
+
+//MoviesList
+export const HoverDetails = styled.div`
+    background: #25090183;
+    border-radius: 10px;
+    bottom: 0;
+    display: none;
+    left: 0;
+    padding: 20px;
+    position: absolute;
+    right: 0;
+    top: 0;
+`
+
+export const StyledLink = styled(Link)`
+
+`
+
+export const MovieList = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 20px;
+  &:hover {
+    &:hover${HoverDetails} .white-link {
+      display: block;
+      color: white;
+      text-decoration: none;
+    }
+  }
+  &:hover${HoverDetails} {
+    background: #25090183;
+    border-radius: 10px;
+    bottom: 0;
+    display: none;
+    left: 0;
+    padding: 20px;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  
+  @media(max-width: 600px) {
+    display:flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 0px;
+  & .hover-details {
+    background: rgb(31,33,40);
+    background: radial-gradient(circle, rgba(31,33,40,0.9346113445378151) 0%, rgba(23,23,25,0.9878326330532213) 100%);
+    border: 2px solid #f5b333;
+    display: block;
+    border-radius: 10px;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    & .movie-title {
+      margin-bottom: 0;
+      margin-top: auto;
+      overflow: hidden;
+      padding: 0 20px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+  }
+`
+
+export const ListImage = styled.img`
+  border-radius: 10px;
+  height: 100%;
+  width:100%;
+  @media (max-width: 600px) {
+    border-radius: 10px 0 0 10px;
+height: 98%;
+width: auto;
+    /* height: 29.5vh; */
+    padding-left: 2px;
+    /* width: 40%; */
+    z-index: 1;
+  }
+`
+
+export const MovieWrapper = styled.div`
+ border-radius: 10px;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.568);
+  color: #fff;
+  margin: 10px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  width: 250px;
+  &:hover .white-link:hover {
+      display: block;
+      color: white;
+      text-decoration: none;
+      transform: scale(1.1);
+      @media (max-width: 600px) {
+        transform: none;
+      }
+    }
+    &:hover .hover-details {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    @media (max-width: 600px) {
+      align-items: center;
+      border-radius: 10px;
+      box-shadow: 3px 3px 20px rgba(0, 0, 0, .5);
+      color: #fff;
+      display: flex;
+      height: 25vh;
+      justify-content: flex-start;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      width: 100%;
+    }
+`
+
+export const RatingBox = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-right: 15%;
+`
+
+export const MobileView = styled.div`
+  & .movie-title {
+    margin-bottom: 0;
+  }
+@media(max-width: 600px) {
+  bottom: 0%;
+  left: 38%;
+  position: absolute;
+  right: 0;
+  top: 10%;
+  & .movie-info {
+    font-size: 1.1em;
+  }
+  & .rating {
+    margin-left: 20px;
+  }
+}
 `

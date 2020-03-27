@@ -5,7 +5,7 @@ import { DropDownList } from 'components/DropDownList'
 import { Ratings } from '../components/Ratings'
 import { WatchStatus } from '../components/WatchStatus'
 import 'pages/movielist.css'
-import { ButtonContainer, ButtonMore, ErrorMessage } from '../components/Styling'
+import { ButtonContainer, ButtonMore, ErrorMessage, HoverDetails, MovieList, MovieWrapper, MovieTitle, MovieInfo, ListImage, RatingBox, MobileView } from '../components/Styling'
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 
@@ -54,46 +54,46 @@ export const MoviesList = () => {
   }
 
   return (
-    <div className="top-movie-list">
+    <>
       <DropDownList />
-      <section className="movie-list">
+      <MovieList className="movie-list">
         {movieResults &&
           movieResults.map((movie) => {
             return (
-              <div key={movie.id} className="movie-wrapper">
+              <MovieWrapper key={movie.id} className="movie-wrapper">
                 {movie.poster_path && (
-                  <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.title} />
+                  <ListImage src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.title} />
                 )}
                 {!movie.poster_path && (
-                  <img src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="Photo by Denise Jans on Unsplash" />
+                  <ListImage src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="Photo by Denise Jans on Unsplash" />
                 )}
-                <div className="hover-details">
-                  <div className="mobile-view ">
-                    <Link key={movie.id} to={`/movies/${movie.id}`}>
-                      <h1>{movie.original_title}</h1>
-                      <p>{cutOutDate(movie.release_date)}</p>
+                <HoverDetails className="hover-details">
+                  <MobileView className="mobile-view ">
+                    <Link key={movie.id} to={`/movies/${movie.id}`} className="white-link">
+                      <MovieTitle className="movie-title">{movie.original_title}</MovieTitle>
+                      <MovieInfo className="movie-info">{cutOutDate(movie.release_date)}</MovieInfo>
                     </Link>
-                    <div className="rating">
+                    <RatingBox className="rating">
                       <Ratings
                         movieId={movie.id}
                         movieTitle={movie.title}
                       />
-                    </div>
-                    <div>
+                    </RatingBox>
+                    <>
                       <WatchStatus
                         movieId={movie.id}
                         movieTitle={movie.title} />
-                    </div>
-                  </div>
-                </div>
-              </div>
+                    </>
+                  </MobileView>
+                </HoverDetails>
+              </MovieWrapper>
             )
           }
           )}
-      </section>
+      </MovieList>
       <ButtonContainer>
         <ButtonMore onClick={(e) => setPage(page + 1)}>Show more</ButtonMore>
       </ButtonContainer>
-    </div >
+    </>
   )
 }
