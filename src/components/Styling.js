@@ -514,7 +514,7 @@ export const ButtonSearchUser = styled.button`
   color: white;
   cursor: pointer;
   font-size: 16px;
-  /* margin-left: 2vw; */
+  margin-left: 2vw;
   padding-top: 0;
   text-transform: uppercase;
   &:hover {
@@ -530,10 +530,8 @@ export const HeaderStartContainer = styled.div`
   justify-content: center;
   padding: 15px;
   padding-left: 50px;
-  margin: 0;
   @media(min-width: 768px) {
     flex-direction: row;
-    justify-content: space-between;
     padding-left: 15px;
   }
 `
@@ -553,11 +551,15 @@ export const HeaderTitle = styled.h1`
     transition: color 0.3s linear;
   }
 `
+export const MainStartContainer = styled.div`
+  height: 100%;
+  width: 100%;
+`
 export const NavRightContainer = styled.div`
   align-items: baseline;
   display: flex;
   flex-direction: row;
-  /* margin-left: auto; */
+  margin-left: auto;
   @media(max-width: 600px) {
     display: flex;  
     margin-right: 10px;
@@ -572,7 +574,7 @@ export const SignInButton = styled.button`
   font-family: 'Raleway', sans-serif;
   font-size: 1.5em;
   margin-left: 2vw;
-  /* margin-right: 60px; */
+  margin-right: 60px;
   text-transform: uppercase;
   &:hover {
     color:#fe5426;
@@ -589,10 +591,8 @@ export const SubNavbar = styled.div`
   background: #1e2026;
   color: white;
   display: flex;
-  justify-content: space-between;
   height: 50px;
   text-transform: uppercase;
-  margin: 0 15px;
   a {
     text-decoration: none;
   }
@@ -600,12 +600,6 @@ export const SubNavbar = styled.div`
     align-items: center;
   }
 `
-export const SubNavLeft = styled.div`
-`
-
-export const SubNavRight = styled.div`
-`
-
 export const UserNameNav = styled.div`
   color: white;
   font-size: 16px;
@@ -619,9 +613,8 @@ export const WatchListLink = styled.div`
   color: white;
   display: none;
   font-size: 16px;
-  /* margin-left: 2vw; */
-  /* margin-top: 2vh; */
-  margin: 2vh 1vh;
+  margin-left: 2vw;
+  margin-top: 2vh;
   text-decoration: none;
   &:hover {
     color:#fe5426;
@@ -802,7 +795,7 @@ width: 50px;
 export const SearchContainer = styled.div`
 `
 
-//Comments
+// Comments /////////////////////////////////////////////
 export const NewComment = styled.textarea`
   border: 2px solid #fe5426;
   border-radius: 2px;
@@ -818,7 +811,7 @@ export const NewComment = styled.textarea`
   }
 `
 
-//MoviesList
+// MoviesList /////////////////////////////////////////////
 export const HoverDetails = styled.div`
     background: #25090183;
     border-radius: 10px;

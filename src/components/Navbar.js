@@ -9,8 +9,8 @@ import { Searchbar } from './Searchbar'
 import { movies } from '../reducers/movies'
 import { ui } from '../reducers/ui'
 import {
-  HeaderStartContainer, HeaderTitle,
-  NavRightContainer, SubNavbar, SubNavLeft, SubNavRight, UserNameNav, WatchListLink
+  HeaderStartContainer, HeaderTitle, MainStartContainer, 
+  NavRightContainer, SubNavbar, UserNameNav, WatchListLink
 } from './Styling'
 
 
@@ -27,19 +27,18 @@ export const Navbar = () => {
     dispatch(ui.actions.setPage(1))
   }
 
-
+  
   return (
-    <>
-
+    <MainStartContainer>
+      <Hamburger />
       <HeaderStartContainer>
-        <Hamburger />
         <HeaderTitle>
           <Link to={`/`} onClick={() => { handleTabChange("movies"); dispatch(movies.actions.setSearchTerm("")) }}>movie </Link>
           <Link to={`/`} onClick={() => { handleTabChange("movies"); dispatch(movies.actions.setSearchTerm("")) }}>match.</Link>
         </HeaderTitle>
         <Searchbar />
         <NavRightContainer>
-          <Link to={`/users/${userId}/movies`} onClick={() => { handleTabChange("watch") }}>
+          <Link to={`/users/${userId}/movies`}>
             <UserNameNav>{userName}</UserNameNav>
           </Link>
           {!accessToken &&
@@ -51,24 +50,22 @@ export const Navbar = () => {
         </NavRightContainer>
       </HeaderStartContainer>
       <SubNavbar>
-        <SubNavLeft>
-          <Link to="/" onClick={() => { handleTabChange("movies"); dispatch(movies.actions.setSearchTerm("")) }}>
-            <WatchListLink className={selectedTab === "movies" ? 'active' : ''}>MOVIES</WatchListLink>
-          </Link>
-          <Link to={`/users/${userId}/movies`} onClick={() => handleTabChange("users")}>
-            <WatchListLink className={selectedTab === "users" ? 'active' : ''}>Other users</WatchListLink>
-          </Link>
-          <PopoverUserSearch />
-        </SubNavLeft>
-        <SubNavRight>
-          <Link to={`/users/${userId}/movies`} onClick={() => handleTabChange("watch")}>
-            <WatchListLink className={selectedTab === "watch" ? 'active' : ''}>Watchlist</WatchListLink>
-          </Link>
-          <Link to={`/users/${userId}/movies`} onClick={() => handleTabChange("rated")}>
-            <WatchListLink className={selectedTab === "rated" ? 'active' : ''}>All rated</WatchListLink>
-          </Link>
-        </SubNavRight>
+        <Link to="/" onClick={() => { handleTabChange("movies"); dispatch(movies.actions.setSearchTerm("")) }}>
+          <WatchListLink className={selectedTab === "movies" ? 'active' : ''}>MOVIES</WatchListLink>
+        </Link>
+
+        <Link to="/users/:id/movies" onClick={() => handleTabChange("watch")}>
+          <WatchListLink className={selectedTab === "watch" ? 'active' : ''}>My watchlist</WatchListLink>
+        </Link>
+        <Link to="/users/:id/movies" onClick={() => handleTabChange("rated")}>
+          <WatchListLink className={selectedTab === "rated" ? 'active' : ''}>My rated movies</WatchListLink>
+        </Link>
+
+        <Link to="/users/:id/movies" onClick={() => handleTabChange("users")}>
+          <WatchListLink className={selectedTab === "users" ? 'active' : ''}>Other users</WatchListLink>
+        </Link>
+        <PopoverUserSearch />
       </SubNavbar>
-    </>
+    </MainStartContainer >
   )
 }
