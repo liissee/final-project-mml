@@ -3,8 +3,10 @@ import { useParams, Link } from 'react-router-dom'
 import { Ratings } from './Ratings'
 import { WatchStatus } from './WatchStatus'
 import 'pages/movielist.css'
-import { ImageNotFound } from './Styling'
-import { ButtonContainer, ButtonMore, ErrorMessage, HoverDetails, MovieList, MovieWrapper, MovieTitle, MovieInfo, ListImage, RatingBox, MobileView } from '../components/Styling'
+import { 
+  HoverDetails, ListImage, MobileView, MovieInfo, 
+  MovieList, MovieTitle, MovieWrapper, RatingBox
+} from '../components/Styling'
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 

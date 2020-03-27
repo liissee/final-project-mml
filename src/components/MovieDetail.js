@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useParams, Link } from 'react-router-dom'
-import { Comments } from './Comments'
+// import { Comments } from './Comments'
 import { Ratings } from './Ratings'
 import { Similar } from './Similar'
 import { WatchStatus } from './WatchStatus'
 import { movies } from '../reducers/movies'
 import {
-  ActorImage, ActorImageWrap, ActorList, ActorListWrap, ActorName, ActorWrap, Genre,
-  ImageNotFound, MovieBackground, MovieDetailGenres, MovieDetailImage, MovieDetailRow,
+  ActorImage, ActorImageWrap, ActorList, ActorListWrap, ActorName, ActorWrap, 
+  Genre, MovieBackground, MovieDetailGenres, MovieDetailImage, MovieDetailRow,
   MovieImdb, MovieInfo, MovieOverview, MovieTitle, RatingMovieWrap, ShowSimilar,
-  SimilarTitle, StarringTitle, WrapMovie, WrapMovieInfo, WrapRating, YourRating
+  SimilarTitle, WrapMovie, WrapMovieInfo
 } from './Styling'
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
@@ -112,17 +112,9 @@ export const MovieDetail = () => {
             </a>
           </MovieDetailRow>
         </WrapMovieInfo>
-
-        {/* <WrapRating>
-          <YourRating>Rate this movie</YourRating>
-          <RatingMovieWrap>
-
-          </RatingMovieWrap>
-        </WrapRating> */}
       </WrapMovie>
 
       <ActorListWrap>
-        {/* <StarringTitle>Starring </StarringTitle> */}
         <ActorList>
           {cast.map((actor) => (
             <ActorWrap >
@@ -146,11 +138,6 @@ export const MovieDetail = () => {
           ))}
         </ActorList>
       </ActorListWrap>
-
-      <Comments
-        movieId={movie.id}
-        movieTitle={movie.title}
-      />
 
       <ShowSimilar>
         <SimilarTitle>Similar movies</SimilarTitle>

@@ -4,7 +4,8 @@ import { MovieCards } from '../components/MovieCards'
 import { UserList } from '../components/UserList'
 import { ui } from '../reducers/ui'
 import {
-  ButtonMore, ErrorMessage, MovieTitle, WrapperWelcomeBox, Number, OtherButtonMore, Sort, Yellow, YellowButtonMore
+  ButtonMore, ErrorMessage, MovieTitle, Number, OtherButtonMore, Sort, 
+  Yellow, YellowButtonMore, WrapperWelcomeBox
 } from '../components/Styling'
 
 const url = 'https://final-movie-match.herokuapp.com/secrets'

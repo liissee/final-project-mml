@@ -1,5 +1,5 @@
-
-.buttonwrapper {
+/* Styling Comments.js */
+/* .buttonwrapper {
   align-items: baseline;
   display: flex;
   justify-content: space-between;
@@ -46,20 +46,20 @@
   margin-left: 2vw;
 }
 
-.inside-cards{  
+.inside-cards { 
+  background: rgba(29, 43, 49, 0.11); 
+  border: solid 1px #ffcf3c;
+  color: white;
   display: flex;
-background: rgba(29, 43, 49, 0.11);
   flex-direction: column;
   justify-content: space-between;
-  width: 300px;
-  max-height: 130px;
-  border: solid 1px #ffcf3c;
   margin: 10px;
-  padding: 20px 20px 10px 20px;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
+  max-height: 130px;
   overflow: scroll;
-  color: white;
+  overflow-wrap: break-word;
+  padding: 20px 20px 10px 20px;
+  width: 300px;
+  word-wrap: break-word;
 }
 
 
@@ -73,16 +73,16 @@ background: rgba(29, 43, 49, 0.11);
 }
 
 textarea, input {
-  padding: 7px;
-  opacity: 1;
   background: #fff;
-  width: 100%;
   border: none;
   border: 1px solid #93989d;
+  opacity: 1;
+  padding: 7px;
+  width: 100%;
 }
 
 .textarea-review {
   height: 10vh;
   margin-bottom: 2vh;
   width: 400px;
-}
+} */

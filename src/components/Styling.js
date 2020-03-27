@@ -22,6 +22,24 @@ export const Link = styled.link`
   }
 `
 
+
+// Comments /////////////////////////////////////////////
+// export const NewComment = styled.textarea`
+//   border: 2px solid #fe5426;
+//   border-radius: 2px;
+//   font-size: 14px;
+//   height: 80px;
+//   max-width: 300px;
+//   padding: 5px;
+//   resize: none;
+//   width: 100%;
+//   @media(min-width: 768px) {
+//     font-size: 16px;
+//     width: 475px;
+//   }
+// `
+
+
 // Hamburger /////////////////////////////////////////////
 export const HamburgerWrap = styled.div`
   display: inline-block;
@@ -492,6 +510,153 @@ export const YourRating = styled.h2`
   margin-top: 0;
 `
 
+// MoviesList /////////////////////////////////////////////
+export const HoverDetails = styled.div`
+  background: #25090183;
+  border-radius: 10px;
+  bottom: 0;
+  display: none;
+  left: 0;
+  padding: 20px;
+  position: absolute;
+  right: 0;
+  top: 0;
+`
+export const ListImage = styled.img`
+  border-radius: 10px;
+  height: 100%;
+  width:100%;
+  @media (max-width: 600px) {
+    border-radius: 10px 0 0 10px;
+    height: 98%;
+    padding-left: 2px;
+    width: auto;
+    z-index: 1;
+  }
+`
+export const MobileView = styled.div`
+  & .movie-title {
+    margin-bottom: 0;
+  }
+@media(max-width: 600px) {
+  bottom: 0%;
+  left: 38%;
+  position: absolute;
+  right: 0;
+  top: 10%;
+  & .movie-info {
+    font-size: 1.1em;
+  }
+  & .rating {
+    margin-left: 20px;
+  }
+}
+`
+export const MovieList = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 20px;
+  &:hover {
+    &:hover${HoverDetails} .white-link {
+      color: white;
+      display: block;
+      text-decoration: none;
+    }
+  }
+  &:hover${HoverDetails} {
+    background: #25090183;
+    border-radius: 10px;
+    bottom: 0;
+    display: none;
+    left: 0;
+    padding: 20px;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  
+  @media(max-width: 600px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 0px;
+    & .hover-details {
+      background: rgb(31,33,40);
+      background: radial-gradient(circle, rgba(31,33,40,0.9346113445378151) 0%, rgba(23,23,25,0.9878326330532213) 100%);
+      border: 2px solid #f5b333;
+      display: block;
+      border-radius: 10px;
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+    & .movie-title {
+      margin-bottom: 0;
+      margin-top: auto;
+      overflow: hidden;
+      padding: 0 20px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+  }
+`
+
+export const MovieWrapper = styled.div`
+  border-radius: 10px;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.568);
+  color: #fff;
+  margin: 10px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  width: 250px;
+  &:hover .white-link:hover {
+    display: block;
+    color: white;
+    text-decoration: none;
+    transform: scale(1.1);
+  @media (max-width: 600px) {
+      transform: none;
+  }
+  }
+  &:hover .hover-details {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  @media (max-width: 600px) {
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, .5);
+    color: #fff;
+    display: flex;
+    height: 25vh;
+    justify-content: flex-start;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+  }
+`
+
+export const RatingBox = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-right: 15%;
+`
+export const StyledLink = styled(Link)`
+`
+
+// From actors component
+export const ActorTitle = styled(MovieTitle)`
+  margin: 50px 0 0 50px;
+`
+
 
 // MoviesMatched /////////////////////////////////////////////
 export const RatingsText = styled.p`
@@ -552,10 +717,6 @@ export const HeaderTitle = styled.h1`
     transition: color 0.3s linear;
   }
 `
-// export const MainStartContainer = styled.div`
-//   height: 100%;
-//   width: 100%;
-// `
 export const NavRightContainer = styled.div`
   align-items: baseline;
   display: flex;
@@ -795,175 +956,4 @@ cursor: pointer;
 
 // Other /////////////////////////////////////////////
 export const SearchContainer = styled.div`
-`
-
-// Comments /////////////////////////////////////////////
-export const NewComment = styled.textarea`
-  border: 2px solid #fe5426;
-  border-radius: 2px;
-  width: 100%;
-  max-width: 300px;
-  height: 80px;
-  resize: none;
-  padding: 5px;
-  font-size: 14px;
-  @media(min-width: 768px) {
-    width: 475px;
-    font-size: 16px;
-  }
-`
-
-// MoviesList /////////////////////////////////////////////
-export const HoverDetails = styled.div`
-    background: #25090183;
-    border-radius: 10px;
-    bottom: 0;
-    display: none;
-    left: 0;
-    padding: 20px;
-    position: absolute;
-    right: 0;
-    top: 0;
-`
-
-export const StyledLink = styled(Link)`
-
-`
-
-export const MovieList = styled.section`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  margin: 20px;
-  &:hover {
-    &:hover${HoverDetails} .white-link {
-      display: block;
-      color: white;
-      text-decoration: none;
-    }
-  }
-  &:hover${HoverDetails} {
-    background: #25090183;
-    border-radius: 10px;
-    bottom: 0;
-    display: none;
-    left: 0;
-    padding: 20px;
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  
-  @media(max-width: 600px) {
-    display:flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  margin: 0px;
-  & .hover-details {
-    background: rgb(31,33,40);
-    background: radial-gradient(circle, rgba(31,33,40,0.9346113445378151) 0%, rgba(23,23,25,0.9878326330532213) 100%);
-    border: 2px solid #f5b333;
-    display: block;
-    border-radius: 10px;
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    & .movie-title {
-      margin-bottom: 0;
-      margin-top: auto;
-      overflow: hidden;
-      padding: 0 20px;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-  }
-  }
-`
-
-export const ListImage = styled.img`
-  border-radius: 10px;
-  height: 100%;
-  width:100%;
-  @media (max-width: 600px) {
-    border-radius: 10px 0 0 10px;
-height: 98%;
-width: auto;
-    /* height: 29.5vh; */
-    padding-left: 2px;
-    /* width: 40%; */
-    z-index: 1;
-  }
-`
-
-export const MovieWrapper = styled.div`
- border-radius: 10px;
-  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.568);
-  color: #fff;
-  margin: 10px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  width: 250px;
-  &:hover .white-link:hover {
-      display: block;
-      color: white;
-      text-decoration: none;
-      transform: scale(1.1);
-      @media (max-width: 600px) {
-        transform: none;
-      }
-    }
-    &:hover .hover-details {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-    @media (max-width: 600px) {
-      align-items: center;
-      border-radius: 10px;
-      box-shadow: 3px 3px 20px rgba(0, 0, 0, .5);
-      color: #fff;
-      display: flex;
-      height: 25vh;
-      justify-content: flex-start;
-      position: relative;
-      text-align: center;
-      text-decoration: none;
-      width: 100%;
-    }
-`
-
-export const RatingBox = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  margin-right: 15%;
-`
-
-export const MobileView = styled.div`
-  & .movie-title {
-    margin-bottom: 0;
-  }
-@media(max-width: 600px) {
-  bottom: 0%;
-  left: 38%;
-  position: absolute;
-  right: 0;
-  top: 10%;
-  & .movie-info {
-    font-size: 1.1em;
-  }
-  & .rating {
-    margin-left: 20px;
-  }
-}
-`
-
-
-//
-export const ActorTitle = styled(MovieTitle)`
-margin: 50px 0 0 50px;
 `

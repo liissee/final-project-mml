@@ -4,8 +4,8 @@ import { useParams } from 'react-router-dom'
 import Icon from '@material-ui/core/Icon'
 import { MoviesMatched } from '../components/MoviesMatched'
 import styled, { keyframes } from 'styled-components/macro'
+import StarBorderIcon from '@material-ui/icons/StarBorder'
 import { WrapperWelcomeBox } from "../components/Styling"
-import StarBorderIcon from '@material-ui/icons/StarBorder';
 
 export const OtherUser = () => {
   const [moviesRated, setMoviesRated] = useState([])
@@ -162,11 +162,9 @@ const OthersRating = styled.div`
   top: 74px;
   @media(min-width: 768px) {
     left: 216px;
-    /* top: 80px; */
   }
   @media(min-width: 1024px) {
     left: 220px;
-    /* top: 80px; */
   }
 `
 const OtherUserMain = styled.section`

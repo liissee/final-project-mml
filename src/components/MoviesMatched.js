@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import { Ratings } from './Ratings'
 import { WatchStatus } from './WatchStatus'
 import {
-  MovieCard, MovieCardInfo, MovieCardTitle, MovieTags,
+  ImdbLink, MovieCard, MovieCardInfo, MovieCardTitle, MovieTags,
   RatingsText, StyledMovieImage, StyledRatings,
-  WrapMovieCard, WrapMovieCardInfo, ImdbLink
+  WrapMovieCard, WrapMovieCardInfo
 } from './Styling'
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY

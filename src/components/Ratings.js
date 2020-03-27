@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import Box from '@material-ui/core/Box'
 import { Rating } from '@material-ui/lab'
+import StarBorderIcon from '@material-ui/icons/StarBorder'
 import styled from 'styled-components/macro'
 import { RatingButtonContainer } from './Styling'
-import Icon from '@material-ui/core/Icon'
-import StarBorderIcon from '@material-ui/icons/StarBorder';
 
 
 export const Ratings = ({ movieId, movieTitle }) => {
@@ -52,8 +51,6 @@ export const Ratings = ({ movieId, movieTitle }) => {
           borderColor="transparent"
           marginBottom="0px"
           width="100px"
-        // borderRadius="10px"
-        // bgcolor="rgba(255, 255, 255, 0.6)"
         >
           <Rating
             name={"customized-empty" + movieId}

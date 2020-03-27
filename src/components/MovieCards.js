@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import { Ratings } from './Ratings'
 import { WatchStatus } from './WatchStatus'
 import {
-  MovieCard, MovieCardInfo, MovieCardTitle, MovieImage,
-  MovieTags, WrapMovieCard, WrapMovieCardInfo, MovieCardOverview, ImdbLink
+  ImdbLink, MovieCard, MovieCardInfo, MovieCardTitle, MovieCardOverview, 
+  MovieImage, MovieTags, WrapMovieCard, WrapMovieCardInfo
 } from './Styling'
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
@@ -43,6 +43,7 @@ export const MovieCards = ({ id }) => {
     return date.substring(0, 4)
   }
 
+  
   return (
     <MovieCard
       key={id}

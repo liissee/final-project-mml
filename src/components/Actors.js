@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams, Link } from 'react-router-dom'
 import 'pages/movielist.css'
-import { ActorTitle, ImageNotFound, ButtonContainer, ButtonMore, ErrorMessage, HoverDetails, MovieList, MovieWrapper, MovieTitle, MovieInfo, ListImage, RatingBox, MobileView } from '../components/Styling'
+import { 
+  ActorTitle, HoverDetails, ListImage, MobileView, 
+  MovieInfo, MovieList, MovieTitle, MovieWrapper
+} from '../components/Styling'
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
 
@@ -20,6 +23,7 @@ export const Actors = () => {
       })
   }, [castId])
 
+  
   return (
     <div className="top-movie-list">
       <ActorTitle>Movies with {name}</ActorTitle>

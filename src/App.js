@@ -35,7 +35,6 @@ export const App = () => {
         <Route path="/" exact>
           <MoviesList />
         </Route>
-        {/* <Main> */}
         <Switch>
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Registration} />
@@ -46,7 +45,6 @@ export const App = () => {
           <Route exact path="/similar/:id" component={Similar} />
           <Route exact path="/cast/:castId" component={Actors} />
         </Switch>
-        {/* </Main> */}
       </BrowserRouter>
     </Provider>
   )
