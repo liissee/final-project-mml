@@ -357,6 +357,7 @@ export const ActorWrap = styled.div`
   justify-content: center;
   padding: 10px;
 `
+
 export const Genre = styled.div`
   background: #B22222;
   color: white;
@@ -789,6 +790,7 @@ border: none;
 height: 50px;
 position: relative;
 width: 50px;
+cursor: pointer;
 `
 
 // Other /////////////////////////////////////////////
@@ -958,4 +960,10 @@ export const MobileView = styled.div`
     margin-left: 20px;
   }
 }
+`
+
+
+//
+export const ActorTitle = styled(MovieTitle)`
+margin: 50px 0 0 50px;
 `
