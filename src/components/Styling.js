@@ -407,11 +407,10 @@ export const MovieOverview = styled.div`
 `
 export const MovieTitle = styled.h1`
   color: white;
-  margin-top: 2vh;
+  margin: 0;
   text-decoration: none;
   font-family: 'Raleway', sans-serif;
   @media(min-width: 768px) {
-    margin-top: 0;
   }
 `
 

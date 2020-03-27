@@ -20,10 +20,6 @@ export const Actors = () => {
       })
   }, [castId])
 
-  const cutOutDate = (date) => {
-    return date.substring(0, 4)
-  }
-
   return (
     <div className="top-movie-list">
       <MovieTitle>Movies with {name}</MovieTitle>
@@ -43,7 +39,7 @@ export const Actors = () => {
                   <MovieTitle>{persons.title}</MovieTitle>
                 </Link>
                 <MovieInfo>Character: {persons.character}</MovieInfo>
-                <MovieInfo>{cutOutDate(persons.release_date)}</MovieInfo>
+                <MovieInfo>{persons.release_date}</MovieInfo>
               </MobileView>
             </HoverDetails>
 
