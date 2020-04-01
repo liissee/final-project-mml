@@ -24,20 +24,84 @@ export const Link = styled.link`
 
 
 // Comments /////////////////////////////////////////////
-// export const NewComment = styled.textarea`
-//   border: 2px solid #fe5426;
-//   border-radius: 2px;
-//   font-size: 14px;
-//   height: 80px;
-//   max-width: 300px;
-//   padding: 5px;
-//   resize: none;
-//   width: 100%;
-//   @media(min-width: 768px) {
-//     font-size: 16px;
-//     width: 475px;
-//   }
-// `
+export const NewComment = styled.textarea`
+  border: 2px solid #fe5426;
+  border-radius: 2px;
+  font-size: 14px;
+  height: 80px;
+  max-width: 300px;
+  padding: 5px;
+  resize: none;
+  width: 100%;
+  @media(min-width: 768px) {
+    font-size: 16px;
+    width: 475px;
+  }
+`
+
+export const CommentForm = styled.form`
+/* background: #ebebeb; */
+  /* border: solid 1px #7e7e7e; */
+  /* box-shadow: 5px 5px; */
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  justify-content: space-between;
+  /* margin-top: 20px; */
+  padding: 0 20px;
+`
+
+export const CommentTitle = styled.h1`
+  color: white;
+  margin-top: 0;
+`
+
+export const CommentCard = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  height: 400px;
+  overflow: scroll;
+`
+export const CommentText = styled.div`
+font-size: 14px;
+`
+export const CardsWrapper = styled.div`
+display: flex;
+  flex-direction: column;
+  margin-left: 2vw;
+  margin-top: 2vh;
+`
+
+export const InsideCards = styled.div`
+  background: rgba(29, 43, 49, 0.11); 
+  border: solid 1px #ffcf3c;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 10px;
+  max-height: 130px;
+  overflow: scroll;
+  overflow-wrap: break-word;
+  padding: 20px 20px 10px 20px;
+  width: 300px;
+  word-wrap: break-word;`
+
+export const TextLength = styled.div`
+  color: white;  
+  display: flex;
+  .red {
+  color:red;
+}
+
+`
+
+export const ButtonWrapper = styled.div`
+align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+`
 
 
 // Hamburger /////////////////////////////////////////////
@@ -465,6 +529,9 @@ export const ActorWrap = styled.div`
   display: flex;
   justify-content: center;
   padding: 10px;
+  & .white-link:hover {
+    text-decoration: underline white;
+  }
 `
 
 export const Genre = styled.div`
@@ -494,12 +561,18 @@ export const MovieDetailRow = styled.div`
   flex-wrap: wrap;
   margin-top: 1vh;
 `
-export const MovieImdb = styled.h3`
+
+export const MovieImdb = styled.a`
   background: #FFD700;
   color: black;
   margin: 0;
   margin-left: 5vw;
   padding: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  &:hover {
+    color: black;
+  }
   @media(min-width: 768px) {
     margin-left: 1vw;
   }

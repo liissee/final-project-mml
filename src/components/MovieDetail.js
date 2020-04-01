@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useParams, Link } from 'react-router-dom'
-// import { Comments } from './Comments'
+import { Comments } from './Comments'
 import { Ratings } from './Ratings'
 import { Similar } from './Similar'
 import { WatchStatus } from './WatchStatus'
 import { movies } from '../reducers/movies'
 import {
-  ActorImage, ActorImageWrap, ActorList, ActorListWrap, ActorName, ActorWrap, 
+  ActorImage, ActorImageWrap, ActorList, ActorListWrap, ActorName, ActorWrap,
   Genre, MovieBackground, MovieDetailGenres, MovieDetailImage, MovieDetailRow,
   MovieImdb, MovieInfo, MovieOverview, MovieTitle, RatingMovieWrap, ShowSimilar,
   SimilarTitle, WrapMovie, WrapMovieInfo
@@ -103,13 +103,13 @@ export const MovieDetail = () => {
           <MovieOverview>{movie.overview}</MovieOverview>
           <MovieDetailRow>
             <MovieInfo><span aria-label="emoji">⏱</span> {movie.runtime} min</MovieInfo>
-            <a
+            <MovieImdb
               href={`https://www.imdb.com/title/${movie.imdb_id}`}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <MovieImdb>IMDb</MovieImdb>
-            </a>
+              IMDb
+            </MovieImdb>
           </MovieDetailRow>
         </WrapMovieInfo>
       </WrapMovie>
@@ -118,7 +118,7 @@ export const MovieDetail = () => {
         <ActorList>
           {cast.map((actor) => (
             <ActorWrap >
-              <Link key={actor.id} to={`/cast/${actor.id}`} onClick={(e) => handleActor(actor.name)}>
+              <Link key={actor.id} to={`/cast/${actor.id}`} className="white-link" onClick={(e) => handleActor(actor.name)}>
                 {actor.profile_path && (
                   <ActorImageWrap>
                     <ActorImage
@@ -138,6 +138,11 @@ export const MovieDetail = () => {
           ))}
         </ActorList>
       </ActorListWrap>
+
+      <Comments
+        movieId={movie.id}
+        movieTitle={movie.title}
+      />
 
       <ShowSimilar>
         <SimilarTitle>Similar movies</SimilarTitle>
