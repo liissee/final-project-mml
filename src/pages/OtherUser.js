@@ -5,7 +5,7 @@ import Icon from '@material-ui/core/Icon'
 import { MoviesMatched } from '../components/MoviesMatched'
 import styled, { keyframes } from 'styled-components/macro'
 import StarBorderIcon from '@material-ui/icons/StarBorder'
-import { WrapperWelcomeBox } from "../components/Styling"
+import { WrapperWelcomeBox, UserNames2, UserName2, UserName3 } from "../components/Styling"
 
 export const OtherUser = () => {
   const [moviesRated, setMoviesRated] = useState([])
@@ -103,10 +103,10 @@ export const OtherUser = () => {
     <OtherUserMain>
       <WrapperOtherUser>
         <Header>
-          <UserNames>USERNAME: {userName}</UserNames>
+          <UserName2><span>{userName}</span></UserName2>
           {watchList.length > 0
-            ? <MoviesRatedParagraph>YEY! YOU HAVE A MATCH ON {watchList.length} MOVIES </MoviesRatedParagraph>
-            : <MoviesRatedParagraph>Add some movies to your watchlist and see if you have a match with {userName}!</MoviesRatedParagraph>
+            ? <UserName3>YEY! YOU AND {userName} HAVE A MATCH ON {watchList.length} MOVIES </UserName3>
+            : <UserName3>Add some movies to your watchlist and see if you have a match with {userName}!</UserName3>
           }
         </Header>
         <WrapperWelcomeBox>
@@ -117,7 +117,7 @@ export const OtherUser = () => {
             </RatedCard>
           ))}
         </WrapperWelcomeBox>
-        <MoviesRatedParagraph>Movies that {userName} has rated </MoviesRatedParagraph>
+        <UserName3>Movies that {userName} has rated </UserName3>
         <Rated>
           {moviesRated.map((movie) => (
             movie.rating &&
@@ -134,19 +134,10 @@ export const OtherUser = () => {
 
 
 const Header = styled.section`
-`
-const jump = keyframes`
-  0%   {transform: translate3d(0,0,0);}
-  20%  {transform: translate3d(0,10%,0);}
-  40%  {transform: translate3d(0,30%,0);}
-  50%  {transform: translate3d(0,50%,0);}
-  100% {transform: translate3d(0,50%,0);}
-`
-const Image = styled.img`
-  animation: ${jump} .5s linear alternate infinite;
-  transform-origin: 50% 50%;
-`
-const Matched = styled.section`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 `
 const MoviesRatedParagraph = styled.h3`
   font-size: 1.5;
@@ -190,12 +181,12 @@ const RatedSpan = styled.span`
   padding: 4px 2px 0 0;
 `
 
-const UserNames = styled.h1`
-  font-size: 1.5em;
-  font-weight: normal;
-  padding: 20px;
-  text-align: center;
-`
+// const UserNames = styled.h1`
+//   font-size: 1.5em;
+//   font-weight: normal;
+//   padding: 20px;
+//   text-align: center;
+// `
 const WrapperOtherUser = styled.div`
   color: white;
 `

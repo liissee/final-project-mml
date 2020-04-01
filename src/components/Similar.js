@@ -3,8 +3,8 @@ import { useParams, Link } from 'react-router-dom'
 import { Ratings } from './Ratings'
 import { WatchStatus } from './WatchStatus'
 import 'pages/movielist.css'
-import { 
-  HoverDetails, ListImage, MobileView, MovieInfo, 
+import {
+  HoverDetails, ListImage, MobileView, MovieInfo,
   MovieList, MovieTitle, MovieWrapper, RatingBox
 } from '../components/Styling'
 
@@ -23,10 +23,6 @@ export const Similar = () => {
       })
   }, [id])
 
-  const cutOutDate = (date) => {
-    return date.substring(0, 4)
-  }
-
   return (
     <div className="top-movie-list">
       <MovieList className="movie-list">
@@ -41,11 +37,11 @@ export const Similar = () => {
             )}
             <HoverDetails className="hover-details">
               <MobileView className="mobile-view ">
-                <Link key={movie.id} to={`/movies/${movie.id}`}>
+                <Link key={movie.id} to={`/movies/${movie.id}`} className="white-link">
                   <MovieTitle>{movie.original_title}</MovieTitle>
+                  <MovieInfo>{movie.release_date}</MovieInfo>
                 </Link>
                 <RatingBox className="rating">
-                  <MovieInfo>{cutOutDate(movie.release_date)}</MovieInfo>
                   <Ratings movieId={movie.id} movieTitle={movie.title} />
                 </RatingBox>
                 <>

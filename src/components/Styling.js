@@ -228,6 +228,48 @@ export const LogoutStaticButton = styled.button`
 }
 `
 
+//OtherUser headings
+export const UserName2 = styled.div`
+text-transform: uppercase;
+span {
+  margin: 20px;
+  background: #fe5426;
+  padding: 3px 20px;
+  color: #000f3c;
+  display: inline-block;
+  font-size: 24px;
+}
+}
+`
+
+export const UserName3 = styled(UserName2)`
+background: transparent;
+font-size: 24px;
+    color: #fe5426;
+    text-align: center;
+    padding: 20px;
+    margin:0;
+`
+
+export const UserNames2 = styled.div`
+  color: #000f3c;
+  margin-bottom: 2vh;
+  margin-top: 6vh;
+  font-size: 1.5em;
+  font-weight: normal;
+  padding: 20px;
+  text-align: center;
+`
+
+export const Wrapper2 = styled.div`
+  background: inherit;
+  color: white;
+  margin: 60px auto;
+  padding: 20px 30px 30px 30px;
+  text-align: center;
+`
+
+
 
 // MovieCards on UserPage and OtherUser components /////////////////////////////////////////////
 export const ImageNotFound = styled.img`
@@ -314,6 +356,10 @@ export const WrapMovieCard = styled.div`
   display: flex;
   flex-direction: row;
   border-radius: 20px 0 0 20px;
+  &:hover .white-link:hover {
+    color: white;
+    text-decoration: underline;
+  }
 `
 export const WrapMovieCardInfo = styled.div`
   display: flex;
@@ -429,7 +475,8 @@ export const MovieTitle = styled.h1`
   margin: 0;
   text-decoration: none;
   font-family: 'Raleway', sans-serif;
-  @media(min-width: 768px) {
+  &:hover {
+    text-decoration: none;
   }
 `
 
