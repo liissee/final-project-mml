@@ -16,8 +16,8 @@ export const Comments = ({ movieId, movieTitle }) => {
   const [postedComment, setPostedComment] = useState("")
   const [reviews, setShowReviews] = useState(false)
 
-  //const url = "https://final-movie-match.herokuapp.com"
-  const url = "http://localhost:8080"
+  const url = "https://final-movie-match.herokuapp.com"
+  // const url = "http://localhost:8080"
 
   const handleSubmit = (comment) => {
     fetch(`${url}/comments/${movieId}`, {
