@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom'
 import { DropDownList } from 'components/DropDownList'
 import { Ratings } from '../components/Ratings'
 import { WatchStatus } from '../components/WatchStatus'
-import 'pages/movielist.css'
-import { 
-  ButtonContainer, ButtonMore, ErrorMessage, HoverDetails, 
-  ListImage, MobileView, MovieInfo, MovieList, MovieTitle, 
-  MovieWrapper, RatingBox 
+import {
+  ButtonContainer, ButtonMore, ErrorMessage, HoverDetails,
+  ListImage, MobileView, MovieInfo, MovieList, MovieTitle,
+  MovieWrapper, RatingBox
 } from '../components/Styling'
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY

@@ -228,7 +228,7 @@ export const LogoutStaticButton = styled.button`
 }
 `
 
-//OtherUser headings
+//OtherUser Page
 export const UserName2 = styled.div`
 text-transform: uppercase;
 span {
@@ -269,7 +269,52 @@ export const Wrapper2 = styled.div`
   text-align: center;
 `
 
+export const HeaderOtherUser = styled.section`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+`
 
+export const OthersRating = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  left: 155px;
+  position: absolute;
+  top: 74px;
+  @media(min-width: 768px) {
+    left: 216px;
+  }
+  @media(min-width: 1024px) {
+    left: 220px;
+  }
+`
+export const OtherUserMain = styled.section`
+`
+export const Rated = styled.section`
+  background: transparent;
+  margin-top: 10px;
+  max-width: 900px;
+  border-radius: 8px;
+  display: block;
+  margin: 60px auto;
+  &.link-text {
+    text-decoration: none;
+  }
+  @media(min-width: 768px) {
+    padding: 20px 30px 30px 30px;
+  }
+`
+export const RatedCard = styled.div`
+  position: relative;
+`
+export const RatedSpan = styled.span`
+  padding: 4px 2px 0 0;
+`
+
+export const WrapperOtherUser = styled.div`
+  color: white;
+`
 
 // MovieCards on UserPage and OtherUser components /////////////////////////////////////////////
 export const ImageNotFound = styled.img`
@@ -768,7 +813,9 @@ export const NavRightContainer = styled.div`
   align-items: baseline;
   display: flex;
   flex-direction: row;
-  /* margin-left: auto; */
+  & .white-link:hover{
+    text-decoration: none;
+  }
   @media(max-width: 600px) {
     display: flex;  
     margin-right: 10px;

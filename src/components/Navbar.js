@@ -38,7 +38,7 @@ export const Navbar = () => {
         </HeaderTitle>
         <Searchbar />
         <NavRightContainer>
-          <Link to={`/users/${userId}/movies`} onClick={() => { handleTabChange("watch") }}>
+          <Link to={`/users/${userId}/movies`} className="white-link" onClick={() => { handleTabChange("watch") }}>
             <UserNameNav>{userName}</UserNameNav>
           </Link>
           {!accessToken &&
