@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import 'components/comments.css'
 import EdiText from "react-editext"
 import styled from "styled-components/macro"
-import { ButtonShowReviews, ButtonWatch, ButtonWrapper, CommentText, NewComment, CommentForm, CommentTitle, CommentCard, CardsWrapper, InsideCards, TextLength } from './Styling'
+import { ButtonShowReviews, ButtonWatch, RemoveButton, ButtonWrapper, CommentText, NewComment, CommentForm, CommentTitle, CommentCard, CardsWrapper, InsideCards, TextLength, CommentUserName } from './Styling'
 import moment from "moment"
 
 export const Comments = ({ movieId, movieTitle }) => {
@@ -14,7 +14,7 @@ export const Comments = ({ movieId, movieTitle }) => {
   const [comment, setComment] = useState("")
   const [comments, setComments] = useState([])
   const [postedComment, setPostedComment] = useState("")
-  const [reviews, setShowReviews] = useState(false)
+  const [showReviews, setShowReviews] = useState(false)
 
   const url = "https://final-movie-match.herokuapp.com"
   // const url = "http://localhost:8080"
@@ -49,7 +49,7 @@ export const Comments = ({ movieId, movieTitle }) => {
   }
 
   const handleReviews = () => {
-    setShowReviews(!reviews)
+    setShowReviews(!showReviews)
   }
 
   const handleRemove = (createdAt) => {
@@ -96,20 +96,17 @@ export const Comments = ({ movieId, movieTitle }) => {
       >
         Show reviews
       </ButtonShowReviews>
-      {reviews && (
+      {showReviews && (
         <CardsWrapper>
           <CommentCard>
 
             {comments[0] && comments.map((comment) => (
               <>
                 <InsideCards>
-                  <CommentText>{comment.userName}</CommentText>
+                  <CommentUserName><span>{comment.userName}</span>{moment(comment.createdAt).fromNow()}{comment.userName === userName && (
+                    <RemoveButton typ="button" onClick={() => { handleRemove(comment.createdAt) }}>❌</RemoveButton>
+                  )}</CommentUserName>
                   <CommentText>{comment.comment}</CommentText>
-                  <CommentText>{moment(comment.createdAt).fromNow()}</CommentText>
-                  {/* <p>Username: {comment.userName}</p> */}
-                  {comment.userName === userName && (
-                    <ButtonWatch typ="button" onClick={() => { handleRemove(comment.createdAt) }}>Remove</ButtonWatch>
-                  )}
                 </InsideCards>
 
                 {/* <StyledEdiText

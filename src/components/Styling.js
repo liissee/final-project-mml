@@ -22,88 +22,6 @@ export const Link = styled.link`
   }
 `
 
-
-// Comments /////////////////////////////////////////////
-export const NewComment = styled.textarea`
-  border: 2px solid #fe5426;
-  border-radius: 2px;
-  font-size: 14px;
-  height: 80px;
-  max-width: 300px;
-  padding: 5px;
-  resize: none;
-  width: 100%;
-  @media(min-width: 768px) {
-    font-size: 16px;
-    width: 475px;
-  }
-`
-
-export const CommentForm = styled.form`
-/* background: #ebebeb; */
-  /* border: solid 1px #7e7e7e; */
-  /* box-shadow: 5px 5px; */
-  display: flex;
-  flex-direction: column;
-  height: 200px;
-  justify-content: space-between;
-  /* margin-top: 20px; */
-  padding: 0 20px;
-`
-
-export const CommentTitle = styled.h1`
-  color: white;
-  margin-top: 0;
-`
-
-export const CommentCard = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  height: 400px;
-  overflow: scroll;
-`
-export const CommentText = styled.div`
-font-size: 14px;
-`
-export const CardsWrapper = styled.div`
-display: flex;
-  flex-direction: column;
-  margin-left: 2vw;
-  margin-top: 2vh;
-`
-
-export const InsideCards = styled.div`
-  background: rgba(29, 43, 49, 0.11); 
-  border: solid 1px #ffcf3c;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin: 10px;
-  max-height: 130px;
-  overflow: scroll;
-  overflow-wrap: break-word;
-  padding: 20px 20px 10px 20px;
-  width: 300px;
-  word-wrap: break-word;`
-
-export const TextLength = styled.div`
-  color: white;  
-  display: flex;
-  .red {
-  color:red;
-}
-
-`
-
-export const ButtonWrapper = styled.div`
-align-items: baseline;
-  display: flex;
-  justify-content: space-between;
-  width: 400px;
-`
-
-
 // Hamburger /////////////////////////////////////////////
 export const HamburgerWrap = styled.div`
   display: inline-block;
@@ -268,7 +186,6 @@ export const Label = styled.label`
   padding: 10px;  
 `
 
-
 // Logout /////////////////////////////////////////////
 export const LogoutStaticButton = styled.button`
   background: #ffcf3c;
@@ -292,6 +209,43 @@ export const LogoutStaticButton = styled.button`
 }
 `
 
+//UserList
+export const ListWrapper = styled.div`
+  background: inherit;
+  color: white;
+  margin: 60px auto;
+  padding: 20px 30px 30px 30px;
+  text-align: center;
+`
+
+export const InfoText = styled.h2`
+  font-family: 'Raleway', sans-serif;
+`
+
+export const ListUserName = styled.div`
+  margin: 5px;
+  a{
+  text-decoration: none;}
+  span {
+    background: #fe5426;
+    padding: 3px 20px;
+    color: #000f3c;
+  &:hover {
+    color:  #fe5426;
+    background: #000f3c;
+  }
+}
+`
+
+export const ListUserNames = styled.div`
+  color: #000f3c;
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  margin-bottom: 2vh;
+  margin-top: 6vh;
+`
+
 //OtherUser Page
 export const UserName2 = styled.div`
 text-transform: uppercase;
@@ -307,12 +261,12 @@ span {
 `
 
 export const UserName3 = styled(UserName2)`
-background: transparent;
-font-size: 24px;
-    color: #fe5426;
-    text-align: center;
-    padding: 20px;
-    margin:0;
+  background: transparent;
+  font-size: 24px;
+  color: #fe5426;
+  text-align: center;
+  padding: 20px;
+  margin:0;
 `
 
 export const UserNames2 = styled.div`
@@ -1119,6 +1073,113 @@ height: 50px;
 position: relative;
 width: 50px;
 cursor: pointer;
+`
+
+// Comments /////////////////////////////////////////////
+export const CommentForm = styled.form`
+/* background: #ebebeb; */
+  /* border: solid 1px #7e7e7e; */
+  /* box-shadow: 5px 5px; */
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  justify-content: space-between;
+  /* margin-top: 20px; */
+  padding: 0 20px;
+`
+
+export const CommentTitle = styled.h1`
+  color: white;
+  margin-top: 0;
+`
+
+export const TextLength = styled.div`
+  color: white;  
+  display: flex;
+  .red {
+  color:red;
+}
+`
+
+export const NewComment = styled.textarea`
+  border: 2px solid #fe5426;
+  border-radius: 2px;
+  font-size: 14px;
+  height: 80px;
+  max-width: 300px;
+  padding: 5px;
+  resize: none;
+  width: 100%;
+  @media(min-width: 768px) {
+    font-size: 16px;
+    width: 475px;
+  }
+`
+
+export const CardsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 2vw;
+  margin-top: 2vh;
+`
+
+export const CommentCard = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 400px;
+  overflow: scroll;
+`
+
+export const InsideCards = styled.div`
+  background: rgba(29, 43, 49, 0.11); 
+  border: solid 1px #ffcf3c;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 10px;
+  /* max-height: 130px;
+  overflow: scroll;
+  overflow-wrap: break-word; */
+  height: 83px;
+  width: 300px;
+  word-wrap: break-word;
+`
+
+export const CommentUserName = styled.div`
+  margin: 0;
+  padding-right: 5px;
+  display: flex;
+  justify-content: space-between;
+  /* background: #ffcf3c; */
+  font-size: 10px;
+  span {
+    background: #fe5426;
+    padding: 3px 10px;
+    color: #000f3c;
+    font-size: 14px;
+  }
+`
+
+export const CommentText = styled.div`
+  font-size: 14px;
+  margin: 10px 10px 0 10px;
+  /* max-height: 130px; */
+  overflow: scroll;
+  overflow-wrap: break-word;
+`
+
+export const ButtonWrapper = styled.div`
+  align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+`
+
+export const RemoveButton = styled.button`
+  border: none;
+  background: transparent;
+  cursor: pointer;
 `
 
 // Other /////////////////////////////////////////////
