@@ -559,9 +559,9 @@ align-items: center;
 margin-bottom: 5px;
 width: 350px;
   @media(max-width: 768px) {
-   flex-direction: column;
-   align-items: start;
-
+    flex-direction: column;
+    align-items: start;
+    width: 300px;
   }
 `
 export const ShowSimilar = styled.div`
@@ -585,27 +585,24 @@ export const StarringTitle = styled(MovieInfo)`
 export const WrapMovie = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 3vw;
-  margin-right: 3vw;
-  margin-top: 3vw;
+  margin: 3vw 3vw 0 3vw;
   @media(min-width: 768px) {
     display: flex;
     flex-direction: row;
-    margin-left: 2vw;
-    margin-right: 2vw;
-    margin-top: 2vw;
+    margin: 2vw 2vw 0 2vw;
   }
 `
 export const WrapMovieInfo = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 2vw;
   width: 90%;
   @media(min-width: 768px) and (max-width: 1024px) {
     width: 70%;
+    margin-left: 2vw;
   }
   @media(min-width: 1025px) {
     width: 50%;
+    margin-left: 2vw;
   }
 `
 export const WrapRating = styled.div`
@@ -961,10 +958,10 @@ export const ButtonWatch = styled(Button)`
     width: 120px;
   }
 `
-export const ButtonShowReviews = styled(ButtonWatch)`
-  margin-left: 2vw;
-  margin-top: 3vh;
-`
+// export const ButtonShowReviews = styled(ButtonWatch)`
+//   margin-left: 2vw;
+//   margin-top: 3vh;
+// `
 export const ButtonMore = styled(ButtonWatch)`
   background: #fff;
   border: #1c1a21 solid 2px;
@@ -1085,20 +1082,19 @@ export const CommentForm = styled.form`
   height: 200px;
   justify-content: space-between;
   /* margin-top: 20px; */
-  padding: 0 20px;
+  /* padding: 0 20px; */
+`
+
+export const CommentWrapper = styled.section`
+margin: 3vw 3vw 0 3vw;
+  @media(min-width: 768px) {
+    margin: 2vw 2vw 0 2vw;
+  }
 `
 
 export const CommentTitle = styled.h1`
   color: white;
   margin-top: 0;
-`
-
-export const TextLength = styled.div`
-  color: white;  
-  display: flex;
-  .red {
-  color:red;
-}
 `
 
 export const NewComment = styled.textarea`
@@ -1116,6 +1112,21 @@ export const NewComment = styled.textarea`
   }
 `
 
+export const ButtonWrapper = styled.div`
+  align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+`
+
+export const TextLength = styled.div`
+  color: white;  
+  display: flex;
+  .red {
+  color:red;
+}
+`
+
 export const CardsWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -1126,8 +1137,8 @@ export const CardsWrapper = styled.div`
 export const CommentCard = styled.div`
   display: flex;
   flex-wrap: wrap;
-  max-height: 400px;
-  overflow: scroll;
+  /* max-height: 400px; */
+  /* overflow: scroll; */
 `
 
 export const InsideCards = styled.div`
@@ -1136,7 +1147,7 @@ export const InsideCards = styled.div`
   color: white;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   margin: 10px;
   /* max-height: 130px;
   overflow: scroll;
@@ -1167,13 +1178,6 @@ export const CommentText = styled.div`
   /* max-height: 130px; */
   overflow: scroll;
   overflow-wrap: break-word;
-`
-
-export const ButtonWrapper = styled.div`
-  align-items: baseline;
-  display: flex;
-  justify-content: space-between;
-  width: 400px;
 `
 
 export const RemoveButton = styled.button`

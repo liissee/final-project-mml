@@ -4,8 +4,8 @@ import { MovieCards } from '../components/MovieCards'
 import { UserList } from '../components/UserList'
 import { ui } from '../reducers/ui'
 import {
-  ButtonMore, ErrorMessage, MovieTitle, Number, OtherButtonMore, Sort, 
-  Yellow, YellowButtonMore, WrapperWelcomeBox
+  ButtonMore, ErrorMessage, MovieTitle, Number, OtherButtonMore, Sort,
+  Yellow, YellowButtonMore, WrapperWelcomeBox, UserName3
 } from '../components/Styling'
 
 const url = 'https://final-movie-match.herokuapp.com/secrets'
@@ -90,7 +90,7 @@ export const UserPage = () => {
       {selectedTab === "watch" && (
         <WrapperWelcomeBox>
           <ErrorMessage>{errorMessage && <div>{errorMessage}</div>}</ErrorMessage>
-          {!errorMessage && <MovieTitle>Your watchlist</MovieTitle>}
+          {!errorMessage && <UserName3>Your watchlist</UserName3>}
           {movieStatus && !movieStatus.message && (
             movieStatus.map((movie) => (
               <MovieCards key={movie.movieId} id={movie.movieId} />
@@ -111,7 +111,7 @@ export const UserPage = () => {
           <ErrorMessage>{errorMessage && <div>{errorMessage}</div>}</ErrorMessage>
           {!errorMessage &&
             <>
-              <MovieTitle>Movies that you have rated</MovieTitle>
+              <UserName3>Movies that you have rated</UserName3>
               <Sort>
                 <YellowButtonMore onClick={(e) => handleSortOnRating(1)}><Number>1</Number><Yellow style={{ fontSize: 50 }}>star</Yellow></YellowButtonMore>
                 <YellowButtonMore onClick={(e) => handleSortOnRating(2)}><Number>2</Number><Yellow style={{ fontSize: 50 }}>star</Yellow></YellowButtonMore>

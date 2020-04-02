@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import 'components/comments.css'
 import EdiText from "react-editext"
 import styled from "styled-components/macro"
-import { ButtonShowReviews, ButtonWatch, RemoveButton, ButtonWrapper, CommentText, NewComment, CommentForm, CommentTitle, CommentCard, CardsWrapper, InsideCards, TextLength, CommentUserName } from './Styling'
+import { ButtonShowReviews, ButtonWatch, RemoveButton, ButtonWrapper, CommentText, NewComment, CommentForm, CommentTitle, CommentCard, CardsWrapper, InsideCards, TextLength, CommentUserName, CommentWrapper, UserName3 } from './Styling'
 import moment from "moment"
 
 export const Comments = ({ movieId, movieTitle }) => {
@@ -15,6 +15,7 @@ export const Comments = ({ movieId, movieTitle }) => {
   const [comments, setComments] = useState([])
   const [postedComment, setPostedComment] = useState("")
   const [showReviews, setShowReviews] = useState(false)
+  const [updatedMessage, setUpdatedMessage] = useState(false)
 
   const url = "https://final-movie-match.herokuapp.com"
   // const url = "http://localhost:8080"
@@ -39,7 +40,7 @@ export const Comments = ({ movieId, movieTitle }) => {
         setComments(json)
         console.log(json)
       })
-  }, [postedComment])
+  }, [postedComment, updatedMessage])
 
 
   const handleNewComment = event => {
@@ -53,6 +54,7 @@ export const Comments = ({ movieId, movieTitle }) => {
   }
 
   const handleRemove = (createdAt) => {
+    setUpdatedMessage(!updatedMessage)
     fetch(`${url}/comments/${movieId}`, {
       method: "DELETE",
       body: JSON.stringify({ userId, createdAt }),
@@ -64,9 +66,9 @@ export const Comments = ({ movieId, movieTitle }) => {
   }
 
   return (
-    <>
+    <CommentWrapper>
       <CommentForm>
-        <CommentTitle>Your review</CommentTitle>
+        <UserName3>Reviews</UserName3>
         <label>
           <NewComment
             className="textarea-review"
@@ -90,12 +92,14 @@ export const Comments = ({ movieId, movieTitle }) => {
         </ButtonWrapper>
       </CommentForm>
 
-      <ButtonShowReviews
-        type="button"
-        onClick={() => { handleReviews() }}
-      >
-        Show reviews
-      </ButtonShowReviews>
+      {comments[0] && (
+        <ButtonWatch
+          type="button"
+          onClick={() => { handleReviews() }}
+        >
+          Show reviews
+        </ButtonWatch>
+      )}
       {showReviews && (
         <CardsWrapper>
           <CommentCard>
@@ -125,7 +129,7 @@ export const Comments = ({ movieId, movieTitle }) => {
           </CommentCard>
         </CardsWrapper>
       )}
-    </>
+    </CommentWrapper>
   )
 }
 

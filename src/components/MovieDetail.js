@@ -10,7 +10,7 @@ import {
   ActorImage, ActorImageWrap, ActorList, ActorListWrap, ActorName, ActorWrap,
   Genre, MovieBackground, MovieDetailGenres, MovieDetailImage, MovieDetailRow,
   MovieImdb, MovieInfo, MovieOverview, MovieTitle, RatingMovieWrap, ShowSimilar,
-  SimilarTitle, WrapMovie, WrapMovieInfo
+  SimilarTitle, WrapMovie, WrapMovieInfo, UserName3
 } from './Styling'
 
 const API_KEY = process.env.REACT_APP_MOVIE_API_KEY
@@ -145,7 +145,7 @@ export const MovieDetail = () => {
       />
 
       <ShowSimilar>
-        <SimilarTitle>Similar movies</SimilarTitle>
+        <UserName3>Similar movies</UserName3>
         <Similar />
       </ShowSimilar>
     </MovieBackground>
