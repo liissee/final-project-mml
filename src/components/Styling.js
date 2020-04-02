@@ -540,7 +540,7 @@ export const MovieInfo = styled.h3`
 export const MovieOverview = styled.div`
   color: white;
   font-size: 16px;
-  margin-bottom: 2vh;
+  margin: 0 1vh 2vh 0;
 `
 export const MovieTitle = styled.h1`
   color: white;
@@ -586,7 +586,7 @@ export const WrapMovie = styled.div`
   display: flex;
   flex-direction: column;
   margin: 3vw 3vw 0 3vw;
-  @media(min-width: 768px) {
+  @media(min-width: 550px) {
     display: flex;
     flex-direction: row;
     margin: 2vw 2vw 0 2vw;
@@ -596,9 +596,9 @@ export const WrapMovieInfo = styled.div`
   display: flex;
   flex-direction: column;
   width: 90%;
-  @media(min-width: 768px) and (max-width: 1024px) {
+  @media(min-width: 550px) and (max-width: 1024px) {
     width: 70%;
-    margin-left: 2vw;
+    margin: 0 2vw;
   }
   @media(min-width: 1025px) {
     width: 50%;
@@ -1081,12 +1081,16 @@ export const CommentForm = styled.form`
   flex-direction: column;
   height: 200px;
   justify-content: space-between;
+  align-items: center;
   /* margin-top: 20px; */
   /* padding: 0 20px; */
 `
 
 export const CommentWrapper = styled.section`
 margin: 3vw 3vw 0 3vw;
+display: flex;
+flex-direction: column;
+align-items: center;
   @media(min-width: 768px) {
     margin: 2vw 2vw 0 2vw;
   }
@@ -1102,10 +1106,9 @@ export const NewComment = styled.textarea`
   border-radius: 2px;
   font-size: 14px;
   height: 80px;
-  max-width: 300px;
+  width: 300px;
   padding: 5px;
   resize: none;
-  width: 100%;
   @media(min-width: 768px) {
     font-size: 16px;
     width: 475px;
@@ -1117,6 +1120,9 @@ export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   width: 300px;
+  @media(min-width: 768px) {
+    width: 475px;
+  }
 `
 
 export const TextLength = styled.div`
@@ -1128,17 +1134,27 @@ export const TextLength = styled.div`
 `
 
 export const CardsWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: center; */
   margin-left: 2vw;
   margin-top: 2vh;
+  max-width: 1000px;
+  min-width: 320px;
 `
 
 export const CommentCard = styled.div`
   display: flex;
   flex-wrap: wrap;
+  /* width: 75%; */
+  /* margin: auto; */
+  justify-content: center;
+  /* align-items: center; */
   /* max-height: 400px; */
   /* overflow: scroll; */
+  &:last-child {
+    margin-right: auto;
+  }
 `
 
 export const InsideCards = styled.div`

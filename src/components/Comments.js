@@ -92,28 +92,29 @@ export const Comments = ({ movieId, movieTitle }) => {
         </ButtonWrapper>
       </CommentForm>
 
-      {comments[0] && (
+      {/* {comments[0] && (
         <ButtonWatch
           type="button"
           onClick={() => { handleReviews() }}
         >
           Show reviews
         </ButtonWatch>
-      )}
-      {showReviews && (
-        <CardsWrapper>
-          <CommentCard>
+      )} */}
 
-            {comments[0] && comments.map((comment) => (
-              <>
-                <InsideCards>
-                  <CommentUserName><span>{comment.userName}</span>{moment(comment.createdAt).fromNow()}{comment.userName === userName && (
-                    <RemoveButton typ="button" onClick={() => { handleRemove(comment.createdAt) }}>❌</RemoveButton>
-                  )}</CommentUserName>
-                  <CommentText>{comment.comment}</CommentText>
-                </InsideCards>
+      {/* {showReviews && ( */}
+      <CardsWrapper>
+        <CommentCard>
 
-                {/* <StyledEdiText
+          {comments[0] && comments.map((comment) => (
+            <>
+              <InsideCards>
+                <CommentUserName><span>{comment.userName}</span>{moment(comment.createdAt).fromNow()}{comment.userName === userName && (
+                  <RemoveButton typ="button" onClick={() => { handleRemove(comment.createdAt) }}>❌</RemoveButton>
+                )}</CommentUserName>
+                <CommentText>{comment.comment}</CommentText>
+              </InsideCards>
+
+              {/* <StyledEdiText
                   value={comment.comment}
                   type="textarea"
                   inputProps={{ rows: 5 }}
@@ -124,11 +125,11 @@ export const Comments = ({ movieId, movieTitle }) => {
                   cancelButtonContent="Avbryt"
                   editButtonContent="Edit message"
                 /> */}
-              </>
-            ))}
-          </CommentCard>
-        </CardsWrapper>
-      )}
+            </>
+          ))}
+        </CommentCard>
+      </CardsWrapper>
+      {/* )} */}
     </CommentWrapper>
   )
 }
