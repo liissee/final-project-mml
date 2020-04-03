@@ -20,14 +20,16 @@ export const Searchbar = () => {
     }
   };
 
+
   return (
     <FormSearch onSubmit={handleSubmit}>
+      <Icon icon="search" />
       <SearchLine
         value={searchTerm}
         onChange={event => setSearchTerm(event.target.value)}
         disabled={false}
         large={true}
-        placeholder="🔍Search movie..."
+        placeholder="Search movie..."
         leftIcon={<Icon icon="search" />}
         small={false}
         type="search"

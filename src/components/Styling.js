@@ -347,7 +347,7 @@ export const MovieCard = styled.div`
   margin: 10px;
   padding-right: 8px;
   @media(min-width: 768px) {
-    height: 30vh;
+    height: 282px;
     margin: 10px;
     padding-bottom: 5px;
   }
@@ -405,8 +405,8 @@ export const MovieImage = styled.img`
   height: 180px;
   width: auto;
   @media(min-width: 768px) {
-    height: 29.5vh;
     width: 185px;
+    height: 278px;
   }
 `
 export const MovieTags = styled.div`
@@ -929,11 +929,13 @@ export const FormSearch = styled.form`
 export const SearchLine = styled.input`
   background: transparent;
   border: none;
-  border-bottom: 1px solid #fe5426;
+  color: white;
+  border-bottom: 2px solid #fe5426;
   font-size: 16px;
   width: 200px;
   &::placeholder {
     color: white;
+    font-family: "Raleway", sans-serif;
   }
   @media(min-width: 768px) {
     width: 250px;
