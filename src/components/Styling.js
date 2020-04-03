@@ -654,6 +654,10 @@ export const MobileView = styled.div`
   & .movie-title {
     margin-bottom: 0;
   }
+  &:hover .white-link:hover {
+    color: white;
+    text-decoration: underline;
+  }
 @media(max-width: 600px) {
   bottom: 0%;
   left: 38%;
@@ -1133,27 +1137,16 @@ export const TextLength = styled.div`
 }
 `
 
-export const CardsWrapper = styled.div`
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* justify-content: center; */
-  margin-left: 2vw;
-  margin-top: 2vh;
-  max-width: 1000px;
-  min-width: 320px;
-`
-
 export const CommentCard = styled.div`
   display: flex;
   flex-wrap: wrap;
-  /* width: 75%; */
-  /* margin: auto; */
-  justify-content: center;
-  /* align-items: center; */
-  /* max-height: 400px; */
-  /* overflow: scroll; */
-  &:last-child {
-    margin-right: auto;
+  width: 300px;
+  margin: 0;
+   @media(min-width: 680px) {
+    width: 640px;
+  }   
+  @media(min-width: 1000px) {
+    width: 960px;
   }
 `
 

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams, Link } from 'react-router-dom'
 import 'pages/movielist.css'
-import { 
-  ActorTitle, HoverDetails, ListImage, MobileView, 
+import {
+  ActorTitle, HoverDetails, ListImage, MobileView,
   MovieInfo, MovieList, MovieTitle, MovieWrapper
 } from '../components/Styling'
 
@@ -23,7 +23,7 @@ export const Actors = () => {
       })
   }, [castId])
 
-  
+
   return (
     <div className="top-movie-list">
       <ActorTitle>Movies with {name}</ActorTitle>
@@ -39,7 +39,7 @@ export const Actors = () => {
             )}
             <HoverDetails className="hover-details">
               <MobileView className="mobile-view">
-                <Link key={persons.credit_id} to={`/movies/${persons.id}`}>
+                <Link className="white-link" key={persons.credit_id} to={`/movies/${persons.id}`}>
                   <MovieTitle>{persons.title}</MovieTitle>
                 </Link>
                 <MovieInfo>Character: {persons.character}</MovieInfo>

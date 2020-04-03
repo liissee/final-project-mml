@@ -18,7 +18,7 @@ export const Comments = ({ movieId, movieTitle }) => {
   const [updatedMessage, setUpdatedMessage] = useState(false)
 
   const url = "https://final-movie-match.herokuapp.com"
-  // const url = "http://localhost:8080"
+  //const url = "http://localhost:8080"
 
   const handleSubmit = (comment) => {
     fetch(`${url}/comments/${movieId}`, {
@@ -102,79 +102,20 @@ export const Comments = ({ movieId, movieTitle }) => {
       )} */}
 
       {/* {showReviews && ( */}
-      <CardsWrapper>
-        <CommentCard>
+      {/* <CardsWrapper> */}
+      <CommentCard>
 
-          {comments[0] && comments.map((comment) => (
-            <>
-              <InsideCards>
-                <CommentUserName><span>{comment.userName}</span>{moment(comment.createdAt).fromNow()}{comment.userName === userName && (
-                  <RemoveButton typ="button" onClick={() => { handleRemove(comment.createdAt) }}>❌</RemoveButton>
-                )}</CommentUserName>
-                <CommentText>{comment.comment}</CommentText>
-              </InsideCards>
-
-              {/* <StyledEdiText
-                  value={comment.comment}
-                  type="textarea"
-                  inputProps={{ rows: 5 }}
-                  // onSave={handleEdit}
-                  // editing={editing}
-                  hideIcons={true}
-                  saveButtonContent="Spara"
-                  cancelButtonContent="Avbryt"
-                  editButtonContent="Edit message"
-                /> */}
-            </>
-          ))}
-        </CommentCard>
-      </CardsWrapper>
-      {/* )} */}
+        {comments[0] && comments.map((comment) => (
+          <>
+            <InsideCards>
+              <CommentUserName><span>{comment.userName}</span>{moment(comment.createdAt).fromNow()}{comment.userName === userName && (
+                <RemoveButton typ="button" onClick={() => { handleRemove(comment.createdAt) }}>❌</RemoveButton>
+              )}</CommentUserName>
+              <CommentText>{comment.comment}</CommentText>
+            </InsideCards>
+          </>
+        ))}
+      </CommentCard>
     </CommentWrapper>
   )
 }
-
-export const StyledEdiText = styled(EdiText)`
-  div[editext="view-container"], div[editext="edit-container"] {
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
-    align-items: flex-start;
-    font-size: 14px;
-    font-weight: 300;
-    color: #283E51;
-    @media(min-width: 768px) {
-    font-size: 16px;
-  }
-  }
-  textarea {
-    border: 2px solid #ecdfc8;
-    width: 245px;
-    height: 80px;
-    resize: none;
-    padding: 5px;
-    font-size: 14px;
-    margin: 5px 0;
-    @media(min-width: 768px) {
-    width: 465px;
-  }
-  }
-  button[editext="edit-button"] {
-    display:none;
-  }
-  button[editext="save-button"], button[editext="cancel-button"] {
-    background-color: #ecdfc8;
-    color: #283E51;
-    padding: 4px 8px;
-    font-family: 'Quicksand', sans-serif;
-    border-radius: 4px;
-    margin: 0 8px 0 0;
-    cursor: pointer;
-    border: 0.5px solid rgba(40, 62, 81, 0.5);
-    box-shadow: 2px 2px 4px rgba(40, 62, 81, 1); 
-    transition: background-color 0.2s ease-out;
-    @media(min-width: 768px) {
-    width: 65px;
-  }
-  }
-`
