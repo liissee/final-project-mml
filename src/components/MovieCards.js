@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Ratings } from './Ratings'
 import { WatchStatus } from './WatchStatus'
 import {
-  ImdbLink, MovieCard, MovieCardInfo, MovieCardTitle, MovieCardOverview, 
+  ImdbLink, MovieCard, MovieCardInfo, MovieCardTitle, MovieCardOverview,
   MovieImage, MovieTags, WrapMovieCard, WrapMovieCardInfo
 } from './Styling'
 
@@ -43,7 +43,7 @@ export const MovieCards = ({ id }) => {
     return date.substring(0, 4)
   }
 
-  
+
   return (
     <MovieCard
       key={id}
@@ -59,7 +59,7 @@ export const MovieCards = ({ id }) => {
             src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="Photo by Denise Jans on Unsplash" />
         )}
         <WrapMovieCardInfo>
-          <Link key={movie.id} to={`/movies/${movie.id}`}>
+          <Link key={movie.id} to={`/movies/${movie.id}`} className="white-link">
             <MovieCardTitle>{movie.title}</MovieCardTitle>
           </Link>
           <Ratings
