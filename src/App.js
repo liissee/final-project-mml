@@ -3,6 +3,7 @@ import { Provider } from 'react-redux'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { movies } from 'reducers/movies'
+import { quiz } from 'reducers/quiz'
 import { ui } from 'reducers/ui'
 import { users } from 'reducers/users'
 import { Actors } from 'components/Actors'
@@ -11,6 +12,7 @@ import { MovieDetail } from 'components/MovieDetail'
 import { MoviesList } from 'pages/MoviesList'
 import { Navbar } from 'components/Navbar'
 import { OtherUser } from 'pages/OtherUser'
+import { QuizMain } from 'components/quiz/QuizMain'
 import { Registration } from 'pages/Registration'
 import { Similar } from 'components/Similar'
 import { UserPage } from 'pages/UserPage'
@@ -20,6 +22,7 @@ import { Main } from 'components/Styling'
 
 const reducer = combineReducers({
   movies: movies.reducer,
+  quiz: quiz.reducer,
   users: users.reducer,
   ui: ui.reducer
 })
@@ -44,6 +47,7 @@ export const App = () => {
           <Route exact path="/users/:userId" component={OtherUser} />
           <Route exact path="/similar/:id" component={Similar} />
           <Route exact path="/cast/:castId" component={Actors} />
+          <Route exact path="/quiz" component={QuizMain} />
         </Switch>
       </BrowserRouter>
     </Provider>

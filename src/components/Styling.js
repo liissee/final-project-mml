@@ -22,6 +22,105 @@ export const Link = styled.link`
   }
 `
 
+// Comments /////////////////////////////////////////////
+export const ButtonWrapper = styled.div`
+  align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  @media(min-width: 768px) {
+    width: 475px;
+  }
+`
+export const CommentCard = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  width: 300px;
+   @media(min-width: 680px) {
+    width: 640px;
+  }   
+  @media(min-width: 1000px) {
+    width: 960px;
+  }
+`
+export const CommentForm = styled.form`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  justify-content: space-between;
+`
+export const CommentText = styled.div`
+  font-size: 14px;
+  margin: 10px 10px 0 10px;
+  overflow: scroll;
+  overflow-wrap: break-word;
+`
+export const CommentTitle = styled.h1`
+  color: white;
+  margin-top: 0;
+`
+export const CommentUserName = styled.div`
+  display: flex;
+  font-size: 10px;
+  justify-content: space-between;
+  margin: 0;
+  padding-right: 5px;
+  span {
+    background: #fe5426;
+    color: #000f3c;
+    font-size: 14px;
+    padding: 3px 10px;
+  }
+`
+export const CommentWrapper = styled.section`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 3vw 3vw 0 3vw;
+  @media(min-width: 768px) {
+    margin: 2vw 2vw 0 2vw;
+  }
+`
+export const InsideCards = styled.div`
+  background: rgba(29, 43, 49, 0.11); 
+  border: solid 1px #ffcf3c;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 83px;
+  margin: 10px;
+  width: 300px;
+  word-wrap: break-word;
+`
+export const NewComment = styled.textarea`
+  border: 2px solid #fe5426;
+  border-radius: 2px;
+  font-size: 14px;
+  height: 80px;
+  padding: 5px;
+  resize: none;
+  width: 300px;
+  @media(min-width: 768px) {
+    font-size: 16px;
+    width: 475px;
+  }
+`
+export const TextLength = styled.div`
+  color: white;  
+  display: flex;
+  .red {
+    color: red;
+}
+`
+export const RemoveButton = styled.button`
+  background: transparent;
+  border: none;
+  cursor: pointer;
+`
+
+
 // Hamburger /////////////////////////////////////////////
 export const HamburgerWrap = styled.div`
   display: inline-block;
@@ -209,130 +308,6 @@ export const LogoutStaticButton = styled.button`
 }
 `
 
-//UserList
-export const ListWrapper = styled.div`
-  background: inherit;
-  color: white;
-  margin: 60px auto;
-  padding: 20px 30px 30px 30px;
-  text-align: center;
-`
-
-export const InfoText = styled.h2`
-  font-family: 'Raleway', sans-serif;
-`
-
-export const ListUserName = styled.div`
-  margin: 5px;
-  a{
-  text-decoration: none;}
-  span {
-    background: #fe5426;
-    padding: 3px 20px;
-    color: #000f3c;
-  &:hover {
-    color:  #fe5426;
-    background: #000f3c;
-  }
-}
-`
-
-export const ListUserNames = styled.div`
-  color: #000f3c;
-  display: flex;
-  flex-direction: column;
-  font-size: 18px;
-  margin-bottom: 2vh;
-  margin-top: 6vh;
-`
-
-//OtherUser Page
-export const UserName2 = styled.div`
-text-transform: uppercase;
-span {
-  margin: 20px;
-  background: #fe5426;
-  padding: 3px 20px;
-  color: #000f3c;
-  display: inline-block;
-  font-size: 24px;
-}
-}
-`
-
-export const UserName3 = styled(UserName2)`
-  background: transparent;
-  font-size: 24px;
-  color: #fe5426;
-  text-align: center;
-  padding: 20px;
-  margin:0;
-`
-
-export const UserNames2 = styled.div`
-  color: #000f3c;
-  margin-bottom: 2vh;
-  margin-top: 6vh;
-  font-size: 1.5em;
-  font-weight: normal;
-  padding: 20px;
-  text-align: center;
-`
-
-export const Wrapper2 = styled.div`
-  background: inherit;
-  color: white;
-  margin: 60px auto;
-  padding: 20px 30px 30px 30px;
-  text-align: center;
-`
-
-export const HeaderOtherUser = styled.section`
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-`
-
-export const OthersRating = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  left: 155px;
-  position: absolute;
-  top: 74px;
-  @media(min-width: 768px) {
-    left: 216px;
-  }
-  @media(min-width: 1024px) {
-    left: 220px;
-  }
-`
-export const OtherUserMain = styled.section`
-`
-export const Rated = styled.section`
-  background: transparent;
-  margin-top: 10px;
-  max-width: 900px;
-  border-radius: 8px;
-  display: block;
-  margin: 60px auto;
-  &.link-text {
-    text-decoration: none;
-  }
-  @media(min-width: 768px) {
-    padding: 20px 30px 30px 30px;
-  }
-`
-export const RatedCard = styled.div`
-  position: relative;
-`
-export const RatedSpan = styled.span`
-  padding: 4px 2px 0 0;
-`
-
-export const WrapperOtherUser = styled.div`
-  color: white;
-`
 
 // MovieCards on UserPage and OtherUser components /////////////////////////////////////////////
 export const ImageNotFound = styled.img`
@@ -913,6 +888,89 @@ export const WatchListLink = styled.div`
 `
 
 
+// OtherUser Page /////////////////////////////////////////////
+export const HeaderOtherUser = styled.section`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`
+export const OthersRating = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  left: 155px;
+  position: absolute;
+  top: 74px;
+  @media(min-width: 768px) {
+    left: 216px;
+  }
+  @media(min-width: 1024px) {
+    left: 220px;
+  }
+`
+export const OtherUserMain = styled.section`
+`
+export const Rated = styled.section`
+  background: transparent;
+  border-radius: 8px;
+  display: block;
+  margin: 60px auto;
+  margin-top: 10px;
+  max-width: 900px;
+  &.link-text {
+    text-decoration: none;
+  }
+  @media(min-width: 768px) {
+    padding: 20px 30px 30px 30px;
+  }
+`
+export const RatedCard = styled.div`
+  position: relative;
+`
+export const RatedSpan = styled.span`
+  padding: 4px 2px 0 0;
+`
+export const UserName2 = styled.div`
+  text-transform: uppercase;
+  span {
+    background: #fe5426;
+    color: #000f3c;
+    display: inline-block;
+    font-size: 24px;
+    margin: 20px;
+    padding: 3px 20px;
+  }
+}
+`
+export const UserNames2 = styled.div`
+  color: #000f3c;
+  font-size: 1.5em;
+  font-weight: normal;
+  margin-bottom: 2vh;
+  margin-top: 6vh;
+  padding: 20px;
+  text-align: center;
+`
+export const UserName3 = styled(UserName2)`
+  background: transparent;
+  color: #fe5426;
+  font-size: 24px;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+`
+export const Wrapper2 = styled.div`
+  background: inherit;
+  color: white;
+  margin: 60px auto;
+  padding: 20px 30px 30px 30px;
+  text-align: center;
+`
+export const WrapperOtherUser = styled.div`
+  color: white;
+`
+
+
 // Searchbar /////////////////////////////////////////////
 export const FormSearch = styled.form`
   background: none;
@@ -943,6 +1001,43 @@ export const SearchLine = styled.input`
 `
 
 
+// UserList /////////////////////////////////////////////
+export const InfoText = styled.h2`
+  font-family: 'Raleway', sans-serif;
+`
+export const ListUserName = styled.div`
+  margin: 5px;
+  a {
+    text-decoration: none;
+  }
+  span {
+    background: #fe5426;
+    color: #000f3c;
+    padding: 3px 20px;
+  &:hover {
+    background: #000f3c;
+    color:  #fe5426;
+  }
+}
+`
+export const ListUserNames = styled.div`
+  color: #000f3c;
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  margin-bottom: 2vh;
+  margin-top: 6vh;
+`
+export const ListWrapper = styled.div`
+  background: inherit;
+  color: white;
+  margin: 60px auto;
+  padding: 20px 30px 30px 30px;
+  text-align: center;
+`
+
+
+
 // UserPage /////////////////////////////////////////////
 export const ButtonContainer = styled.div`
   display:flex;
@@ -964,10 +1059,6 @@ export const ButtonWatch = styled(Button)`
     width: 120px;
   }
 `
-// export const ButtonShowReviews = styled(ButtonWatch)`
-//   margin-left: 2vw;
-//   margin-top: 3vh;
-// `
 export const ButtonMore = styled(ButtonWatch)`
   background: #fff;
   border: #1c1a21 solid 2px;
@@ -1078,124 +1169,6 @@ width: 50px;
 cursor: pointer;
 `
 
-// Comments /////////////////////////////////////////////
-export const CommentForm = styled.form`
-/* background: #ebebeb; */
-  /* border: solid 1px #7e7e7e; */
-  /* box-shadow: 5px 5px; */
-  display: flex;
-  flex-direction: column;
-  height: 200px;
-  justify-content: space-between;
-  align-items: center;
-  /* margin-top: 20px; */
-  /* padding: 0 20px; */
-`
-
-export const CommentWrapper = styled.section`
-margin: 3vw 3vw 0 3vw;
-display: flex;
-flex-direction: column;
-align-items: center;
-  @media(min-width: 768px) {
-    margin: 2vw 2vw 0 2vw;
-  }
-`
-
-export const CommentTitle = styled.h1`
-  color: white;
-  margin-top: 0;
-`
-
-export const NewComment = styled.textarea`
-  border: 2px solid #fe5426;
-  border-radius: 2px;
-  font-size: 14px;
-  height: 80px;
-  width: 300px;
-  padding: 5px;
-  resize: none;
-  @media(min-width: 768px) {
-    font-size: 16px;
-    width: 475px;
-  }
-`
-
-export const ButtonWrapper = styled.div`
-  align-items: baseline;
-  display: flex;
-  justify-content: space-between;
-  width: 300px;
-  @media(min-width: 768px) {
-    width: 475px;
-  }
-`
-
-export const TextLength = styled.div`
-  color: white;  
-  display: flex;
-  .red {
-  color:red;
-}
-`
-
-export const CommentCard = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  width: 300px;
-  margin: 0;
-   @media(min-width: 680px) {
-    width: 640px;
-  }   
-  @media(min-width: 1000px) {
-    width: 960px;
-  }
-`
-
-export const InsideCards = styled.div`
-  background: rgba(29, 43, 49, 0.11); 
-  border: solid 1px #ffcf3c;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  /* justify-content: space-between; */
-  margin: 10px;
-  /* max-height: 130px;
-  overflow: scroll;
-  overflow-wrap: break-word; */
-  height: 83px;
-  width: 300px;
-  word-wrap: break-word;
-`
-
-export const CommentUserName = styled.div`
-  margin: 0;
-  padding-right: 5px;
-  display: flex;
-  justify-content: space-between;
-  /* background: #ffcf3c; */
-  font-size: 10px;
-  span {
-    background: #fe5426;
-    padding: 3px 10px;
-    color: #000f3c;
-    font-size: 14px;
-  }
-`
-
-export const CommentText = styled.div`
-  font-size: 14px;
-  margin: 10px 10px 0 10px;
-  /* max-height: 130px; */
-  overflow: scroll;
-  overflow-wrap: break-word;
-`
-
-export const RemoveButton = styled.button`
-  border: none;
-  background: transparent;
-  cursor: pointer;
-`
 
 // Other /////////////////////////////////////////////
 export const SearchContainer = styled.div`

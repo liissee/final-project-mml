@@ -57,8 +57,13 @@ export const Navbar = () => {
         <Link to="/users/:id/movies" onClick={() => handleTabChange("watch")}>
           <WatchListLink className={selectedTab === "watch" ? 'active' : ''}>My watchlist</WatchListLink>
         </Link>
+
         <Link to="/users/:id/movies" onClick={() => handleTabChange("rated")}>
           <WatchListLink className={selectedTab === "rated" ? 'active' : ''}>My rated movies</WatchListLink>
+        </Link>
+
+        <Link to="/quiz" onClick={() => handleTabChange("quiz")}>
+          <WatchListLink className={selectedTab === "quiz" ? 'active' : ''}>Quiz</WatchListLink>
         </Link>
 
         <Link to="/users/:id/movies" onClick={() => handleTabChange("users")}>

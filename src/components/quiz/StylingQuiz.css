@@ -1,0 +1,89 @@
+/* Answers */
+.answerButtons {
+  font-size: 20px;
+  height: 120px;
+  padding: 50px;
+  transform: scale(1);
+  transition: transform 400ms;
+  width: 230px;
+}
+.answerButtons:hover {
+  transform: scale(1.05);
+}
+.answerWrap {
+  display: grid;
+  grid-column-gap: 5%;
+  grid-row-gap: 5%;
+  grid-template-columns: repeat(2,2fr);
+  grid-template-rows: repeat(2,2fr);
+  height: 200px;
+}
+.rightAnswer {
+  background-color: green;
+}
+.wrongAnswer {
+  background-color: red;
+}
+
+
+/* Button */
+button {
+  background-color: aliceblue;
+  border-radius: 20px;
+  color:navy;
+  font-weight: bold;
+}
+
+
+/* Current Question */
+.currentQuestion {
+  display: flex;
+  flex-direction: column;
+  height: 700px;
+  justify-content: flex-start;
+  width: 500px;
+}
+
+.currentQuestionAnswer {
+  align-items: center;
+  display: flex;
+  height: 350px; 
+ 	justify-content: center;
+}
+.currentQuestionNextButton {
+  align-self: flex-end;
+}
+.currentQuestionProgressBarWrapper {
+  align-self: center;
+  justify-self: center;
+}
+
+
+/* Progress Bar */
+.progress-bar {
+  border: 2px solid #000;
+	border-radius: 50px;
+  height: 20px;
+  margin-top: 20px;
+  width: 350px;
+}
+.progress-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+ 	justify-content: center;
+ 	width: 100%;
+}
+.range {
+  background: #050d55;
+  border-radius: inherit;
+ 	height: 100%;
+ 	transition: width .3s ease-in;
+}
+
+
+/* QuizMain */
+.background {
+  color: white;
+  margin-left: 10vw;
+}

@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import 'components/comments.css'
-import EdiText from "react-editext"
-import styled from "styled-components/macro"
-import { ButtonShowReviews, ButtonWatch, RemoveButton, ButtonWrapper, CommentText, NewComment, CommentForm, CommentTitle, CommentCard, CardsWrapper, InsideCards, TextLength, CommentUserName, CommentWrapper, UserName3 } from './Styling'
 import moment from "moment"
+import 'components/comments.css'
+import { 
+  ButtonWatch, ButtonWrapper, CommentCard, CommentForm, CommentText, 
+  CommentUserName, CommentWrapper, InsideCards, NewComment,
+  RemoveButton, TextLength,  UserName3 
+} from './Styling'
+
 
 export const Comments = ({ movieId, movieTitle }) => {
   const accessToken = useSelector((state) => state.users.accessToken)
@@ -14,11 +17,10 @@ export const Comments = ({ movieId, movieTitle }) => {
   const [comment, setComment] = useState("")
   const [comments, setComments] = useState([])
   const [postedComment, setPostedComment] = useState("")
-  const [showReviews, setShowReviews] = useState(false)
   const [updatedMessage, setUpdatedMessage] = useState(false)
 
   const url = "https://final-movie-match.herokuapp.com"
-  //const url = "http://localhost:8080"
+
 
   const handleSubmit = (comment) => {
     fetch(`${url}/comments/${movieId}`, {
@@ -32,7 +34,7 @@ export const Comments = ({ movieId, movieTitle }) => {
       .catch(err => console.log("error:", err))
   }
 
-  //Get comments
+  // Get comments
   useEffect(() => {
     fetch(`${url}/comments/${movieId}`)
       .then(res => res.json())
@@ -47,10 +49,6 @@ export const Comments = ({ movieId, movieTitle }) => {
     event.preventDefault()
     handleSubmit(comment)
     setComment("")
-  }
-
-  const handleReviews = () => {
-    setShowReviews(!showReviews)
   }
 
   const handleRemove = (createdAt) => {
@@ -92,17 +90,6 @@ export const Comments = ({ movieId, movieTitle }) => {
         </ButtonWrapper>
       </CommentForm>
 
-      {/* {comments[0] && (
-        <ButtonWatch
-          type="button"
-          onClick={() => { handleReviews() }}
-        >
-          Show reviews
-        </ButtonWatch>
-      )} */}
-
-      {/* {showReviews && ( */}
-      {/* <CardsWrapper> */}
       <CommentCard>
 
         {comments[0] && comments.map((comment) => (
